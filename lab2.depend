@@ -1,19 +1,19 @@
-# depslib dependency file v1.0
-1587132303 source:c:\users\Владимир\documents\lab2\main.cpp
+# depslib dependency file v1.0 <CodeBlocks_project_file>
+1587132303 source:c:\users\Г‚Г«Г Г¤ГЁГ¬ГЁГ°\documents\lab2\main.cpp
 	<iostream>
 	"product.h"
 	<locale>
 
-1585030127 source:c:\users\Владимир\documents\lab2\product.cpp
+1585030127 source:c:\users\Г‚Г«Г Г¤ГЁГ¬ГЁГ°\documents\lab2\product.cpp
 	<iostream>
 	"product.h"
 	"product2.h"
 
-1587130987 c:\users\Владимир\documents\lab2\product.h
+1587130987 c:\users\Г‚Г«Г Г¤ГЁГ¬ГЁГ°\documents\lab2\product.h
 
-1587130903 source:c:\users\Владимир\documents\lab2\product2.cpp
+1587130903 source:c:\users\Г‚Г«Г Г¤ГЁГ¬ГЁГ°\documents\lab2\product2.cpp
 	<iostream>
 	"product.h"
 
-1585030034 c:\users\Владимир\documents\lab2\product2.h
+1585030034 c:\users\Г‚Г«Г Г¤ГЁГ¬ГЁГ°\documents\lab2\product2.h
 
