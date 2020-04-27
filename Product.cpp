@@ -3,7 +3,7 @@
 #include <string>
 #include "Product.h"
 
-usig namespace std;
+using namespace std;
 
 Product::Product()
 {
