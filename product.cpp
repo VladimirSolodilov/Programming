@@ -1,6 +1,6 @@
 #include <iostream>
 #include "product.h"
-#include "product2.h"
+#include "product2.h" <CodeBlocks_project_file>
 
 tovar::tovar()
 {
