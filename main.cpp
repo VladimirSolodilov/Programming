@@ -2,7 +2,7 @@
 #include "product.h"
 #include <locale>
 
-using namespace std; <CodeBlocks_project_file>
+using namespace std;
 
 int main()
 {
