@@ -3,6 +3,8 @@
 #include <string>
 #include "Product.h"
 
+<CodeBlocks_project_file>
+
 using namespace std;
 
 int main()
