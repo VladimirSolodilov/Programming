@@ -1,7 +1,7 @@
 #include <iostream>
 #include "product.h"
 
-string tovar::getname()
+string tovar::getname()<CodeBlocks_project_file>
 {
     return name;
 }
