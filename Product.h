@@ -1,7 +1,7 @@
 #ifndef PRODUCT_H_INCLUDED
 #define PRODUCT_H_INCLUDED
 
-using namespace std;
+using namespace std
 
 class Product
 {
