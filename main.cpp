@@ -1,47 +1,33 @@
 #include <iostream>
-#include "product.h"
-#include <locale>
 #include <string>
+#include "Spisok.h"
 
 using namespace std;
 
 int main()
 {
-    setlocale(LC_ALL, "Russia");
-    cout << "Program begin...\n\n";
-    tovar t("Apple", 20);
-    fruct f ("Orange", 25, "Russia");
-    milk_production m ("Mandarin", 20, "Russia", 0, 20);
-    cout << "Tovar:\n";
-    t.print();
-    cout << "\n";
-    cout << "Fruct:\n";
-    f.tovar::print();
-    f.print();
-    cout << "\n";
-    cout << "Milk production:\n";
-    m.tovar::print();
-    m.fruct::print();
-    m.print();
-    cout << "Class changes\n\n";
-    cout << "Name in <fruct> from <Orange> to <Mandarin>\n\n";
-    f.tovar::setname("Mandarin");
-    cout << "Country in <milk_production> from <Russia> to <Ukraine>\n\n";
-    m.fruct::setcountry("Ukraine");
-    cout << "Name in <milk_production> from <Mandarin> to <Pear>\n\n";
-    m.tovar::setname("Pear");
-    cout << "Result:\n\n";
-    cout << "Tovar:\n";
-    t.print();
-    cout << "\n";
-    cout << "Fruct:\n";
-    f.tovar::print();
-    f.print();
-    cout << "\n";
-    cout << "Milk production:\n";
-    m.tovar::print();
-    m.fruct::print();
-    m.print();
-    cout << "End of program";
+    List L;
+    const int n = 10;
+    int a[n] = {0,1,2,3,4,5,6,7,8,9};
+    for(int i = 0; i < n; i++)
+    if(i % 2 == 0)
+        L.InsertFirst(a[i]);
+    else
+        L.InsertLast(a[i]);
+    cout << "List L:\n";
+    L.print();
+   cout << endl;
+    L.insertAtPos();
+    cout << "List L:\n";
+    L.print();
+    L.PrintPosition(2);
+    L.PrintPosition(8);
+    List T;
+    T = L;
+    cout << "List T:\n";
+    T.print();
+    cout << "List Sum:\n";
+    List Sum = -L + T;
+    Sum.print();
     return 0;
 }

@@ -1,0 +1,18 @@
+# depslib dependency file v1.0
+1588406130 source:c:\users\Владимир\documents\project\main.cpp
+	<iostream>
+	"Spisok.h"
+	<locale>
+
+1588405495 source:c:\users\Владимир\documents\project\spisok.cpp
+	<iostream>
+	"Spisok.h"
+
+1588406130 c:\users\Владимир\documents\project\spisok.h
+
+1588407055 source:c:\users\vladimir\desktop\programming-lab3\spisok.cpp
+	<iostream>
+	"Spisok.h"
+
+1588407055 c:\users\vladimir\desktop\programming-lab3\spisok.h
+
