@@ -22,12 +22,5 @@ int main()
     L.print();
     L.PrintPosition(2);
     L.PrintPosition(8);
-    List T;
-    T = L;
-    cout << "List T:\n";
-    T.print();
-    cout << "List Sum:\n";
-    List Sum = -L + T;
-    Sum.print();
     return 0;
 }
