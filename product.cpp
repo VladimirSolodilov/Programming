@@ -1,7 +1,60 @@
 #include <iostream>
 #include "product.h"
 
-void tovar::print()
+tovar::tovar()
+{
+    name = "Null";
+    price = 0;
+
+}
+
+tovar::tovar(string name, int price)
+{
+    this->name = name;
+    this->price = price;
+}
+
+tovar::tovar(const tovar &t)
+{
+    this->name = t.name;
+    this->price = t.price;
+}
+
+
+milk_production::milk_production() : fruct()
+{
+    fat_content = 0;
+    volume = 0;
+}
+
+fruct::fruct() : tovar()
+{
+    country = "Null";
+}
+
+fruct::fruct(string name, int price, string country) : tovar(name, price)
+{
+    this->country = country;
+}
+
+fruct::fruct(const tovar &t, const fruct &f) : tovar (t)
+{
+    this->name = f.name;
+    this->price = f.price;
+}
+
+milk_production::milk_production(string name, int price, string country, int fat_content, int volume) : fruct (name, price, country)
+{
+    this->fat_content = fat_content;
+    this->volume = volume;
+}
+milk_production::milk_production(const tovar &t, const fruct &f, const milk_production &m) : fruct (f)
+{
+    this->fat_content = m.fat_content;
+    this->volume = m.volume;
+}
+
+ void tovar::print()
 {
     cout << "Name: " << name << "\nPrice: " << this->price << endl;
 }
