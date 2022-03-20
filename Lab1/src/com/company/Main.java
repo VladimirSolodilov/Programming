@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -20,193 +21,203 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         boolean check = true;
 
-        System.out.println("Лабораторная работа 1");
+        System.out.print("\nЛабораторная работа 1");
 
-        while (check) {
-            System.out.println("\n........................Меню программы........................");
-            System.out.print("1 - Шифр Вижинера\n" +
-                    "2 - Шифр с гаммированием\n" +
-                    "3 - Шифр перестановки\n" +
-                    "4 - Омофонический шифр\n" +
-                    "5 - Выход программы\n" +
-                    "Для продолжения введите соответствующую цифру: ");
-            int choise = scanner.nextInt();
+        try {
+            while (check) {
+                System.out.println("\n........................Меню программы........................");
+                System.out.print("1 - Шифр Вижинера\n" +
+                        "2 - Шифр с гаммированием\n" +
+                        "3 - Шифр перестановки\n" +
+                        "4 - Омофонический шифр\n" +
+                        "5 - Выход программы\n" +
+                        "Для продолжения введите соответствующую цифру: ");
+                int choise = scanner.nextInt();
 
-            switch (choise) {
-                case 1: {
-                    System.out.print("\n........................Шифр Вижинера........................\n" +
-                            "1 - Шифрование\n" +
-                            "2 - Расшифрование\n" +
-                            "3 - Выход\n" +
-                            "Для продолжения введите соответствующую цифру: ");
-                    int viginerChoise = scanner.nextInt();
+                switch (choise) {
+                    case 1: {
+                        System.out.print("\n........................Шифр Вижинера........................\n" +
+                                "1 - Шифрование\n" +
+                                "2 - Расшифрование\n" +
+                                "3 - Выход\n" +
+                                "Для продолжения введите соответствующую цифру: ");
+                        int viginerChoise = scanner.nextInt();
 
-                    switch (viginerChoise) {
-                        case 1: {
-                            scanner.nextLine();
+                        switch (viginerChoise) {
+                            case 1: {
+                                scanner.nextLine();
 
-                            System.out.print("Введите исходное сообщение: ");
-                            viginer.setOriginalMessage(scanner.nextLine());
+                                System.out.print("Введите исходное сообщение: ");
+                                viginer.setOriginalMessage(scanner.nextLine());
 
-                            System.out.print("Введите ключ: ");
-                            viginer.setKey(scanner.nextLine());
+                                System.out.print("Введите ключ: ");
+                                viginer.setKey(scanner.nextLine());
 
-                            System.out.println("Зашифрованное сообщение: " + viginer.Encode(viginer.getOriginalMessage(), viginer.getKey()));
+                                System.out.println("Зашифрованное сообщение: " + viginer.Encode(viginer.getOriginalMessage(), viginer.getKey()));
 
-                            break;
-                        }
-                        case 2: {
-                            scanner.nextLine();
+                                break;
+                            }
+                            case 2: {
+                                scanner.nextLine();
 
-                            System.out.print("Введите зашифрованное сообщение: ");
-                            viginer.setEncryptedMessage(scanner.nextLine());
+                                System.out.print("Введите зашифрованное сообщение: ");
+                                viginer.setEncryptedMessage(scanner.nextLine());
 
-                            System.out.print("Введите ключ: ");
-                            viginer.setKey(scanner.nextLine());
+                                System.out.print("Введите ключ: ");
+                                viginer.setKey(scanner.nextLine());
 
-                            System.out.println("Расшированное сообщение: " + viginer.Decode(viginer.getEncryptedMessage(), viginer.getKey()));
+                                System.out.println("Расшированное сообщение: " + viginer.Decode(viginer.getEncryptedMessage(), viginer.getKey()));
 
-                            break;
-                        }
-
-                        case 3: {
-                            break;
-                        }
-
-                        default: {
-                            break;
-                        }
-                    }
-                    break;
-                }
-                case 2: {
-                    System.out.print("\n........................Шифр с гаммированием........................\n" +
-                            "1 - Шифрование\n" +
-                            "2 - Расшифрование\n" +
-                            "3 - Выход\n" +
-                            "Для продолжения введите соответствующую цифру: ");
-                    int scalingChoise = scanner.nextInt();
-
-                    switch (scalingChoise) {
-                        case 1: {
-                            String languageCheck = new String();
-
-                            System.out.print("Введите длину ключа: ");
-                            int a = scanner.nextInt();
-
-                            System.out.print("Введите любое число: ");
-                            int b = scanner.nextInt();
-
-                            System.out.print("Выберите язык, введя соответствующую цифру" +
-                                    "\n1 - russian, 2 - english: ");
-                            int c = scanner.nextInt();
-
-                            if (c == 1) languageCheck = "russian";
-                            else if (c == 2) languageCheck = "english";
-
-                            pseudoRandom.setPseudoRandomKey(a, b, languageCheck);
-                            System.out.println("Сгенерированный случайный ключ: " + pseudoRandom.getPseudoRandomKey());
-
-                            scanner.nextLine();
-
-                            System.out.print("Введите сообщение для шифрования: ");
-                            String message = scanner.nextLine();
-
-                            System.out.println("Зашифрованное сообщение: " + viginer.Encode(message, pseudoRandom.getPseudoRandomKey()));
-
-                            break;
-                        }
-                        case 2: {
-                            scanner.nextLine();
-
-                            System.out.print("Введите ключ: ");
-                            String pseudoRandomKey = scanner.nextLine();
-
-                            System.out.print("Введите зашифрованное сообщение: ");
-                            String message = scanner.nextLine();
-
-                            System.out.println("Расшифрованное сообщение: " + viginer.Decode(message, pseudoRandomKey));
-
-                            break;
-                        }
-                        case 3: {
-                            break;
-                        }
-
-                        default: {
-                            break;
-                        }
-                    }
-
-                    break;
-                }
-
-                case 3: {
-                    System.out.print("\n........................Шифр перестановки........................\n" +
-                            "1 - Шифрование\n" +
-                            "2 - Расшифрование\n" +
-                            "3 - Выход\n" +
-                            "Для продолжения введите соответствующую цифру: ");
-                    int permutationChoise = scanner.nextInt();
-
-                    switch (permutationChoise) {
-                        case 1: {
-                            System.out.print("Введите длину ключа: ");
-                            int numbersLength = scanner.nextInt();
-
-                            int[] numbers = new int[numbersLength];
-
-                            System.out.print("Введите числовую последовательность: ");
-
-                            for (int i = 0; i < numbersLength; i++) {
-                                numbers[i] = scanner.nextInt();
+                                break;
                             }
 
-                            permutation.setKey(numbers);
+                            case 3: {
+                                break;
+                            }
 
-                            scanner.nextLine();
-
-                            System.out.print("Введите сообщение для шифрования: ");
-                            String message = scanner.nextLine();
-
-                            System.out.print("Зашифрованное сообщение: " + permutation.Encode(message) + "\n");
-
-                            break;
+                            default: {
+                                break;
+                            }
                         }
-                        case 2: {
+                        break;
+                    }
+                    case 2: {
+                        System.out.print("\n........................Шифр с гаммированием........................\n" +
+                                "1 - Шифрование\n" +
+                                "2 - Расшифрование\n" +
+                                "3 - Выход\n" +
+                                "Для продолжения введите соответствующую цифру: ");
+                        int scalingChoise = scanner.nextInt();
 
+                        switch (scalingChoise) {
+                            case 1: {
+                                String languageCheck = new String();
+
+                                System.out.print("Введите длину ключа: ");
+                                int a = scanner.nextInt();
+
+                                System.out.print("Введите любое число: ");
+                                int b = scanner.nextInt();
+
+                                System.out.print("Выберите язык, введя соответствующую цифру" +
+                                        "\n1 - russian, 2 - english: ");
+                                int c = scanner.nextInt();
+
+                                if (c == 1) languageCheck = "russian";
+                                else if (c == 2) languageCheck = "english";
+
+                                pseudoRandom.setPseudoRandomKey(a, b, languageCheck);
+                                System.out.println("Сгенерированный случайный ключ: " + pseudoRandom.getPseudoRandomKey());
+
+                                scanner.nextLine();
+
+                                System.out.print("Введите сообщение для шифрования: ");
+                                String message = scanner.nextLine();
+
+                                System.out.println("Зашифрованное сообщение: " + viginer.Encode(message, pseudoRandom.getPseudoRandomKey()));
+
+                                break;
+                            }
+                            case 2: {
+                                scanner.nextLine();
+
+                                System.out.print("Введите ключ: ");
+                                String pseudoRandomKey = scanner.nextLine();
+
+                                System.out.print("Введите зашифрованное сообщение: ");
+                                String message = scanner.nextLine();
+
+                                System.out.println("Расшифрованное сообщение: " + viginer.Decode(message, pseudoRandomKey));
+
+                                break;
+                            }
+                            case 3: {
+                                break;
+                            }
                         }
 
-                        case 3 : {
-                            break;
-                        }
-
-                        default: {
-                            break;
-                        }
+                        break;
                     }
 
-                    break;
+                    case 3: {
+                        System.out.print("\n........................Шифр перестановки........................\n" +
+                                "1 - Шифрование\n" +
+                                "2 - Расшифрование\n" +
+                                "3 - Выход\n" +
+                                "Для продолжения введите соответствующую цифру: ");
+                        int permutationChoise = scanner.nextInt();
+
+                        switch (permutationChoise) {
+                            case 1: {
+                                System.out.print("Введите длину ключа: ");
+                                int numbersLength = scanner.nextInt();
+
+                                int[] numbers = new int[numbersLength];
+
+                                System.out.print("Введите ключ: ");
+
+                                for (int i = 0; i < numbersLength; i++) {
+                                    numbers[i] = scanner.nextInt();
+                                }
+
+                                permutation.setKey(numbers);
+
+                                scanner.nextLine();
+
+                                System.out.print("Введите сообщение для шифрования: ");
+                                permutation.setOriginalMessage(scanner.nextLine());
+
+                                System.out.print("Зашифрованное сообщение: " + permutation.Encode(permutation.getOriginalMessage()) + "\n");
+
+                                break;
+                            }
+                            case 2: {
+                                scanner.nextLine();
+
+                                System.out.print("Введите сообщение для расшифрования: ");
+                                permutation.setEncryptedMessage(scanner.nextLine());
+
+                                System.out.print("Введите длину ключа: ");
+                                int numbersLength = scanner.nextInt();
+
+                                int[] numbers = new int[numbersLength];
+
+                                System.out.print("Введите ключ: ");
+
+                                for (int i = 0; i < numbersLength; i++) {
+                                    numbers[i] = scanner.nextInt();
+                                }
+
+                                permutation.setKey(numbers);
+
+                                System.out.print("Расшифрованное сообщение: " + permutation.Decode(permutation.getEncryptedMessage()) + "\n");
+
+                                break;
+                            }
+
+                            case 3 : {
+                                break;
+                            }
+                        }
+
+                        break;
+                    }
+
+                    case 5: {
+                        check = false;
+                        continue;
+                    }
+
+                    default: {
+                        break;
+                    }
+
                 }
 
-                case 5: {
-                    check = false;
-                    continue;
-                }
-
-                default: {
-                    break;
-                }
 
             }
-
-
+        } catch (InputMismatchException e) {
+            main(new String[]{" "});
         }
-
-
-
-
-
-
     }
 }

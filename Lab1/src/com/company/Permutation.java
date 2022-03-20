@@ -2,6 +2,8 @@ package com.company;
 
 public class Permutation extends Main {
     private int[] key = null;
+    private String originalMessage = new String();
+    private String encryptedMessage = new String();
 
     public void setKey(int[] key) {
         this.key = new int[key.length];
@@ -9,6 +11,22 @@ public class Permutation extends Main {
         for (int i = 0; i < key.length; i++) {
             this.key[i] = key[i];
         }
+    }
+
+    public String getOriginalMessage() {
+        return originalMessage;
+    }
+
+    public void setOriginalMessage(String originalMessage) {
+        this.originalMessage = originalMessage;
+    }
+
+    public String getEncryptedMessage() {
+        return encryptedMessage;
+    }
+
+    public void setEncryptedMessage(String encryptedMessage) {
+        this.encryptedMessage = encryptedMessage;
     }
 
     public String Encode(String message) {
