@@ -93,12 +93,14 @@ public class Main {
                                 System.out.print("Введите любое число: ");
                                 int b = scanner.nextInt();
 
-                                System.out.print("Выберите язык, введя соответствующую цифру" +
-                                        "\n1 - russian, 2 - english: ");
+                                System.out.print("""
+                                        Выберите язык, введя соответствующую цифру
+                                        1 - russian,
+                                        2 - english:\s""");
                                 int c = scanner.nextInt();
 
                                 if (c == 1) languageCheck = "russian";
-                                else if (c == 2) languageCheck = "english";
+                                    else if (c == 2) languageCheck = "english";
 
                                 pseudoRandom.setPseudoRandomKey(a, b, languageCheck);
                                 System.out.println("Сгенерированный случайный ключ: " + pseudoRandom.getPseudoRandomKey());
@@ -180,7 +182,7 @@ public class Main {
 
                                 permutation.setKey(numbers);
 
-                                System.out.print("Расшифрованное сообщение: " + permutation.Decode(permutation.getEncryptedMessage()) + "\n");
+                                System.out.print("Расшифрованное сообщение: " + permutation.Decode(permutation.getEncryptedMessage()));
 
                             }
                             case 3 -> {
@@ -189,9 +191,7 @@ public class Main {
                         }
 
                     }
-                    case 5 -> {
-                        check = false;
-                    }
+                    case 5 -> check = false;
                 }
 
 
