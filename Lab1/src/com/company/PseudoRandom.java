@@ -3,7 +3,7 @@ package com.company;
 import java.util.Random;
 
 public class PseudoRandom extends Viginer {
-    private String pseudoRandomKey = new String();
+    private String pseudoRandomKey = "";
 
     public String getPseudoRandomKey() {
         return pseudoRandomKey;

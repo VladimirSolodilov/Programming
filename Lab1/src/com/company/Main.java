@@ -129,7 +129,6 @@ public class Main {
 
                             }
                         }
-
                     }
                     case 3 -> {
                         System.out.print("""
@@ -183,18 +182,14 @@ public class Main {
                                 permutation.setKey(numbers);
 
                                 System.out.print("Расшифрованное сообщение: " + permutation.Decode(permutation.getEncryptedMessage()));
-
                             }
                             case 3 -> {
 
                             }
                         }
-
                     }
                     case 5 -> check = false;
                 }
-
-
             }
         } catch (InputMismatchException e) {
             main(new String[]{" "});
