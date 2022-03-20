@@ -33,9 +33,9 @@ public class Main {
                         4 - Омофонический шифр
                         5 - Выход программы
                         Для продолжения введите соответствующую цифру:\s""");
-                int choise = scanner.nextInt();
+                int choice = scanner.nextInt();
 
-                switch (choise) {
+                switch (choice) {
                     case 1 -> {
                         System.out.print("""
                                 \n........................Шифр Вижинера........................
@@ -110,7 +110,7 @@ public class Main {
                                 System.out.print("Введите сообщение для шифрования: ");
                                 String message = scanner.nextLine();
 
-                                System.out.println("Зашифрованное сообщение: " + viginer.Encode(message, pseudoRandom.getPseudoRandomKey()));
+                                System.out.println("Зашифрованное сообщение: " + viginer.Encode(message, String.valueOf(pseudoRandom.getPseudoRandomKey())));
 
                             }
                             case 2 -> {
