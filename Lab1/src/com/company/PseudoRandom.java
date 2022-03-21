@@ -3,9 +3,9 @@ package com.company;
 import java.util.Random;
 
 public class PseudoRandom extends Viginer {
-    private String pseudoRandomKey = new String();
+    private final StringBuilder pseudoRandomKey = new StringBuilder();
 
-    public String getPseudoRandomKey() {
+    public StringBuilder getPseudoRandomKey() {
         return pseudoRandomKey;
     }
     public void setPseudoRandomKey(int length, int startSeed, String choice) {
@@ -13,12 +13,12 @@ public class PseudoRandom extends Viginer {
 
         if (choice.equals("russian")) {
             for (int i = 0; i < length; i++) {
-                pseudoRandomKey += russianAlphabet.toCharArray()[random.nextInt(0, russianAlphabet.length())];
+                pseudoRandomKey.append(russianAlphabet.toCharArray()[random.nextInt(0, russianAlphabet.length())]);
             }
         } else {
             if (choice.equals("english")) {
                 for (int i = 0; i < length; i++) {
-                    pseudoRandomKey += englishAlphabet.toCharArray()[random.nextInt(0, englishAlphabet.length())];
+                    pseudoRandomKey.append(englishAlphabet.toCharArray()[random.nextInt(0, englishAlphabet.length())]);
                 }
             }
         }

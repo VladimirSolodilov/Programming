@@ -33,9 +33,9 @@ public class Main {
                         4 - Омофонический шифр
                         5 - Выход программы
                         Для продолжения введите соответствующую цифру:\s""");
-                int choise = scanner.nextInt();
+                int choice = scanner.nextInt();
 
-                switch (choise) {
+                switch (choice) {
                     case 1 -> {
                         System.out.print("""
                                 \n........................Шифр Вижинера........................
@@ -93,12 +93,14 @@ public class Main {
                                 System.out.print("Введите любое число: ");
                                 int b = scanner.nextInt();
 
-                                System.out.print("Выберите язык, введя соответствующую цифру" +
-                                        "\n1 - russian, 2 - english: ");
+                                System.out.print("""
+                                        Выберите язык, введя соответствующую цифру
+                                        1 - russian,
+                                        2 - english:\s""");
                                 int c = scanner.nextInt();
 
                                 if (c == 1) languageCheck = "russian";
-                                else if (c == 2) languageCheck = "english";
+                                    else if (c == 2) languageCheck = "english";
 
                                 pseudoRandom.setPseudoRandomKey(a, b, languageCheck);
                                 System.out.println("Сгенерированный случайный ключ: " + pseudoRandom.getPseudoRandomKey());
@@ -108,7 +110,7 @@ public class Main {
                                 System.out.print("Введите сообщение для шифрования: ");
                                 String message = scanner.nextLine();
 
-                                System.out.println("Зашифрованное сообщение: " + viginer.Encode(message, pseudoRandom.getPseudoRandomKey()));
+                                System.out.println("Зашифрованное сообщение: " + viginer.Encode(message, String.valueOf(pseudoRandom.getPseudoRandomKey())));
 
                             }
                             case 2 -> {
@@ -127,7 +129,6 @@ public class Main {
 
                             }
                         }
-
                     }
                     case 3 -> {
                         System.out.print("""
@@ -180,21 +181,15 @@ public class Main {
 
                                 permutation.setKey(numbers);
 
-                                System.out.print("Расшифрованное сообщение: " + permutation.Decode(permutation.getEncryptedMessage()) + "\n");
-
+                                System.out.print("Расшифрованное сообщение: " + permutation.Decode(permutation.getEncryptedMessage()));
                             }
                             case 3 -> {
 
                             }
                         }
-
                     }
-                    case 5 -> {
-                        check = false;
-                    }
+                    case 5 -> check = false;
                 }
-
-
             }
         } catch (InputMismatchException e) {
             main(new String[]{" "});
