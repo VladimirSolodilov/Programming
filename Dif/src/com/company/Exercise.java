@@ -32,13 +32,13 @@ public abstract class Exercise {
     }
 
     public double[] xCreate() {
-        DecimalFormat df = new DecimalFormat("#.#");
+        DecimalFormat df = new DecimalFormat("#,#");
         double[] x = new double[21];
         for (int i = 0; i < 21; i++) {
             if (i == 0) {
                 x[i] = 0;
             } else {
-                x[i] = Double.parseDouble(df.format(H * i));
+                x[i] = H * i;
             }
         }
         return x;

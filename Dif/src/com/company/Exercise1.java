@@ -10,7 +10,7 @@ public class Exercise1 extends Exercise {
             } else {
                 u1[i] = u1[i - 1] + functionXY[i - 1];
             }
-            functionXY[i] = H * (Math.exp(2 * H * i) - Math.exp(H * i) * u1[i]);
+            functionXY[i] = H * (Math.exp(2 * x[i]) - Math.exp(x[i]) * u1[i]);
         }
         return u1;
     }
@@ -23,8 +23,8 @@ public class Exercise1 extends Exercise {
             } else {
                 u1[i] = u1[i - 1] + k2[i - 1];
             }
-            k1[i] = H * (Math.exp(2 * H * i) - Math.exp(H * i) * u1[i]);
-            k2[i] = H * (Math.exp(2 * H * i + 0.05)) - Math.exp(H * i + (k1[i] / 2)) * u1[i]);
+            k1[i] = H * (Math.exp(2 * x[i]) - Math.exp(x[i]) * u1[i]);
+            k2[i] = H * ((Math.exp(2 * x[i] + 0.05)) - Math.exp(x[i] + (k1[i] / 2)) * u1[i]);
         }
         return u1;
     }
@@ -37,10 +37,10 @@ public class Exercise1 extends Exercise {
             } else {
                 u1[i] = u1[i - 1] + ((k1[i - 1] + 2 * k2[i - 1] + 2 * k3[i - 1] + k4[i - 1]) / 6);
             }
-            k1[i] = H * (Math.exp(2 * H * i) - Math.exp(x[i]) * x[i]);
-            k2[i] = H * (Math.exp(2 * (H * i + 0.05)) - Math.exp(x[i] + 0.05) * (u1[i] + (k1[i] / 2)));
-            k3[i] = H * (Math.exp(2 * (H * i + 0.05)) - Math.exp(x[i] + 0.05) * (u1[i] + (k2[i] / 2)));
-            k4[i] = H * (Math.exp(2 * (H * i + 0.1)) - Math.exp(x[i] + 0.1) * (u1[i] + k3[i]));
+            k1[i] = H * (Math.exp(2 * x[i]) - Math.exp(x[i]) * x[i]);
+            k2[i] = H * (Math.exp(2 * (x[i] + 0.05)) - Math.exp(x[i] + 0.05) * (u1[i] + (k1[i] / 2)));
+            k3[i] = H * (Math.exp(2 * (x[i] + 0.05)) - Math.exp(x[i] + 0.05) * (u1[i] + (k2[i] / 2)));
+            k4[i] = H * (Math.exp(2 * (x[i] + 0.1)) - Math.exp(x[i] + 0.1) * (u1[i] + k3[i]));
         }
         return u1;
     }
