@@ -7,7 +7,6 @@ public class Permutation extends Main {
 
     public void setKey(int[] key) {
         this.key = new int[key.length];
-
         System.arraycopy(key, 0, this.key, 0, key.length);
     }
 
