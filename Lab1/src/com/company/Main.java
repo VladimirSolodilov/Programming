@@ -33,8 +33,8 @@ public class Main {
                         4 - Омофонический шифр
                         5 - Выход программы
                         Для продолжения введите соответствующую цифру:\s""");
-                int choice = scanner.nextInt();
 
+                int choice = scanner.nextInt();
                 switch (choice) {
                     case 1 -> {
                         System.out.print("""
@@ -56,7 +56,6 @@ public class Main {
                                 viginer.setKey(scanner.nextLine());
 
                                 System.out.println("Зашифрованное сообщение: " + viginer.Encode(viginer.getOriginalMessage(), viginer.getKey()));
-
                             }
                             case 2 -> {
                                 scanner.nextLine();
@@ -68,9 +67,10 @@ public class Main {
                                 viginer.setKey(scanner.nextLine());
 
                                 System.out.println("Расшированное сообщение: " + viginer.Decode(viginer.getEncryptedMessage(), viginer.getKey()));
-
                             }
                             default -> {
+                                System.out.println("Неправильный ввод. Выход в главное меню...");
+                                main(new String[]{" "});
                             }
                         }
                     }
@@ -90,19 +90,25 @@ public class Main {
                                 System.out.print("Введите длину ключа: ");
                                 int a = scanner.nextInt();
 
-                                System.out.print("Введите любое число: ");
-                                int b = scanner.nextInt();
-
                                 System.out.print("""
                                         Выберите язык, введя соответствующую цифру
                                         1 - russian,
                                         2 - english:\s""");
+
                                 int c = scanner.nextInt();
+                                if (c != 1 && c != 2) {
+                                    while (c != 1 && c != 2) {
+                                        System.out.print ("Введите цифру ещё раз: ");
+                                        c = scanner.nextInt();
+                                    }
+                                }
 
-                                if (c == 1) languageCheck = "russian";
-                                    else if (c == 2) languageCheck = "english";
+                                if (c == 1) {
+                                    pseudoRandom.setPseudoRandomKey(a, (int) (Math.random() * 1000), "russian");
+                                } else {
+                                    pseudoRandom.setPseudoRandomKey(a, (int) (Math.random() * 1000), "english");
+                                }
 
-                                pseudoRandom.setPseudoRandomKey(a, b, languageCheck);
                                 System.out.println("Сгенерированный случайный ключ: " + pseudoRandom.getPseudoRandomKey());
 
                                 scanner.nextLine();
@@ -111,7 +117,6 @@ public class Main {
                                 String message = scanner.nextLine();
 
                                 System.out.println("Зашифрованное сообщение: " + viginer.Encode(message, String.valueOf(pseudoRandom.getPseudoRandomKey())));
-
                             }
                             case 2 -> {
                                 scanner.nextLine();
@@ -123,10 +128,10 @@ public class Main {
                                 String message = scanner.nextLine();
 
                                 System.out.println("Расшифрованное сообщение: " + viginer.Decode(message, pseudoRandomKey));
-
                             }
-                            case 3 -> {
-
+                            default -> {
+                                System.out.println("Неправильный ввод. Выход в главное меню...");
+                                main(new String[]{" "});
                             }
                         }
                     }
@@ -137,15 +142,14 @@ public class Main {
                                 2 - Расшифрование
                                 3 - Выход
                                 Для продолжения введите соответствующую цифру:\s""");
-                        int permutationChoice = scanner.nextInt();
 
+                        int permutationChoice = scanner.nextInt();
                         switch (permutationChoice) {
                             case 1 -> {
                                 System.out.print("Введите длину ключа: ");
                                 int numbersLength = scanner.nextInt();
 
                                 int[] numbers = new int[numbersLength];
-
                                 System.out.print("Введите ключ: ");
 
                                 for (int i = 0; i < numbersLength; i++) {
@@ -157,10 +161,10 @@ public class Main {
                                 scanner.nextLine();
 
                                 System.out.print("Введите сообщение для шифрования: ");
+
                                 permutation.setOriginalMessage(scanner.nextLine());
 
                                 System.out.print("Зашифрованное сообщение: " + permutation.Encode(permutation.getOriginalMessage()) + "\n");
-
                             }
                             case 2 -> {
                                 scanner.nextLine();
@@ -183,15 +187,21 @@ public class Main {
 
                                 System.out.print("Расшифрованное сообщение: " + permutation.Decode(permutation.getEncryptedMessage()));
                             }
-                            case 3 -> {
-
+                            default -> {
+                                System.out.println("Неправильный ввод. Выход в главное меню...");
+                                main(new String[]{" "});
                             }
                         }
                     }
                     case 5 -> check = false;
+                    default -> {
+                        System.out.println("Неправильный ввод. Выход в главное меню...");
+                        main(new String[]{" "});
+                    }
                 }
             }
         } catch (InputMismatchException e) {
+            System.out.println("Неправильный ввод. Выход в главное меню...");
             main(new String[]{" "});
         }
     }
