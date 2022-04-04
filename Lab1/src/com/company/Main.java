@@ -15,6 +15,7 @@ public class Main {
             ':', '"', '|', '/', '?', '.', ',', '№', ' ', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9'});
 
     public static void main(String[] args) {
+        Homophonic homophonic = new Homophonic();
         Viginer viginer = new Viginer();
         PseudoRandom pseudoRandom = new PseudoRandom();
         Permutation permutation = new Permutation();
@@ -85,8 +86,6 @@ public class Main {
 
                         switch (scalingChoice) {
                             case 1 -> {
-                                String languageCheck = "";
-
                                 System.out.print("Введите длину ключа: ");
                                 int a = scanner.nextInt();
 
@@ -193,6 +192,40 @@ public class Main {
                             }
                         }
                     }
+                    case 4 -> {
+                        System.out.print("""
+                                \n........................Омофонический шифр........................
+                                1 - Шифрование
+                                2 - Расшифрование
+                                3 - Выход
+                                Для продолжения введите соответствующую цифру:\s""");
+
+                        int permutationChoice = scanner.nextInt();
+                        switch (permutationChoice) {
+                            case 1 -> {
+                                scanner.nextLine();
+
+                                System.out.print("Введите сообщение для расшифрования: ");
+                                String str = scanner.nextLine();
+
+                                homophonic.Encode(str);
+                            }
+
+                            case 2 -> {
+                                scanner.nextLine();
+
+                                System.out.print("Введите сообщение для расшифрования: ");
+                                String str2 = scanner.nextLine();
+
+                                homophonic.Decode(str2);
+                            }
+                            default -> {
+                                System.out.println("Неправильный ввод. Выход в главное меню...");
+                                main(new String[]{" "});
+                            }
+                        }
+                    }
+
                     case 5 -> check = false;
                     default -> {
                         System.out.println("Неправильный ввод. Выход в главное меню...");
