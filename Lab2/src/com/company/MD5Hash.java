@@ -2,11 +2,7 @@ package com.company;
 
 public class MD5Hash {
     private final String[] hex = {"0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "A", "B", "C", "D", "E", "F"};
-    private final long A = 0x67452301L;
-    private final long B = 0xefcdab89L;
-    private final long C = 0x98badcfeL;
-    private final long D = 0x10325476L;
-    private final long[] result = {A, B, C, D};
+    private final long[] result = {0x67452301L, 0xefcdab89L, 0x98badcfeL, 0x10325476L};
     private final int[][] S = {{7, 12, 17, 22},
             {5, 9, 14, 20},
             {4, 11, 16, 23},
@@ -89,7 +85,6 @@ public class MD5Hash {
         if (rest <= 56) {
             tempBytes[rest] = (byte) (1<<7);
             long len = ((long) byteLength << 3);
-
             System.arraycopy(inputBytes, byteLength - rest, tempBytes, 0, rest);
 
             for (int i = 1; i < 56 - rest; i++) {
@@ -179,7 +174,6 @@ public class MD5Hash {
         d = GG(d, a, b, c, groups[2], S[1][1], 0xfcefa3f8L); /* 30 */
         c = GG(c, d, a, b, groups[7], S[1][2], 0x676f02d9L); /* 31 */
         b = GG(b, c, d, a, groups[12], S[1][3], 0x8d2a4c8aL); /* 32 */
-
 
         a = HH(a, b, c, d, groups[5], S[2][0], 0xfffa3942L); /* 33 */
         d = HH(d, a, b, c, groups[8], S[2][1], 0x8771f681L); /* 34 */

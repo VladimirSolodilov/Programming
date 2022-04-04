@@ -8,7 +8,8 @@ public class Main {
 
     public static void main(String[] args) {
         MD5Hash md5Hash = new MD5Hash();
+        System.out.print("Введите текст: ");
         String str = scanner.nextLine();
-        System.out.println("md5 " + str + " = " + md5Hash.hashing(str));
+        System.out.println("MD5Hash(" + str + ") = " + md5Hash.hashing(str));
     }
 }
