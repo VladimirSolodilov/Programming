@@ -1,6 +1,5 @@
 package com.company;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -13,7 +12,7 @@ public class Homophonic extends Main {
         String[] tempStr = new String[russianAlphabet.length()];
 
         double[] propability = new double[russianAlphabet.length()];
-        int[] count = new int[russianAlphabet.length() + specialSymbols.length()];
+        int[] count = new int[russianAlphabet.length()];
         int countAll = 0;
         int i = 0;
 
