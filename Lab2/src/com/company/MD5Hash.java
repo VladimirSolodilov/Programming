@@ -71,9 +71,9 @@ public class MD5Hash {
     private long[] divGroups (byte[] inputBytes, int index) {
         long [] temp = new long[16];
         for(int i = 0; i < 16; i++) {
-            temp[i] = b2iu(inputBytes[4 * i + index])|
-                    (b2iu(inputBytes[4 * i + 1 + index])) << 8|
-                    (b2iu(inputBytes[4 * i + 2 + index])) << 16|
+            temp[i] = b2iu(inputBytes[4 * i + index]) |
+                    (b2iu(inputBytes[4 * i + 1 + index])) << 8 |
+                    (b2iu(inputBytes[4 * i + 2 + index])) << 16 |
                     (b2iu(inputBytes[4 * i + 3 + index])) << 24;
         }
 

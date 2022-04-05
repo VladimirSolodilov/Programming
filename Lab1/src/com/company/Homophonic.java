@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
@@ -16,42 +17,80 @@ public class Homophonic extends Main {
         int countAll = 0;
         int i = 0;
 
-        for (char bet: russianAlphabet.toUpperCase().toCharArray()) {
-           for (char symbol: inputStr.toUpperCase().toCharArray()) {
-                if (symbol == bet) {
-                    count[i]++;
+        for (char symbol: inputStr.toUpperCase().toCharArray()) {
+            if (russianAlphabet.contains(String.valueOf(symbol))) {
+                for (char bet: russianAlphabet.toUpperCase().toCharArray()) {
+                    for (char symbol1: inputStr.toUpperCase().toCharArray()) {
+                        if (symbol1 == bet) {
+                            count[i]++;
+                        }
+                    }
+                    countAll += count[i];
+                    i++;
                 }
-           }
-           countAll += count[i];
-           i++;
-        }
 
-        for (int j = 0; j < russianAlphabet.length(); j++) {
-            propability[j] = (double) count[j] / countAll;
-            if (propability[j] != 0) {
-                if (propability[j] <= 0.2) {
-                    tempStr[j] = (int) (Math.random() * 1000) + " ";
-                } else if (propability[j] <= 0.6) {
-                    tempStr[j] = (int) (Math.random() * 1000) + " ";
-                    tempStr[j] += (int) (Math.random() * 1000) + " ";
-                } else {
-                    tempStr[j] = (int) (Math.random() * 1000) + " ";
-                    tempStr[j] += (int) (Math.random() * 1000) + " ";
-                    tempStr[j] += (int) (Math.random() * 1000) + " ";
+                for (int j = 0; j < russianAlphabet.length(); j++) {
+                    propability[j] = (double) count[j] / countAll;
+                    if (propability[j] != 0) {
+                        if (propability[j] <= 0.2) {
+                            tempStr[j] = (int) (Math.random() * 1000) + " ";
+                        } else if (propability[j] <= 0.6) {
+                            tempStr[j] = (int) (Math.random() * 1000) + " ";
+                            tempStr[j] += (int) (Math.random() * 1000) + " ";
+                        } else {
+                            tempStr[j] = (int) (Math.random() * 1000) + " ";
+                            tempStr[j] += (int) (Math.random() * 1000) + " ";
+                            tempStr[j] += (int) (Math.random() * 1000) + " ";
+                        }
+                    }
+                    numbers.put(russianAlphabet.toCharArray()[j], tempStr[j]);
                 }
-            }
-            numbers.put(russianAlphabet.toCharArray()[j], tempStr[j]);
-        }
 
-        System.out.println("\nТаблица замены: ");
-        for (char symbol : russianAlphabet.toUpperCase().toCharArray()) {
-            if (numbers.get(symbol) != null) {
-                System.out.println(symbol + " = " + numbers.get(symbol));
-            }
-        }
+                System.out.println("\nТаблица замены: ");
+                for (char symbol1 : russianAlphabet.toUpperCase().toCharArray()) {
+                    if (numbers.get(symbol1) != null) {
+                        System.out.println(symbol1 + " = " + numbers.get(symbol1));
+                    }
+                }
 
-        for (char symbol: resultStr.toString().toCharArray()) {
-            System.out.println(symbol);
+                break;
+            } else if (englishAlphabet.contains(String.valueOf(symbol))) {
+                for (char bet: englishAlphabet.toUpperCase().toCharArray()) {
+                    for (char symbol1: inputStr.toUpperCase().toCharArray()) {
+                        if (symbol1 == bet) {
+                            count[i]++;
+                        }
+                    }
+                    countAll += count[i];
+                    i++;
+                }
+
+                for (int j = 0; j < englishAlphabet.length(); j++) {
+                    propability[j] = (double) count[j] / countAll;
+                    if (propability[j] != 0) {
+                        if (propability[j] <= 0.2) {
+                            tempStr[j] = (int) (Math.random() * 1000) + " ";
+                        } else if (propability[j] <= 0.6) {
+                            tempStr[j] = (int) (Math.random() * 1000) + " ";
+                            tempStr[j] += (int) (Math.random() * 1000) + " ";
+                        } else {
+                            tempStr[j] = (int) (Math.random() * 1000) + " ";
+                            tempStr[j] += (int) (Math.random() * 1000) + " ";
+                            tempStr[j] += (int) (Math.random() * 1000) + " ";
+                        }
+                    }
+                    numbers.put(englishAlphabet.toCharArray()[j], tempStr[j]);
+                }
+
+                System.out.println("\nТаблица замены: ");
+                for (char symbol1 : englishAlphabet.toUpperCase().toCharArray()) {
+                    if (numbers.get(symbol1) != null) {
+                        System.out.println(symbol1 + " = " + numbers.get(symbol1));
+                    }
+                }
+
+                break;
+            }
         }
 
         for (char symbol : inputStr.toUpperCase().toCharArray()) {
