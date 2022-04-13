@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Аутентификация / Authentication</title>
+    <link rel="stylesheet" href="css/WBYedition.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+</head>
+<body>
+<div class="container" align="center">
+    <h1>Аутентификация / Authentication</h1>
+    <hr>
+    <p>
+        <label for="email">Email</label>
+        <input type="text" id="email" name="Email" class="form-control" placeholder="Электронный адресс" required minlength="5" maxlength="32">
+    </p>
+    <p>
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" class="form-control" placeholder="Пароль" required minlength="5">
+    </p>
+    <button type="button" onclick=signin()>Sign in / Войти</button>
+
+    <p>Ещё нет аккаунта? / Doesn't have account? <a href="http://localhost:8080/signup" target="_self">Зарегистрироваться / Sign up</a>.</p>
+</div>
+</body>
+<script type="text/javascript" src="js/signin.js"></script>
+</html>

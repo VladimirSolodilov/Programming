@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Профиль / Profile</title>
+<<<<<<< Updated upstream
+    <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+    <button type="button" id="sign_out" name="sign_out">Выход</button>
+    <button type="button" class="button1" name="battle_selection" id="battle_selection">Подбор сражения</button>
+
+    <div class="rival_impact">
+        <h1 class="h1">Соперника возможности</h1>
+
+        <table class="table">
+            <tr>
+                <td>Физическая атака:</td>
+                <td th:text="$impactSet.physical_value">Physical Value</td>
+            </tr>
+            <tr>
+                <td>Ментальная атака:</td>
+                <td th:text="$impactSet.mental_value">Mental Value</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="own_impact">
+        <h1 class="h2">Собственные возможности</h1>
+        <table class="table">
+            <tr>
+                <td>Физическая атака:</td>
+                <td th:text="$impactSet.physical_value">Physical Value</td>
+            </tr>
+            <tr>
+                <td>Ментальная атака:</td>
+                <td th:text="$impactSet.mental_value">Mental Value</td>
+            </tr>
+        </table>
+    </div>
+
+    <button type="button" class="button3" id="appeal" name="appeal">Призвать к сражению</button>
+
+    <div class="button2">
+        <p>
+            <button type="button" id="search" name="search">Поиск бойцов</button>
+        </p>
+        <p>
+            <button type="button" id="main" name="main">Главная страница</button>
+        </p>
+    </div>
+</body>
+=======
+    <link rel="stylesheet" href="css/WBYedition.css">
+</head>
+<body>
+<div class="container" align="center">
+    <table>
+        <tr>
+            <td><button type="button" onclick=signout()>Выход / Sign out</button></td>
+            <td><button type="button" onclick=gotomain()>Главная страница / Main page</button></td>
+            <td><button type="button" onclick=battlesearch()>Подбор сражения / Battle search</button></td>
+        </tr>
+        <tr>
+            <td>
+                <label for="physImp">Физическое воздействие / Physical Impact</label>
+                <input type="number" id="physImp" placeholder="1 - 20" required minlength="1" maxlength="2" min="1" max="20">
+            </td>
+            <td>
+
+            </td>
+            <td>
+                <label for="mentImp">Ментальное воздействие / Mental Impact</label>
+                <input type="number" id="mentImp" placeholder="1 - 20" required minlength="1" maxlength="2" min="1" max="20">
+            </td>
+        </tr>
+        <tr>
+            <td id="firstname"></td>
+            <td id="secondname"></td>
+            <td id="patronymic"></td>
+        </tr>
+        <tr>
+            <td id="stage"></td>
+            <td id="nickname"></td>
+            <td id="birthdate"></td>
+        </tr>
+    </table>
+</div>
+</body>
+<script type="text/javascript" src="js/profile.js"></script>
+>>>>>>> Stashed changes
+</html>

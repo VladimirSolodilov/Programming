@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Игровая комната / Game room</title>
+    <link rel="stylesheet" href="css/WBYedition.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.js"></script>
+</head>
+<body>
+<div class="container" align="center">
+    <table>
+        <tr>
+            <td>Ваша выносливость: </td>
+            <td><h3 id="staminaLeft" align="left">Выносливость Ваша</h3></td>
+            <td><h3 id="rounds" align="center">Ход</h3></td>
+            <td>Выносливость соперника: </td>
+            <td><h3 id="staminaRight" align="right">Выносливость соперника</h3></td>
+        </tr>
+        <tr>
+            <td>Сообщение от Вас</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Сообщение соперника</td>
+        </tr>
+        <tr>
+            <td>
+                <input type="text" id="message" placeholder="Ваше сообщение" maxlength="30">
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><h5 id="messagerival">Сообщение соперника</h5></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+        <tr>
+            <td>Задача: </td>
+            <td id="problem"></td>
+            <td></td>
+            <td></td>
+            <td ><input type="number" id="resolve" placeholder="Ответ" maxlength=20></td>
+        </tr>
+    </table>
+</div>
+</body>
+<script type="text/javascript" src="js/gameroom.js"></script>
+</html>

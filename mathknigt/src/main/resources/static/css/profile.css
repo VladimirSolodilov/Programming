@@ -1,0 +1,78 @@
+body {
+    background: #a22bff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+button {
+    background: #e38e00;
+    padding: 10px 30px 10px 30px;
+    font-size: 20px;
+    color: white;
+    border: 3px solid black;
+    text-shadow: 1px 1px 3px black;
+}
+
+.button1 {
+    position: absolute;
+    right: 50%;
+}
+
+.button2 {
+    position: absolute;
+    bottom: 0;
+}
+
+.button3 {
+    position: absolute;
+    right: 6%;
+    top: 50%;
+}
+
+.rival_impact {
+    background: #d195ff;
+    border: 2px solid black;
+    position: absolute;
+    width: 400px;
+    padding: 0 50px 200px 50px;
+    margin-top: -40px;
+    margin-right: 10px;
+    right: 0;
+    border-radius: 10px;
+    font-size: 20px;
+    color: white;
+    text-shadow: 1px 1px 5px black;
+}
+
+.own_impact {
+    background: #d195ff;
+    border: 2px solid black;
+    position: absolute;
+    width: 400px;
+    padding: 0 50px 200px 50px;
+    margin-top: -40px;
+    margin-right: 10px;
+    right: 0;
+    bottom: 10px;
+    border-radius: 10px;
+    font-size: 20px;
+    color: white;
+    text-shadow: 1px 1px 5px black;
+}
+
+.h1 {
+    text-align: center;
+    border: 2px solid black;
+    background: #e38e00;
+    margin: 0;
+    padding: 10px 0 10px 0;
+    font-size: 30px;
+}
+
+.h2 {
+    text-align: center;
+    border: 2px solid black;
+    background: #e38e00;
+    margin: 0;
+    padding: 10px 0 10px 0;
+    font-size: 28px;
+}

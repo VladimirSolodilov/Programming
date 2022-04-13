@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: black;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.container {
+    padding: 30px;
+    background-color: yellow;
+}
+
+input[type=text], input[type=password] {
+    align-items: center;
+    width: 300px;
+    padding: 10px;
+    display: inline-block;
+    border: none;
+    background: white;
+}
+
+input[type=text]:focus, input[type=password]:focus {
+    background-color: lightgray;
+    outline: none;
+}
+
+hr {
+    border: 1px solid black;
+    margin-bottom: 25px;
+}
+
+a {
+    color: darkblue;
+}
+
+button {
+    display: inline-block;
+    border-radius: 4px;
+    background-color: black;
+    border: none;
+    color: white;
+    text-align: center;
+    font-size: 30px;
+    padding: 20px;
+    width: 380px;
+    transition: all 0.5s;
+    cursor: cell;
+    margin: 5px;
+}
+
+span{
+    font-size: xx-large;
+}
