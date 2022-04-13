@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+
+<head>
+  <meta charset="UTF-8">
+  <title th:text="${title}">Insert title here</title>
+  <link href="../static/css/main.css" th:href="@{/css/index.css}" rel="stylesheet"/>
+</head>
+    <body>
+        <th:block layout:fragment="content">
+          <h1 class="h1">Пользователи и рассылки</h1>
+          <ul class="rounded">
+              <li><a th:href="@{/mail/list}">Список почтовых рассылок</a>
+              <li><a th:href="@{/both/list}">Список пользователей с рассылками</a>
+              <li><a th:href="@{/both/list1}">Список рассылок и входящих пользователей</a>
+          </ul>
+        </th:block>
+  </body>
+</html>

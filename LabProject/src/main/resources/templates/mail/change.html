@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <title th:text="Change">Delete Form</title>
+  <link href="../static/css/table.css" th:href="@{/css/form.css}" rel="stylesheet"/>
+</head>
+  <body>
+      <th:block layout:fragment="content">
+        <h1 id="h1" th:text="${'Изменение названия рассылки'}">User Login Page</h1>
+        <form th:action="@{/mail/change}" method="post" th:object="${changeForm}">
+          <div>
+            <label>Старое имя рассылки: </label>
+            <input type="text" th:field="*{oldMailName}" required>&nbsp;<span th:errors="*{oldMailName}"></span>
+          </div>
+
+          <div>
+            <label>Новое имя рассылки: </label>
+            <input type="text" th:field="*{newMailName}" required>&nbsp;<span th:errors="*{newMailName}"></span>
+          </div>
+
+          <div class="form-group">
+            <input type="submit" name="login-submit" id="login-submit"
+                   class="stdBtn" value="Изменить">
+          </div>
+        </form>
+      </th:block>
+  </body>
+</html>

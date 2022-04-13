@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <title  th:text="${title}">Insert title here</title>
+  <link href="../static/css/table.css" th:href="@{/css/table.css}" rel="stylesheet"/>
+</head>
+    <body>
+        <th:block layout:fragment="content">
+            <h1  class="h1" th:text="${title}">Mail List</h1>
+            <br>
+            <div th:if="${mail} != null">
+              <table class="table" id="mailList">
+                <tr class="column-header">
+                  <th>Имя</th>
+                  <th>Описание</th>
+                </tr>
+
+                <th:block th:each="mail: ${mail}">
+                  <tr>
+                    <td th:text="${mail.mailName}">ID</td>
+                    <td th:text="${mail.mailDescription}">ID</td>
+                  </tr>
+                </th:block>
+              </table>
+            </div>
+
+            <input type="button" value="Вернуться" onclick="window.location.href = '/index'"}>
+            <input type="button" value="Добавить рассылку" onclick="window.location.href = '/mail/registration'"}>
+            <input type="button" value="Изменить название рассылки" onclick="window.location.href = '/mail/change'"}>
+            <input type="button" value="Удалить рассылку" onclick="window.location.href = '/mail/delete'"}>
+        </th:block>
+
+        <th:block layout:fragment="jsscript">
+            <script src="/js/mail.js"></script>
+        </th:block>
+    </body>
+</html>

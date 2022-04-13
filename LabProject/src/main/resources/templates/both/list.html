@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+  <title  th:text="${title}">Insert title here</title>
+  <link href="../static/css/table.css" th:href="@{/css/table.css}" rel="stylesheet"/>
+</head>
+  <body>
+      <th:block layout:fragment="content">
+        <h1 class="h1" th:text="${title}">Mail List</h1>
+        <br>
+        <div th:if="${both} != null">
+          <table class="table" id="table">
+            <tr class="column-header">
+              <th>Логин пользователя</th>
+              <th>Фамилия</th>
+              <th>Имя</th>
+              <th>Название рассылки</th>
+              <th>Описание</th>
+            </tr>
+
+            <th:block th:each="both: ${both}">
+              <tr>
+                <td th:text="${both.login}">ID</td>
+                <td th:text="${both.firstName}">ID</td>
+                <td th:text="${both.lastName}">ID</td>
+                <td th:text="${both.mail.mailName}">ID</td>
+                <td th:text="${both.mail.mailDescription}">ID</td>
+              </tr>
+            </th:block>
+          </table>
+        </div>
+
+        <input type="button" value="Вернуться" onclick="window.location.href = '/index'"}>
+      </th:block>
+
+      <th:block layout:fragment="jsscript">
+          <script src="/js/both.js"></script>
+      </th:block>
+  </body>
+</html>

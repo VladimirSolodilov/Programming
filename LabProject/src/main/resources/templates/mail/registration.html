@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <title th:text="Registration">Registration Form</title>
+    <link href="../static/css/table.css" th:href="@{/css/form.css}" rel="stylesheet"/>
+</head>
+    <body>
+        <th:block layout:fragment="content">
+            <h1 id="h1" th:text="${'Регистрация рассылки'}">User Login Page</h1>
+            <form th:action="@{/mail/registration}" method="post" th:object="${mailForm}">
+                <div>
+                    <label>Имя: </label>
+                    <input type="text" th:field="*{mailName}" required>&nbsp;<span th:errors="*{mailName}"></span>
+                </div>
+
+                <div>
+                    <label>Описание: </label>
+                    <input type="text" th:field="*{mailDescription}" required>&nbsp;<span th:errors="*{mailDescription}"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" name="login-submit" id="login-submit"
+                           class="stdBtn" value="Добавить">
+                </div>
+            </form>
+        </th:block>
+    </body>
+</html>
