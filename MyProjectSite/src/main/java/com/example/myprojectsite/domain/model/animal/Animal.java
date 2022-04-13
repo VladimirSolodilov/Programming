@@ -1,4 +1,4 @@
-package com.example.myprojectsite.domain.model;
+package com.example.myprojectsite.domain.model.animal;
 
 public class Animal {
 

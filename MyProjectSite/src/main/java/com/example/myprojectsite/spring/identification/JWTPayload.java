@@ -7,11 +7,9 @@ import lombok.NonNull;
 import org.springframework.lang.Nullable;
 
 import java.util.Map;
-
 @Getter
 @AllArgsConstructor
 public class JWTPayload {
-
 
     @NonNull final Long     id_user;
     @NonNull final String   email;
@@ -53,5 +51,5 @@ public class JWTPayload {
     public String toString() {
         return "JWTPayload{" + "id_user=" + this.id_user + ", email=" + this.email + '}';
     }
-
 }
+

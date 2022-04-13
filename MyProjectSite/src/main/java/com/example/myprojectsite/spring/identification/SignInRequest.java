@@ -1,6 +1,5 @@
 package com.example.myprojectsite.spring.identification;
 
-
 import lombok.*;
 
 @NoArgsConstructor

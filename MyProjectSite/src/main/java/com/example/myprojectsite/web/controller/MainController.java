@@ -1,26 +1,23 @@
 package com.example.myprojectsite.web.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
 @Controller
 public class MainController {
 
     @GetMapping
     public String defaultPage(){
-        return "signin";
+        return "/identification/signin.html";
     }
 
-    @GetMapping("/signup")
+    @GetMapping("/identification/signup")
     public String signupPage(){
-        return "signup";
+        return "signup.html";
     }
 
-    @GetMapping("/signin")
+    @GetMapping("/identification/signin")
     public String signinPage(){
-        return "signin";
+        return "signin.html";
     }
 
     @GetMapping("/profile")

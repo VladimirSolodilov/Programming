@@ -1,11 +1,11 @@
-package com.example.myprojectsite.domain.model;
+package com.example.myprojectsite.domain.model.user;
 
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
-import org.springframework.data.annotation.Id;
 
+import javax.persistence.*;
 import java.util.Date;
 
 @Table(name = "personality")
@@ -14,7 +14,6 @@ import java.util.Date;
 @RequiredArgsConstructor
 @Getter
 public class Personality {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", updatable = false)
@@ -39,7 +38,7 @@ public class Personality {
     private User        user;
 
     public Personality(@NonNull String first_name, @NonNull String second_name, @NonNull String patronymic
-            , @NonNull String nickname, @NonNull String birthdate){
+        , @NonNull String nickname, @NonNull String birthdate){
         this.first_name     = first_name;
         this.second_name    = second_name;
         this.patronymic     = patronymic;
@@ -48,12 +47,11 @@ public class Personality {
     }
 
     public Personality(@NonNull String first_name, @NonNull String second_name, @NonNull String patronymic
-            , @NonNull String nickname, @NonNull Date birthdate){
+        , @NonNull String nickname, @NonNull Date birthdate){
         this.first_name     = first_name;
         this.second_name    = second_name;
         this.patronymic     = patronymic;
         this.nickname       = nickname;
         this.birthdate      = birthdate.toString();
     }
-
 }

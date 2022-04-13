@@ -1,6 +1,6 @@
 package com.example.myprojectsite.data.animal;
 
-import com.example.myprojectsite.domain.model.Animal;
+import com.example.myprojectsite.domain.model.animal.Animal;
 
 import java.util.List;
 
