@@ -18,7 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 import static knz.mathknigt.configs.ConfigAuth.authSecret;
 
 @RestController
-public class Authentication implements IAuthenticationJWT{
+public class Authentication implements IAuthenticationJWT {
 
     @NonNull
     private static final String authCookieName = "authentication_token";
