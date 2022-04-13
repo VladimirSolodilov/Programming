@@ -1,8 +1,11 @@
-package knz.mathknigt.database.model;
+package com.example.myprojectsite.domain.model;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.NonNull;
+import lombok.RequiredArgsConstructor;
+import lombok.ToString;
+import org.springframework.data.annotation.Id;
 
-import javax.persistence.*;
 import java.util.Date;
 
 @Table(name = "personality")
@@ -13,8 +16,10 @@ import java.util.Date;
 public class Personality {
 
     @Id
-    @Column(name = "id", nullable = false)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id", updatable = false)
+    private Long        id;
+
     @Column(name = "first_name", nullable = false, updatable = false)
     private String      first_name;
 
@@ -27,15 +32,11 @@ public class Personality {
     @Column(name = "nickname", nullable = false, updatable = false)
     private String      nickname;
 
-    @Column(name = "birth_date", nullable = false, updatable = false)
+    @Column(name = "birthdate", nullable = false, updatable = false)
     private String      birthdate;
 
     @OneToOne(mappedBy = "personality", cascade = CascadeType.ALL)
     private User        user;
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 
     public Personality(@NonNull String first_name, @NonNull String second_name, @NonNull String patronymic
             , @NonNull String nickname, @NonNull String birthdate){
@@ -54,4 +55,5 @@ public class Personality {
         this.nickname       = nickname;
         this.birthdate      = birthdate.toString();
     }
+
 }

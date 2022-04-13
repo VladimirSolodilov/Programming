@@ -1,11 +1,6 @@
-package knz.mathknigt.restApi.identyfication;
+package com.example.myprojectsite.spring.identification;
 
-import knz.mathknigt.database.model.*;
-import knz.mathknigt.database.repository.*;
-import knz.mathknigt.restApi.DefaultResponse;
 import lombok.NonNull;
-import net.bytebuddy.utility.RandomString;
-import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,24 +10,21 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import static knz.mathknigt.configs.ConfigAuth.authSecret;
-
 @RestController
 public class Authentication implements IAuthenticationJWT {
 
+    public final static String authSecret = "ulq02fqe23ph";
+
     @NonNull
     private static final String authCookieName = "authentication_token";
+
     final UserRepository        userRepository;
-    final RoleRepository        roleRepository;
     final PersonalityRepository personalityRepository;
 
-    public Authentication(UserRepository userRepository, RoleRepository roleRepository
-                            , PersonalityRepository personalityRepository){
+    public Authentication(UserRepository userRepository, PersonalityRepository personalityRepository){
         this.userRepository         = userRepository;
-        this.roleRepository         = roleRepository;
         this.personalityRepository  = personalityRepository;
     }
-
 
     public JWTPayload checkAuthentication(HttpServletRequest request) {
         if (request.getCookies() == null)
@@ -50,28 +42,34 @@ public class Authentication implements IAuthenticationJWT {
         String  password_hash   = DigestUtils.sha1Hex(String.format("%s%s", request.getPassword(), salt));
 
         try{
+            Long id_salt = saltRepository.save(new Salt(salt)).getId();
             try {
                 Long id_personality = personalityRepository.save(new Personality(
                         request.getFirst_name(), request.getSecond_name(), request.getPatronymic()
                         , request.getNickname(), request.getBirthdate())).getId();
                 try {
                     User tempUser = userRepository.findUserByEmail(request.getEmail());
+                    Long id_ImpactSet = impactSetRepository.save(new ImpactSet()).getId();
                     if (tempUser != null) throw new IllegalArgumentException();
                     if (roleRepository.count() == 0) {
                         roleRepository.save(new Role("User"));
                         roleRepository.save(new Role("Administrator"));
                     }
                     userRepository.save(new User(request.getEmail(), password_hash
+                            , saltRepository.findById(id_salt).orElseThrow()
                             , roleRepository.findRoleByName("User")
-                            , personalityRepository.findById(id_personality).orElseThrow()));
+                            , personalityRepository.findById(id_personality).orElseThrow()
+                            , impactSetRepository.findById(id_ImpactSet).orElseThrow()));
                 } catch (Exception exception) {
+                    saltRepository.deleteById(id_salt);
                     personalityRepository.deleteById(id_personality);
                     return new DefaultResponse("This user already exists", "400");
                 }
-            } catch (Exception exception){
+            }catch (Exception exception){
+                saltRepository.deleteById(id_salt);
                 return new DefaultResponse("Personality creating fault", "500");
             }
-        } catch (Exception exception){
+        }catch (Exception exception){
             return new DefaultResponse("Salt creating fault", "500");
         }
         System.out.println("created");
@@ -89,7 +87,11 @@ public class Authentication implements IAuthenticationJWT {
             return new DefaultResponse("User does not exist", "400");
         }
 
-        String  password_hash   = DigestUtils.sha1Hex(String.format("%s%s", request.getPassword()));
+        Salt    salt            = saltRepository.findById(user.getSalt().getId()).orElse(null);
+        if(salt==null)
+            return new DefaultResponse("Validation is failed", "500");
+
+        String  password_hash   = DigestUtils.sha1Hex(String.format("%s%s", request.getPassword(), salt.getSalt()));
         if(!password_hash.equals(user.getPassword()))
             return new DefaultResponse("Invalid password", "400");
 

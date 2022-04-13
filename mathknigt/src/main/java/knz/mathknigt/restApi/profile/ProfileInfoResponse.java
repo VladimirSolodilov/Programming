@@ -2,7 +2,6 @@ package knz.mathknigt.restApi.profile;
 
 import lombok.*;
 
-@AllArgsConstructor
 @Getter
 @Setter
 public class ProfileInfoResponse {
@@ -14,8 +13,6 @@ public class ProfileInfoResponse {
     @NonNull private String nickname;
     @NonNull private String birthdate;
     @NonNull private String grade;
-    @NonNull private String physical_value;
-    @NonNull private String mental_value;
     @NonNull private String role_id;
 
     public ProfileInfoResponse(){
@@ -27,8 +24,6 @@ public class ProfileInfoResponse {
         nickname        = "NoN";
         birthdate       = "NoN";
         grade           = "0";
-        physical_value  = "0";
-        mental_value    = "0";
         role_id         = "0";
     }
     public ProfileInfoResponse(String status, String key){
@@ -40,8 +35,6 @@ public class ProfileInfoResponse {
         nickname        = "NoN";
         birthdate       = "NoN";
         grade           = "0";
-        physical_value  = "0";
-        mental_value    = "0";
         role_id         = "0";
     }
     public ProfileInfoResponse(String first_name, String second_name, String patronymic, String nickname
@@ -54,12 +47,10 @@ public class ProfileInfoResponse {
         this.nickname       = nickname;
         this.birthdate      = birthdate;
         this.grade          = grade;
-        this.physical_value = physical_value;
-        this.mental_value   = mental_value;
         this.role_id        = role_id;
     }
     public ProfileInfoResponse(String first_name, String second_name, String patronymic, String nickname
-            , String birthdate, String grade, String physical_value, String mental_value){
+            , String birthdate, String grade) {
         status              = "Ok";
         key                 = "200";
         this.first_name     = first_name;
@@ -68,8 +59,6 @@ public class ProfileInfoResponse {
         this.nickname       = nickname;
         this.birthdate      = birthdate;
         this.grade          = grade;
-        this.physical_value = physical_value;
-        this.mental_value   = mental_value;
         this.role_id        = "1";
     }
 }
