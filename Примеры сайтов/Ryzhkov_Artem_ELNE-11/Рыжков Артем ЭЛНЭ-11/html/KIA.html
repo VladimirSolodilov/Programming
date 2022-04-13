@@ -1,0 +1,93 @@
+<html>
+	<head>
+	<body background="themes/afghan_war.png">
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Потери</title>
+	<meta name="description" content="Описание страницы" />
+	<meta name="keywords" content="Ключевые слова" />
+	<link rel="stylesheet" type="text/css" href="css/stylename.css" media="screen" />
+	</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+		<header>
+		<a href="/" title="" class="logo"><img src="images/logo.png" alt="Солдаты Афганской войны" /></a>
+		
+		<nav>
+			<ul id="top_menu">
+				<li><a href="afghan_war.html">Главная</a></li>
+				<li><a href="causes.html">Причина и итоги</a></li>
+				<li><a href="KIA.html">Потери</a></li>
+				<li><a href="hill3234.html">Бой за высоту 3234</a></li>
+				<li><a href="car.html">Потери по технике</a></li>
+				<li><a href="author.html">Автор сайта</a></li>
+			</ul>
+		</nav>
+	</header>
+
+	<section id="content">
+		<h1>Потери в ходе войны</h1>
+		<p>За 9 лет и 3 месяца потери в Афганистане насчитывают 15052 человека, ниже представлен график по потерям в период с 1979 по 1989</p>
+		<div id="oil" style="width: 1250px; height: 400px;"></div>
+		<script src="https://www.google.com/jsapi"></script>
+		<script>
+		google.load("visualization", "1", {packages:["corechart"]});
+		google.setOnLoadCallback(drawChart);
+		function drawChart() {
+		var data = google.visualization.arrayToDataTable([
+		['Год', 'Потери'],
+		['1979', 86,],
+		['1980', 1484],
+		['1981', 1298],
+		['1982', 1948],
+		['1983', 1448],
+		['1984', 2343],
+		['1985', 1868],
+		['1986', 1333],
+		['1987', 1215],
+		['1988', 759],
+		['1989', 53]
+		]);
+		var options = {
+		title: 'Безвозвратные потери',
+		hAxis: {title: 'Год'},
+		vAxis: {title: 'Человек'}
+		};
+		var chart = new google.visualization.ColumnChart(document.getElementById('oil'));
+		chart.draw(data, options);
+	}
+  </script>
+		<p>Ниже представлен график народов погибших в ДРА</p>
+		<div id="air" style="width: 500px; height: 400px;"></div>
+		<script src="https://www.google.com/jsapi"></script>
+	<script>
+	google.load("visualization", "1", {packages:["corechart"]});
+	google.setOnLoadCallback(drawChart);
+	function drawChart() {
+	var data = google.visualization.arrayToDataTable([
+     ['Газ', 'Объём'],
+     ['Русские', 6888],
+     ['Украинцы', 2378],
+     ['Узбеки', 1066],
+     ['Белорусы', 613],
+	 ['Татары', 442],
+	 ['Казахи', 362],
+     ['Туркмены', 263],
+	 ['Таджики', 236],
+	 ['Азербайджанцы', 195]
+    ]);
+    var options = {
+     title: 'Потери по народам',
+     is3D: true,
+     pieResidueSliceLabel: 'Остальное'
+    };
+    var chart = new google.visualization.PieChart(document.getElementById('air'));
+     chart.draw(data, options);
+	}
+  </script>
+	</section>
+
+	<footer>
+	<img src="images/header_img.png" alt="Картинка" class="float-right" />
+	</footer>
+	</div>
+</body>
+</html>
