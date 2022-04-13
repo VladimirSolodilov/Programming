@@ -1,0 +1,65 @@
+/* 
+
+Theme for : 96 Display
+Color : 	WOOD
+Author :	Devilcantburn
+URL :		http://www.devilcantburn.com
+
+*/
+
+body{
+	background:#000 url(../images/Background.jpg) repeat;
+	}
+
+a{ color:#999; }
+
+/* Commons color value */
+
+a:hover,
+h2 span,
+#header #top_menu ul li a:hover,
+.design a,
+#pagination .active,
+#reply-form .submitter,
+#footer #coffee .right,
+#footer #bottom_menu ul li a:hover,
+.hover
+{ 
+	color:#0382c8;
+}
+
+/*hover state of link into left part */
+.design a:hover{
+	color:#666;
+	border:1px solid #0382c8; border-width:0 0 1px 0;
+}
+
+/*hover state of link for blog 'read more...' */
+.continue a:hover{
+	background:#0382c8;
+	color:#FFF;
+}
+
+/*hover state of link for Item zomm + infos */
+#portfolio .item .choice a:hover{
+	background:#0382c8;
+	color:#FFF;
+}
+
+/* *hover state forms submit button */
+#reply-form .submitter{
+	background:#212121;
+	border:none;
+	display:block;
+	float:left;
+	margin:0 0 0 390px;
+	padding:8px 10px;
+	width:100px; height:40px;
+}
+#reply-form .submitter:hover{
+	background:#0382c8;
+	color:#FFF;
+}
+
+#header #top_menu ul li a{ color:#FFF; display:block;}
+#header #top_menu ul li a.current{ color:#0382c8; display:block;}
