@@ -36,7 +36,7 @@ hr {
 }
 
 a {
-    color: orange;
+    color: white;
 }
 
 button {
@@ -54,6 +54,6 @@ button {
     margin: 5px;
 }
 
-span {
+span{
     font-size: xx-large;
 }

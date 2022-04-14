@@ -1,44 +1,48 @@
-.rounded {
-    counter-reset: li;
-    list-style: none;
-    font: 14px "Trebuchet MS", "Lucida Sans";
-    padding-left: 15px;
-    width: 25%;
-    text-shadow: 0 1px 0 rgba(255,255,255,.5);
-}
-.rounded a {
-    position: relative;
-    display: block;
-    padding: .4em .4em .4em 2em;
-    margin: .5em 0;
-    background: #DAD2CA;
-    color: #444;
-    text-decoration: none;
-    border-radius: .3em;
-    transition: .3s ease-out;
-}
-.rounded a:hover {background: #E9E4E0;}
-.rounded a:hover:before {transform: rotate(360deg);}
-.rounded a:before {
-    content: counter(li);
-    counter-increment: li;
-    position: absolute;
-    left: -1.3em;
-    top: 50%;
-    margin-top: -1.3em;
-    background: #8FD4C1;
-    height: 2em;
-    width: 2em;
-    line-height: 2em;
-    border: .3em solid white;
-    text-align: center;
-    font-weight: bold;
-    border-radius: 2em;
-    transition: all .3s ease-out;
+body {
+    background: #a22bff;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.h1 {
-    font: 30px "Trebuchet MS", "Lucida Sans";
-    color: #3E5B76;
-    border-bottom: 2px solid #3E5B76;
+.left_button {
+    background: #d195ff;
+    width: 20%;
+    padding: 200px 30px 450px 30px;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.right_table {
+    position: absolute;
+    right: 30%;
+    top: 1%;
+    text-align: center;
+}
+
+table {
+    background: #d195ff;
+    border: 5px solid black;
+    border-collapse: collapse;
+    width: 230%;
+}
+
+th {
+    text-shadow: 1px 1px 3px black;
+    color: white;
+    border-collapse: collapse;
+    border: 5px solid black;
+    padding: 10px;
+}
+
+td {
+    border-collapse: collapse;
+    border: 5px solid black;
+}
+
+button {
+    background: #e38e00;
+    padding: 10px 30px 10px 30px;
+    font-size: 20px;
+    color: white;
+    border: 3px solid black;
+    text-shadow: 1px 1px 3px black;
 }
