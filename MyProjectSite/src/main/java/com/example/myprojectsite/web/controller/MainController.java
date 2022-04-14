@@ -2,20 +2,22 @@ package com.example.myprojectsite.web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
 @Controller
 public class MainController {
 
     @GetMapping
     public String defaultPage(){
-        return "/identification/signin.html";
+        return "/signin";
     }
 
-    @GetMapping("/identification/signup")
+    @GetMapping("/signup")
     public String signupPage(){
         return "signup.html";
     }
 
-    @GetMapping("/identification/signin")
+    @GetMapping("/signin")
     public String signinPage(){
         return "signin.html";
     }

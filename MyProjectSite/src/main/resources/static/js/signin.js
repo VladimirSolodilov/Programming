@@ -24,7 +24,7 @@ function signin() {
     })
 }
 
-function checkSuccess(data){
+function checkSuccess(data) {
     switch (data.key){
         case "200":{
             document.location.href = "/profile";
