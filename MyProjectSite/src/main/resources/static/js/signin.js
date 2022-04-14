@@ -27,7 +27,7 @@ function signin() {
 function checkSuccess(data){
     switch (data.key){
         case "200":{
-            document.location.href = "/profile";
+            document.location.href = "/main_authorized";
             break;
         }
         default:{
