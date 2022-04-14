@@ -9,7 +9,7 @@ function signup() {
     let birthdate = new Date(document.getElementById('birthdate').value)
     let strBD = String(birthdate.getFullYear()+"-"+birthdate.getMonth()+"-"+birthdate.getDate())
 
-    if ( password === password_repeat) {
+    if( password === password_repeat) {
         $.ajax({
             url: '/register',
             method: 'POST',
@@ -33,8 +33,8 @@ function signup() {
     }
 }
 
-function checkSuccess(data){
-    switch (data.key){
+function checkSuccess(data) {
+    switch (data.key) {
         case "200":{
             document.location.href = "/signin";
             break;
