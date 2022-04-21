@@ -69,7 +69,7 @@ char * readFile(FILE *file1, int n, int id) {
             } else {
                 printf("\nError of file's reading!\n");
             }
-        } else printf("%c ", symbol); //печатаем символ
+        } else printf("%c", symbol); //печатаем символ
     }
     return "EOR"; //возвращаем, если конец считывания*/
 }

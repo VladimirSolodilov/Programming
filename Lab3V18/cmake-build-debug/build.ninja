@@ -39,7 +39,7 @@ include CMakeFiles/rules.ninja
 #############################################
 # Logical path to working directory; prefix for absolute paths.
 
-cmake_ninja_workdir = /home/vladimir/CLionProjects/Lab3V18/cmake-build-debug/
+cmake_ninja_workdir = /home/vladimir/Документы/GitHub/Programming/Lab3V18/cmake-build-debug/
 # =============================================================================
 # Object build statements for EXECUTABLE target Lab3V18
 
@@ -49,7 +49,7 @@ cmake_ninja_workdir = /home/vladimir/CLionProjects/Lab3V18/cmake-build-debug/
 
 build cmake_object_order_depends_target_Lab3V18: phony || CMakeFiles/Lab3V18.dir
 
-build CMakeFiles/Lab3V18.dir/main.c.o: C_COMPILER__Lab3V18_Debug /home/vladimir/CLionProjects/Lab3V18/main.c || cmake_object_order_depends_target_Lab3V18
+build CMakeFiles/Lab3V18.dir/main.c.o: C_COMPILER__Lab3V18_Debug /home/vladimir/Документы/GitHub/Programming/Lab3V18/main.c || cmake_object_order_depends_target_Lab3V18
   DEP_FILE = CMakeFiles/Lab3V18.dir/main.c.o.d
   FLAGS = -g
   OBJECT_DIR = CMakeFiles/Lab3V18.dir
@@ -79,7 +79,7 @@ build Lab3V18: C_EXECUTABLE_LINKER__Lab3V18_Debug CMakeFiles/Lab3V18.dir/main.c.
 # Utility command for edit_cache
 
 build CMakeFiles/edit_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/vladimir/CLionProjects/Lab3V18/cmake-build-debug && "/home/vladimir/Рабочий стол/clion-2022.1/bin/cmake/linux/bin/ccmake" -S/home/vladimir/CLionProjects/Lab3V18 -B/home/vladimir/CLionProjects/Lab3V18/cmake-build-debug
+  COMMAND = cd /home/vladimir/Документы/GitHub/Programming/Lab3V18/cmake-build-debug && "/home/vladimir/Рабочий стол/clion-2022.1/bin/cmake/linux/bin/ccmake" -S/home/vladimir/Документы/GitHub/Programming/Lab3V18 -B/home/vladimir/Документы/GitHub/Programming/Lab3V18/cmake-build-debug
   DESC = Running CMake cache editor...
   pool = console
   restat = 1
@@ -91,7 +91,7 @@ build edit_cache: phony CMakeFiles/edit_cache.util
 # Utility command for rebuild_cache
 
 build CMakeFiles/rebuild_cache.util: CUSTOM_COMMAND
-  COMMAND = cd /home/vladimir/CLionProjects/Lab3V18/cmake-build-debug && "/home/vladimir/Рабочий стол/clion-2022.1/bin/cmake/linux/bin/cmake" --regenerate-during-build -S/home/vladimir/CLionProjects/Lab3V18 -B/home/vladimir/CLionProjects/Lab3V18/cmake-build-debug
+  COMMAND = cd /home/vladimir/Документы/GitHub/Programming/Lab3V18/cmake-build-debug && "/home/vladimir/Рабочий стол/clion-2022.1/bin/cmake/linux/bin/cmake" --regenerate-during-build -S/home/vladimir/Документы/GitHub/Programming/Lab3V18 -B/home/vladimir/Документы/GitHub/Programming/Lab3V18/cmake-build-debug
   DESC = Running CMake to regenerate build system...
   pool = console
   restat = 1
@@ -107,7 +107,7 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 # =============================================================================
 
 #############################################
-# Folder: /home/vladimir/CLionProjects/Lab3V18/cmake-build-debug
+# Folder: /home/vladimir/Документы/GitHub/Programming/Lab3V18/cmake-build-debug
 
 build all: phony Lab3V18
 
