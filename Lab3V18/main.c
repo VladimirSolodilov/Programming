@@ -1,65 +1,78 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <signal.h>
+#include <string.h>
 #include <stdlib.h>
 
-int N = 15;
-int pid1, pid2, symbol;
-int readFile(FILE *, int, int);
-void * funcProcess1(FILE *, int);
-void * funcProcess2(FILE *, int);
+int N = 20; //число считываемых байт
+int pid1, pid2; //процессы
+int symbol; //считываемый байт
+char * readFile(FILE *, int, int);//чтение файла
+void * funcProcess1(FILE *, int);//1 процесс
+void * funcProcess2(FILE *, int);//2 процесс
 
-int main(void) {
-    pid1 = getpid();
-    FILE *file1 = fopen("file1.txt", "r+");
-    pid2 = fork();
+void main(void) {
+    pid1 = getpid();//создаём первый процесс
+    FILE *file1 = fopen("read.txt", "r");//открываем файл на чтение
 
-    if (pid2 == 0) {
-        pid2 = getpid();
+    if (file1 == NULL) { //проверяем открытие файла
+        printf("File isn't open. Return...");
+        return;
     } else {
-        signal(SIGUSR1, funcProcess1(file1, N));
+        printf("File is open...\n");
+        pid2 = fork();//создаем дочерний процесс
+        if (pid2 == 0) { //процесс 2
+            pid2 = getpid();
+            sleep(1);
+            signal(SIGUSR1, funcProcess2(file1, N)); //определяем реакцию для процесса 2
+        } else { //процесс 1
+            signal(SIGUSR1, funcProcess1(file1, N)); //определяем реакцию для процесса 1
+        }
     }
 }
 
 void * funcProcess1(FILE *file1, int n) {
-    if(readFile(file1, n, 1) == 2) {
-        kill(pid2, SIGUSR2);
+    if(strcmp(readFile(file1, n, 1), "EOF") == 0) { //считываем N байт и проверяем окончание файла
+        fclose(file1); //закрываем файл
+        signal(SIGUSR2, pid2); //посылаем сигнал процессу 2
+        printf("\nProcess 1 (%d) is completed with code %d", pid1, signal(SIGTERM, pid1)); //завршаем 1 процесс
+        printf("\nProcess 2 (%d) is completed with code %d\n", pid2, kill(pid2, SIGCHLD)); //завршаем 2 процесс
         exit(0);
     } else {
-        signal(SIGUSR1, funcProcess2(file1, n));
+        signal(SIGUSR1, funcProcess2(file1, n)); //передаем сигнал второму процессу
     }
     return NULL;
 }
 
 void * funcProcess2(FILE *file1, int n) {
-    if(readFile(file1, n, 2) == 2) {
-        kill(pid1, SIGUSR2);
+    if(strcmp(readFile(file1, n, 2), "EOF") == 0) { //считываем N байт и проверяем окончание файла
+        fclose(file1); //закрываем файл
+        signal(SIGUSR2, pid1); //посылаем сигнал процессу 1
+        printf("\nProcess 2 (%d) is completed with code %d", pid2, kill(pid2, SIGCHLD)); //завршаем 2 процесс
+        printf("\nProcess 1 (%d) is completed with code %d\n", pid1, signal(SIGTERM, pid1)); //завршаем 1 процесс
         exit(0);
     } else {
-        signal(SIGUSR1, funcProcess1(file1, n));
+        signal(SIGUSR1, funcProcess1(file1, n)); //передаем сигнал первому процессу
     }
     return NULL;
 }
 
-int readFile(FILE *file1, int n, int id) {
-    if (id == 1) {
+char * readFile(FILE *file1, int n, int id) {
+    if (id == 1) { //выводим информацию о работающем процессе
         printf("\nProcess %d (%d) read %d bytes: ", id, pid1, n);
     } else {
         printf("\nProcess %d (%d) read %d bytes: ", id, pid2, n);
     }
-
     for (int i = 0; i < n; i++) {
-        symbol = getc(file1);
+        symbol = getc(file1); //считываем байт из файла
         if (symbol == EOF) {
-            if (feof(file1) != 0) {
-                printf("\nFile's reading completed...\n");
-                return 2;
+            if (feof(file1) != 0) { //проверяем конец файла
+                printf("\n\nFile's reading completed...\n");
+                return "EOF"; //возвращаем, если конец файла
             } else {
                 printf("\nError of file's reading!\n");
             }
-        }
-        printf("%d ", symbol);
+        } else printf("%d ", symbol); //печатаем символ
     }
-
-    return 1;
+    return "EOR"; //возвращаем, если конец считывания
 }
