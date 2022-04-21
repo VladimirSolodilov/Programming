@@ -6,7 +6,7 @@
 
 int N; //количество считываемых байт
 int pid1, pid2; //процессы symbol; //считываемый байт
-int symbol;
+int symbol; // ,байт
 char * readFile(FILE *, int, int);//чтение файла
 void * funcProcess1(FILE *, int);//1 процесс
 void * funcProcess2(FILE *, int);//2 процесс
@@ -40,6 +40,7 @@ void * funcProcess1(FILE *file1, int n) {
     } else {
         signal(SIGUSR1, funcProcess2(file1, n)); //передаем сигнал второму процессу
     }
+    return NULL;
 }
 
 void * funcProcess2(FILE *file1, int n) {
@@ -52,6 +53,7 @@ void * funcProcess2(FILE *file1, int n) {
     } else {
         signal(SIGUSR1, funcProcess1(file1, n)); //передаем сигнал первому процессу
     }
+    return NULL;
 }
 
 char * readFile(FILE *file1, int n, int id) {
@@ -71,5 +73,5 @@ char * readFile(FILE *file1, int n, int id) {
             }
         } else printf("%c", symbol); //печатаем символ
     }
-    return "EOR"; //возвращаем, если конец считывания*/
+    return "EOR"; //возвращаем, если конец считывания
 }
