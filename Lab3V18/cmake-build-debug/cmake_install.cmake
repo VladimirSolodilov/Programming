@@ -1,4 +1,4 @@
-# Install script for directory: /home/vladimir/Документы/GitHub/Programming/Lab3V18
+# Install script for directory: /home/user/Документы/GitHub/Programming/Lab3V18
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,5 +50,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/vladimir/Документы/GitHub/Programming/Lab3V18/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/user/Документы/GitHub/Programming/Lab3V18/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

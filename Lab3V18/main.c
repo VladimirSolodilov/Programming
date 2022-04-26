@@ -11,14 +11,14 @@ char * readFile(FILE *, int, int);//чтение файла
 void * funcProcess1(FILE *, int);//1 процесс
 void * funcProcess2(FILE *, int);//2 процесс
 
-void main(void) {
+int main() {
     pid1 = getpid();//создаём первый процесс
     FILE *file1 = fopen("read.txt", "rb");//открываем файл на чтение
-    printf("Enter number of bytes: ");
+
     scanf("%d", &N);
     if (file1 == NULL) { //проверяем открытие файла
         printf("File isn't open. Return...");
-        return;
+        return 1;
     } else {
         printf("File is open...\n");
         pid2 = fork();//создаем дочерний процесс

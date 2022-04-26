@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/Lab3V18.dir/main.c.o -o Lab3V18 
