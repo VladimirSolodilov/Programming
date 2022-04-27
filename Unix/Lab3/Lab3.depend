@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1650884001 source:/home/user/Lab3/main.c
+	<stdio.h>
+	<unistd.h>
+	<signal.h>
+	<string.h>
+	<stdlib.h>
+

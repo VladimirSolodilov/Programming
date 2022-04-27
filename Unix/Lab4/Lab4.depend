@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1651034194 source:/home/user/Lab4/main.c
+	<sys/ipc.h>
+	<sys/sem.h>
+	<sys/shm.h>
+	<stdio.h>
+	<sys/stat.h>
+	<unistd.h>
+	<stdlib.h>
+	<stdbool.h>
+
