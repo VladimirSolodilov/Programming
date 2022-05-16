@@ -21,7 +21,7 @@ public class Main {
 
         x = 0;
 
-        System.out.println("\nПрограмма высчитывает приближённые значения в узлах задачи Коши для следующих условий: u'' - 2u' + 2u = 2x; a = 0, b = 1; u(0) = 0, u(b) = " + String.format("%.5f", B) + ", u'(0) = " + String.format("%.5f", a) + " - подобранный угол \"пристрелки\"");
+        System.out.println("\nУсловия: u'' - 2u' + 2u = 2x; a = 0, b = 1; u(0) = 0, u(b) = " + String.format("%.5f", B) + ", u'(0) = " + String.format("%.5f", a) + " - подобранный угол \"пристрелки\"");
         System.out.println("Метод Рунге-Кутты IV-го порядка:");
         System.out.println("N\t|x\t\t\t|u\t\t\t|k1\t\t\t|l1\t\t\t|k2\t\t\t|l2\t\t\t|k3\t\t\t|l3\t\t\t|k4\t\t\t|l4\t\t\t\t|u'\t\t\t\t\t|u''\t\t\t|u_аналитич\t\t|Погрешность");
         for (int i = 0; i <= z; i++){
@@ -101,7 +101,7 @@ public class Main {
             pr[n - 2] = difur(pr, x);
         }
         if (v1 == 0) return u;
-            else return k;
+        else return k;
     }
 
     public static double difur(double[] pr, double x) { //Метод для ОДУ I-го и II-го порядков
@@ -109,7 +109,7 @@ public class Main {
     }
 
     public static double[] nachdan(double x, double a) { //Метод для начальных условий ОДУ I-го и II-го порядков
-        double pr[] = new double[4];
+        double[] pr = new double[4];
 
         pr[0] = 0;
         pr[1] = a;
@@ -127,7 +127,7 @@ public class Main {
         double[][] ur0, ur;
         double h = (b - x) / z;
         double[] a = new double[5];
-        a[0] = (uIst(b) - uIst(x)) / (b - x);
+        a[0] = (uIst(b) - 1) / (b - x);
         a[1] = a[0] + 0.5;
         pr = nachdan(x, a[0]);
         ur0 = rungeFour(pr, x, h, z,0);
@@ -145,9 +145,7 @@ public class Main {
         }
 
         double[] c = new double[i + 1];
-        for (int j = 0; j < i + 1; j++){
-            c[j] = a[j];
-        }
+        System.arraycopy(a, 0, c, 0, i + 1);
 
         return c;
     }
