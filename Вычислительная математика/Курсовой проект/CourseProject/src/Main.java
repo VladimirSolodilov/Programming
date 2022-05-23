@@ -47,7 +47,6 @@ public class Main {
 
         for (int i = 0; i < N; i++) {
             f[i] = Math.sin(x[i]) - Adams3Value[i];
-            //System.out.println("f(" + i + ") = " + Adams3Value[i]);
         }
 
         return f;
@@ -62,8 +61,13 @@ public class Main {
 
         return analyticalValue;
     }
+    public static void main(String[] args) {
+        int N = 51;
 
-    public static void print(int N) {
+        System.out.println("Решение дифференциального уравнения методом Адамса третьего и четвертого порядков.");
+        System.out.println("Дифференциальное уравнение имеет вид y'(x) = sin(x) - y(x), где y(0) = y0.");
+        System.out.println("Решение оформлено в виде таблицы: ");
+
         System.out.println("|N\t\t\t|x\t\t|Function 3\t\t|Adams 3\t\t|Function 4\t\t\t|Adams 4\t\t|Analytic Function");
         for (int i = 0; i < N; i++) {
             if ((i > 0 && i < 10) || i % 10 == 0) {
@@ -72,13 +76,5 @@ public class Main {
                         + "\t\t\t|" + String.format("%.5f", Adams4(N, xValue(0.01, N))[i]) + "\t\t|" + String.format("%.5f", analyticalFunctionValue(N, xValue(0.01, N))[i]));
             }
         }
-    }
-
-    public static void main(String[] args) {
-        System.out.println("Решение дифференциального уравнения методом Адамса третьего и четвертого порядков.");
-        System.out.println("Дифференциальное уравнение имеет вид y'(x) = sin(x) - y(x), где y(0) = y0.");
-        System.out.println("Решение оформлено в виде таблицы: ");
-
-        print(51);
     }
 }
