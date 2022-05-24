@@ -1,0 +1,17 @@
+Скворцов Л.М.: Численное решение обыкновенных дифференциальных и дифференциально­алгебраических уравнений Лань
+
+Вычислительные методы для инженеров: https://scask.ru/i_book_clm.php?id=112
+
+Численные методы решения дифференциальных уравнений: https://studme.org/180942/matematika_himiya_fizik/mnogoshagovyy_metod_adamsa#282
+
+Разностные методы решения обыкновенных дифференциальных уравнений: http://pm.samgtu.ru/sites/pm.samgtu.ru/files/stud/posob/zausaev_nm.pdf
+
+Васильев А Н Числовые расчеты в Excel. Издательство Лань
+
+Лекция 9: Численные методы решения задачи Коши для систем обыкновенных дифференциальных уравнений
+https://intuit.ru/studies/professional_skill_improvements/1374/courses/168/lecture/4604?page=6
+
+Ревинская О Г Символьные вычисления в MatLab : учебное пособие для вузов https://reader.lanbook.com/book/149344#293 Лань
+
+Слабнов В Д Численные методы https://reader.lanbook.com/book/133925#58 Лань
+
