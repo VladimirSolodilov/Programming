@@ -119,6 +119,6 @@ public class Homophonic extends Main {
             }
         }
 
-        System.out.println("\nЗашифрованный текст: " + resultStr);
+        System.out.println("\nРасшифрованный текст: " + resultStr);
     }
 }

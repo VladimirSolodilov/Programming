@@ -2,14 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b0225552-6c9c-43c9-9704-c8f9277a8183" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MethodProgonka.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Progonka.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Lab2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Lab2/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Вычислительная математика/Практическая работа 3/Практическая работа 3.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../Вычислительная математика/Практическая работа 3/Практическая работа 3.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Вычислительная математика/Практическая работа 3/Практическая работа 3.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/../Вычислительная математика/Практическая работа 3/Практическая работа 3.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Вычислительная математика/Практическая работа 4/Metod_Strelb/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Вычислительная математика/Практическая работа 4/Metod_Strelb/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Вычислительная математика/Практическая работа 4/Солодилов_Владимир_Владимирович_ИБС-32_4.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../Вычислительная математика/Практическая работа 4/Солодилов_Владимир_Владимирович_ИБС-32_4.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Криптография/Lab1/out/production/Lab1/com/company/Homophonic.class" beforeDir="false" afterPath="$PROJECT_DIR$/../Криптография/Lab1/out/production/Lab1/com/company/Homophonic.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Криптография/Lab1/src/com/company/Homophonic.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Криптография/Lab1/src/com/company/Homophonic.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +69,7 @@
       <workItem from="1650352802972" duration="48000" />
       <workItem from="1650353281805" duration="1340000" />
       <workItem from="1650354956793" duration="2578000" />
+      <workItem from="1652772284991" duration="13000" />
     </task>
     <servers />
   </component>
