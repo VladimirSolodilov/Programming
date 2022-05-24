@@ -1,6 +1,6 @@
 public class Main {
     public static double[] Adams3(int N, double[] x, double h) {
-        double[] a3 = new double[N];        
+        double[] a3 = new double[N];
         a3[0] = 2;
 
         for (int i = 1; i < N; i++) {
@@ -8,7 +8,7 @@ public class Main {
                 a3[i] = a3[i - 1] + h * (Math.sin(x[i]) - a3[i - 1]);
             } else {
                 a3[i] = a3[i - 1] + (h / 12) * (23 * (Math.sin(x[i - 1]) - a3[i - 1])
-                - 16 * (Math.sin(x[i - 2]) - a3[i - 2]) + 5 * (Math.sin(x[i - 3]) - a3[i - 3]));
+                        - 16 * (Math.sin(x[i - 2]) - a3[i - 2]) + 5 * (Math.sin(x[i - 3]) - a3[i - 3]));
             }
         }
 
@@ -62,7 +62,8 @@ public class Main {
         return analyticalValue;
     }
     public static void main(String[] args) {
-        int N = 50, h = 0.01;
+        int N = 51;
+        double h = 0.01;
 
         System.out.println("Решение дифференциального уравнения методом Адамса третьего и четвертого порядков.");
         System.out.println("Дифференциальное уравнение имеет вид y'(x) = sin(x) - y(x), где y(0) = y0.");
