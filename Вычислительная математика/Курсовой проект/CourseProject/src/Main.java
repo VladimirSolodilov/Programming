@@ -66,7 +66,7 @@ public class Main {
         double h = 0.01;
 
         System.out.println("Решение дифференциального уравнения методом Адамса третьего и четвертого порядков.");
-        System.out.println("Дифференциальное уравнение имеет вид y'(x) = sin(x) - y(x), где y(0) = y0.");
+        System.out.println("Дифференциальное уравнение имеет следующий вид: y'(x) = sin(x) - y(x), где y(0) = y0.");
         System.out.println("Решение оформлено в виде таблицы: ");
 
         System.out.println("|N\t\t\t|x\t\t|Function 3\t\t|Adams 3\t\t|Function 4\t\t\t|Adams 4\t\t|Analytic Function");
