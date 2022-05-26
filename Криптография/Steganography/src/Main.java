@@ -4,115 +4,111 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Main {
+    //	Добавление сообщения
+    public static void addSteganography(String inputText) {
+        try (FileInputStream fileInputStream = new FileInputStream("source.jpg")) {
+            try (FileOutputStream fileOutputStream = new FileOutputStream("result.jpg")) {
+                System.out.println("\nИсходная фотография открыта...");
+
+                byte[] buffer = new byte[fileInputStream.available()];
+                fileInputStream.read(buffer, 0, buffer.length);
+                buffer[buffer.length - buffer.length / 4] = (byte) inputText.length();
+
+                for (int i = 0; i < inputText.length(); i++) {
+                    buffer[buffer.length / 2 + i] = (byte) inputText.charAt(i);
+                }
+
+                System.out.println("Сообщение (" + inputText + ") скрыто в исходной фотографии...");
+
+                fileOutputStream.write(buffer, 0, buffer.length);
+
+                System.out.println("Фотография со скрытым сообщением успешно сохранена...\n");
+            } catch (IOException exception) {
+                System.out.println(exception.getMessage());
+            }
+        }
+        catch(IOException exception) {
+            System.out.println(exception.getMessage());
+        }
+    }
+
+    //	Извлечение сообщения
+    public static void deleteSteganography() {
+        try (FileInputStream fileInputStream = new FileInputStream("result.jpg")) {
+            System.out.println("\nФотография открыта...");
+
+            byte[] buffer = new byte[fileInputStream.available()];
+            fileInputStream.read(buffer, 0, buffer.length);
+
+            System.out.print("Скрытое сообщение:");
+            for (int i = 0; i < buffer[buffer.length - buffer.length / 4]; i++) {
+                System.out.print((char) (buffer[buffer.length / 2 + i]));
+            }
+
+            System.out.println("\n");
+        }
+        catch(IOException ex) {
+            System.out.println(ex.getMessage());
+        }
+    }
 
     public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        String inputText;
 
-        Scanner scan = new Scanner(System.in);
-        String stringBuffer;
+        try {
+            while (true) {
+                System.out.print("""
+                        ..............Меню программы...............
+                        1 - Добавить в фотографию скрытое сообщение
+                        2 - Извлечь из фотографии скрытое сообщение
+                        3 - Завершить работу программы
+                        Введите соответствующую цифру:""");
 
+                int menuValue = scanner.nextInt();
 
-        while (true) {
-            try {
-                System.out.println("1 - Добавить к аудиофайлу скрытое сообщение\n2 - Извлечь из аудиофайла скрытое сообщение\n0 - Завершить работу");
-
-                String menuValue = scan.nextLine();
-                System.out.println();
-                if(menuValue.charAt(0) < 48 || menuValue.charAt(0) > 50 || menuValue.length() == 0) {
-                    System.out.println("Введите корректное значение!\n");
-                    continue;
+                if (menuValue <= 0 || menuValue > 3) {
+                    while (menuValue <= 0 || menuValue > 3) {
+                        System.out.print("Введите корректное значение:");
+                        menuValue = scanner.nextInt();
+                    }
                 }
+
+                scanner.nextLine();
+
                 switch (menuValue) {
-                    case ("1") -> {
-                        System.out.println("Введите текст, который будет скрыт в аудиофайле (Буквы латинского алфавита, цифры и другие символы кодировки ASCII):");
-                        stringBuffer = scan.nextLine();
-                        if (stringBuffer.length() == 0) {
-                            System.out.println("Нельзя оставлять поле пустым!\n");
-                            break;
-                        }
-                        boolean c = false;
-                        for (int i = 0; i < stringBuffer.length(); i++) {
-                            if (stringBuffer.charAt(i) > 127 || stringBuffer.charAt(i) < 32) {
-                                c = true;
-                                break;
+                    case (1) -> {
+                        System.out.print("Введите текст, который будет скрыт в фотографии (ASCII):");
+                        inputText = scanner.nextLine();
+
+                        if (inputText.length() == 0) {
+                            while (inputText.length() == 0) {
+                                System.out.print("Сообщение пустое! Введите сообщение ещё раз:");
+                                inputText = scanner.nextLine();
                             }
                         }
-                        if (c) {
-                            System.out.println("Обнаружены неподдерживаемые символы!\n");
-                            break;
+
+                        for (int i = 0; i < inputText.length(); i++) {
+                            if (inputText.charAt(i) < 32 || inputText.charAt(i) > 127) {
+                                while (inputText.charAt(i) < 32 || inputText.charAt(i) > 127) {
+                                    System.out.print("Обнаружены неподдерживаемые символы! Введите сообщение ещё раз:");
+                                    inputText = scanner.nextLine();
+                                }
+                            }
                         }
-                        stegFun(stringBuffer);
+
+                        addSteganography(inputText);
                     }
-                    case ("2") -> unStegFun();
-                    case ("0") -> {
-                        scan.close();
+                    case (2) -> deleteSteganography();
+                    case (3) -> {
+                        scanner.close();
                         System.exit(0);
                     }
-                    default -> System.out.println("Введите корректное значение\n");
                 }
             }
-            catch(Exception e) {
-                System.out.println("Введите корректное значение\n");
-            }
+        } catch (Exception exception) {
+            System.out.println("Исключение! Перезапуск программы...\n");
+            main(new String[]{"main"});
         }
     }
-
-
-//	Добавление сообщения
-
-    public static void stegFun(String text) {
-        try(FileInputStream fin=new FileInputStream("source.wav");
-            FileOutputStream fos=new FileOutputStream("result.wav"))
-        {
-            System.out.println("Исходный аудиофайл открыт");
-            byte[] buffer = new byte[fin.available()];
-
-            fin.read(buffer, 0, buffer.length);
-
-            buffer[1000] = 19;
-            buffer[1500] = 86;
-            buffer[1986] = (byte)text.length();
-
-            for(int i = 0; i < text.length(); i++) {
-                buffer[2000 + (i * 2500)] = (byte)text.charAt(i);
-            }
-
-            System.out.println("Сообщение скрыто в исходном аудиофайле");
-
-            fos.write(buffer, 0, buffer.length);
-            System.out.println("Аудиофайл со скрытым сообщением успешно сохранен");
-        }
-        catch(IOException ex){
-            System.out.println(ex.getMessage());
-        }
-    }
-
-
-//	Извлечение сообщения
-
-    public static void unStegFun() {
-        try(FileInputStream fin=new FileInputStream("result.wav"))
-        {
-            System.out.println("Аудиофайл открыт");
-            byte[] buffer = new byte[fin.available()];
-
-            fin.read(buffer, 0, buffer.length);
-
-            if(buffer[1000] == 19 && buffer[1500] == 86) {
-                System.out.println("Скрытое сообщение:");
-                for(int i = 0; i < buffer[1986]; i++) {
-                    System.out.print((char)(buffer[2000 + (i * 2500)]));
-
-                }
-                System.out.println("\n");
-            }
-            else {
-                System.out.println("В аудиофайле нет скрытого сообщения\n");
-            }
-
-        }
-        catch(IOException ex){
-            System.out.println(ex.getMessage());
-        }
-    }
-
 }
