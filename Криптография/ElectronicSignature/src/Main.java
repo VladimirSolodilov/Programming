@@ -15,7 +15,6 @@ public class Main {
                 787, 797, 809, 811, 821, 823, 827, 829, 839, 853, 857, 859, 863, 877,
                 881, 883, 887, 907, 911, 919, 929, 937, 941, 947, 953, 967, 971, 977,
                 983, 991, 997};
-
         int[] listOfSimpleNumbers = new int[31];
         int p = simpleNumberList[(int)(Math.random() * 143)];
         int q = simpleNumberList[(int)(Math.random() * 143)];
@@ -42,14 +41,14 @@ public class Main {
     }
 
     // 	Шифрование
-    public static int[] incryption(String source, int[] key) {
+    public static int[] encryption(String source, int[] key) {
         int[] result = new int[source.length()];
         int tempValue;
 
         for (int i = 0; i < source.length(); i++) {
             tempValue = source.toCharArray()[i];
             for (int j = 0; j < key[0] - 1; j++) {
-                tempValue = (tempValue * source.charAt(i)) % key[1];
+                tempValue = (tempValue * source.charAt(i)) % (key[1]);
             }
             result[i] = tempValue;
         }
@@ -82,30 +81,30 @@ public class Main {
         }
         return a;
     }
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         String sourceText = "";
         String inputNewText;
 
-        int[] privateKey = new int[2];
-        int[] publicKey = new int[2];
+        int[] key1 = new int[2];
+        int[] key2 = new int[2];
         int[] numToText = new int[0];
         int[] keys;
 
         boolean menuChk = true;
         while (true) {
             try {
+                System.out.println("\nИсходное сообщение: " + sourceText);
                 if (menuChk) {
-                    System.out.println("\nИсходное сообщение: " + sourceText + "\n\n.....Меню программы.....\n" +
-                            "1 - Ввести новое сообщение\n2 - Зашифровать исходное сообщение");
+                    System.out.println(".....Меню программы.....\n" +
+                            "1 - Ввести новое сообщение\n2 - Получить подпись");
                 } else {
-                    System.out.print("\nИсходное сообщение:");
+                    System.out.print("Преобразованное сообщение (подпись): ");
                     System.out.println(Arrays.toString(numToText));
                     System.out.println("""
                             1 - Ввести новый текст
-                            3 - Расшифровать""");
+                            3 - Расшифровать сообщение""");
                 }
 
                 System.out.print("4 - Завершить работу\n" +
@@ -136,18 +135,16 @@ public class Main {
                         menuChk = true;
                     }
                     case (2) -> {
-                        System.out.println("\nИсходное сообщение:" + sourceText);
-
                         keys = keysGenerator();
-                        privateKey[0] = keys[0];
-                        privateKey[1] = keys[2];
-                        publicKey[0] = keys[1];
-                        publicKey[1] = keys[2];
+                        key1[0] = keys[0];
+                        key1[1] = keys[2];
+                        key2[0] = keys[1];
+                        key2[1] = keys[2];
 
-                        System.out.println("Открытый ключ: " + Arrays.toString(publicKey));
+                        System.out.println("Открытый ключ: " + Arrays.toString(key2));
 
-                        numToText = incryption(sourceText, publicKey);
-                        System.out.println("Результат шифрования: ");
+                        numToText = encryption(sourceText, key2);
+                        System.out.println("Цифровая подпись: ");
                         System.out.println(Arrays.toString(numToText));
 
                         menuChk = false;
@@ -155,10 +152,10 @@ public class Main {
                     case (3) -> {
                         System.out.print("Шифртекст: ");
                         System.out.println(Arrays.toString(numToText));
-                        System.out.println("\nЗакрытый ключ: " + Arrays.toString(privateKey));
+                        System.out.println("\nЗакрытый ключ: " + Arrays.toString(key1));
 
-                        sourceText = decryption(numToText, privateKey);
-                        System.out.println("Результат расшифрования:" + sourceText);
+                        sourceText = decryption(numToText, key1);
+                        System.out.println("Исходный текст:" + sourceText);
 
                         menuChk = true;
                     }

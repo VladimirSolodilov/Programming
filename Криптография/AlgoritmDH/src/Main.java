@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
 public class Main extends AlgoritmDH {
-
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         AlgoritmDH Alice = new AlgoritmDH();
@@ -13,10 +12,12 @@ public class Main extends AlgoritmDH {
         String encryptedMessage = Bob.encryptMessage(sourceMessage, Bob.getFullKey());
         String decryptedMessage = Alice.decryptMessage(encryptedMessage, Alice.getFullKey(), Bob.getNumbers());
 
+        System.out.print("\nИсходное сообщение: " + sourceMessage);
+
         try {
             while (true) {
-                System.out.println("\nИсходное сообщение: " + sourceMessage);
                 System.out.print("""
+                    
                     .....Меню программы.......
                     1 - Сформировать ключи
                     2 - Зашифровать сообщение
@@ -52,8 +53,8 @@ public class Main extends AlgoritmDH {
                         System.out.println("\nПолный ключ Алисы = " + Alice.getFullKey());
                         System.out.println("Полный ключ Боба = " + Bob.getFullKey());
                     }
-                    case 2 -> System.out.println("Зашифрованное сообщение: " + encryptedMessage);
-                    case 3 -> System.out.println("Расшифрованное сообщение: " + decryptedMessage);
+                    case 2 -> System.out.print("\nЗашифрованное сообщение: " + encryptedMessage);
+                    case 3 -> System.out.print("\nРасшифрованное сообщение: " + decryptedMessage);
                     case 4 -> {
                         System.out.println("Выход из прогаммы...");
                         System.exit(0);

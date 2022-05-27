@@ -8,6 +8,45 @@ public class AlgoritmDH {
     private int partialKey;
     private int fullKey;
 
+    public Map<Integer, Character> getNumbers() {
+        return numbers;
+    }
+
+    public void setNumbers(Map<Integer, Character> numbers) {
+        this.numbers = numbers;
+    }
+
+    public int getPublicKey() {
+        return publicKey;
+    }
+
+    public void setPublicKey(int publicKey) {
+        this.publicKey = publicKey;
+    }
+
+    public int getPrivateKey() {
+        return privateKey;
+    }
+
+    public void setPrivateKey(int privateKey) {
+        this.privateKey = privateKey;
+    }
+
+    public int getPartialKey() {
+        return partialKey;
+    }
+
+    public void setPartialKey(int partialKey) {
+        this.partialKey = partialKey;
+    }
+
+    public int getFullKey() {
+        return fullKey;
+    }
+
+    public void setFullKey(int fullKey) {
+        this.fullKey = fullKey;
+    }
     public static int setKey() {
         int[] simpleNumberList = new int[]{101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167,
                 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241,
@@ -59,47 +98,5 @@ public class AlgoritmDH {
         }
 
         return sourceMessage.toString();
-    }
-    public Map<Integer, Character> getNumbers() {
-        return numbers;
-    }
-
-    public void setNumbers(Map<Integer, Character> numbers) {
-        this.numbers = numbers;
-    }
-
-    public AlgoritmDH() {
-
-    }
-    public int getPublicKey() {
-        return publicKey;
-    }
-
-    public void setPublicKey(int publicKey) {
-        this.publicKey = publicKey;
-    }
-
-    public int getPrivateKey() {
-        return privateKey;
-    }
-
-    public void setPrivateKey(int privateKey) {
-        this.privateKey = privateKey;
-    }
-
-    public int getPartialKey() {
-        return partialKey;
-    }
-
-    public void setPartialKey(int partialKey) {
-        this.partialKey = partialKey;
-    }
-
-    public int getFullKey() {
-        return fullKey;
-    }
-
-    public void setFullKey(int fullKey) {
-        this.fullKey = fullKey;
     }
 }
