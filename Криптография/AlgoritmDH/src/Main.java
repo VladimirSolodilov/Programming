@@ -13,7 +13,6 @@ public class Main extends AlgoritmDH {
         String decryptedMessage = Alice.decryptMessage(encryptedMessage, Alice.getFullKey(), Bob.getNumbers());
 
         System.out.print("\nИсходное сообщение: " + sourceMessage);
-
         try {
             while (true) {
                 System.out.print("""

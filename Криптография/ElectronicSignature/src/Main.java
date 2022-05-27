@@ -152,10 +152,10 @@ public class Main {
                     case (3) -> {
                         System.out.print("Шифртекст: ");
                         System.out.println(Arrays.toString(numToText));
-                        System.out.println("\Открытый ключ: " + Arrays.toString(key1));
+                        System.out.println("\nОткрытый ключ: " + Arrays.toString(key1));
 
                         sourceText = decryption(numToText, key1);
-                        System.out.println("Исходный текст:" + sourceText);
+                        System.out.println("Исходный текст: " + sourceText);
 
                         menuChk = true;
                     }
