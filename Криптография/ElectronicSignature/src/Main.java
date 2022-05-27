@@ -141,7 +141,7 @@ public class Main {
                         key2[0] = keys[1];
                         key2[1] = keys[2];
 
-                        System.out.println("Открытый ключ: " + Arrays.toString(key2));
+                        System.out.println("Закрытый ключ: " + Arrays.toString(key2));
 
                         numToText = encryption(sourceText, key2);
                         System.out.println("Цифровая подпись: ");
@@ -152,7 +152,7 @@ public class Main {
                     case (3) -> {
                         System.out.print("Шифртекст: ");
                         System.out.println(Arrays.toString(numToText));
-                        System.out.println("\nЗакрытый ключ: " + Arrays.toString(key1));
+                        System.out.println("\Открытый ключ: " + Arrays.toString(key1));
 
                         sourceText = decryption(numToText, key1);
                         System.out.println("Исходный текст:" + sourceText);
