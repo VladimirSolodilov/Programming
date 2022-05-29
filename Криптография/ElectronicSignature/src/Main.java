@@ -84,33 +84,26 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
-        String sourceText = "";
-        String inputNewText;
+        String sourceText = "HelloWorld";
+        String newText;
 
         int[] key1 = new int[2];
         int[] key2 = new int[2];
-        int[] numToText = new int[0];
+        int[] electronicValue = new int[0];
         int[] keys;
 
-        boolean menuChk = true;
         while (true) {
             try {
                 System.out.println("\nИсходное сообщение: " + sourceText);
-                if (menuChk) {
-                    System.out.println(".....Меню программы.....\n" +
-                            "1 - Ввести новое сообщение\n2 - Получить подпись");
-                } else {
-                    System.out.print("Преобразованное сообщение (подпись): ");
-                    System.out.println(Arrays.toString(numToText));
-                    System.out.println("""
-                            1 - Ввести новый текст
-                            3 - Расшифровать сообщение""");
-                }
-
-                System.out.print("4 - Завершить работу\n" +
-                        "Для продолжения введите соответствующую цифру: ");
-
+                System.out.print("""
+                            .....Меню программы.....
+                            1 - Ввести новое сообщение
+                            2 - Подписать сообщение
+                            3 - Проверить подпись
+                            4 - Завершить работу
+                            Для продолжения введите соответствующую цифру:\040""");
                 int menuValue = scanner.nextInt();
+
                 if (menuValue <= 0 || menuValue > 4) {
                     while (menuValue <= 0 || menuValue > 4) {
                         System.out.print("Введите корректное значение: ");
@@ -120,44 +113,60 @@ public class Main {
 
                 switch (menuValue) {
                     case (1) -> {
-                        System.out.print("Введите новое сообщение: ");
+                        System.out.print("\nВведите новое сообщение: ");
                         scanner.nextLine();
-                        inputNewText = scanner.nextLine();
+                        newText = scanner.nextLine();
 
-                        if (inputNewText.length() == 0) {
-                            while (inputNewText.length() == 0) {
-                                System.out.println("Введите сообщение ещё раз: ");
-                                inputNewText = scanner.nextLine();
+                        if (newText.length() == 0) {
+                            while (newText.length() == 0) {
+                                System.out.print("Введите сообщение ещё раз: ");
+                                newText = scanner.nextLine();
                             }
                         }
 
-                        sourceText = inputNewText;
-                        menuChk = true;
+                        sourceText = newText;
                     }
                     case (2) -> {
+                        if (sourceText.equals("")) {
+                            System.out.println("\nНет исходного сообщения для подписи!");
+                            break;
+                        }
+
                         keys = keysGenerator();
                         key1[0] = keys[0];
                         key1[1] = keys[2];
                         key2[0] = keys[1];
                         key2[1] = keys[2];
 
-                        System.out.println("Закрытый ключ: " + Arrays.toString(key2));
+                        System.out.println("\nЗакрытый ключ: " + Arrays.toString(key2));
 
-                        numToText = encryption(sourceText, key2);
-                        System.out.println("Цифровая подпись: ");
-                        System.out.println(Arrays.toString(numToText));
-
-                        menuChk = false;
+                        System.out.print("Цифровая подпись: ");
+                        electronicValue = encryption(sourceText, key2);
+                        System.out.println(Arrays.toString(electronicValue));
                     }
                     case (3) -> {
-                        System.out.print("Шифртекст: ");
-                        System.out.println(Arrays.toString(numToText));
-                        System.out.println("\nОткрытый ключ: " + Arrays.toString(key1));
+                        if (electronicValue.length == 0) {
+                            System.out.println("\nЭлектронная подпись не сформирована! Подпишите сообщение!");
+                            break;
+                        }
 
-                        sourceText = decryption(numToText, key1);
-                        System.out.println("Исходный текст: " + sourceText);
+                        System.out.println("\nЦифровая подпись: " + Arrays.toString(electronicValue));
+                        System.out.println("Открытый ключ: " + Arrays.toString(key1));
 
-                        menuChk = true;
+                        newText = decryption(electronicValue, key1);
+
+                        System.out.println("Результирующее сообщение: " + newText + "\n" +
+                                "Исходное сообщение: " + sourceText);
+
+                        if (newText.equals(sourceText)) {
+                            System.out.println("Верификация пройдена успешно!");
+
+                        } else {
+                            System.out.println("Верификация не пройдена!\n" +
+                                    "Возврат к исходным данным...");
+                            sourceText = "";
+                            electronicValue = new int[]{0};
+                        }
                     }
                     case (4) -> {
                         scanner.close();
@@ -166,7 +175,7 @@ public class Main {
                 }
             }
             catch (Exception e) {
-                System.out.println("Исключение! Перезапуск программы...");
+                System.out.println("\nИсключение! Перезапуск программы...");
                 main(new String[]{"main"});
             }
         }

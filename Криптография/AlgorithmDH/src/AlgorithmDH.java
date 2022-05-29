@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class AlgoritmDH {
+public class AlgorithmDH {
     private Map<Integer, Character> numbers = new HashMap<>();
     private int publicKey;
     private int privateKey;
@@ -80,7 +80,8 @@ public class AlgoritmDH {
         for (int i = 0; i < sourceMessage.length(); i++) {
             int subChar = Character.getNumericValue(sourceMessage.charAt(i));
             numbers.put(subChar, sourceMessage.toCharArray()[i]);
-            subChar += fullKey;
+            subChar = subChar + fullKey;
+            //subChar += fullKey;
             resultMessage.append(subChar).append(" ");
         }
 
