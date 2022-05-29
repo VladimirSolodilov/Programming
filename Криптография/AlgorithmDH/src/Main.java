@@ -1,16 +1,14 @@
 import java.util.Scanner;
 
-public class Main extends AlgoritmDH {
+public class Main extends AlgorithmDH {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        AlgoritmDH Alice = new AlgoritmDH();
-        AlgoritmDH Bob = new AlgoritmDH();
+
+        AlgorithmDH Alice = new AlgorithmDH();
+        AlgorithmDH Bob = new AlgorithmDH();
 
         System.out.print("Введите сообщение: ");
         String sourceMessage = scanner.nextLine();
-
-        String encryptedMessage = Bob.encryptMessage(sourceMessage, Bob.getFullKey());
-        String decryptedMessage = Alice.decryptMessage(encryptedMessage, Alice.getFullKey(), Bob.getNumbers());
 
         System.out.print("\nИсходное сообщение: " + sourceMessage);
         try {
@@ -52,8 +50,9 @@ public class Main extends AlgoritmDH {
                         System.out.println("\nПолный ключ Алисы = " + Alice.getFullKey());
                         System.out.println("Полный ключ Боба = " + Bob.getFullKey());
                     }
-                    case 2 -> System.out.print("\nЗашифрованное сообщение: " + encryptedMessage);
-                    case 3 -> System.out.print("\nРасшифрованное сообщение: " + decryptedMessage);
+                    case 2 -> System.out.print("\nЗашифрованное сообщение: " + Bob.encryptMessage(sourceMessage, Bob.getFullKey()));
+                    case 3 -> System.out.print("\nРасшифрованное сообщение: " + Alice.decryptMessage((Bob.encryptMessage(sourceMessage, Bob.getFullKey())),
+                            Alice.getFullKey(), Bob.getNumbers()));
                     case 4 -> {
                         System.out.println("Выход из прогаммы...");
                         System.exit(0);
