@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="16215ef5-7706-4690-b281-7d664ef2d346" name="Changes" comment="" />
+    <list default="true" id="eae9a73b-94e4-472e-9858-902032a8a9b3" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,8 +10,12 @@
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
   </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -19,8 +23,7 @@
   <component name="ProjectCodeStyleSettingsMigration">
     <option name="version" value="2" />
   </component>
-  <component name="ProjectId" id="29jRQK9TrtfuRLwHSPeAOO8PjRF" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectId" id="29iKSSwNfSrx91197v6OtvWFRDW" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -29,7 +32,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/media/user/USB DISK/eclipse-workspace/ESBS"
+    "last_opened_file_path": "C:/Users/Vladimir/Documents/GitHub/Programming/Криптография/IncryptionDifferentMethods"
   }
 }]]></component>
   <component name="RunManager">
@@ -49,11 +52,11 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="16215ef5-7706-4690-b281-7d664ef2d346" name="Changes" comment="" />
-      <created>1653624491537</created>
+      <changelist id="eae9a73b-94e4-472e-9858-902032a8a9b3" name="Changes" comment="" />
+      <created>1653590465877</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1653624491537</updated>
+      <updated>1653590465877</updated>
     </task>
     <servers />
   </component>
