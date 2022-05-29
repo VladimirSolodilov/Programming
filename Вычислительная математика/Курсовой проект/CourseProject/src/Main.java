@@ -69,13 +69,18 @@ public class Main {
         System.out.println("Дифференциальное уравнение имеет следующий вид: y'(x) = sin(x) - y(x), где y(0) = y0.");
         System.out.println("Решение оформлено в виде таблицы: ");
 
-        System.out.println("|N\t\t\t|x\t\t|Function 3\t\t|Adams 3\t\t|Function 4\t\t\t|Adams 4\t\t|Analytic Function");
+        System.out.println("╔═══════════╦═══════╦═══════════════╦═══════════════╦═══════════════════╦═══════════════╦═════════════════╗");
+
+        System.out.println("║\t  N\t\t║\tx\t║\tFunction 3\t║\t Adams 3\t║\tFunction 4\t\t║\tAdams 4\t\t║Analytic Function║");
+        System.out.println("║═══════════║═══════║═══════════════║═══════════════║═══════════════════║═══════════════║═════════════════║");
         for (int i = 0; i < N; i++) {
             if ((i > 0 && i < 10) || i % 10 == 0) {
-                System.out.println("|" + i + "\t\t\t|" + String.format("%.3f", xValue(h, N)[i]) + "\t|" + String.format("%.5f", difFunctionValue(N, xValue(h, N), h)[i]) + "\t\t|"
-                        + String.format("%.5f", Adams3(N, xValue(h, N), h)[i]) + "\t\t|" + String.format("%.5f", difFunctionValue(N, xValue(h, N), h)[i])
-                        + "\t\t\t|" + String.format("%.5f", Adams4(N, xValue(h, N), h)[i]) + "\t\t|" + String.format("%.5f", analyticalFunctionValue(N, xValue(h, N))[i]));
+                System.out.println("║   " + i + "\t\t║ " + String.format("%.3f", xValue(h, N)[i]) + "\t║   " + String.format("%.5f", difFunctionValue(N, xValue(h, N), h)[i]) + "\t║   "
+                        + String.format("%.5f", Adams3(N, xValue(h, N), h)[i]) + "\t\t║   " + String.format("%.5f", difFunctionValue(N, xValue(h, N), h)[i])
+                        + "\t\t║  " + String.format("%.5f", Adams4(N, xValue(h, N), h)[i]) + "\t\t║    " + String.format("%.5f", analyticalFunctionValue(N, xValue(h, N))[i]) + "\t  ║");
             }
         }
+
+        System.out.println("╚═════════════════════════════════════════════════════════════════════════════════════════════════════════╝");
     }
 }
