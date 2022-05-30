@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="db801bcd-b13e-47ca-93d9-0df52171d9f7" name="Changes" comment="" />
+    <list default="true" id="db801bcd-b13e-47ca-93d9-0df52171d9f7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../191365_с1_ИБС32_2022_6.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../191365_с1_ИБС32_2022_6.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -29,7 +32,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "/home/user/Документы/GitHub/Programming/Вычислительная математика/Практическая работа 6/Simplex",
+    "last_opened_file_path": "C:/Users/Vladimir/Documents/GitHub/Programming/Вычислительная математика/Курсовой проект/CourseProject",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
