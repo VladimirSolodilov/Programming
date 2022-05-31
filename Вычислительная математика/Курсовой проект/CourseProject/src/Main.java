@@ -98,14 +98,11 @@ public class Main {
         }
         System.out.println("╚═══════════╨═══════╨═══════════════════════════╨═══════════════════════╨═══════════════════════════════╨═══════════════════════════╨════════════════════╝");
 
-        //Сравнение значений, найденных методом Адамса, со значениями, найденными аналитически
         System.out.println("Сравним значения, полученные методом Адамса третьего и четвертого порядков, с значениями, полученными аналитическим методом: ");
-
-        error3 = Math.abs(Arrays.stream(analyticValue).sum()) - Math.abs(Arrays.stream(Adams3Value).sum());
+        error3 = Math.abs(Arrays.stream(analyticValue).sum() - Arrays.stream(Adams3Value).sum());
+    
         System.out.println("1) суммарная погрешность значений, найденных методом Адамса 3-го порядка, от аналитических = " + error3 + ";");
-
-        error4 = Math.abs(Arrays.stream(analyticValue).sum()) - Math.abs(Arrays.stream(Adams4Value).sum());
-        System.out.println("2) суммарная погрешность значений, найденных методом Адамса 4-го порядка, от аналитических = " + error4 + ".");
+        error4 = Math.abs(Arrays.stream(analyticValue).sum() - Arrays.stream(Adams4Value).sum());
 
         if (error3 > error4) {
             System.out.println("Получаем, что погрешность(3-ий порядок) - погрешность(4-ый порядок) = " + String.format("%.18f", error3 - error4) + ", т.е. более точным является метод Адамса четвертого порядка.");
