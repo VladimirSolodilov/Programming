@@ -71,7 +71,7 @@ public class Main {
     }
     public static void main(String[] args) {
         double error3, error4, h = 0.01; //погрешности измерений и шаг аргумента
-        int N = 51; //число итераций
+        int N = 51; //число итераций, IndexOutOfBounds Exception
 
         System.out.println("""
                 Решение дифференциального уравнения методом Адамса третьего и четвертого порядков.
@@ -99,10 +99,12 @@ public class Main {
         System.out.println("╚═══════════╨═══════╨═══════════════════════════╨═══════════════════════╨═══════════════════════════════╨═══════════════════════════╨════════════════════╝");
 
         System.out.println("Сравним значения, полученные методом Адамса третьего и четвертого порядков, с значениями, полученными аналитическим методом: ");
+
         error3 = Math.abs(Arrays.stream(analyticValue).sum() - Arrays.stream(Adams3Value).sum());
-    
         System.out.println("1) суммарная погрешность значений, найденных методом Адамса 3-го порядка, от аналитических = " + error3 + ";");
+
         error4 = Math.abs(Arrays.stream(analyticValue).sum() - Arrays.stream(Adams4Value).sum());
+        System.out.println("1) суммарная погрешность значений, найденных методом Адамса 4-го порядка, от аналитических = " + error4 + ";");
 
         if (error3 > error4) {
             System.out.println("Получаем, что погрешность(3-ий порядок) - погрешность(4-ый порядок) = " + String.format("%.18f", error3 - error4) + ", т.е. более точным является метод Адамса четвертого порядка.");

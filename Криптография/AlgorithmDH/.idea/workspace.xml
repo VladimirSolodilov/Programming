@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="80da794e-ad02-4303-b1f9-24225bffa07f" name="Changes" comment="" />
+    <list default="true" id="80da794e-ad02-4303-b1f9-24225bffa07f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../../Вычислительная математика/Курсовой проект/191365_с1_ИБС32_2022_6.docx" beforeDir="false" afterPath="$PROJECT_DIR$/../../Вычислительная математика/Курсовой проект/191365_с1_ИБС32_2022_6.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Вычислительная математика/Курсовой проект/CourseProject/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Вычислительная математика/Курсовой проект/CourseProject/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Вычислительная математика/Курсовой проект/CourseProject/out/production/CourseProject/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../Вычислительная математика/Курсовой проект/CourseProject/out/production/CourseProject/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Вычислительная математика/Курсовой проект/Презентация к курсовому проекту.pptx" beforeDir="false" afterPath="$PROJECT_DIR$/../../Вычислительная математика/Курсовой проект/Презентация к курсовому проекту.pptx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -36,6 +42,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/Github/Programming/Криптография/ElectronicSignature",
     "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
