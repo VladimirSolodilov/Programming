@@ -1,63 +1,42 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Main {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) {
-        System.out.println("Hello world!");
-        consistentFunction();
+        double[] startVector = {2, 3, 5};
+        double[] endVector = parallelFunction(startVector, 2, 3);
+
     }
 
-    public static double[] createPrimaryVector(int N) {
-        double[] a = new double[N];
-        for (int i = 0; i < a.length; i++) {
-            System.out.print("Enter a[" + i + "] = ");
-            a[i] = scanner.nextDouble();
+    public static double[] createStartVector(int N) {
+        double[] startVector = new double[N];
+        for (int i = 0; i < startVector.length; i++) {
+            System.out.println("Enter startVector[" + i + "] = ");
+            startVector[i] = scanner.nextDouble();
         }
-
-        return a;
+        return startVector;
     }
 
-    public static void run(Object data) {
-
-    }
-
-    public static void parallelFunction() {
-        System.out.print("Enter N: ");
-        int N = scanner.nextInt();
-
-        System.out.print("Enter M");
-        int M = scanner.nextInt();
-
-        System.out.print("Enter c: ");
-        double c = scanner.nextDouble();
-
-        double[] startVector = createPrimaryVector(N);
-
-
-
-
-    }
-
-    public static void consistentFunction() {
-        System.out.print("Enter N: ");
-        int N = scanner.nextInt();
-
-        double[] primaryVector = createPrimaryVector(N);
-
-        System.out.print("Enter c: ");
-        double c = scanner.nextDouble();
-
-        double[] endVector = new double[N];
-        System.out.print("End vector: ");
-        for (int i = 0; i < primaryVector.length; i++) {
-            endVector[i] = primaryVector[i] * c;
+    public static double[] sequentialFunction(double[] startVector, int C) {
+        double[] endVector = new double[startVector.length];
+        for (int i = 0; i < endVector.length; i++) {
+            endVector[i] = Math.pow(startVector[i], C);
             System.out.print(endVector[i] + " ");
         }
+        return endVector;
     }
 
-    public static void run() {
+    public static void parallelFunction(double[] startVector, int M, int C) {
+        double[] endVector = new double[startVector.length];
+
+        Runnable runnable = () -> {
+            
+        };
+
+        for (int i = 0; i < M; i++) {
+            Thread thread = new Thread(runnable);
+            thread.start();
+        }
     }
 }
