@@ -31,7 +31,7 @@ public class Main {
         double[] endVector = new double[startVector.length];
 
         Runnable runnable = () -> {
-            
+
         };
 
         for (int i = 0; i < M; i++) {
