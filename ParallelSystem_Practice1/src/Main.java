@@ -1,6 +1,8 @@
+import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Main {
+    static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) throws InterruptedException {
         System.out.println("\nSequential vector: \n");
 
@@ -9,6 +11,7 @@ public class Main {
 
             double[] endVectorSequential1 = sequentialFunction(createStartVector(i), 5);
             long time2 = System.nanoTime() - time1;
+
 
             System.out.println("1 thread " + i + " vector = " + time2 + " ns");
         }
@@ -51,6 +54,7 @@ public class Main {
     }
 
     public static double[] sequentialFunction(double[] startVector, int C) {
+        int K = 100;
         double[] endVector = new double[startVector.length];
 
         for (int i = 0; i < endVector.length; i++) {
@@ -65,12 +69,22 @@ public class Main {
         AtomicInteger tempValue = new AtomicInteger();
 
         Runnable runnable = () -> {
+            int K = 100;
+
             float temp = (float) endVector.length / M;
 
             for (int i = tempValue.get(); i < tempValue.get() + temp; i++) {
                 if (i == endVector.length) break;
                 else {
-                    endVector[i] = Math.pow(startVector[i], C);
+                    for (int j = 0; j < K; j++) {
+                        endVector[i] += Math.pow(startVector[i], C);
+                    }
+
+                    /*for (int j = 0; j < i; j++) {
+                        endVector[i] += Math.pow(startVector[i], C);
+                    }*/
+
+                    //endVector[i] = Math.pow(startVector[i], C);
                 }
             }
 
