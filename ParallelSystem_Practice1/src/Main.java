@@ -19,6 +19,7 @@ public class Main {
         for (int i = 10; i <= 100000; i = i * 10) {
             long time1 = System.nanoTime() / 1000;
 
+
             sequentialFunction(createStartVector(i), 5, K, taskValue);
             long time2 = System.nanoTime() / 1000 - time1;
 
@@ -49,7 +50,8 @@ public class Main {
             long time6 = System.nanoTime() / 1000 - time1 - time2 -time3 - time4 - time5;
             System.out.println("10 threads " + i + " vector = " + time6 + " us");
         }
-        System.exit(0);
+
+        parallelCircleFunction(createStartVector(100), 2, 5);
     }
 
     public static double[] createStartVector(int N) {
@@ -122,4 +124,68 @@ public class Main {
             }
         }
     }
+
+    public static void parallelCircleFunction(double[] startVector, int M, int C) {
+        double[] endVector = new double[startVector.length];
+        AtomicInteger tempValue1 = new AtomicInteger();
+        AtomicInteger tempValue2 = new AtomicInteger();
+        Object lock = new Object();
+        tempValue2.set(1);
+
+        Runnable runnable1 = () -> {
+            synchronized (lock) {
+                int j = 0;
+                int k = 0;
+                //System.out.println("Even Thread");
+                for (int i = tempValue1.get(); i < endVector.length; i++) {
+                    if (i % 2 == 0) {
+                        endVector[i] = Math.pow(startVector[i], C);
+                        //System.out.println("EndVector[" + i + "] = " + endVector[i]);
+                        j++;
+                    }
+                    k = i;
+                    if (j == endVector.length / M) break;
+                }
+                tempValue1.set(tempValue1.get() + k + 2);
+            }
+        };
+
+        Runnable runnable2 = () -> {
+            synchronized (lock) {
+                int j = 0;
+                int k = 0;
+                //System.out.println("Odd Thread");
+                for (int i = tempValue2.get(); i < endVector.length; i++) {
+                    if (i % 2 != 0) {
+                        endVector[i] = Math.pow(startVector[i], C);
+                        //System.out.println("EndVector[" + i + "] = " + endVector[i]);
+                        j++;
+                    }
+                    k = i;
+                    if (j == endVector.length / M) break;
+                }
+                tempValue2.set(tempValue2.get() + k + 2);
+            }
+        };
+
+        Thread[] threads = new Thread[M];
+
+        long time1 = System.nanoTime() / 1000;
+
+        synchronized (lock) {
+            for (int i = 0; i < threads.length; i++) {
+                if (i % 2 == 0) {
+                    threads[i] = new Thread(runnable1);
+                    threads[i].start();
+                } else {
+                    threads[i] = new Thread(runnable2);
+                    threads[i].start();
+                }
+            }
+        }
+
+        long time2 = System.nanoTime() / 1000 - time1;
+        System.out.println("Circle Parallel 100 vector 2 threads = " + time2 + " us");
+    }
+
 }
