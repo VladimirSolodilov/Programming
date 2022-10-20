@@ -31,7 +31,7 @@ public class Main {
             sequentialFunction(createStartVector(i), 5, K, taskValue);
             long time2 = System.nanoTime() / 1000 - time1;
 
-            System.out.println("1 поток " + i + " вектор = " + time2 + " us");
+            System.out.println("1 поток " + i + " вектор = " + time2 + " мкс");
         }
 
         System.out.print("\nПараллельная обработка по диапазону:");
