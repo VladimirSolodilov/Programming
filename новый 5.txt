@@ -1,0 +1,7 @@
+TCP Сonnect Scan (nmap -sT) 
+TCP SYN Scan (nmap -sS)
+UDP Scan (nmap -sU)
+TCP ACK Scan (nmap -sA)
+ТСР FIN Scan (nmap -sF)
+ТСР Xmax Tree Scan (nmap -sX)
+ТСР Null Scan (nmap -sN)
