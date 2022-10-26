@@ -1,7 +1,30 @@
-TCP Сonnect Scan (nmap -sT) 
-TCP SYN Scan (nmap -sS)
-UDP Scan (nmap -sU)
-TCP ACK Scan (nmap -sA)
-ТСР FIN Scan (nmap -sF)
-ТСР Xmax Tree Scan (nmap -sX)
-ТСР Null Scan (nmap -sN)
+Практическая раюота №1.
+
+Вариант 1.
+comp.win.com - > comp.linux.com
+1) Router1
+2) Firewall2
+3) Router2
+4) Router4
+5) Router3
+6) Firewall5
+7) Router6
+8) Firewall6
+
+Вариант 2.
+comp.linux.com - > comp.win.com
+1) Firewall6
+2) Router6
+3) Firewall4
+4) Router4
+5) Firewall1
+6) Router1
+
+Практическая раюота №2.
+1) TCP Сonnect Scan (nmap -sT) 
+2) TCP SYN Scan (nmap -sS)
+3) UDP Scan (nmap -sU)
+4) TCP ACK Scan (nmap -sA)
+5) ТСР FIN Scan (nmap -sF)
+6) ТСР Xmax Tree Scan (nmap -sX)
+7) ТСР Null Scan (nmap -sN)
