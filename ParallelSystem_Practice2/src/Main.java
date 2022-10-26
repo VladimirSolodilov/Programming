@@ -1,29 +1,49 @@
+import java.util.Scanner;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class Main {
+    static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws InterruptedException {
-        int N = 225;
-        int[] startArray = createStartArray(N);
-        int[] consistentArray = consistentAlgorithm(startArray, N);
+        while (true) {
+            System.out.println("Введите число для проверки: ");
+            int startValue = scanner.nextInt();
 
-        System.out.println("Последовательный алгоритм:");
-        for (int j : consistentArray) {
-            System.out.print(j + " ");
-        }
+            if (startValue == 0) break;
 
-        System.out.println("\n\nПараллельные алгоритмы:");
-        for (int i = 1; i <= 3; i++) {
-            long time1 = System.nanoTime() / 1000;
-            int[] modifiedArray1 = parallelAlgorithm(startArray, 2, i);
-            for (int j : modifiedArray1) {
-                System.out.print(j + " ");
+            int[] startArray = createStartArray(startValue);
+            int[] endArray = new int[0];
+
+            while (true) {
+                System.out.print("""
+                Выберите метод обработки:
+                1. Последовательный алгоритм
+                2. Параллельный алгоритм №1: декомпозиция по данным
+                3. Параллельный алгоритм №2: декомпозиция набора простых чисел
+                4. Параллельный алгоритм №4: последовательный перебор простых чисел
+                Введите соответствующее число:
+                """);
+                int chkValue = scanner.nextInt();
+                long time1 = System.nanoTime() / 1000;
+
+                if (chkValue == 0) break; else {
+                    switch (chkValue) {
+                        case 1 -> endArray = consistentAlgorithm(startArray, startArray.length);
+                        case 2, 3, 4 -> endArray = parallelAlgorithm(startArray, 2, chkValue - 1);
+                    }
+                }
+
+                for (int i = 0; i < endArray.length; i++) {
+                    if (endArray[i] == startValue) {
+                        System.out.println("Данное число - простое\n");
+                        break;
+                    }
+                    if (i == endArray.length - 1) System.out.println("Данное число - составное\n");
+                }
+
+                System.out.println("Время выполнения = " + (System.nanoTime() / 1000 - time1) + " мкс");
             }
-            long time2 = System.nanoTime() / 1000 - time1;
-            System.out.println("\nВремя = " + time2 + " мкс\n");
         }
-
-        System.exit(0);
     }
 
     public static int[] createStartArray(int N) {
@@ -36,7 +56,6 @@ public class Main {
 
     public static int[] convertArray(int[] startArray, int[] modifiedArray) {
         int[] tempArray = new int[modifiedArray.length];
-
         int j = 0;
         for (int i = 0; i < modifiedArray.length; i++) {
             if (modifiedArray[i] == 0) {
@@ -44,29 +63,23 @@ public class Main {
                 j++;
             }
         }
-
         int[] endArray = new int[j];
         System.arraycopy(tempArray, 0, endArray, 0, j);
-
         return endArray;
     }
 
     public static int[] consistentAlgorithm(int[] startArray, int N) {
         int[] sieveArray = new int[N];
-
         for (int i = 2; i <= (int) Math.round(Math.sqrt(N)); i++) {
             if (sieveArray[i - 2] == 1) continue;
-
             for (int j = 0; j < sieveArray.length; j++) {
                 if (sieveArray[j] == 1) continue;
-
                 if (startArray[j] == i) sieveArray[j] = 0;
                 else if ((startArray[j] % i) == 0) {
                     sieveArray[j] = 1;
                 } else sieveArray[j] = 0;
             }
         }
-
         return convertArray(startArray, sieveArray);
     }
 
@@ -76,16 +89,16 @@ public class Main {
         AtomicInteger atomicInteger2 = new AtomicInteger();
         Object lock = new Object();
 
-        int floor = (int) Math.round(Math.sqrt(startArray.length));
-        int[] basicArray = consistentAlgorithm(startArray, floor);
+        int round = (int) Math.round(Math.sqrt(startArray.length));
+        int[] basicArray = consistentAlgorithm(startArray, round);
         int[] modifiedArray = new int[startArray.length];
 
         atomicInteger.set(0);
-        atomicInteger1.set(floor - 2);
+        atomicInteger1.set(round - 2);
         atomicInteger2.set(0);
 
         Runnable task1 = () -> { //Декомпозиция по данным
-            int length = (startArray.length - (floor - 2)) / M;
+            int length = (int) Math.ceil((double)(startArray.length - (round - 2)) / M);
             for (int i = atomicInteger1.get(); i <= atomicInteger1.get() + length; i++) {
                 if (i >= startArray.length) break;
                 for (int k : basicArray) {
@@ -99,10 +112,12 @@ public class Main {
         };
 
         Runnable task2 = () -> { //Декомпозиция набора базовых простых чисел
-            int length = (basicArray.length) / M;
+            int length;
+            if (M > basicArray.length) length = 1;
+            else length = (basicArray.length) / M;
             for (int i = atomicInteger.get(); i <= atomicInteger.get() + length; i++) {
                 if (i >= basicArray.length) break;
-                for (int j = floor - 2; j < startArray.length; j++) {
+                for (int j = round - 2; j < startArray.length; j++) {
                     if (modifiedArray[j] == 1) continue;
                     if (startArray[j] % basicArray[i] == 0) {
                         modifiedArray[j] = 1;
@@ -139,13 +154,17 @@ public class Main {
             } else if (value == 3) {
                 threads[i] = new Thread(task3);
                 threads[i].start();
+
+                if (i == threads.length - 1) {
+                    i = 0;
+                }
+
                 if (atomicInteger2.get() == basicArray.length) break;
-                else if (i == threads.length - 1) i = 0;
             }
             threads[i].join();
         }
 
-        for (int i = 0; i <= (floor - 2); i++) {
+        for (int i = 0; i <= (round - 2); i++) {
             for (int k : basicArray) {
                 if (startArray[i] == k) {
                     modifiedArray[i] = 0;
