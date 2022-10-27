@@ -34,14 +34,15 @@ public class Main {
                 }
 
                 for (int i = 0; i < endArray.length; i++) {
+                    System.out.print(endArray[i] + " ");
                     if (endArray[i] == startValue) {
-                        System.out.println("Данное число - простое\n");
+                        System.out.println("\nДанное число - простое");
                         break;
                     }
-                    if (i == endArray.length - 1) System.out.println("Данное число - составное\n");
+                    if (i == endArray.length - 1) System.out.println("\nДанное число - составное");
                 }
 
-                System.out.println("Время выполнения = " + (System.nanoTime() / 1000 - time1) + " мкс");
+                System.out.println("Время выполнения = " + (System.nanoTime() / 1000 - time1) + " мкс\n");
             }
         }
     }
@@ -145,23 +146,22 @@ public class Main {
         Thread[] threads = new Thread[M];
 
         for (int i = 0; i < threads.length; i++) {
-            if (value == 1) {
-                threads[i] = new Thread(task1);
-                threads[i].start();
-            } else if (value == 2) {
-                threads[i] = new Thread(task2);
-                threads[i].start();
-            } else if (value == 3) {
-                threads[i] = new Thread(task3);
-                threads[i].start();
-
-                if (i == threads.length - 1) {
-                    i = 0;
+            switch (value) {
+                case 1: {
+                    threads[i] = new Thread(task1);
+                    threads[i].start();
                 }
-
-                if (atomicInteger2.get() == basicArray.length) break;
+                case 2: {
+                    threads[i] = new Thread(task2);
+                    threads[i].start();
+                }
+                case 3: {
+                    System.out.println("Thread " + i);
+                    threads[i] = new Thread(task3);
+                    threads[i].start();
+                    if (atomicInteger2.get() == basicArray.length) break;
+                }
             }
-            threads[i].join();
         }
 
         for (int i = 0; i <= (round - 2); i++) {
