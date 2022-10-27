@@ -8,7 +8,6 @@ public class Main {
         while (true) {
             System.out.println("Введите число для проверки: ");
             int startValue = scanner.nextInt();
-
             if (startValue == 0) break;
 
             int[] startArray = createStartArray(startValue);
@@ -18,9 +17,9 @@ public class Main {
                 System.out.print("""
                 Выберите метод обработки:
                 1. Последовательный алгоритм
-                2. Параллельный алгоритм №1: декомпозиция по данным
-                3. Параллельный алгоритм №2: декомпозиция набора простых чисел
-                4. Параллельный алгоритм №4: последовательный перебор простых чисел
+                2. Параллельный алгоритм: декомпозиция по данным
+                3. Параллельный алгоритм: декомпозиция набора простых чисел
+                4. Параллельный алгоритм: последовательный перебор простых чисел
                 Введите соответствующее число:
                 """);
                 int chkValue = scanner.nextInt();
@@ -147,19 +146,22 @@ public class Main {
 
         for (int i = 0; i < threads.length; i++) {
             switch (value) {
-                case 1: {
+                case 1 -> {
                     threads[i] = new Thread(task1);
                     threads[i].start();
+                    threads[i].join();
                 }
-                case 2: {
+                case 2 -> {
                     threads[i] = new Thread(task2);
                     threads[i].start();
+                    threads[i].join();
                 }
-                case 3: {
-                    System.out.println("Thread " + i);
+                case 3 -> {
                     threads[i] = new Thread(task3);
                     threads[i].start();
+
                     if (atomicInteger2.get() == basicArray.length) break;
+                    else if ((i + 1) == threads.length) i = 0;
                 }
             }
         }
