@@ -10,6 +10,9 @@ public class Main {
             int startValue = scanner.nextInt();
             if (startValue == 0) break;
 
+            System.out.println("Введите число потоков: ");
+            int M = scanner.nextInt();
+
             int[] startArray = createStartArray(startValue);
             int[] endArray = new int[0];
 
@@ -23,17 +26,18 @@ public class Main {
                 Введите соответствующее число:
                 """);
                 int chkValue = scanner.nextInt();
+
                 long time1 = System.nanoTime() / 1000;
 
                 if (chkValue == 0) break; else {
                     switch (chkValue) {
                         case 1 -> endArray = consistentAlgorithm(startArray, startArray.length);
-                        case 2, 3, 4 -> endArray = parallelAlgorithm(startArray, 2, chkValue - 1);
+                        case 2, 3, 4 -> endArray = parallelAlgorithm(startArray, M, chkValue - 1);
                     }
                 }
 
                 for (int i = 0; i < endArray.length; i++) {
-                    System.out.print(endArray[i] + " ");
+                    //System.out.print(endArray[i] + " ");
                     if (endArray[i] == startValue) {
                         System.out.println("\nДанное число - простое");
                         break;
