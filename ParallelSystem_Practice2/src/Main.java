@@ -37,7 +37,7 @@ public class Main {
                 }
 
                 for (int i = 0; i < endArray.length; i++) {
-                    //System.out.print(endArray[i] + " ");
+                    System.out.print(endArray[i] + " ");
                     if (endArray[i] == startValue) {
                         System.out.println("\nДанное число - простое");
                         break;
@@ -91,7 +91,6 @@ public class Main {
         AtomicInteger atomicInteger = new AtomicInteger();
         AtomicInteger atomicInteger1 = new AtomicInteger();
         AtomicInteger atomicInteger2 = new AtomicInteger();
-        Object lock = new Object();
 
         int round = (int) Math.round(Math.sqrt(startArray.length));
         int[] basicArray = consistentAlgorithm(startArray, round);
@@ -132,18 +131,16 @@ public class Main {
         };
 
         Runnable task3 = () -> { //Последовательный перебор
-            synchronized (lock) {
-                for (int i = atomicInteger2.get(); i <= atomicInteger2.get() + 1; i++) {
-                    if (i >= basicArray.length) break;
-                    else for (int j = 0; j < startArray.length; j++) {
-                        if (modifiedArray[j] == 1) continue;
-                        if (startArray[j] % basicArray[i] == 0) {
-                            modifiedArray[j] = 1;
-                        } else modifiedArray[j] = 0;
-                    }
+            for (int i = atomicInteger2.get(); i <= atomicInteger2.get() + 1; i++) {
+                if (i >= basicArray.length) break;
+                else for (int j = 0; j < startArray.length; j++) {
+                    if (modifiedArray[j] == 1) continue;
+                    if (startArray[j] % basicArray[i] == 0) {
+                        modifiedArray[j] = 1;
+                    } else modifiedArray[j] = 0;
                 }
-                atomicInteger2.set(atomicInteger2.get() + 1);
             }
+            atomicInteger2.set(atomicInteger2.get() + 1);
         };
 
         Thread[] threads = new Thread[M];
