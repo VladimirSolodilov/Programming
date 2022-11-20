@@ -8,7 +8,7 @@ public class IndexController {
     @GetMapping("/")
     public String indexPage(Model model) {
         model.addAttribute("title", "Банковская система");
-        return "index";
+        return "/index";
     }
 
 }
