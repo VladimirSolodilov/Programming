@@ -7,11 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 @SpringBootApplication
 public class BankingSystemApplication {
 
-    @GetMapping("/")
-    public String HelloWorld() {
-        return "Hello, world!";
-    }
-
     public static void main(String[] args) {
         SpringApplication.run(BankingSystemApplication.class, args);
     }
