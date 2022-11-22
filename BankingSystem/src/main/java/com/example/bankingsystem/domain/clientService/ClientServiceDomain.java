@@ -8,7 +8,6 @@ import java.util.List;
 
 public class ClientServiceDomain implements ClientService {
 
-
     @Autowired
     private ClientStorage clientStorage;
 
