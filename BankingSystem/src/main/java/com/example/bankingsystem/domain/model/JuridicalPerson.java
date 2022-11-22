@@ -2,6 +2,7 @@ package com.example.bankingsystem.domain.model;
 
 public class JuridicalPerson {
 
+    private Branch branch;
     private int juridicalPersonId;
     private int branchId;
     private int roleId;
@@ -14,7 +15,8 @@ public class JuridicalPerson {
 
     public JuridicalPerson() {}
 
-    public JuridicalPerson(int juridicalPersonId, int branchId, int roleId, String surname, String name, String patronymic, String juridicalPersonName, String password, int sum) {
+    public JuridicalPerson(Branch branch, int juridicalPersonId, int branchId, int roleId, String surname, String name, String patronymic, String juridicalPersonName, String password, int sum) {
+        this.branch = branch;
         this.juridicalPersonId = juridicalPersonId;
         this.branchId = branchId;
         this.roleId = roleId;
@@ -24,6 +26,14 @@ public class JuridicalPerson {
         this.juridicalPersonName = juridicalPersonName;
         this.password = password;
         this.sum = sum;
+    }
+
+    public Branch getBranch() {
+        return branch;
+    }
+
+    public void setBranch(Branch branch) {
+        this.branch = branch;
     }
 
     public int getJuridicalPersonId() {
