@@ -1,17 +1,17 @@
 package com.example.bankingsystem.domain.model;
 
-import lombok.Data;
+import java.util.Date;
 
 public class Payment {
     private Account account;
     private int paymentId;
     private int purposeId;
-    private Data data;
+    private Date data;
     private int sum;
 
     public Payment() {}
 
-    public Payment(Account account, int paymentId, int purposeId, Data data, int sum) {
+    public Payment(Account account, int paymentId, int purposeId, Date data, int sum) {
         this.account = account;
         this.paymentId = paymentId;
         this.purposeId = purposeId;
@@ -43,11 +43,11 @@ public class Payment {
         this.purposeId = purposeId;
     }
 
-    public Data getData() {
+    public Date getData() {
         return data;
     }
 
-    public void setData(Data data) {
+    public void setData(Date data) {
         this.data = data;
     }
 

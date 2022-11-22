@@ -1,8 +1,8 @@
 package com.example.bankingsystem.web.controller;
 
 
+import com.example.bankingsystem.domain.clientService.ClientService;
 import com.example.bankingsystem.web.form.ClientRegistrationForm;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -10,7 +10,6 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class ClientController {
 
-    @Autowired
     private ClientService clientService;
 
     @GetMapping("/client/registration")

@@ -5,11 +5,11 @@ public class Staff {
     private Bank bank;
     private int staffId;
     private String name;
-    private String roleId;
+    private int roleId;
 
     public Staff() {}
 
-    public Staff(Bank bank, int staffId, String name, String roleId) {
+    public Staff(Bank bank, int staffId, String name, int roleId) {
         this.bank = bank;
         this.staffId = staffId;
         this.name = name;
@@ -40,11 +40,11 @@ public class Staff {
         this.name = name;
     }
 
-    public String getRoleId() {
+    public int getRoleId() {
         return roleId;
     }
 
-    public void setRoleId(String roleId) {
+    public void setRoleId(int roleId) {
         this.roleId = roleId;
     }
 }
