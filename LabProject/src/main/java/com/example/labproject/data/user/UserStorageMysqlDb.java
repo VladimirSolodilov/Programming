@@ -40,8 +40,8 @@ public class UserStorageMysqlDb implements UserStorage {
     public int setUser(String mailName, String login, String firstName, String lastName) {
         int userList;
 
-        String sqlQuery1 = new String("SELECT mail_id from mail where mail.mail_name = ?");
-        String sqlQuery2 = new String("insert into user values (?, ?, ?, ?)");
+        String sqlQuery1 = "SELECT mail_id from mail where mail.mail_name = ?";
+        String sqlQuery2 = "insert into user values (?, ?, ?, ?)";
         String mailId = (String) jdbcTemplate.queryForObject(sqlQuery1, new Object[] { mailName }, String.class);
         userList = jdbcTemplate.update(sqlQuery2.toString(), mailId, login, firstName, lastName);
 

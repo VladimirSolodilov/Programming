@@ -1,4 +1,4 @@
-package com.example.bankingsystem.web.spring;
+package com.example.bankingsystem.spring;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;

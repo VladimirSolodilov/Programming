@@ -1,8 +1,6 @@
 package com.example.labproject.data.user;
 
-import com.example.labproject.domain.model.Mail;
 import com.example.labproject.domain.model.User;
-import com.example.labproject.web.form.UserRegistrationForm;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
