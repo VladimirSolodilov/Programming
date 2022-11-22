@@ -3,9 +3,11 @@ package com.example.bankingsystem.domain.clientService;
 import com.example.bankingsystem.data.client.ClientStorage;
 import com.example.bankingsystem.domain.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class ClientServiceDomain implements ClientService {
 
     @Autowired

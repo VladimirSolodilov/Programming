@@ -1,12 +1,9 @@
 package com.example.labproject.data.user;
 
-import com.example.labproject.data.mail.MailRowMapper;
-import com.example.labproject.domain.model.Mail;
 import com.example.labproject.domain.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;

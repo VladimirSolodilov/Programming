@@ -3,9 +3,14 @@ package com.example.bankingsystem.data.client;
 import com.example.bankingsystem.domain.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+
+@Transactional
+@Repository
 public class ClientStorageDB implements ClientStorage {
 
     @Autowired
