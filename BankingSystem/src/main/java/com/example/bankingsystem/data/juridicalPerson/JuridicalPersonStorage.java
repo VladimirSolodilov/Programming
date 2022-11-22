@@ -1,5 +1,9 @@
 package com.example.bankingsystem.data.juridicalPerson;
 
+import com.example.bankingsystem.domain.model.JuridicalPerson;
+
+import java.util.List;
+
 public interface JuridicalPersonStorage {
 
     List<JuridicalPerson> getAllPerson(String pattern);

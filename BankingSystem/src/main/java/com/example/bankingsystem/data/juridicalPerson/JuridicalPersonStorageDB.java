@@ -1,6 +1,15 @@
 package com.example.bankingsystem.data.juridicalPerson;
 
+import com.example.bankingsystem.domain.model.JuridicalPerson;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+
+import java.util.List;
+
 public class JuridicalPersonStorageDB implements JuridicalPersonStorage {
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     @Override
     public List<JuridicalPerson> getAllPerson(String pattern) {

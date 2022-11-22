@@ -1,5 +1,6 @@
 package com.example.bankingsystem.data.juridicalPerson;
 
+import com.example.bankingsystem.domain.model.JuridicalPerson;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
@@ -8,7 +9,7 @@ import java.sql.SQLException;
 public class JuridicalPersonRowMapper implements RowMapper<JuridicalPerson> {
 
     @Override
-    public JuridicalPerson mapRow(ResultSet rs, int rowNum) throws SQLException {
+    public JuridicalPerson mapRow(ResultSet resultSet, int rowNum) throws SQLException {
         JuridicalPerson personModel = new JuridicalPerson();
 
         personModel.setJuridicalPersonId(resultSet.getInt("juridicalPerson_id"));
