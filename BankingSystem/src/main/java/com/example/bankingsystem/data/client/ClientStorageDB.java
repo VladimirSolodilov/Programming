@@ -32,7 +32,7 @@ public class ClientStorageDB implements ClientStorage {
     }
 
     @Override
-    public int setClient(int clientId, int branchId, int roleId, String surname, String name, String patronymic, String clientName, String password, int sum) {
+    public int setClient(int branchId, int roleId, String surname, String name, String patronymic, String clientName, String password, int sum) {
         String sqlQuery = "INSERT into Client VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         return jdbcTemplate.update(sqlQuery, branchId, roleId, surname, name, patronymic, clientName, password, sum);
     }

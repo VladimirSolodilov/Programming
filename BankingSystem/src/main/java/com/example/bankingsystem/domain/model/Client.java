@@ -17,13 +17,14 @@ public class Client {
     private String patronymic;
     private String clientName;
     private String password;
+    private String passwordConfirm;
     private int sum;
 
     private Set<Role> roles;
 
     public Client() {}
 
-    public Client(Branch branch, int clientId, int branchId, int roleId, String surname, String name, String patronymic, String clientName, String password, int sum) {
+    public Client(Branch branch, int clientId, int branchId, int roleId, String surname, String name, String patronymic, String clientName, String password, String passwordConfirm, int sum) {
         this.branch = branch;
         this.clientId = clientId;
         this.branchId = branchId;
@@ -33,6 +34,7 @@ public class Client {
         this.patronymic = patronymic;
         this.clientName = clientName;
         this.password = password;
+        this.passwordConfirm = passwordConfirm;
         this.sum = sum;
     }
 
@@ -122,5 +124,31 @@ public class Client {
 
     public void setSum(int sum) {
         this.sum = sum;
+    }
+
+    public String getPasswordConfirm() {
+        return passwordConfirm;
+    }
+
+    public void setPasswordConfirm(String passwordConfirm) {
+        this.passwordConfirm = passwordConfirm;
+    }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "branch=" + branch +
+                ", clientId=" + clientId +
+                ", branchId=" + branchId +
+                ", roleId=" + roleId +
+                ", surname='" + surname + '\'' +
+                ", name='" + name + '\'' +
+                ", patronymic='" + patronymic + '\'' +
+                ", clientName='" + clientName + '\'' +
+                ", password='" + password + '\'' +
+                ", passwordConfirm='" + passwordConfirm + '\'' +
+                ", sum=" + sum +
+                ", roles=" + roles +
+                '}';
     }
 }

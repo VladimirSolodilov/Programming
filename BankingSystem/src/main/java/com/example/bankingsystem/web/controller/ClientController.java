@@ -15,9 +15,6 @@ public class ClientController {
 
     @Autowired
     private ClientService clientService;
-
-    private final Client client = new Client();
-
     @GetMapping("/main/client/information")
     public String informationClient(Model model) {
         model.addAttribute("client", clientService.getClientList());
@@ -32,12 +29,9 @@ public class ClientController {
         return modelAndView;
     }
 
-    @PostMapping("/client/registration")
-    public String clientRegistrationPost(Model model, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            return "/client/registration";
-        }
-        if (!client.getPassword().equals(client.getPassword())){
+    /*@PostMapping("/client/registration")
+    public String clientRegistrationPost(Model model, Client client) {
+        /*if (!client.getPassword().equals(client.getPasswordConfirm())){
             model.addAttribute("passwordError", "Пароли не совпадают");
             return "/client/registration";
         }
@@ -45,10 +39,10 @@ public class ClientController {
             model.addAttribute("usernameError", "Пользователь с таким именем уже существует");
             return "/client/registration";
         }
-        model.addAttribute(clientService.setClientList(client.getClientId(), client.getBranchId(), client.getRoleId(), client.getSurname(),
-                client.getName(), client.getPatronymic(), client.getClientName(), client.getPassword(), client.getSum()));
-        return informationClient(model);
-    }
+        //model.addAttribute(clientService.setClientList(1, 2, client.getSurname(),
+                //client.getName(), client.getPatronymic(), client.getClientName(), client.getPassword(), 0));
+        //return "redirect:/";
+    }*/
 
     @GetMapping("/client/removal")
     public ModelAndView clientRemoval(ModelAndView modelAndView) {
@@ -58,7 +52,7 @@ public class ClientController {
     }
 
     @PostMapping("/client/removal")
-    public String deleteMailPost(Model model) {
+    public String deleteMailPost(Model model, Client client) {
         model.addAttribute(clientService.deleteClientList(client.getSurname()));
         return informationClient(model);
     }

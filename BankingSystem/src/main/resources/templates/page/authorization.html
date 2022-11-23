@@ -8,24 +8,33 @@
 <body>
     <div class="container">
         <h1 class="h1">Авторизация пользователя</h1>
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <form th:action="@{/page/authorization}" method="post" th:object="${authorization}">
+            <div th:if="${param.error}">
+                <div class="alert alert-danger">Invalid username or
+                    password.</div>
+            </div>
             <p>
                 <label for="login">Логин: </label>
-                <input type="text" id="login" name="Login" required minlength="5" maxlength="32">
+                <input type="text" id="login" name="Login">
             </p>
             <p>
                 <label for="password">Пароль: </label>
-                <input type="password" id="password" name="password" required minlength="5">
+                <input type="password" id="password" name="password">
             </p>
+            <input type="hidden" name="${_csrf.parameterName}"
+                   value="${_csrf.token}"/>
             <div class="form-group">
                 <input type="submit" name="registration-submit" id="registration-submit"
                        class="stdBtn" value="Авторизоваться">
             </div>
         </form>
         <p>Ещё нет аккаунта?
-            <a href="" target="_self">Регистрация физического лица</a>.
-            <a href="" target="_self">Регистрация юридического лица</a>.
+            <a href="/client/registration" target="_self">Регистрация физического лица</a>
+            <a href="/person/registration" target="_self">Регистрация юридического лица</a>
         </p>
+        <a href="/" target="_self">Вернуться на главную страницу</a>
     </div>
+
 </body>
 </html>

@@ -1,5 +1,6 @@
 package com.example.labproject.web.controller;
 
+import com.example.labproject.domain.model.User;
 import com.example.labproject.domain.user_service.UserService;
 import com.example.labproject.web.form.UserRegistrationForm;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +21,7 @@ public class UserController {
 
     @GetMapping("/user/registration")
     public ModelAndView registrationUser(ModelAndView modelAndView) {
-        modelAndView.addObject("registrationForm", new UserRegistrationForm());
+        modelAndView.addObject("registrationForm", new User());
         modelAndView.setViewName("/user/registration");
         return modelAndView;
     }
