@@ -51,7 +51,7 @@ public class ClientServiceDomain implements ClientService {
             return false;
         }
 
-        client.setRoles(Collections.singleton(new Role(1, "USER")));
+        client.setRoles(Collections.singleton(new Role(2, "CLIENT")));
         client.setPassword(bCryptPasswordEncoder.encode(client.getPassword()));
         clientStorage.save(client);
         return true;

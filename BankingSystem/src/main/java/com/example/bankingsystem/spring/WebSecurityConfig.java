@@ -25,32 +25,35 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     }
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        /*http
-                .csrf().disable()
-        .authorizeRequests()
+        http
+                .authorizeRequests()
                 //Доступ только для не зарегистрированных пользователей
-                .antMatchers("/registration").not().fullyAuthenticated()
+                .antMatchers("/client/registration/**").not().fullyAuthenticated()
+                .antMatchers("/person/registration/**").not().fullyAuthenticated()
+
                 //Доступ для пользователей с ролью Администратор, Клиент, Юридическое лицо
                 .antMatchers("/admin/**").hasRole("ADMIN")
                 .antMatchers("/client/**").hasRole("CLIENT")
-                .antMatchers("/juridicalPerson").hasRole("JURIDICALPERSON")
+                .antMatchers("/person/**").hasRole("JURIDICAL_PERSON")
+
                 //Доступ для всех
-                .antMatchers("/").permitAll()
+                .antMatchers("/**").permitAll()
+                .antMatchers("/css/**").permitAll()
                 .anyRequest().authenticated()
 
                 .and()
                     .formLogin()
-                    .loginPage("/login")
-                    .defaultSuccessUrl("/")
+                    .loginPage("/page/authorization")
+                    .defaultSuccessUrl("/page/indexAuthorized")
+                    .failureUrl("/page/login-error.html")
                 .and()
                     .logout()
                     .permitAll()
-                    .logoutSuccessUrl("/");*/
+                    .logoutSuccessUrl("/");
 
-
-        http.authorizeRequests()
+        /*http.authorizeRequests()
                 .antMatchers("/**")
                 .permitAll()
-                .anyRequest().authenticated();
+                .anyRequest().authenticated();*/
     }
 }
