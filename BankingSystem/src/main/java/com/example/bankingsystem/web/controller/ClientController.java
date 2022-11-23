@@ -5,6 +5,7 @@ import com.example.bankingsystem.domain.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -15,7 +16,7 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
-    private Client client = new Client();
+    private final Client client = new Client();
 
     @GetMapping("/main/client/information")
     public String informationClient(Model model) {
@@ -26,16 +27,26 @@ public class ClientController {
 
     @GetMapping("/client/registration")
     public ModelAndView clientRegistration(ModelAndView modelAndView) {
-        modelAndView.addObject("registration", new Client());
+        modelAndView.addObject("clientRegistration", new Client());
         modelAndView.setViewName("/client/registration");
         return modelAndView;
     }
 
     @PostMapping("/client/registration")
-    public String clientRegistrationPost(Model model) {
+    public String clientRegistrationPost(Model model, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "/client/registration";
+        }
+        if (!client.getPassword().equals(client.getPassword())){
+            model.addAttribute("passwordError", "Пароли не совпадают");
+            return "/client/registration";
+        }
+        if (!clientService.saveClient(client)) {
+            model.addAttribute("usernameError", "Пользователь с таким именем уже существует");
+            return "/client/registration";
+        }
         model.addAttribute(clientService.setClientList(client.getClientId(), client.getBranchId(), client.getRoleId(), client.getSurname(),
                 client.getName(), client.getPatronymic(), client.getClientName(), client.getPassword(), client.getSum()));
-
         return informationClient(model);
     }
 

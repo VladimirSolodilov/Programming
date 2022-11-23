@@ -33,4 +33,9 @@ public class JuridicalPersonServiceDomain implements JuridicalPersonService {
     public int deletePersonList(String surname) {
         return juridicalPersonStorage.deleteJuridicalPerson(surname);
     }
+
+    @Override
+    public boolean saveClient(JuridicalPerson juridicalPerson) {
+        return false;
+    }
 }

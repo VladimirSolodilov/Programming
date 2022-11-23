@@ -7,9 +7,11 @@ import java.util.List;
 public interface ClientService {
 
     List<Client> getClientList();
-    List<Client> getUserBySurnameLike(String surname);
+    List<Client> getUserByClientName(String clientName);
 
     int setClientList(int clientId, int branchId, int roleId, String surname, String name, String patronymic, String clientName, String password, int sum);
     int deleteClientList(String surname);
 
+
+    boolean saveClient(Client client);
 }

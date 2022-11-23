@@ -7,40 +7,40 @@
 </head>
 <body>
     <h1 class="h1">Регистрация юридического лица</h1>
-    <form th:action="@{/person/registration}" method="post" th:object="${registration}">
+    <form th:action="@{/person/registration}" method="post" th:object="${personRegistration}">
         <div>
             <label>Фамилия владельца компании: </label>
-            <input type="text" th:field="*{surname}" required>&nbsp;<span th:errors="*{surname}"></span>
+            <label>
+                <input type="text" th:field="*{surname}" required>
+            </label>&nbsp;<span th:errors="*{surname}"></span>
         </div>
 
         <div>
             <label>Имя владельца компании: </label>
-            <input type="text" th:field="*{name}" required>&nbsp;<span th:errors="*{name}"></span>
+            <label>
+                <input type="text" th:field="*{name}" required>
+            </label>&nbsp;<span th:errors="*{name}"></span>
         </div>
 
         <div>
             <label>Отчество владельца компании: </label>
-            <input type="text" th:field="*{patronymic}" required>&nbsp;<span th:errors="*{patronymic}"></span>
-        </div>
-
-        <div>
-            <label>Название компании: </label>
-            <input type="text" th:field="*{companyName}" required>&nbsp;<span th:errors="*{companyName}"></span>
+            <label>
+                <input type="text" th:field="*{patronymic}" required>
+            </label>&nbsp;<span th:errors="*{patronymic}"></span>
         </div>
 
         <div>
             <label>Логин: </label>
-            <input type="text" th:field="*{clientName}" required>&nbsp;<span th:errors="*{clientName}"></span>
+            <label>
+                <input type="text" th:field="*{juridicalPersonName}" required>
+            </label>&nbsp;<span th:errors="*{juridicalPersonName}"></span>
         </div>
 
         <div>
             <label>Пароль: </label>
-            <input type="password" th:field="*{password}" required>&nbsp;<span th:errors="*{password}"></span>
-        </div>
-
-        <div>
-            <label>Повторите пароль: </label>
-            <input type="password" th:field="*{password}" required>&nbsp;<span th:errors="*{password}"></span>
+            <label>
+                <input type="password" th:field="*{password}" required>
+            </label>&nbsp;<span th:errors="*{password}"></span>
         </div>
 
         <div class="form-group">

@@ -11,4 +11,7 @@ public interface ClientStorage {
     int deleteClient (String surname);
 
 
+    void save(Client client);
+
+    Object findById(int clientId);
 }

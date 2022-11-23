@@ -44,4 +44,14 @@ public class AdminController {
         model.addAttribute(juridicalPersonService.deletePersonList(juridicalPerson.getSurname()));
         return personList((model));
     }
+
+    @PostMapping("/admin")
+    public String  deleteUser(int userId, String action, Model model) {
+        if (action.equals("delete")){
+            //clientService.deleteClientList(userId);
+        }
+        return "redirect:/admin";
+    }
+
+
 }

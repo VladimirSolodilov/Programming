@@ -1,26 +1,36 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title th:text="${title}">Главная страница</title>
     <link href="/css/index.css" rel="stylesheet"/>
 </head>
 <body>
-<div>
-    <h1 class="h1">Банковские операции</h1>
+    <div>
+        <h1 class="h1">Банковские операции</h1>
 
-    <ul class="rounded" id="client">
-        <li><a>Регистрация</a>
-            <ul>
-                <li><a th:href="@{/client/registration}">Регистрация физического лица</a>
-                <li><a th:href="@{/person/registration}">Регистрация юридического лица</a>
-            </ul>
-        <li><a>Авторизация</a>
-            <ul>
-                <li><a th:href="@{/page/authorization}">Авторизация физического лица</a>
-                <li><a th:href="@{/page/authorization}">Авторизация юридического лица</a>
-            </ul>
-    </ul>
-</div>
+        <div sec:authorize="isAuthenticated()">
+            This content is only shown to authenticated users.
+        </div>
+        <div sec:authorize="hasRole('ADMIN')">
+            This content is only shown to administrators.
+        </div>
+        <div sec:authorize="hasRole('CLIENT')">
+            This content is only shown to users.
+        </div>
+
+        <ul class="rounded" id="client">
+            <li><a>Регистрация</a>
+                <ul>
+                    <li><a th:href="@{/client/registration}">Регистрация физического лица</a>
+                    <li><a th:href="@{/person/registration}">Регистрация юридического лица</a>
+                </ul>
+            <li><a>Авторизация</a>
+                <ul>
+                    <li><a th:href="@{/page/authorization}">Авторизация физического лица</a>
+                    <li><a th:href="@{/page/authorization}">Авторизация юридического лица</a>
+                </ul>
+        </ul>
+    </div>
 </body>
 </html>

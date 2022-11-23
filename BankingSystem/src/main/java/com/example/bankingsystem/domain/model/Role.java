@@ -1,17 +1,31 @@
 package com.example.bankingsystem.domain.model;
 
-public class Role {
+import org.springframework.security.core.GrantedAuthority;
+
+import java.util.Set;
+
+
+public class Role implements GrantedAuthority {
 
     private int roleId;
     private String name;
+    private Set<Client> clients;
+    private Set<JuridicalPerson> juridicalPersons;
 
-    public Role(int roleId, String name) {
+    public Role() {
+    }
+
+    public Role(int roleId) {
         this.roleId = roleId;
-        this.name = name;
     }
 
     public int getRoleId() {
         return roleId;
+    }
+
+    public Role(int roleId, String name) {
+        this.roleId = roleId;
+        this.name = name;
     }
 
     public void setRoleId(int roleId) {
@@ -24,5 +38,26 @@ public class Role {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(Set<Client> clients) {
+        this.clients = clients;
+    }
+
+    public Set<JuridicalPerson> getJuridicalPersons() {
+        return juridicalPersons;
+    }
+
+    public void setJuridicalPersons(Set<JuridicalPerson> juridicalPersons) {
+        this.juridicalPersons = juridicalPersons;
+    }
+
+    @Override
+    public String getAuthority() {
+        return getName();
     }
 }

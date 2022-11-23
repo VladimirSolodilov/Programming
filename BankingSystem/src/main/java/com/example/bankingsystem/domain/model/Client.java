@@ -3,6 +3,8 @@ package com.example.bankingsystem.domain.model;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import java.util.Set;
+
 public class Client {
 
     private Branch branch;
@@ -17,6 +19,8 @@ public class Client {
     private String password;
     private int sum;
 
+    private Set<Role> roles;
+
     public Client() {}
 
     public Client(Branch branch, int clientId, int branchId, int roleId, String surname, String name, String patronymic, String clientName, String password, int sum) {
@@ -30,6 +34,14 @@ public class Client {
         this.clientName = clientName;
         this.password = password;
         this.sum = sum;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
 
     public Branch getBranch() {

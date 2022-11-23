@@ -12,4 +12,5 @@ public interface JuridicalPersonService {
     int deletePersonList(String surname);
 
 
+    boolean saveClient(JuridicalPerson juridicalPerson);
 }
