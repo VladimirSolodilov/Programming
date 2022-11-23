@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Главная страница</title>
+    <link href="/css/index.css" rel="stylesheet"/>
+</head>
+<body>
+    <div>
+        <h1 class="h1">Банковские операции</h1>
+        <ul class="rounded">
+            <li><a th:href="@{/static}">Личный кабинет</a>
+            <li><a th:href="@{/static}">Платежи</a>
+            <li><a th:href="@{/static}">Переводы</a>
+        </ul>
+    </div>
+</body>
+</html>

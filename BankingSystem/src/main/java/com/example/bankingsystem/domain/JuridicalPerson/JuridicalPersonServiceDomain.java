@@ -1,4 +1,4 @@
-package com.example.bankingsystem.domain.JuridicalPersonService;
+package com.example.bankingsystem.domain.JuridicalPerson;
 
 import com.example.bankingsystem.data.juridicalPerson.JuridicalPersonStorage;
 import com.example.bankingsystem.domain.model.JuridicalPerson;
@@ -26,7 +26,7 @@ public class JuridicalPersonServiceDomain implements JuridicalPersonService {
 
     @Override
     public int setPersonList(int juridicalPersonId, int branchId, int roleId, String surname, String name, String patronymic, String clientName, String password, int sum) {
-        return juridicalPersonStorage.setJuridicalPerson(juridicalPersonId, branchId, roleId, surname, name, patronymic, clientName, password, sum)
+        return juridicalPersonStorage.setJuridicalPerson(juridicalPersonId, branchId, roleId, surname, name, patronymic, clientName, password, sum);
     }
 
     @Override

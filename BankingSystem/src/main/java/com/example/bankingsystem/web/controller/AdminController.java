@@ -1,7 +1,7 @@
 package com.example.bankingsystem.web.controller;
 
-import com.example.bankingsystem.domain.JuridicalPersonService.JuridicalPersonService;
-import com.example.bankingsystem.domain.clientService.ClientService;
+import com.example.bankingsystem.domain.JuridicalPerson.JuridicalPersonService;
+import com.example.bankingsystem.domain.client.ClientService;
 import com.example.bankingsystem.domain.model.Client;
 import com.example.bankingsystem.domain.model.JuridicalPerson;
 import org.springframework.beans.factory.annotation.Autowired;

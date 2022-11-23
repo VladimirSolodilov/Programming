@@ -1,4 +1,4 @@
-package com.example.bankingsystem.domain.JuridicalPersonService;
+package com.example.bankingsystem.domain.JuridicalPerson;
 
 import com.example.bankingsystem.domain.model.JuridicalPerson;
 

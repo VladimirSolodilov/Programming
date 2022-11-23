@@ -1,4 +1,4 @@
-package com.example.bankingsystem.domain.clientService;
+package com.example.bankingsystem.domain.client;
 
 import com.example.bankingsystem.domain.model.Client;
 

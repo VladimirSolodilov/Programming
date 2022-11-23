@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${title}">Главная страница</title>
+    <link href="/css/index.css" rel="stylesheet"/>
+</head>
+<body>
+<div>
+    <h1 class="h1">Банковские операции</h1>
+
+    <ul class="rounded" id="client">
+        <li><a>Регистрация</a>
+            <ul>
+                <li><a th:href="@{/client/registration}">Регистрация физического лица</a>
+                <li><a th:href="@{/person/registration}">Регистрация юридического лица</a>
+            </ul>
+        <li><a>Авторизация</a>
+            <ul>
+                <li><a th:href="@{/page/authorization}">Авторизация физического лица</a>
+                <li><a th:href="@{/page/authorization}">Авторизация юридического лица</a>
+            </ul>
+    </ul>
+</div>
+</body>
+</html>

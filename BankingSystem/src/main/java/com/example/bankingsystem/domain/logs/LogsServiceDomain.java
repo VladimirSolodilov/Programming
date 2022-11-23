@@ -12,6 +12,6 @@ public class LogsServiceDomain implements LogsService {
 
     @Override
     public int setLogs() {
-        return logsStorage.setLog();
+        return 0; //logsStorage.setLog();
     }
 }

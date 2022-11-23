@@ -1,6 +1,6 @@
 package com.example.bankingsystem.web.controller;
 
-import com.example.bankingsystem.domain.clientService.ClientService;
+import com.example.bankingsystem.domain.client.ClientService;
 import com.example.bankingsystem.domain.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,23 +15,23 @@ public class ClientController {
     @Autowired
     private ClientService clientService;
 
-    private final Client client = new Client();
+    private Client client = new Client();
 
-    @GetMapping("/information")
+    @GetMapping("/main/client/information")
     public String informationClient(Model model) {
         model.addAttribute("client", clientService.getClientList());
         model.addAttribute("title", "Личный кабинет клиента");
-        return "/information";
+        return "/client/information";
     }
 
-    @GetMapping("/registration")
+    @GetMapping("/client/registration")
     public ModelAndView clientRegistration(ModelAndView modelAndView) {
         modelAndView.addObject("registration", new Client());
-        modelAndView.setViewName("/registration");
+        modelAndView.setViewName("/client/registration");
         return modelAndView;
     }
 
-    @PostMapping("/registration")
+    @PostMapping("/client/registration")
     public String clientRegistrationPost(Model model) {
         model.addAttribute(clientService.setClientList(client.getClientId(), client.getBranchId(), client.getRoleId(), client.getSurname(),
                 client.getName(), client.getPatronymic(), client.getClientName(), client.getPassword(), client.getSum()));
@@ -39,14 +39,14 @@ public class ClientController {
         return informationClient(model);
     }
 
-    @GetMapping("/removal")
+    @GetMapping("/client/removal")
     public ModelAndView clientRemoval(ModelAndView modelAndView) {
         modelAndView.addObject("removal", new Client());
-        modelAndView.setViewName("/removal");
+        modelAndView.setViewName("/client/removal");
         return modelAndView;
     }
 
-    @PostMapping("/removal")
+    @PostMapping("/client/removal")
     public String deleteMailPost(Model model) {
         model.addAttribute(clientService.deleteClientList(client.getSurname()));
         return informationClient(model);

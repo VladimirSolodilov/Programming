@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация физического лица</title>
+    <link href="/css/form.css" rel="stylesheet"/>
+</head>
+<body>
+    <h1 class="h1">Регистрация физического лица</h1>
+    <form th:action="@{/client/registration}" method="post" th:object="${registration}">
+        <div>
+            <label>Фамилия: </label>
+            <input type="text" th:field="*{surname}" required>&nbsp;<span th:errors="*{surname}"></span>
+        </div>
+
+        <div>
+            <label>Имя: </label>
+            <input type="text" th:field="*{name}" required>&nbsp;<span th:errors="*{name}"></span>
+        </div>
+
+        <div>
+            <label>Отчество: </label>
+            <input type="text" th:field="*{patronymic}" required>&nbsp;<span th:errors="*{patronymic}"></span>
+        </div>
+
+        <div>
+            <label>Логин: </label>
+            <input type="text" th:field="*{clientName}" required>&nbsp;<span th:errors="*{clientName}"></span>
+        </div>
+
+        <div>
+            <label>Пароль: </label>
+            <input type="password" th:field="*{password}" required>&nbsp;<span th:errors="*{password}"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" name="registration-submit" id="registration-submit"
+                   class="stdBtn" value="Зарегистрировать пользователя">
+        </div>
+    </form>
+</body>
+</html>

@@ -1,10 +1,8 @@
 package com.example.bankingsystem.spring;
 
-import com.example.bankingsystem.domain.JuridicalPersonService.JuridicalPersonService;
-import com.example.bankingsystem.domain.clientService.ClientService;
-import com.example.bankingsystem.domain.model.JuridicalPerson;
+import com.example.bankingsystem.domain.JuridicalPerson.JuridicalPersonService;
+import com.example.bankingsystem.domain.client.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;

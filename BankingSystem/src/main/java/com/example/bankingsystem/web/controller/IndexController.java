@@ -8,9 +8,19 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class IndexController {
 
     @GetMapping("/")
-    public String indexPage(Model model) {
-        model.addAttribute("title", "Банковская система");
-        return "/index";
+    public String indexPageUnauthorized(Model model) {
+        model.addAttribute("title", "Банковская система (неавторизованный пользователь)");
+        return "/page/indexUnauthorized";
     }
+
+    @GetMapping("/main")
+    public String indexPageAuthorized(Model model) {
+        model.addAttribute("title", "Банковская система (авторизованный пользователь)");
+        return "/page/indexAuthorized";
+    }
+
+
+
+
 
 }
