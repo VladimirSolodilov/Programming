@@ -22,7 +22,7 @@ public class IndexController {
     }
 
 
-    @RequestMapping(value = "/page/authorization", method = RequestMethod.GET)
+    @RequestMapping(value = "/page/authorization", method = {RequestMethod.GET, RequestMethod.POST})
     public ModelAndView loginPage() {
         return new ModelAndView("/page/authorization");
     }
