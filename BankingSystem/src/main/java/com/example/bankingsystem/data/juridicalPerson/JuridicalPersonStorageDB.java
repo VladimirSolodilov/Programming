@@ -3,9 +3,13 @@ package com.example.bankingsystem.data.juridicalPerson;
 import com.example.bankingsystem.domain.model.JuridicalPerson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+@Repository
+@Transactional
 public class JuridicalPersonStorageDB implements JuridicalPersonStorage {
 
     @Autowired

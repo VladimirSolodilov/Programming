@@ -11,9 +11,10 @@ public class PaymentRowMapper implements RowMapper<Payment> {
     public Payment mapRow(ResultSet rs, int rowNum) throws SQLException {
         Payment paymentModel = new Payment();
 
-        paymentModel.setPaymentId(rs.getInt("payment_id"));
-        paymentModel.setPurposeId(rs.getInt("payment_purposeId"));
-        paymentModel.setData(rs.getDate("payment_date"));
+        paymentModel.setPaymentId(rs.getInt("PaymentId"));
+        paymentModel.setAccountId(rs.getInt("AccountId"));
+        paymentModel.setData(rs.getDate("Date"));
+        paymentModel.setSum(rs.getInt("Sum"));
 
         return paymentModel;
     }

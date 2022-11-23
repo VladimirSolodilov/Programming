@@ -12,11 +12,12 @@ public class BranchRowMapper implements RowMapper<Branch> {
     public Branch mapRow(ResultSet rs, int rowNum) throws SQLException {
         Branch branchModel = new Branch();
 
-        branchModel.setBranchId(rs.getInt("branch_id"));
-        branchModel.setName(rs.getString("branch_name"));
-        branchModel.setAddress(rs.getString("branch_address"));
-        branchModel.setBankIdentificationCode(rs.getString("branch_bank" +
-                "identificationCode"));
+        branchModel.setBranchId(rs.getInt("BranchId"));
+        branchModel.setBankId(rs.getInt("BankId"));
+        branchModel.setName(rs.getString("Name"));
+        branchModel.setAddress(rs.getString("Address"));
+        branchModel.setBankIdentificationCode(rs.getString("Bank" +
+                "IdentificationCode"));
 
         return branchModel;
     }

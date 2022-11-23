@@ -4,14 +4,17 @@ public class Bank {
 
     private int bankId;
     private String name;
-    private String License;
+
+    private String address;
+    private String license;
 
     public Bank() {}
 
-    public Bank(int bankId, String name, String license) {
+    public Bank(int bankId, String name, String address, String license) {
         this.bankId = bankId;
         this.name = name;
-        License = license;
+        this.address = address;
+        this.license = license;
     }
 
     public int getBankId() {
@@ -30,11 +33,19 @@ public class Bank {
         this.name = name;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     public String getLicense() {
-        return License;
+        return license;
     }
 
     public void setLicense(String license) {
-        License = license;
+        this.license = license;
     }
 }

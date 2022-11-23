@@ -12,8 +12,8 @@ public class LogsRowMapper implements RowMapper<Logs> {
     public Logs mapRow(ResultSet rs, int rowNum) throws SQLException {
         Logs logsModel = new Logs();
 
-        logsModel.setLogId(rs.getInt("logs_id"));
-        logsModel.setLog(rs.getString("logs_log"));
+        logsModel.setLogId(rs.getInt("Id"));
+        logsModel.setLog(rs.getString("Log"));
 
         return logsModel;
     }

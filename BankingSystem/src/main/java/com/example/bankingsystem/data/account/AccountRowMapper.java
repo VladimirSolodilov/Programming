@@ -12,11 +12,11 @@ public class AccountRowMapper implements RowMapper<Account> {
 
         Account accountModel = new Account();
 
-        accountModel.setAccountId(rs.getInt("account_id"));
-        accountModel.setUserId(rs.getInt("account_userId"));
-        accountModel.setBranchId(rs.getInt("account_branchId"));
-        accountModel.setOrganisationName(rs.getString("account_organisationName"));
-
+        accountModel.setAccountId(rs.getInt("AccountId"));
+        accountModel.setUserId(rs.getInt("UserId"));
+        accountModel.setBranchId(rs.getInt("BranchId"));
+        accountModel.setOrganisationName(rs.getString("OrganizationName"));
+        accountModel.setPaymentNumber(rs.getString("PaymentNumber"));
 
         return accountModel;
     }

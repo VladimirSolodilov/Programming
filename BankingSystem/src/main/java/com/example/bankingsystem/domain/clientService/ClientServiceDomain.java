@@ -25,7 +25,8 @@ public class ClientServiceDomain implements ClientService {
 
     @Override
     public int setClientList(int clientId, int branchId, int roleId, String surname, String name, String patronymic, String clientName, String password, int sum) {
-        return clientStorage.setClient(clientId, branchId, roleId, surname, name, patronymic, clientName, password, sum);    }
+        return clientStorage.setClient(clientId, branchId, roleId, surname, name, patronymic, clientName, password, sum);
+    }
 
     @Override
     public int deleteClientList(String surname) {

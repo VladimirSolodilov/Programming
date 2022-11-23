@@ -13,15 +13,15 @@ public class ClientRowMapper implements RowMapper<Client> {
     public Client mapRow(ResultSet resultSet, int i) throws SQLException {
         Client clientModel = new Client();
 
-        clientModel.setClientId(resultSet.getInt("client_id"));
-        clientModel.setBranchId(resultSet.getInt("client_branchId"));
-        clientModel.setRoleId(resultSet.getInt("client_roleId"));
-        clientModel.setSurname(resultSet.getString("client_surname"));
-        clientModel.setName(resultSet.getString("client_name"));
-        clientModel.setPatronymic(resultSet.getString("client_patronymic"));
-        clientModel.setClientName(resultSet.getString("client_clientName"));
-        clientModel.setPassword(resultSet.getString("client_password"));
-        clientModel.setSum(resultSet.getInt("client_sum"));
+        clientModel.setClientId(resultSet.getInt("ClientId"));
+        clientModel.setBranchId(resultSet.getInt("BranchId"));
+        clientModel.setRoleId(resultSet.getInt("RoleId"));
+        clientModel.setSurname(resultSet.getString("Surname"));
+        clientModel.setName(resultSet.getString("Name"));
+        clientModel.setPatronymic(resultSet.getString("Patronymic"));
+        clientModel.setClientName(resultSet.getString("clientName"));
+        clientModel.setPassword(resultSet.getString("Password"));
+        clientModel.setSum(resultSet.getInt("Sum"));
 
         return clientModel;
     }

@@ -12,9 +12,10 @@ public class BankRowMapper implements RowMapper<Bank> {
     public Bank mapRow(ResultSet rs, int rowNum) throws SQLException {
         Bank bankModel = new Bank();
 
-        bankModel.setBankId(rs.getInt("bank_id"));
-        bankModel.setName(rs.getString("bank_name"));
-        bankModel.setLicense(rs.getString("bank_license"));
+        bankModel.setBankId(rs.getInt("BankId"));
+        bankModel.setName(rs.getString("Name"));
+        bankModel.setLicense(rs.getString("License"));
+        bankModel.setAddress(rs.getString("Address"));
 
         return bankModel;
     }

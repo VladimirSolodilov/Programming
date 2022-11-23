@@ -39,7 +39,7 @@ public class ClientStorageDB implements ClientStorage {
 
     @Override
     public int deleteClient(String surname) {
-        String sqlQuery = "DELETE from client where client.Surname = ?";
+        String sqlQuery = "DELETE from client where client.Surname LIKE ?";
         return jdbcTemplate.update(sqlQuery, surname);
     }
 }

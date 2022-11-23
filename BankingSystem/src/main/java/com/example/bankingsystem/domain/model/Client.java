@@ -1,5 +1,8 @@
 package com.example.bankingsystem.domain.model;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.ModelAttribute;
+
 public class Client {
 
     private Branch branch;

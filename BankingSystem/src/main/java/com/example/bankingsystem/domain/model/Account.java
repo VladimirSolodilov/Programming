@@ -8,17 +8,19 @@ public class Account {
     private int userId;
     private int branchId;
     private String organisationName;
+    private String paymentNumber;
 
     public Account() {
     }
 
-    public Account(Client client, JuridicalPerson juridicalPerson, int accountId, int userId, int branchId, String organisationName) {
+    public Account(Client client, JuridicalPerson juridicalPerson, int accountId, int userId, int branchId, String organisationName, String paymentNumber) {
         this.client = client;
         this.juridicalPerson = juridicalPerson;
         this.accountId = accountId;
         this.userId = userId;
         this.branchId = branchId;
         this.organisationName = organisationName;
+        this.paymentNumber = paymentNumber;
     }
 
     public Client getClient() {
@@ -67,5 +69,13 @@ public class Account {
 
     public void setOrganisationName(String organisationName) {
         this.organisationName = organisationName;
+    }
+
+    public String getPaymentNumber() {
+        return paymentNumber;
+    }
+
+    public void setPaymentNumber(String paymentNumber) {
+        this.paymentNumber = paymentNumber;
     }
 }

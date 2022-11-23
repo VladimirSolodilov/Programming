@@ -12,9 +12,9 @@ public class StaffRowMapper implements RowMapper<Staff> {
     public Staff mapRow(ResultSet rs, int rowNum) throws SQLException {
         Staff staffModel = new Staff();
 
-        staffModel.setStaffId(rs.getInt("staff_id"));
-        staffModel.setName(rs.getString("staff_name"));
-        staffModel.setRoleId(rs.getInt("staff_id"));
+        staffModel.setStaffId(rs.getInt("StaffId"));
+        staffModel.setName(rs.getString("Name"));
+        staffModel.setRoleId(rs.getInt("RoleId"));
 
         return staffModel;
     }

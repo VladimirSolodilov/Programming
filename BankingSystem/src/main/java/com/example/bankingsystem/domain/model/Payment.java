@@ -5,16 +5,16 @@ import java.util.Date;
 public class Payment {
     private Account account;
     private int paymentId;
-    private int purposeId;
+    private int accountId;
     private Date data;
     private int sum;
 
     public Payment() {}
 
-    public Payment(Account account, int paymentId, int purposeId, Date data, int sum) {
+    public Payment(Account account, int paymentId, int accountId, Date data, int sum) {
         this.account = account;
         this.paymentId = paymentId;
-        this.purposeId = purposeId;
+        this.accountId = accountId;
         this.data = data;
         this.sum = sum;
     }
@@ -35,12 +35,12 @@ public class Payment {
         this.paymentId = paymentId;
     }
 
-    public int getPurposeId() {
-        return purposeId;
+    public int getAccountId() {
+        return accountId;
     }
 
-    public void setPurposeId(int purposeId) {
-        this.purposeId = purposeId;
+    public void setAccountId(int accountId) {
+        this.accountId = accountId;
     }
 
     public Date getData() {
