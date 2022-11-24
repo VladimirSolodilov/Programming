@@ -8,5 +8,5 @@ import java.util.List;
 public interface RoleStorage {
     List<Role> getAllRoles();
     Collection<Role> getRoleById(int roleId);
-
+    Role getRoleById1(int roleId);
 }

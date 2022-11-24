@@ -26,4 +26,11 @@ public class RoleStorageDB implements RoleStorage {
         Collection<Role> collection = jdbcTemplate.query(sqlQuery, new RoleRowMapper(), roleId);
         return collection;
     }
+
+    @Override
+    public Role getRoleById1(int roleId) {
+        String sqlQuery = "SELECT NAME FROM ROLE WHERE ROLE.ID = ?";
+        List<Role> list = jdbcTemplate.query(sqlQuery, new RoleRowMapper(), roleId);
+        return list.get(0);
+    }
 }

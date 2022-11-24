@@ -82,14 +82,12 @@ public class ClientServiceDomain implements ClientService, UserDetailsService {
     public int deleteClientList(String surname) {
         return clientStorage.deleteClient(surname);
     }
-
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         List<Client> list = clientStorage.getAllClient(s);
         Client client = list.get(0);
         System.out.println(mapRolesToAuthorities(roleStorage.getRoleById(client.getRoleId())));
-        return new org.springframework.security.core.userdetails.User(client.getClientName(), client.getPassword(),
-                true, true, true, true, mapRolesToAuthorities(roleStorage.getRoleById(client.getRoleId())));
+        return new org.springframework.security.core.userdetails.User(client.getClientName(), client.getPassword(), mapRolesToAuthorities(roleStorage.getRoleById(client.getRoleId())));
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roleById) {
