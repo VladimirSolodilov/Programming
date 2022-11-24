@@ -5,6 +5,8 @@ import com.example.bankingsystem.data.role.RoleStorage;
 import com.example.bankingsystem.domain.model.Client;
 import com.example.bankingsystem.domain.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.InternalAuthenticationServiceException;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -83,11 +85,11 @@ public class ClientServiceDomain implements ClientService, UserDetailsService {
         return clientStorage.deleteClient(surname);
     }
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException, InternalAuthenticationServiceException {
         List<Client> list = clientStorage.getAllClient(s);
         Client client = list.get(0);
         System.out.println(mapRolesToAuthorities(roleStorage.getRoleById(client.getRoleId())));
-        return new org.springframework.security.core.userdetails.User(client.getClientName(), client.getPassword(), mapRolesToAuthorities(roleStorage.getRoleById(client.getRoleId())));
+        return new User(client.getClientName(), client.getPassword(), mapRolesToAuthorities(roleStorage.getRoleById(client.getRoleId())));
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roleById) {

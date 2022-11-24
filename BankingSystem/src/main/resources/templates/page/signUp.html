@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1 class="h1">Регистрация физического лица</h1>
-    <form th:action="@{/client/registration}" method="post" th:object="${clientRegistration}">
+    <form th:action="@{/page/signUp}" method="post" th:object="${clientSignUp}">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <div>
             <label>Фамилия: </label>

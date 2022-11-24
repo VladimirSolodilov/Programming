@@ -14,26 +14,26 @@
             <h2 th:inline="text">Hello, [[${#httpServletRequest.remoteUser}]]!</h2>
 
             <ul class="rounded">
-                <li><a th:href="@{/client/information}">Личный кабинет</a>
+                <li><a th:href="@{/authorized/client/account}">Личный кабинет</a>
                 <li><a th:href="@{/static}">Платежи</a>
                 <li><a th:href="@{/static}">Переводы</a>
             </ul>
 
         </div>
         <div sec:authorize="hasRole('ADMIN')">
-            This content is only shown to administrators.
+            Role = Admin
         </div>
-        <div sec:authorize="hasAnyRole('ADMIN', 'CLIENT')">
-            This content is only shown to clients.
+        <div sec:authorize="hasAuthority('CLIENT')">
+            Role = Client
         </div>
 
         <ul class="rounded" id="client">
             <li><a>Регистрация</a>
                 <ul>
-                    <li><a th:href="@{/client/registration}">Регистрация физического лица</a>
-                    <li><a th:href="@{/person/registration}">Регистрация юридического лица</a>
+                    <li><a th:href="@{/client/signUp}">Регистрация физического лица</a>
+                    <li><a th:href="@{/person/signUp}">Регистрация юридического лица</a>
                 </ul>
-            <li><a th:href="@{/page/authorization}">Авторизация</a>
+            <li><a th:href="@{/signIn}">Авторизация</a>
         </ul>
 
         <form th:action="@{/logout}" method="post">

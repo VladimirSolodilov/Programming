@@ -21,37 +21,34 @@ public class AdminController {
     private Client client = new Client();
     private JuridicalPerson juridicalPerson = new JuridicalPerson();
 
-    @GetMapping("/admin/client")
+    @GetMapping("/authorized/admin/clientList")
     public String clientList(Model model) {
-        model.addAttribute("allClients", clientService.getClientList());
-        return "/admin/client";
+        model.addAttribute("clientList", clientService.getClientList());
+        return "/admin/clientList";
     }
 
-    @PostMapping("/admin/client")
-    public String clientRemoval(Model model) {
-        model.addAttribute(clientService.deleteClientList(client.getSurname()));
-        return clientList(model);
-    }
-
-    @GetMapping("/admin/person")
+    @GetMapping("/authorized/admin/personList")
     public String personList(Model model) {
-        model.addAttribute("allPersons", juridicalPersonService.getPersonList());
-        return "/admin/person";
+        model.addAttribute("personList", juridicalPersonService.getPersonList());
+        return "/admin/personList";
     }
 
-    @PostMapping("/admin/person")
+    /*@PostMapping("/admin/person")
     public String personRemoval(Model model) {
         model.addAttribute(juridicalPersonService.deletePersonList(juridicalPerson.getSurname()));
         return personList((model));
     }
 
-    @PostMapping("/admin")
+    @PostMapping("/authorized/admin/clientList")
+    public String clientRemoval(Model model) {
+        model.addAttribute(clientService.deleteClientList(client.getSurname()));
+        return clientList(model);
+    }*/
+
+    /*@PostMapping("/admin")
     public String  deleteUser(int userId, String action, Model model) {
         if (action.equals("delete")){
             //clientService.deleteClientList(userId);
         }
-        return "redirect:/admin";
-    }
-
-
+        return "redirect:/admin";*/
 }

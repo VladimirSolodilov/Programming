@@ -1,8 +1,5 @@
 package com.example.bankingsystem.domain.model;
 
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.bind.annotation.ModelAttribute;
-
 import java.util.Set;
 
 public class Client {

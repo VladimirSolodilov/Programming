@@ -1,8 +1,10 @@
 package com.example.bankingsystem.spring;
 
 import com.example.bankingsystem.data.client.ClientStorage;
+import com.example.bankingsystem.data.role.RoleStorage;
 import com.example.bankingsystem.domain.JuridicalPerson.JuridicalPersonService;
 import com.example.bankingsystem.domain.client.ClientService;
+import com.example.bankingsystem.domain.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -24,6 +26,9 @@ import javax.sql.DataSource;
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
+    @Autowired
+    RoleStorage roleStorage;
 
     @Autowired
     ClientService clientService;
@@ -97,15 +102,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http
                 .authorizeRequests()
-                    .antMatchers("/client/registration/**").not().fullyAuthenticated()
-                    .antMatchers("/person/registration/**").not().fullyAuthenticated()
+                    .antMatchers("/client/signUp/**").not().fullyAuthenticated()
+                    .antMatchers("/person/signUp/**").not().fullyAuthenticated()
                     .antMatchers("/css/**").permitAll()
                     //.antMatchers("/page/indexUnauthorized/**").authenticated()
 
 
                     //.antMatchers("/admin/**").hasRole("ADMIN")
-                    .antMatchers("/client/**").hasRole("CLIENT")
-                    .antMatchers("/person/**").hasRole("JURIDICAL_PERSON")
+                    .antMatchers("/authorized/client/**").hasAuthority("CLIENT")
+                    //.antMatchers("/person/**").hasRole("JURIDICAL_PERSON")
 
                 /*.antMatchers("/").permitAll()
                     .antMatchers("/client/registration").not().fullyAuthenticated()
@@ -116,7 +121,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .and()
                     .formLogin()
-                    .loginPage("/page/authorization")
+                    .loginPage("/page/signIn")
+                    .defaultSuccessUrl("/authorized")
+                    .failureUrl("/signIn/error")
                     .permitAll()
                 .and()
                     .logout()

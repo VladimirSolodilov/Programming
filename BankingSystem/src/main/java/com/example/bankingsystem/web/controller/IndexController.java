@@ -12,31 +12,25 @@ public class IndexController {
     @GetMapping("/")
     public String indexPageUnauthorized(Model model) {
         model.addAttribute("title", "Банковская система (неавторизованный пользователь)");
-        return "/page/indexUnauthorized";
+        return "/page/index";
     }
 
-    @GetMapping("/page/indexAuthorized")
+    @GetMapping("/authorized")
     public String indexPageAuthorized(Model model) {
         model.addAttribute("title", "Банковская система (авторизованный пользователь)");
-        return "/page/indexAuthorized";
+        return "/page/index";
     }
 
+    @GetMapping("/signIn/error")
+    public String indexErrorPage(Model model) {
+        model.addAttribute("title", "Ошибка");
+        return "/page/error";
+    }
 
-    @GetMapping("/page/authorization")
+    @GetMapping("/signIn")
     public ModelAndView clientAuthorization(ModelAndView modelAndView) {
-        modelAndView.addObject("authorization", new Client());
-        modelAndView.setViewName("/page/authorization");
+        modelAndView.addObject("signIn", new Client());
+        modelAndView.setViewName("/page/signIn");
         return modelAndView;
-    }
-
-    /*@PostMapping("/page/authorization")
-    public String clientAuthorizationPost() {
-        return "redirect:/";
-    }*/
-
-    @RequestMapping("/login-error")
-    public String loginError(Model model) {
-        model.addAttribute("loginError", true);
-        return "/page/authorization";
     }
 }

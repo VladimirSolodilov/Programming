@@ -8,7 +8,7 @@
 <body>
     <div class="container">
         <h1 class="h1">Авторизация пользователя</h1>
-        <form th:action="@{/page/authorization}" method="post" th:object="${authorization}">
+        <form th:action="@{/page/signIn}" method="post" th:object="${signIn}">
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <p>
                 <label for="login">Логин: </label>
@@ -29,10 +29,10 @@
             </div>
         </form>
         <p>Ещё нет аккаунта?
-            <a href="/client/registration" target="_self">Регистрация физического лица</a>
-            <a href="/person/registration" target="_self">Регистрация юридического лица</a>
+            <a th:href="@{/client/signUp}" target="_self">Регистрация физического лица</a>
+            <a th:href="@{/person/signUp}" target="_self">Регистрация юридического лица</a>
         </p>
-        <a href="/" target="_self">Вернуться на главную страницу</a>
+        <a th:href="@{/}" target="_self">Вернуться на главную страницу</a>
     </div>
 
 </body>

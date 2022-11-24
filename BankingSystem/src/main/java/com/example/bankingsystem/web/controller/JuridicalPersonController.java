@@ -19,23 +19,23 @@ public class JuridicalPersonController {
 
     private final JuridicalPerson juridicalPerson = new JuridicalPerson();
 
-    @GetMapping("/main/person/information")
+    @GetMapping("/authorized/person/account")
     public String informationPerson(Model model) {
         model.addAttribute("person", juridicalPersonService.getPersonList());
         model.addAttribute("title", "Личный кабинет клиента");
-        return "/person/information";
+        return "/person/account";
     }
 
-    @GetMapping("/person/registration")
+    @GetMapping("/person/signUp")
     public ModelAndView clientRegistration(ModelAndView modelAndView) {
         modelAndView.addObject("personRegistration", new JuridicalPerson());
-        modelAndView.setViewName("/person/registration");
+        modelAndView.setViewName("/page/signUp");
         return modelAndView;
     }
 
-    @PostMapping("/person/registration")
+    @PostMapping("/person/signUp")
     public String clientRegistrationPost(Model model, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
+        /*if (bindingResult.hasErrors()) {
             return "/person/registration";
         }
         if (!juridicalPerson.getPassword().equals(juridicalPerson.getPassword())){
@@ -45,7 +45,7 @@ public class JuridicalPersonController {
         if (!juridicalPersonService.saveClient(juridicalPerson)) {
             model.addAttribute("usernameError", "Пользователь с таким именем уже существует");
             return "/client/registration";
-        }
+        }*/
         model.addAttribute(juridicalPersonService.setPersonList(juridicalPerson.getJuridicalPersonId(), juridicalPerson.getBranchId(), juridicalPerson.getRoleId(),
                 juridicalPerson.getSurname(), juridicalPerson.getName(), juridicalPerson.getPatronymic(),
                 juridicalPerson.getJuridicalPersonName(), juridicalPerson.getPassword(), juridicalPerson.getSum()));
@@ -53,7 +53,7 @@ public class JuridicalPersonController {
         return informationPerson(model);
     }
 
-    @GetMapping("/person/removal")
+    /*@GetMapping("/person/removal")
     public ModelAndView clientRemoval(ModelAndView modelAndView) {
         modelAndView.addObject("removal", new Client());
         modelAndView.setViewName("/person/removal");
@@ -64,7 +64,7 @@ public class JuridicalPersonController {
     public String deleteMailPost(Model model) {
         model.addAttribute(juridicalPersonService.deletePersonList(juridicalPerson.getSurname()));
         return informationPerson(model);
-    }
+    }*/
 
 
 }
