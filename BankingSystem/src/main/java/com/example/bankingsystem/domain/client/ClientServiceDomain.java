@@ -18,7 +18,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -86,20 +85,14 @@ public class ClientServiceDomain implements ClientService, UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        Client client = (Client) clientStorage.getAllClient(s);
-        if (client == null) {
-            throw new UsernameNotFoundException("Client not found");
-        }
-        return new org.springframework.security.core.userdetails.User(client.getClientName(),
-                client.getPassword(), mapRolesToAuthorities(client.getRoles()));
+        List<Client> list = clientStorage.getAllClient(s);
+        Client client = list.get(0);
+        System.out.println(mapRolesToAuthorities(roleStorage.getRoleById(client.getRoleId())));
+        return new org.springframework.security.core.userdetails.User(client.getClientName(), client.getPassword(),
+                true, true, true, true, mapRolesToAuthorities(roleStorage.getRoleById(client.getRoleId())));
     }
 
-    private Collection<? extends GrantedAuthority>
-    mapRolesToAuthorities(Collection<Role> roles) {
-
-        return roles.stream()
-                .map(role -> new SimpleGrantedAuthority
-                        (role.getName()))
-                .collect(Collectors.toList());
+    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roleById) {
+        return roleById.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
 }

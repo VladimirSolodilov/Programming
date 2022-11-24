@@ -15,6 +15,7 @@
                     <th>Имя</th>
                     <th>Отчество</th>
                     <th>Сумма</th>
+                    <th>Роль</th>
                     <!-- Отделение банка -->
                     <!-- Главное название банка -->
                 </tr>
@@ -25,6 +26,7 @@
                         <td th:text="${client.name}">Имя</td>
                         <td th:text="${client.patronymic}">Отчество</td>
                         <td th:text="${client.sum}">Сумма</td>
+                        <td th:text="${client.roleId}">Сумма</td>
                     </tr>
                 </th:block>
             </table>

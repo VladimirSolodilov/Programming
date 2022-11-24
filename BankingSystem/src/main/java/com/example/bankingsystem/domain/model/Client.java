@@ -24,9 +24,7 @@ public class Client {
 
     public Client() {}
 
-    public Client(Branch branch, int clientId, int branchId, int roleId, String surname, String name, String patronymic, String clientName, String password, String passwordConfirm, int sum) {
-        this.branch = branch;
-        this.clientId = clientId;
+    public Client(int branchId, int roleId, String surname, String name, String patronymic, String clientName, String password, String passwordConfirm, int sum) {
         this.branchId = branchId;
         this.roleId = roleId;
         this.surname = surname;

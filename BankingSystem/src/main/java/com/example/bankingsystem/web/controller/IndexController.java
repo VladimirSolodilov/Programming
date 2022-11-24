@@ -22,17 +22,12 @@ public class IndexController {
     }
 
 
-    @RequestMapping(value = "/page/authorization", method = {RequestMethod.GET, RequestMethod.POST})
-    public ModelAndView loginPage() {
-        return new ModelAndView("/page/authorization");
-    }
-
-    /*@GetMapping("/page/authorization")
+    @GetMapping("/page/authorization")
     public ModelAndView clientAuthorization(ModelAndView modelAndView) {
         modelAndView.addObject("authorization", new Client());
         modelAndView.setViewName("/page/authorization");
         return modelAndView;
-    }*/
+    }
 
     /*@PostMapping("/page/authorization")
     public String clientAuthorizationPost() {

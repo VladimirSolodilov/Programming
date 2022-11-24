@@ -11,12 +11,20 @@
 
         <div sec:authorize="isAuthenticated()">
             This content is only shown to authenticated users.
+            <h2 th:inline="text">Hello, [[${#httpServletRequest.remoteUser}]]!</h2>
+
+            <ul class="rounded">
+                <li><a th:href="@{/client/information}">Личный кабинет</a>
+                <li><a th:href="@{/static}">Платежи</a>
+                <li><a th:href="@{/static}">Переводы</a>
+            </ul>
+
         </div>
         <div sec:authorize="hasRole('ADMIN')">
             This content is only shown to administrators.
         </div>
-        <div sec:authorize="hasRole('CLIENT')">
-            This content is only shown to users.
+        <div sec:authorize="hasAnyRole('ADMIN', 'CLIENT')">
+            This content is only shown to clients.
         </div>
 
         <ul class="rounded" id="client">
@@ -27,6 +35,11 @@
                 </ul>
             <li><a th:href="@{/page/authorization}">Авторизация</a>
         </ul>
+
+        <form th:action="@{/logout}" method="post">
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <input type="submit" value="Выйти"/>
+        </form>
     </div>
 </body>
 </html>

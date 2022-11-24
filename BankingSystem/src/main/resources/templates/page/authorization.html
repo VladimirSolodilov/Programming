@@ -8,22 +8,21 @@
 <body>
     <div class="container">
         <h1 class="h1">Авторизация пользователя</h1>
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <form th:action="@{/page/authorization}" method="post" th:object="${authorization}">
-            <div th:if="${param.error}">
-                <div class="alert alert-danger">Invalid username or
-                    password.</div>
-            </div>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <p>
                 <label for="login">Логин: </label>
-                <input type="text" id="login" name="Login">
+                <input type="text" id="login" name="username">
             </p>
             <p>
                 <label for="password">Пароль: </label>
                 <input type="password" id="password" name="password">
             </p>
-            <input type="hidden" name="${_csrf.parameterName}"
-                   value="${_csrf.token}"/>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <div th:if="${param.error}">
+                <div class="alert alert-danger">Неверное имя пользователя или пароль</div>
+            </div>
+            <p></p>
             <div class="form-group">
                 <input type="submit" name="registration-submit" id="registration-submit"
                        class="stdBtn" value="Авторизоваться">

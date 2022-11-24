@@ -51,12 +51,8 @@ public class ClientStorageDB implements ClientStorage {
     }
 
     @Override
-    public Client findById(int clientId) {
-        Client client;
-
-        String sqlQuery = "SELECT * from Client where client.clientId = ?";
-        client = (Client) jdbcTemplate.query(sqlQuery, new ClientRowMapper(), clientId);
-
-        return client;
+    public List<Client> findById(int clientId) {
+        String sqlQuery = "SELECT Name from Role where Role.RoleId = ?";
+        return jdbcTemplate.query(sqlQuery, new ClientRowMapper(), clientId);
     }
 }

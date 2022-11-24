@@ -10,8 +10,7 @@ public interface ClientStorage {
     int setClient (int branchId, int roleId, String surname, String name, String patronymic, String clientName, String password, int sum);
     int deleteClient (String surname);
 
-
     int save(Client client);
 
-    Client findById(int clientId);
+    List<Client> findById(int clientId);
 }

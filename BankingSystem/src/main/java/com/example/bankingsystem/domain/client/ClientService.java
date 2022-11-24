@@ -13,6 +13,5 @@ public interface ClientService extends UserDetailsService {
     int setClientList(int branchId, int roleId, String surname, String name, String patronymic, String clientName, String password, int sum);
     int deleteClientList(String surname);
 
-
     boolean saveClient(Client client);
 }

@@ -14,5 +14,9 @@
             <li><a th:href="@{/static}">Переводы</a>
         </ul>
     </div>
+    <form th:action="@{/}" method="post">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+        <input type="submit" value="Sign Out"/>
+    </form>
 </body>
 </html>
