@@ -10,8 +10,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.util.Collections;
-
 @Controller
 public class ClientController {
 
@@ -31,7 +29,7 @@ public class ClientController {
     @GetMapping("/client/signUp")
     public ModelAndView clientRegistration(ModelAndView modelAndView) {
         modelAndView.addObject("clientSignUp", new Client());
-        modelAndView.setViewName("/page/signUp");
+        modelAndView.setViewName("/client/clientSignUp");
         return modelAndView;
     }
 
@@ -45,7 +43,7 @@ public class ClientController {
             model.addAttribute("usernameError", "Пользователь с таким именем уже существует");
             return "/client/registration";
         }*/
-        client.setRoles(Collections.singleton(roleStorage.getRoleById1(client.getRoleId())));
+        //client.setRoles(Collections.singleton(roleStorage.getRoleById1(client.getRoleId())));
         model.addAttribute(clientService.setClientList(1, 2, client.getSurname(),
                 client.getName(), client.getPatronymic(), client.getClientName(), client.getPassword(), 0));
         return "redirect:/";

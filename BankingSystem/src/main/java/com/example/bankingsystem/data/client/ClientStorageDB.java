@@ -22,7 +22,7 @@ public class ClientStorageDB implements ClientStorage {
         StringBuilder sqlQuery = new StringBuilder("SELECT * from Client ");
 
         if (pattern != null) {
-            sqlQuery.append(" WHERE Client.Surname LIKE ?");
+            sqlQuery.append(" WHERE Client.ClientName LIKE ?");
             clientList = jdbcTemplate.query(sqlQuery.toString(), new ClientRowMapper(), pattern);
         } else {
             clientList = jdbcTemplate.query(sqlQuery.toString(), new ClientRowMapper());

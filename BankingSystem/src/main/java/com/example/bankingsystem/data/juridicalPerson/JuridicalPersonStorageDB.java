@@ -22,7 +22,7 @@ public class JuridicalPersonStorageDB implements JuridicalPersonStorage {
         StringBuilder sqlQuery = new StringBuilder("SELECT * from JuridicalPerson ");
 
         if (pattern != null) {
-            sqlQuery.append(" WHERE JuridicalPerson.Surname LIKE ?");
+            sqlQuery.append(" WHERE JuridicalPerson.PersonName LIKE ?");
             juridicalPersonList = jdbcTemplate.query(sqlQuery.toString(), new JuridicalPersonRowMapper(), pattern);
         } else {
             juridicalPersonList = jdbcTemplate.query(sqlQuery.toString(), new JuridicalPersonRowMapper());
@@ -32,7 +32,7 @@ public class JuridicalPersonStorageDB implements JuridicalPersonStorage {
     }
 
     @Override
-    public int setJuridicalPerson(int clientId, int branchId, int roleId, String surname, String name, String patronymic, String JuridicalPersonName, String password, int sum) {
+    public int setJuridicalPerson(int branchId, int roleId, String surname, String name, String patronymic, String JuridicalPersonName, String password, int sum) {
         String sqlQuery = "INSERT into JuridicalPerson VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         return jdbcTemplate.update(sqlQuery, branchId, roleId, surname, name, patronymic, JuridicalPersonName, password, sum);
     }

@@ -9,7 +9,7 @@
 </head>
 <body>
     <h1 class="h1">Регистрация физического лица</h1>
-    <form th:action="@{/page/signUp}" method="post" th:object="${clientSignUp}">
+    <form th:action="@{/client/signUp}" method="post" th:object="${clientSignUp}">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <div>
             <label>Фамилия: </label>
@@ -54,8 +54,8 @@
         </div>
 
         <div class="form-group">
-            <input type="submit" name="registration-submit" id="registration-submit"
-                   class="stdBtn" onclick="window.location.href = '/client/information'" value="Зарегистрировать пользователя">
+            <input type="submit" name="registration-submit" id="registration-submit1"
+                   class="stdBtn" value="Зарегистрировать пользователя">
         </div>
     </form>
 </body>

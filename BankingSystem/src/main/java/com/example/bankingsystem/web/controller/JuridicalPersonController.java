@@ -1,7 +1,6 @@
 package com.example.bankingsystem.web.controller;
 
 import com.example.bankingsystem.domain.JuridicalPerson.JuridicalPersonService;
-import com.example.bankingsystem.domain.model.Client;
 import com.example.bankingsystem.domain.model.JuridicalPerson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,10 +16,8 @@ public class JuridicalPersonController {
     @Autowired
     private JuridicalPersonService juridicalPersonService;
 
-    private final JuridicalPerson juridicalPerson = new JuridicalPerson();
-
     @GetMapping("/authorized/person/account")
-    public String informationPerson(Model model) {
+    public String personAccount(Model model) {
         model.addAttribute("person", juridicalPersonService.getPersonList());
         model.addAttribute("title", "Личный кабинет клиента");
         return "/person/account";
@@ -28,13 +25,13 @@ public class JuridicalPersonController {
 
     @GetMapping("/person/signUp")
     public ModelAndView clientRegistration(ModelAndView modelAndView) {
-        modelAndView.addObject("personRegistration", new JuridicalPerson());
-        modelAndView.setViewName("/page/signUp");
+        modelAndView.addObject("personSignUp", new JuridicalPerson());
+        modelAndView.setViewName("/person/personSignUp");
         return modelAndView;
     }
 
     @PostMapping("/person/signUp")
-    public String clientRegistrationPost(Model model, BindingResult bindingResult) {
+    public String clientRegistrationPost(Model model, JuridicalPerson juridicalPerson) {
         /*if (bindingResult.hasErrors()) {
             return "/person/registration";
         }
@@ -46,11 +43,11 @@ public class JuridicalPersonController {
             model.addAttribute("usernameError", "Пользователь с таким именем уже существует");
             return "/client/registration";
         }*/
-        model.addAttribute(juridicalPersonService.setPersonList(juridicalPerson.getJuridicalPersonId(), juridicalPerson.getBranchId(), juridicalPerson.getRoleId(),
+        model.addAttribute(juridicalPersonService.setPersonList(1, 3,
                 juridicalPerson.getSurname(), juridicalPerson.getName(), juridicalPerson.getPatronymic(),
                 juridicalPerson.getJuridicalPersonName(), juridicalPerson.getPassword(), juridicalPerson.getSum()));
 
-        return informationPerson(model);
+        return "redirect:/";
     }
 
     /*@GetMapping("/person/removal")

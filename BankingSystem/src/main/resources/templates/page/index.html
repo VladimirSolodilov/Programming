@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru" xmlns:sec="http://www.w3.org/1999/xhtml">
+<html lang="ru" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <meta charset="UTF-8">
     <title th:text="${title}">Главная страница</title>
@@ -11,7 +11,16 @@
 
         <div sec:authorize="isAuthenticated()">
             This content is only shown to authenticated users.
-            <h2 th:inline="text">Hello, [[${#httpServletRequest.remoteUser}]]!</h2>
+            <p th:inline="text">Hello, [[${#httpServletRequest.remoteUser}]]!</p>
+
+            <div sec:authorize="hasRole('ADMIN')">
+
+            </div>
+            <div sec:authorize="hasAuthority('CLIENT')">
+
+            </div>
+
+            <div th:text="${#authentication.getPrincipal()}"></div>
 
             <ul class="rounded">
                 <li><a th:href="@{/authorized/client/account}">Личный кабинет</a>
@@ -19,27 +28,24 @@
                 <li><a th:href="@{/static}">Переводы</a>
             </ul>
 
-        </div>
-        <div sec:authorize="hasRole('ADMIN')">
-            Role = Admin
-        </div>
-        <div sec:authorize="hasAuthority('CLIENT')">
-            Role = Client
+            <form th:action="@{/logout}" method="post">
+                <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+                <input type="submit" value="Выйти"/>
+            </form>
+
+
         </div>
 
-        <ul class="rounded" id="client">
-            <li><a>Регистрация</a>
-                <ul>
-                    <li><a th:href="@{/client/signUp}">Регистрация физического лица</a>
-                    <li><a th:href="@{/person/signUp}">Регистрация юридического лица</a>
-                </ul>
-            <li><a th:href="@{/signIn}">Авторизация</a>
-        </ul>
-
-        <form th:action="@{/logout}" method="post">
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-            <input type="submit" value="Выйти"/>
-        </form>
+        <div sec:authorize="isAnonymous()">
+            <ul class="rounded" id="client">
+                <li><a>Регистрация</a>
+                    <ul>
+                        <li><a th:href="@{/client/signUp}">Регистрация физического лица</a>
+                        <li><a th:href="@{/person/signUp}">Регистрация юридического лица</a>
+                    </ul>
+                <li><a th:href="@{/signIn}">Авторизация</a>
+            </ul>
+        </div>
     </div>
 </body>
 </html>

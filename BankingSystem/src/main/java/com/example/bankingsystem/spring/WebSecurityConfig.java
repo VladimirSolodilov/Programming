@@ -105,12 +105,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/client/signUp/**").not().fullyAuthenticated()
                     .antMatchers("/person/signUp/**").not().fullyAuthenticated()
                     .antMatchers("/css/**").permitAll()
+                    .antMatchers("/").permitAll()
                     //.antMatchers("/page/indexUnauthorized/**").authenticated()
-
 
                     //.antMatchers("/admin/**").hasRole("ADMIN")
                     .antMatchers("/authorized/client/**").hasAuthority("CLIENT")
-                    //.antMatchers("/person/**").hasRole("JURIDICAL_PERSON")
+                    .antMatchers("/authorized/person/**").hasAuthority("JURIDICAL_PERSON")
 
                 /*.antMatchers("/").permitAll()
                     .antMatchers("/client/registration").not().fullyAuthenticated()
@@ -121,9 +121,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
                 .and()
                     .formLogin()
-                    .loginPage("/page/signIn")
+                    .loginPage("/signIn")
                     .defaultSuccessUrl("/authorized")
-                    .failureUrl("/signIn/error")
+                    //.failureUrl("/signIn/error")
                     .permitAll()
                 .and()
                     .logout()

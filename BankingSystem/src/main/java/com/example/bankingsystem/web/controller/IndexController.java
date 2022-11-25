@@ -1,6 +1,7 @@
 package com.example.bankingsystem.web.controller;
 
 import com.example.bankingsystem.domain.model.Client;
+import com.example.bankingsystem.domain.model.JuridicalPerson;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -21,16 +22,24 @@ public class IndexController {
         return "/page/index";
     }
 
-    @GetMapping("/signIn/error")
+    /*@GetMapping("/signIn/error")
     public String indexErrorPage(Model model) {
         model.addAttribute("title", "Ошибка");
         return "/page/error";
-    }
+    }*/
 
     @GetMapping("/signIn")
-    public ModelAndView clientAuthorization(ModelAndView modelAndView) {
-        modelAndView.addObject("signIn", new Client());
+    public ModelAndView clientSignUp(ModelAndView modelAndView) {
+        modelAndView.addObject("signIn");
         modelAndView.setViewName("/page/signIn");
         return modelAndView;
     }
+
+    @GetMapping("/person/signIn")
+    public ModelAndView personSignUp(ModelAndView modelAndView) {
+        modelAndView.addObject("personSignIn", new JuridicalPerson());
+        modelAndView.setViewName("/page/signIn");
+        return modelAndView;
+    }
+
 }

@@ -1,10 +1,14 @@
 package com.example.bankingsystem.domain.client;
 
 import com.example.bankingsystem.data.client.ClientStorage;
+import com.example.bankingsystem.data.juridicalPerson.JuridicalPersonStorage;
 import com.example.bankingsystem.data.role.RoleStorage;
 import com.example.bankingsystem.domain.model.Client;
+import com.example.bankingsystem.domain.model.JuridicalPerson;
 import com.example.bankingsystem.domain.model.Role;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -24,15 +28,17 @@ import java.util.stream.Collectors;
 
 @Service
 public class ClientServiceDomain implements ClientService, UserDetailsService {
-
     @Autowired
     private ClientStorage clientStorage;
 
     @Autowired
+    private JuridicalPersonStorage juridicalPersonStorage;
+    @Autowired
     private RoleStorage roleStorage;
 
+    @Lazy
     @Autowired
-    BCryptPasswordEncoder bCryptPasswordEncoder;
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Override
     public List<Client> getUserByClientName(String clientName) throws UsernameNotFoundException {
@@ -85,11 +91,24 @@ public class ClientServiceDomain implements ClientService, UserDetailsService {
         return clientStorage.deleteClient(surname);
     }
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException, InternalAuthenticationServiceException {
-        List<Client> list = clientStorage.getAllClient(s);
-        Client client = list.get(0);
-        System.out.println(mapRolesToAuthorities(roleStorage.getRoleById(client.getRoleId())));
-        return new User(client.getClientName(), client.getPassword(), mapRolesToAuthorities(roleStorage.getRoleById(client.getRoleId())));
+    public UserDetails loadUserByUsername(String s) {
+        List<Client> clientList = clientStorage.getAllClient(s);
+        List<JuridicalPerson> personList = juridicalPersonStorage.getAllPerson(s);
+
+        if (clientList.isEmpty()) {
+            if (!personList.isEmpty()) {
+                JuridicalPerson juridicalPerson = personList.get(0);
+                System.out.println(juridicalPerson.getJuridicalPersonName() + ":" + juridicalPerson.getPassword() + " - " + juridicalPerson.getRoleId());
+                System.out.println("Role = " + mapRolesToAuthorities(roleStorage.getRoleById(juridicalPerson.getRoleId())));
+                return new User(juridicalPerson.getJuridicalPersonName(), juridicalPerson.getPassword(), mapRolesToAuthorities(roleStorage.getRoleById(juridicalPerson.getRoleId())));
+            }
+        } else {
+            Client client = clientList.get(0);
+            System.out.println(client.getClientName() + ":" + client.getPassword() + " - " + client.getRoleId());
+            System.out.println("Role = " + mapRolesToAuthorities(roleStorage.getRoleById(client.getRoleId())));
+            return new User(client.getClientName(), client.getPassword(), mapRolesToAuthorities(roleStorage.getRoleById(client.getRoleId())));
+        }
+        throw new InternalAuthenticationServiceException("User not found!");
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roleById) {
