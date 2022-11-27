@@ -11,22 +11,25 @@
 
         <div sec:authorize="isAuthenticated()">
             This content is only shown to authenticated users.
-            <p th:inline="text">Hello, [[${#httpServletRequest.remoteUser}]]!</p>
+            <h1 th:inline="text">Hello, [[${#httpServletRequest.remoteUser}]]!</h1>
+
+            <div th:text="${#authentication.getPrincipal()}"></div>
 
             <div sec:authorize="hasRole('ADMIN')">
 
             </div>
-            <div sec:authorize="hasAuthority('CLIENT')">
 
+            <div sec:authorize="hasAuthority('CLIENT')">
+                <ul class="rounded">
+                    <li><a th:href="@{/authorized/client/account}">Личный кабинет клиента</a>
+                </ul>
             </div>
 
-            <div th:text="${#authentication.getPrincipal()}"></div>
-
-            <ul class="rounded">
-                <li><a th:href="@{/authorized/client/account}">Личный кабинет</a>
-                <li><a th:href="@{/static}">Платежи</a>
-                <li><a th:href="@{/static}">Переводы</a>
-            </ul>
+            <div sec:authorize="hasAuthority('JURIDICAL_PERSON')">
+                <ul class="rounded">
+                    <li><a th:href="@{/authorized/person/account}">Личный кабинет юридического лица</a>
+                </ul>
+            </div>
 
             <form th:action="@{/logout}" method="post">
                 <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>

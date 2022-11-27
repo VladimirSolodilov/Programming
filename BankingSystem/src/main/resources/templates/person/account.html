@@ -2,37 +2,56 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Личный кабинет юридического лица</title>
+    <title th:text="${title}">Title</title>
+    <link href="/css/table.css" rel="stylesheet"/>
 </head>
 <body>
-    <h1 class="h1" th:text="${title}">Личный кабинет юридического лица</h1>
+<h1 class="h1" th:text="${title}">Личный кабинет юридического лица</h1>
 
     <div th:if="${person} != null">
-        <table class="table" id="client">
-            <tr class="column-header">
-                <th>Фамилия</th>
-                <th>Имя</th>
-                <th>Отчество</th>
-                <th>Сумма</th>
-                <th>Имя организации</th>
-                <!-- Отделение банка -->
-                <!-- Главное название банка -->
-            </tr>
-
+        <table  class="table" id="client">
             <th:block th:each="person: ${person}">
+
                 <tr>
-                    <td th:text="${person.surname}">Фамилия</td>
-                    <td th:text="${person.name}">Имя</td>
-                    <td th:text="${person.patronymic}">Отчество</td>
-                    <td th:text="${person.sum}">Сумма</td>
+                    <th>Фамилия</th><td th:text="${person.surname}">Фамилия</td>
+                </tr>
+
+                <tr>
+                    <th>Имя</th><td th:text="${person.name}">Имя</td>
+                </tr>
+
+                <tr>
+                    <th>Отчество</th><td th:text="${person.patronymic}">Отчество</td>
+                </tr>
+
+                <tr>
+                    <th>Сумма</th><td th:text="${person.sum}">Сумма</td>
+                </tr>
+
+                <tr>
+                    <th>Роль</th><td th:text="${#authentication.getAuthorities()}">Роль</td>
                 </tr>
             </th:block>
+
+            <!--<th:block th:each="client: ${client}">
+                <tr>
+                    <td th:text="${client.surname}">Фамилия</td>
+                </tr>
+                    <td th:text="${client.name}">Имя</td>
+                <tr>
+                    <td th:text="${client.patronymic}">Отчество</td>
+                </tr>
+                    <td th:text="${client.sum}">Сумма</td>
+                <tr>
+                    <td th:text="${#authentication.getAuthorities()}">Роль</td>
+                </tr>
+            </th:block> -->
         </table>
     </div>
 
-    <!-- <input type="button" value="Вернуться" onclick="window.location.href = '/index'"}>
-    <input type="button" value="Добавить рассылку" onclick="window.location.href = '/mail/registration'"}>
-    <input type="button" value="Изменить название рассылки" onclick="window.location.href = '/mail/change'"}>
-    <input type="button" value="Удалить рассылку" onclick="window.location.href = '/mail/delete'"}> -->
+<!-- <input type="button" value="Вернуться" onclick="window.location.href = '/index'"}>
+<input type="button" value="Добавить рассылку" onclick="window.location.href = '/mail/registration'"}>
+<input type="button" value="Изменить название рассылки" onclick="window.location.href = '/mail/change'"}>
+<input type="button" value="Удалить рассылку" onclick="window.location.href = '/mail/delete'"}> -->
 </body>
 </html>

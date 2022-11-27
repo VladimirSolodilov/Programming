@@ -55,8 +55,8 @@ public class ClientServiceDomain implements ClientService, UserDetailsService {
     }*/
 
     @Override
-    public List<Client> getClientList() {
-        return clientStorage.getAllClient(null);
+    public List<Client> getClientList(String clientName) {
+        return clientStorage.getAllClient(clientName);
     }
 
     public boolean saveClient(Client client) {

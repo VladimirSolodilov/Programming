@@ -21,15 +21,15 @@ public class AdminController {
     private Client client = new Client();
     private JuridicalPerson juridicalPerson = new JuridicalPerson();
 
-    @GetMapping("/authorized/admin/clientList")
+   /* @GetMapping("/authorized/admin/clientList")
     public String clientList(Model model) {
         model.addAttribute("clientList", clientService.getClientList());
         return "/admin/clientList";
-    }
+    }*/
 
     @GetMapping("/authorized/admin/personList")
     public String personList(Model model) {
-        model.addAttribute("personList", juridicalPersonService.getPersonList());
+        model.addAttribute("personList", juridicalPersonService.getPersonList(null));
         return "/admin/personList";
     }
 

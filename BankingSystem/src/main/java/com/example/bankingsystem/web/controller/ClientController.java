@@ -4,6 +4,10 @@ import com.example.bankingsystem.data.role.RoleStorage;
 import com.example.bankingsystem.domain.client.ClientService;
 import com.example.bankingsystem.domain.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,11 +21,11 @@ public class ClientController {
     private ClientService clientService;
 
     @Autowired
-    private RoleStorage roleStorage;
+    private UserDetailsService userDetailsService;
 
     @GetMapping("/authorized/client/account")
-    public String informationClient(Model model) {
-        model.addAttribute("client", clientService.getClientList());
+    public String informationClient(Model model, Authentication authentication) {
+        model.addAttribute("client", clientService.getClientList(authentication.getName()));
         model.addAttribute("title", "Личный кабинет клиента");
         return "/client/account";
     }
@@ -59,6 +63,6 @@ public class ClientController {
     @PostMapping("/authorized/client/removal")
     public String deleteMailPost(Model model, Client client) {
         model.addAttribute(clientService.deleteClientList(client.getSurname()));
-        return informationClient(model);
+        return informationClient(model, null);
     }
 }

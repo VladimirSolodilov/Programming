@@ -3,6 +3,11 @@ package com.example.bankingsystem.web.controller;
 import com.example.bankingsystem.domain.JuridicalPerson.JuridicalPersonService;
 import com.example.bankingsystem.domain.model.JuridicalPerson;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,14 +17,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class JuridicalPersonController {
-
     @Autowired
     private JuridicalPersonService juridicalPersonService;
 
     @GetMapping("/authorized/person/account")
-    public String personAccount(Model model) {
-        model.addAttribute("person", juridicalPersonService.getPersonList());
-        model.addAttribute("title", "Личный кабинет клиента");
+    public String personAccount(Model model, Authentication authentication) {
+        model.addAttribute("person", juridicalPersonService.getPersonList(authentication.getName()));
+        model.addAttribute("title", "Личный кабинет юридического лица");
         return "/person/account";
     }
 

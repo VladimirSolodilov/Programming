@@ -1,5 +1,10 @@
 package com.example.bankingsystem.domain.model;
 
+import org.springframework.context.annotation.Bean;
+
+import java.beans.BeanProperty;
+import java.beans.JavaBean;
+
 public class JuridicalPerson {
 
     private Branch branch;

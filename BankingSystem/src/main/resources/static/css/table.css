@@ -3,7 +3,7 @@ body {
 }
 
 .table {
-    width: 100%;
+    width: 30%;
     margin-bottom: 20px;
     border: 2px solid #dddddd;
     border-collapse: collapse;
@@ -11,9 +11,11 @@ body {
 
 .table th {
     font-weight: bold;
+    text-align: left;
     padding: 5px;
     background: #efefef;
     border: 1px solid #dddddd;
+    width: 20%;
 }
 
 .table td {

@@ -35,8 +35,8 @@ public class JuridicalPersonServiceDomain implements JuridicalPersonService {
     @Autowired
     private RoleStorage roleStorage;
     @Override
-    public List<JuridicalPerson> getPersonList() {
-        return juridicalPersonStorage.getAllPerson(null);
+    public List<JuridicalPerson> getPersonList(String personName) {
+        return juridicalPersonStorage.getAllPerson(personName);
     }
 
     @Override
