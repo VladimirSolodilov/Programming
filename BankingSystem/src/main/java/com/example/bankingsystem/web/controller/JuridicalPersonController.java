@@ -1,6 +1,7 @@
 package com.example.bankingsystem.web.controller;
 
 import com.example.bankingsystem.domain.JuridicalPerson.JuridicalPersonService;
+import com.example.bankingsystem.domain.model.Client;
 import com.example.bankingsystem.domain.model.JuridicalPerson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
@@ -53,6 +54,30 @@ public class JuridicalPersonController {
 
         return "redirect:/";
     }
+    @GetMapping("/authorized/person/addSum")
+    public String addSum(Model model, Authentication authentication) {
+        model.addAttribute("person", juridicalPersonService.getPersonList(authentication.getName()));
+        model.addAttribute("personAddSum", new JuridicalPerson());
+        return "/person/addSum";
+    }
+    @PostMapping("/authorized/person/addSum")
+    public String addSumPost(Model model, JuridicalPerson juridicalPerson, Authentication authentication) {
+        model.addAttribute(juridicalPersonService.addSum(authentication.getName(), juridicalPerson.getSum()));
+        return "redirect:/authorized/person/account";
+    }
+    @GetMapping("/authorized/person/transfer")
+    public String transfer(Model model, Authentication authentication) {
+        model.addAttribute("personLeft", juridicalPersonService.getPersonList(authentication.getName()));
+        model.addAttribute("personRight", juridicalPersonService.getPersonList("admin"));
+        return "/person/transfer";
+    }
+
+    @PostMapping("/authorized/person/transfer")
+    public String transferPost(Model model, Authentication authentication, JuridicalPerson juridicalPerson) {
+        model.addAttribute(juridicalPersonService.transfer(authentication.getName(), juridicalPerson.getName(), juridicalPerson.getSum()));
+        return "redirect:/authorized/person";
+    }
+
 
     /*@GetMapping("/person/removal")
     public ModelAndView clientRemoval(ModelAndView modelAndView) {

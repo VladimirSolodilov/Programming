@@ -55,6 +55,16 @@ public class JuridicalPersonServiceDomain implements JuridicalPersonService {
     }
 
     @Override
+    public int addSum(String personName, int sum) {
+        return juridicalPersonStorage.addSum(personName, sum);
+    }
+
+    @Override
+    public int transfer(String leftPerson, String rightPerson, int sum) {
+        return juridicalPersonStorage.transfer(leftPerson, rightPerson, sum);
+    }
+
+    @Override
     public boolean saveClient(JuridicalPerson juridicalPerson) {
         return false;
     }

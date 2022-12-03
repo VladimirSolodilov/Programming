@@ -44,4 +44,18 @@ public class JuridicalPersonStorageDB implements JuridicalPersonStorage {
         return jdbcTemplate.update(sqlQuery, surname);
     }
 
+    @Override
+    public int addSum(String personName, int sum) {
+        String sqlQuery = "Update JuridicalPerson Set JuridicalPerson.Sum = JuridicalPerson.Sum + ? where JuridicalPerson.PersonName Like ?";
+        return jdbcTemplate.update(sqlQuery, sum, personName);
+    }
+
+    @Override
+    public int transfer(String leftPerson, String rightPerson, int sum) {
+        String sqlQuery1 = "Update JuridicalPerson Set JuridicalPerson.Sum = JuridicalPerson.Sum - ? Where JuridicalPerson.PersonName Like ?";
+        String sqlQuery2 = "Update JuridicalPerson Set JuridicalPerson.Sum = JuridicalPerson.Sum + ? Where JuridicalPerson.PersonName Like ?";
+        jdbcTemplate.update(sqlQuery1, new ClientRowMapper(), leftPerson);
+        return jdbcTemplate.update(sqlQuery2, new ClientRowMapper(), rightPerson);
+    }
+
 }
