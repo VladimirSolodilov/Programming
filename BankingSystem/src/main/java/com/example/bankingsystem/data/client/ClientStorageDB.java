@@ -49,6 +49,29 @@ public class ClientStorageDB implements ClientStorage {
     }
 
     @Override
+    public int addSum(String userName, int sum) {
+        String sqlQuery = "Update Client Set Client.Sum = Client.Sum + ? where Client.ClientName Like ?";
+        return jdbcTemplate.update(sqlQuery, sum, userName);
+    }
+
+    @Override
+    public int transfer(String leftClientName, String rightClientName, int sum) {
+        //List<Client> leftClientList, rightClientList;
+
+        String sqlQuery1 = "Update Client Set Client.Sum = Client.Sum - ? Where Client.ClientName Like ?";
+        String sqlQuery2 = "Update Client Set Client.Sum = Client.Sum + ? Where Client.ClientName Like ?";
+
+        jdbcTemplate.update(sqlQuery1, new ClientRowMapper(), leftClientName);
+        return jdbcTemplate.update(sqlQuery2, new ClientRowMapper(), rightClientName);
+
+        /*leftClientList = jdbcTemplate.query(sqlQueryLeft, new ClientRowMapper(), leftClientName);
+        rightClientList = jdbcTemplate.query(sqlQueryLeft, new ClientRowMapper(), rightClientName);
+
+        Client leftClient = leftClientList.get(0);
+        Client rightClient = rightClientList.get(0);*/
+    }
+
+    @Override
     public int save(Client client) {
         String sqlQuery = "INSERT into Client VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         return jdbcTemplate.update(sqlQuery, client.getBranch(), client.getRoleId(), client.getSurname(),

@@ -95,6 +95,17 @@ public class ClientServiceDomain implements ClientService, UserDetailsService {
     public int deleteClientList(String surname) {
         return clientStorage.deleteClient(surname);
     }
+
+    @Override
+    public int addSum(String clientName, int sum) {
+        return clientStorage.addSum(clientName, sum);
+    }
+
+    @Override
+    public int transfer(String leftClientName, String rightClientName, int sum) {
+        return 0;
+    }
+
     @Override
     public UserDetails loadUserByUsername(String s) {
         List<Client> clientList = clientStorage.getAllClient(s);

@@ -24,12 +24,18 @@
             <div sec:authorize="hasAuthority('CLIENT')">
                 <ul class="rounded">
                     <li><a th:href="@{/authorized/client/account}">Личный кабинет клиента</a>
+                    <li><a th:href="@{/authorized/client/addSum}">Пополнить счёт</a>
+                    <li><a th:href="@{/authorized/client/transfer}">Перевести другому пользователю</a>
+                    <li><a th:href="@{/authorized/client/payment}">Произвести платёж</a>
                 </ul>
             </div>
 
             <div sec:authorize="hasAuthority('JURIDICAL_PERSON')">
                 <ul class="rounded">
                     <li><a th:href="@{/authorized/person/account}">Личный кабинет юридического лица</a>
+                    <li><a th:href="@{/authorized/person/addSum}">Пополнить счёт</a>
+                    <li><a th:href="@{/authorized/person/createPayment}">Создать платёж</a>
+                    <li><a th:href="@{/authorized/person/transfer}">Перевести другому юридическому лицу</a>
                 </ul>
             </div>
 

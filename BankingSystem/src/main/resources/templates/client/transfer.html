@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/table.css" rel="stylesheet"/>
+</head>
+<body>
+    <h1 class="h1">Пополнение счёта</h1>
+
+    <p>Ваш счёт:</p>
+    <div th:if="${clientLeft} != null">
+        <table  class="table" id="clientLeft">
+            <th:block th:each="clientLeft: ${clientLeft}">
+                <tr>
+                    <th>Сумма</th><td th:text="${clientLeft.sum}">Имя</td>
+                </tr>
+            </th:block>
+        </table>
+    </div>
+
+    <p>Информация о клиентах:</p>
+    <div th:if="${clientRight} != null">
+        <table  class="table" id="clientRight">
+            <th:block th:each="clientRight: ${clientRight}">
+                <tr>
+                    <th>Фамилия</th><td th:text="${clientRight.surname}">Фамилия</td>
+                </tr>
+
+                <tr>
+                    <th>Имя</th><td th:text="${clientRight.name}">Имя</td>
+                </tr>
+
+                <tr>
+                    <th>Отчество</th><td th:text="${clientRight.patronymic}">Отчество</td>
+                </tr>
+
+                <tr>
+                    <th>Имя клиента</th><td th:text="${clientRight.clientName}">Сумма</td>
+                </tr>
+            </th:block>
+        </table>
+    </div>
+
+</body>
+</html>

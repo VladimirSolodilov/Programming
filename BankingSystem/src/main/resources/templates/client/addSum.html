@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/table.css" rel="stylesheet"/>
+</head>
+<body>
+    <h1 class="h1">Пополнение счёта</h1>
+
+    <div th:if="${client} != null">
+        <table  class="table" id="client">
+            <th:block th:each="client: ${client}">
+                <tr>
+                    <th>Сумма</th><td th:text="${client.sum}">Имя</td>
+                </tr>
+            </th:block>
+        </table>
+    </div>
+
+    <form th:action="@{/authorized/client/addSum}" method="post" th:object="${clientAddSum}">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+        <div>
+            <label>Новое значение суммы: </label>
+            <label>
+                <input type="text" th:field="*{sum}" required>
+            </label>&nbsp;<span th:errors="*{sum}"></span>
+        </div>
+
+        <div class="form-group">
+            <input type="submit" name="registration-submit" id="registration-submit1"
+                   class="stdBtn" value="Пополнить">
+        </div>
+    </form>
+</body>
+</html>

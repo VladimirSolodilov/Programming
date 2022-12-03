@@ -64,4 +64,29 @@ public class ClientController {
         model.addAttribute(clientService.deleteClientList(client.getSurname()));
         return informationClient(model, null);
     }
+
+    @GetMapping("/authorized/client/addSum")
+    public String addSum(Model model, Authentication authentication) {
+        model.addAttribute("client", clientService.getClientList(authentication.getName()));
+        model.addAttribute("clientAddSum", new Client());
+        return "/client/addSum";
+    }
+    @PostMapping("/authorized/client/addSum")
+    public String addSumPost(Model model, Client client, Authentication authentication) {
+        model.addAttribute(clientService.addSum(authentication.getName(), client.getSum()));
+        return "redirect:/authorized/client/account";
+    }
+
+    @GetMapping("/authorized/client/transfer")
+    public String transfer(Model model, Authentication authentication) {
+        model.addAttribute("clientLeft", clientService.getClientList(authentication.getName()));
+        model.addAttribute("clientRight", clientService.getClientList("admin"));
+        return "/client/transfer";
+    }
+
+    @PostMapping("/authorized/client/transfer")
+    public String transferPost(Model model, Authentication authentication, Client client) {
+        model.addAttribute(clientService.transfer(authentication.getName(), client.getName(), client.getSum()));
+        return "redirect:/authorized/client";
+    }
 }
