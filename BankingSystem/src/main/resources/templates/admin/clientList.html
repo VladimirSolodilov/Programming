@@ -3,8 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link href="/css/table.css" rel="stylesheet"/>
 </head>
 <body>
-
+        <h1 class="h1">Пользователи</h1>
+        <div th:if="${clientList} != null">
+            <table class="table" id="table">
+                <tr class="column-header">
+                    <th>Фамилия</th>
+                    <th>Имя</th>
+                    <th>Отчество</th>
+                    <th>Сумма</th>
+                    <th>Роль</th>
+                    <TH>Операция</TH>
+                </tr>
+                <th:block th:each="clientList: ${clientList}">
+                    <tr>
+                        <td th:text="${clientList.surname}">ID</td>
+                        <td th:text="${clientList.name}">ID</td>
+                        <td th:text="${clientList.patronymic}">ID</td>
+                        <td th:text="${clientList.sum}">ID</td>
+                        <td>[CLIENT]</td>
+                        <td><button onclick="window.location.href = '/authorized/admin/account';">Удалить</button></td>
+                    </tr>
+                </th:block>
+            </table>
+        </div>
 </body>
 </html>

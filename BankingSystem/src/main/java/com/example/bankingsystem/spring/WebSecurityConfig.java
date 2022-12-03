@@ -111,6 +111,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     //.antMatchers("/admin/**").hasRole("ADMIN")
                     .antMatchers("/authorized/client/**").hasAuthority("CLIENT")
                     .antMatchers("/authorized/person/**").hasAuthority("JURIDICAL_PERSON")
+                    .antMatchers("/authorized/admin/**").hasAuthority("ADMIN")
 
                 /*.antMatchers("/").permitAll()
                     .antMatchers("/client/registration").not().fullyAuthenticated()

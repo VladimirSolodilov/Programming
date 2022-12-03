@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 
 
 @Transactional
@@ -21,11 +22,15 @@ public class ClientStorageDB implements ClientStorage {
         List<Client> clientList;
         StringBuilder sqlQuery = new StringBuilder("SELECT * from Client ");
 
-        if (pattern != null) {
+        System.out.println("Pattern = " + pattern);
+
+        if (!Objects.equals(pattern, "admin")) {
             sqlQuery.append(" WHERE Client.ClientName LIKE ?");
             clientList = jdbcTemplate.query(sqlQuery.toString(), new ClientRowMapper(), pattern);
+            System.out.println("Operation 1");
         } else {
             clientList = jdbcTemplate.query(sqlQuery.toString(), new ClientRowMapper());
+            System.out.println("Operation 2");
         }
 
         return clientList;

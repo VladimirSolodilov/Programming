@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 @Transactional
@@ -21,7 +22,7 @@ public class JuridicalPersonStorageDB implements JuridicalPersonStorage {
         List<JuridicalPerson> juridicalPersonList;
         StringBuilder sqlQuery = new StringBuilder("SELECT * from JuridicalPerson ");
 
-        if (pattern != null) {
+        if (!Objects.equals(pattern, "admin")) {
             sqlQuery.append(" WHERE JuridicalPerson.PersonName LIKE ?");
             juridicalPersonList = jdbcTemplate.query(sqlQuery.toString(), new JuridicalPersonRowMapper(), pattern);
         } else {

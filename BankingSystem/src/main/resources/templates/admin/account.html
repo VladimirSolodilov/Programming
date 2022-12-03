@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/table.css" rel="stylesheet"/>
+</head>
+<body>
+<h1 class="h1" th:text="${title}">Личный кабинет пользователя</h1>
+
+<div th:if="${admin} != null">
+    <table  class="table" id="admin">
+        <th:block th:each="admin: ${admin}">
+            <tr>
+                <th>Имя</th><td th:text="${admin.name}">Имя</td>
+            </tr>
+            <tr>
+                <th>Роль</th><td th:text="${#authentication.getAuthorities()}">Роль</td>
+            </tr>
+        </th:block>
+
+        <!--<th:block th:each="client: ${client}">
+            <tr>
+                <td th:text="${client.surname}">Фамилия</td>
+            </tr>
+                <td th:text="${client.name}">Имя</td>
+            <tr>
+                <td th:text="${client.patronymic}">Отчество</td>
+            </tr>
+                <td th:text="${client.sum}">Сумма</td>
+            <tr>
+                <td th:text="${#authentication.getAuthorities()}">Роль</td>
+            </tr>
+        </th:block> -->
+    </table>
+</div>
+
+<div>Операции
+    <a th:href="@{/authorized/admin/clientList}" target="_self">Просмотр всех пользователей</a>
+    <a th:href="@{/authorized/admin/personList}" target="_self">Просмотр всех юридических лиц</a>
+</div>
+
+<!-- <input type="button" value="Вернуться" onclick="window.location.href = '/index'"}>
+<input type="button" value="Добавить рассылку" onclick="window.location.href = '/mail/registration'"}>
+<input type="button" value="Изменить название рассылки" onclick="window.location.href = '/mail/change'"}>
+<input type="button" value="Удалить рассылку" onclick="window.location.href = '/mail/delete'"}> -->
+</body>
+</html>
