@@ -1,5 +1,6 @@
 package com.example.bankingsystem.web.controller;
 
+import com.example.bankingsystem.domain.model.Admin;
 import com.example.bankingsystem.domain.model.Client;
 import com.example.bankingsystem.domain.model.JuridicalPerson;
 import org.springframework.stereotype.Controller;
@@ -41,5 +42,14 @@ public class IndexController {
         modelAndView.setViewName("/page/signIn");
         return modelAndView;
     }
+
+    @GetMapping("/admin/signIn")
+    public ModelAndView adminSignUp(ModelAndView modelAndView) {
+        modelAndView.addObject("adminSignIn", new Admin());
+        modelAndView.setViewName("/page/signIn");
+        return modelAndView;
+    }
+
+
 
 }

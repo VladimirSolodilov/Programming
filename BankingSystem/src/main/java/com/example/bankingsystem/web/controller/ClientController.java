@@ -1,27 +1,21 @@
 package com.example.bankingsystem.web.controller;
 
-import com.example.bankingsystem.data.role.RoleStorage;
 import com.example.bankingsystem.domain.client.ClientService;
 import com.example.bankingsystem.domain.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ClientController {
-
     @Autowired
     private ClientService clientService;
-
-    @Autowired
-    private UserDetailsService userDetailsService;
 
     @GetMapping("/authorized/client/account")
     public String informationClient(Model model, Authentication authentication) {
@@ -34,11 +28,14 @@ public class ClientController {
     public ModelAndView clientRegistration(ModelAndView modelAndView) {
         modelAndView.addObject("clientSignUp", new Client());
         modelAndView.setViewName("/client/clientSignUp");
+        /*if (value == "error") {
+            modelAndView.addObject("clientNameError", "Пользователь существует!");
+        }*/
         return modelAndView;
     }
 
     @PostMapping("/client/signUp")
-    public String clientRegistrationPost(Model model, Client client) {
+    public String clientRegistrationPost(Client client, Model model, BindingResult bindingResult) {
         /*if (!client.getPassword().equals(client.getPasswordConfirm())){
             model.addAttribute("passwordError", "Пароли не совпадают");
             return "/client/registration";
@@ -48,8 +45,10 @@ public class ClientController {
             return "/client/registration";
         }*/
         //client.setRoles(Collections.singleton(roleStorage.getRoleById1(client.getRoleId())));
+
         model.addAttribute(clientService.setClientList(1, 2, client.getSurname(),
                 client.getName(), client.getPatronymic(), client.getClientName(), client.getPassword(), 0));
+
         return "redirect:/";
     }
 

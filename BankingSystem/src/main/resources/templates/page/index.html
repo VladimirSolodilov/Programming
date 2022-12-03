@@ -15,8 +15,10 @@
 
             <div th:text="${#authentication.getPrincipal()}"></div>
 
-            <div sec:authorize="hasRole('ADMIN')">
-
+            <div sec:authorize="hasAuthority('ADMIN')">
+                <ul class="rounded">
+                    <li><a th:href="@{/authorized/admin}">Личный кабинет администратора</a>
+                </ul>
             </div>
 
             <div sec:authorize="hasAuthority('CLIENT')">

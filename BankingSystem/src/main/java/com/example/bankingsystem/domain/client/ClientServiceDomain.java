@@ -1,8 +1,10 @@
 package com.example.bankingsystem.domain.client;
 
+import com.example.bankingsystem.data.admin.AdminStorage;
 import com.example.bankingsystem.data.client.ClientStorage;
 import com.example.bankingsystem.data.juridicalPerson.JuridicalPersonStorage;
 import com.example.bankingsystem.data.role.RoleStorage;
+import com.example.bankingsystem.domain.model.Admin;
 import com.example.bankingsystem.domain.model.Client;
 import com.example.bankingsystem.domain.model.JuridicalPerson;
 import com.example.bankingsystem.domain.model.Role;
@@ -35,6 +37,9 @@ public class ClientServiceDomain implements ClientService, UserDetailsService {
     private JuridicalPersonStorage juridicalPersonStorage;
     @Autowired
     private RoleStorage roleStorage;
+
+    @Autowired
+    private AdminStorage adminStorage;
 
     @Lazy
     @Autowired
@@ -94,8 +99,9 @@ public class ClientServiceDomain implements ClientService, UserDetailsService {
     public UserDetails loadUserByUsername(String s) {
         List<Client> clientList = clientStorage.getAllClient(s);
         List<JuridicalPerson> personList = juridicalPersonStorage.getAllPerson(s);
+        List<Admin> adminList = adminStorage.getAllAdmin(s);
 
-        if (clientList.isEmpty()) {
+        /*if (clientList.isEmpty()) {
             if (!personList.isEmpty()) {
                 JuridicalPerson juridicalPerson = personList.get(0);
                 System.out.println(juridicalPerson.getJuridicalPersonName() + ":" + juridicalPerson.getPassword() + " - " + juridicalPerson.getRoleId());
@@ -107,7 +113,26 @@ public class ClientServiceDomain implements ClientService, UserDetailsService {
             System.out.println(client.getClientName() + ":" + client.getPassword() + " - " + client.getRoleId());
             System.out.println("Role = " + mapRolesToAuthorities(roleStorage.getRoleById(client.getRoleId())));
             return new User(client.getClientName(), client.getPassword(), mapRolesToAuthorities(roleStorage.getRoleById(client.getRoleId())));
+        }*/
+
+        if (!clientList.isEmpty()) {
+            Client client = clientList.get(0);
+            System.out.println(client.getClientName() + ":" + client.getPassword() + " - " + client.getRoleId());
+            System.out.println("Role = " + mapRolesToAuthorities(roleStorage.getRoleById(client.getRoleId())));
+            return new User(client.getClientName(), client.getPassword(), mapRolesToAuthorities(roleStorage.getRoleById(client.getRoleId())));
+        } else if (!personList.isEmpty()) {
+            JuridicalPerson juridicalPerson = personList.get(0);
+            System.out.println(juridicalPerson.getJuridicalPersonName() + ":" + juridicalPerson.getPassword() + " - " + juridicalPerson.getRoleId());
+            System.out.println("Role = " + mapRolesToAuthorities(roleStorage.getRoleById(juridicalPerson.getRoleId())));
+            return new User(juridicalPerson.getJuridicalPersonName(), juridicalPerson.getPassword(), mapRolesToAuthorities(roleStorage.getRoleById(juridicalPerson.getRoleId())));
+        } else if (!adminList.isEmpty()) {
+            Admin admin = adminList.get(0);
+            System.out.println(admin.getName() + ":" + admin.getPassword() + " - " + admin.getRoleId());
+            System.out.println("Role = " + mapRolesToAuthorities(roleStorage.getRoleById(admin.getRoleId())));
+            //System.out.println("Password = " + bCryptPasswordEncoder.encode(admin.getPassword()));
+            return new User(admin.getName(), admin.getPassword(), mapRolesToAuthorities(roleStorage.getRoleById(admin.getRoleId())));
         }
+
         throw new InternalAuthenticationServiceException("User not found!");
     }
 
