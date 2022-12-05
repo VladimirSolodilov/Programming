@@ -3,15 +3,18 @@ package com.example.bankingsystem.domain.model;
 public class Purpose {
     private Payment payment;
     private int purposeId;
+
+    private int paymentId;
     private String purposeName;
 
     public Purpose() {
     }
 
-    public Purpose(Payment payment, int purposeId, String purposeName) {
+    public Purpose(Payment payment, int purposeId, String purposeName, int paymentId) {
         this.payment = payment;
         this.purposeId = purposeId;
         this.purposeName = purposeName;
+        this.paymentId = paymentId;
     }
 
     public Payment getPayment() {
@@ -20,6 +23,14 @@ public class Purpose {
 
     public void setPayment(Payment payment) {
         this.payment = payment;
+    }
+
+    public int getPaymentId() {
+        return paymentId;
+    }
+
+    public void setPaymentId(int paymentId) {
+        this.paymentId = paymentId;
     }
 
     public int getPurposeId() {

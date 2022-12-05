@@ -1,24 +1,49 @@
 package com.example.bankingsystem.data.payment;
 
+import com.example.bankingsystem.data.juridicalPerson.JuridicalPersonRowMapper;
+import com.example.bankingsystem.data.purpose.PurposeRowMapper;
+import com.example.bankingsystem.domain.model.JuridicalPerson;
+import com.example.bankingsystem.domain.model.Payment;
+import lombok.Data;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.util.Date;
+import java.sql.Date;
+import java.util.List;
 
 @Repository
 public class PaymentStorageDB implements PaymentStorage {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    private final Date date = new Date(2022);
+
     @Override
-    public int createPayment(String personName, String purposeName, Date purposeDate, int purposeSum) {
-        String sqlQuery = "INSERT Payment VALUES(?, ?, ?)";
+    public int createPayment(int personId, String paymentName, int paymentSum, String purposeName) {
+        String sqlQuery = "INSERT Payment VALUES(?, ?, ?, ?)";
+        String sqlQuery3 = "SELECT PaymentId from Payment WHERE Name Like ?";
         String sqlQuery2 = "INSERT Purpose VALUES(?, ?)";
 
-        jdbcTemplate.update(sqlQuery, new PaymentRowMapper(), purposeName, purposeDate, purposeSum);
+        System.out.println(date.toLocalDate() + " - " + personId);
 
+        jdbcTemplate.update(sqlQuery, personId, paymentName, date.toString(), paymentSum);
 
-        return 0;
+        List<Payment> paymentList = jdbcTemplate.query(sqlQuery3, new PaymentIdRowMapper(), paymentName);
+
+        jdbcTemplate.update(sqlQuery2, paymentList.get(0).getPaymentId(), purposeName);
+
+        return 1;
+    }
+
+    @Override
+    public List<Payment> getPaymentList(String personName) {
+        String sqlQuery = "SELECT * from JuridicalPerson Where PersonName Like ?";
+        String sqlQuery1 = "select Name, Date, Sum, PurposeName from Payment join Purpose on Payment.PaymentId = Purpose.PaymentId where Payment.PersonId = ?";
+
+        List<JuridicalPerson> juridicalPersonList = jdbcTemplate.query(sqlQuery, new JuridicalPersonRowMapper(), personName);
+
+        return jdbcTemplate.query(sqlQuery1, new PaymentRowMapper(), juridicalPersonList.get(0).getJuridicalPersonId());
+
     }
 }

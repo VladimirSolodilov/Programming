@@ -4,6 +4,7 @@ import com.example.bankingsystem.domain.JuridicalPerson.JuridicalPersonService;
 import com.example.bankingsystem.domain.model.Client;
 import com.example.bankingsystem.domain.model.JuridicalPerson;
 import com.example.bankingsystem.domain.model.Payment;
+import com.example.bankingsystem.domain.payment.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.Authentication;
@@ -23,6 +24,9 @@ import java.util.List;
 public class JuridicalPersonController {
     @Autowired
     private JuridicalPersonService juridicalPersonService;
+
+    @Autowired
+    private PaymentService paymentService;
 
     @GetMapping("/authorized/person/account")
     public String personAccount(Model model, Authentication authentication) {
@@ -89,18 +93,23 @@ public class JuridicalPersonController {
 
     @GetMapping("/authorized/person/createPayment")
     public String transferCreate(Model model, Authentication authentication) {
-        List<JuridicalPerson> juridicalPersonList = juridicalPersonService.getIdByPersonName(authentication.getName());
-
         model.addAttribute("person", juridicalPersonService.getPersonList(authentication.getName()));
         model.addAttribute("personCreatePayment", new Payment());
         return "/person/createPayment";
     }
 
     @PostMapping("/authorized/person/createPayment")
-    public String transferCreatePost(Model model, Authentication authentication, JuridicalPerson juridicalPerson) {
-
-
+    public String transferCreatePost(Model model, Authentication authentication, Payment payment) {
+        List<JuridicalPerson> juridicalPersonList = juridicalPersonService.getPersonList(authentication.getName());
+        JuridicalPerson juridicalPerson = juridicalPersonList.get(0);
+        model.addAttribute(paymentService.createPayment(juridicalPerson.getJuridicalPersonId(), payment.getName(), payment.getSum(), payment.getPurpose().getPurposeName()));
         return "redirect:/authorized";
+    }
+
+    @GetMapping("/authorized/person/viewPayment")
+    public String viewPayment(Model model, Authentication authentication) {
+        model.addAttribute("viewPayment", paymentService.getPaymentList(authentication.getName()));
+        return "/person/viewPayment";
     }
 
     /*@GetMapping("/person/removal")

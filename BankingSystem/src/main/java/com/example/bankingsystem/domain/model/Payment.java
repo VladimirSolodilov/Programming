@@ -4,18 +4,41 @@ import java.util.Date;
 
 public class Payment {
     private int paymentId;
-    private int accountId;
-    private Date data;
+
+    private int personId;
+    private String name;
+    private java.sql.Date data;
     private int sum;
+
+    private Purpose purpose;
 
     public Payment() {}
 
-    public Payment(int paymentId, int accountId, Date data, int sum) {
+    public Payment(int paymentId, int personId, String name, java.sql.Date data, int sum, Purpose purpose) {
         this.paymentId = paymentId;
-        this.accountId = accountId;
+        this.personId = personId;
+        this.name = name;
         this.data = data;
         this.sum = sum;
+        this.purpose = purpose;
     }
+
+    public Purpose getPurpose() {
+        return purpose;
+    }
+
+    public void setPurpose(Purpose purpose) {
+        this.purpose = purpose;
+    }
+
+    public int getPersonId() {
+        return personId;
+    }
+
+    public void setPersonId(int personId) {
+        this.personId = personId;
+    }
+
     public int getPaymentId() {
         return paymentId;
     }
@@ -24,19 +47,19 @@ public class Payment {
         this.paymentId = paymentId;
     }
 
-    public int getAccountId() {
-        return accountId;
+    public String getName() {
+        return name;
     }
 
-    public void setAccountId(int accountId) {
-        this.accountId = accountId;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Date getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(java.sql.Date data) {
         this.data = data;
     }
 
