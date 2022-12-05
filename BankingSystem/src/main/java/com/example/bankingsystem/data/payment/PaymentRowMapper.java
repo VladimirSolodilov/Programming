@@ -19,7 +19,7 @@ public class PaymentRowMapper implements RowMapper<Payment> {
 
         paymentModel.setPurpose(purpose);
         purpose.setPurposeName(rs.getString("PurposeName"));
-        
+
         return paymentModel;
     }
 }
