@@ -1,6 +1,7 @@
 package com.example.bankingsystem.domain.JuridicalPerson;
 
 import com.example.bankingsystem.domain.model.JuridicalPerson;
+import com.example.bankingsystem.domain.model.Transfer;
 
 import java.util.List;
 
@@ -14,5 +15,6 @@ public interface JuridicalPersonService {
     int addSum(String personName, int sum);
     int transfer(String leftPerson, String rightPerson, int sum);
 
+    List<Transfer> transferInfo(String personName);
     boolean saveClient(JuridicalPerson juridicalPerson);
 }

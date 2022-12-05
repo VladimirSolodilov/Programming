@@ -89,4 +89,10 @@ public class ClientController {
         model.addAttribute(clientService.transfer(authentication.getName(), client.getName(), client.getSum()));
         return "redirect:/authorized/client";
     }
+
+    @GetMapping("/authorized/client/transferInfo")
+    public String transferInfo(Model model, Authentication authentication) {
+        model.addAttribute("clientTransferInfo", clientService.transferInfo(authentication.getName()));
+        return "/client/transferInfo";
+    }
 }

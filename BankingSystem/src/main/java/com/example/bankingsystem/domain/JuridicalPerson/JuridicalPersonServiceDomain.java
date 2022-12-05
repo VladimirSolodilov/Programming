@@ -2,9 +2,11 @@ package com.example.bankingsystem.domain.JuridicalPerson;
 
 import com.example.bankingsystem.data.juridicalPerson.JuridicalPersonStorage;
 import com.example.bankingsystem.data.role.RoleStorage;
+import com.example.bankingsystem.data.transfer.TransferStorage;
 import com.example.bankingsystem.domain.model.Client;
 import com.example.bankingsystem.domain.model.JuridicalPerson;
 import com.example.bankingsystem.domain.model.Role;
+import com.example.bankingsystem.domain.model.Transfer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
@@ -31,6 +33,9 @@ public class JuridicalPersonServiceDomain implements JuridicalPersonService {
 
     @Autowired
     private JuridicalPersonStorage juridicalPersonStorage;
+
+    @Autowired
+    private TransferStorage transferStorage;
 
     @Autowired
     private RoleStorage roleStorage;
@@ -62,6 +67,11 @@ public class JuridicalPersonServiceDomain implements JuridicalPersonService {
     @Override
     public int transfer(String leftPerson, String rightPerson, int sum) {
         return juridicalPersonStorage.transfer(leftPerson, rightPerson, sum);
+    }
+
+    @Override
+    public List<Transfer> transferInfo(String personName) {
+        return transferStorage.transferInfo(personName);
     }
 
     @Override

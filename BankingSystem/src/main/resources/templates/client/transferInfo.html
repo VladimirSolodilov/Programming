@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/table.css" rel="stylesheet"/>
+</head>
+<body>
+<h1 class="h1">История переводов пользователя</h1>
+<div th:if="${clientTransferInfo} != null">
+    <table class="table" id="table">
+        <tr class="column-header">
+            <th>Начальный пользователь</th>
+            <th>Конечный пользователь</th>
+            <th>Сумма</th>
+        </tr>
+
+        <th:block th:each="clientTransferInfo: ${clientTransferInfo}">
+            <tr>
+                <td th:text="${clientTransferInfo.leftUser}">ID</td>
+                <td th:text="${clientTransferInfo.rightUser}">ID</td>
+                <td th:text="${clientTransferInfo.sum}">ID</td>
+            </tr>
+        </th:block>
+    </table>
+</div>
+</body>
+</html>

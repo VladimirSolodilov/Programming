@@ -78,6 +78,11 @@ public class JuridicalPersonController {
         return "redirect:/authorized/person";
     }
 
+    @GetMapping("/authorized/person/transferInfo")
+    public String transferInfo(Model model, Authentication authentication) {
+        model.addAttribute("personTransferInfo", juridicalPersonService.transferInfo(authentication.getName()));
+        return "/person/transferInfo";
+    }
 
     /*@GetMapping("/person/removal")
     public ModelAndView clientRemoval(ModelAndView modelAndView) {

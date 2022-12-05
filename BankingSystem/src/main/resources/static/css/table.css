@@ -11,7 +11,7 @@ body {
 
 .table th {
     font-weight: bold;
-    text-align: left;
+    text-align: center;
     padding: 5px;
     background: #efefef;
     border: 1px solid #dddddd;

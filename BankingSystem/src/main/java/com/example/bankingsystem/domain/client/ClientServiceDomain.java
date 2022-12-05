@@ -4,10 +4,8 @@ import com.example.bankingsystem.data.admin.AdminStorage;
 import com.example.bankingsystem.data.client.ClientStorage;
 import com.example.bankingsystem.data.juridicalPerson.JuridicalPersonStorage;
 import com.example.bankingsystem.data.role.RoleStorage;
-import com.example.bankingsystem.domain.model.Admin;
-import com.example.bankingsystem.domain.model.Client;
-import com.example.bankingsystem.domain.model.JuridicalPerson;
-import com.example.bankingsystem.domain.model.Role;
+import com.example.bankingsystem.data.transfer.TransferStorage;
+import com.example.bankingsystem.domain.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;
@@ -40,6 +38,9 @@ public class ClientServiceDomain implements ClientService, UserDetailsService {
 
     @Autowired
     private AdminStorage adminStorage;
+
+    @Autowired
+    private TransferStorage transferStorage;
 
     @Lazy
     @Autowired
@@ -104,6 +105,11 @@ public class ClientServiceDomain implements ClientService, UserDetailsService {
     @Override
     public int transfer(String leftClientName, String rightClientName, int sum) {
         return 0;
+    }
+
+    @Override
+    public List<Transfer> transferInfo(String userName) {
+        return transferStorage.transferInfo(userName);
     }
 
     @Override

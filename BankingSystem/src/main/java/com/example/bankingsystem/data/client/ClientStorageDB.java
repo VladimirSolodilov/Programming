@@ -72,6 +72,11 @@ public class ClientStorageDB implements ClientStorage {
     }
 
     @Override
+    public List<Client> transferInfo(String clientName) {
+        return null;
+    }
+
+    @Override
     public int save(Client client) {
         String sqlQuery = "INSERT into Client VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
         return jdbcTemplate.update(sqlQuery, client.getBranch(), client.getRoleId(), client.getSurname(),

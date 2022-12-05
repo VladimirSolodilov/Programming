@@ -14,6 +14,8 @@ public interface ClientStorage {
 
     int transfer(String leftClientName, String rightClientName, int sum);
 
+    List<Client> transferInfo(String clientName);
+
     int save(Client client);
 
     List<Client> findById(int clientId);
