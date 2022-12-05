@@ -58,4 +58,10 @@ public class JuridicalPersonStorageDB implements JuridicalPersonStorage {
         return jdbcTemplate.update(sqlQuery2, new ClientRowMapper(), rightPerson);
     }
 
+    @Override
+    public List<JuridicalPerson> getIdByPersonName(String personName) {
+        String sqlQuery = "Select PersonId from JuridicalPerson Where PersonName Like ?";
+        return jdbcTemplate.query(sqlQuery, new JuridicalPersonRowMapper(), personName);
+    }
+
 }

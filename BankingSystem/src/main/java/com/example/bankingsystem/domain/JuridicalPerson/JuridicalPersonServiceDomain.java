@@ -60,6 +60,11 @@ public class JuridicalPersonServiceDomain implements JuridicalPersonService {
     }
 
     @Override
+    public List<JuridicalPerson> getIdByPersonName(String personName) {
+        return juridicalPersonStorage.getIdByPersonName(personName);
+    }
+
+    @Override
     public int addSum(String personName, int sum) {
         return juridicalPersonStorage.addSum(personName, sum);
     }

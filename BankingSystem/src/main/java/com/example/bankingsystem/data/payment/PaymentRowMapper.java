@@ -12,6 +12,7 @@ public class PaymentRowMapper implements RowMapper<Payment> {
         Payment paymentModel = new Payment();
 
         paymentModel.setPaymentId(rs.getInt("PaymentId"));
+        paymentModel.setPaymentId(rs.getInt("PurposeId"));
         paymentModel.setAccountId(rs.getInt("AccountId"));
         paymentModel.setData(rs.getDate("Date"));
         paymentModel.setSum(rs.getInt("Sum"));

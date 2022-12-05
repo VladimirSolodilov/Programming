@@ -3,7 +3,6 @@ package com.example.bankingsystem.domain.model;
 import java.util.Date;
 
 public class Payment {
-    private Account account;
     private int paymentId;
     private int accountId;
     private Date data;
@@ -11,22 +10,12 @@ public class Payment {
 
     public Payment() {}
 
-    public Payment(Account account, int paymentId, int accountId, Date data, int sum) {
-        this.account = account;
+    public Payment(int paymentId, int accountId, Date data, int sum) {
         this.paymentId = paymentId;
         this.accountId = accountId;
         this.data = data;
         this.sum = sum;
     }
-
-    public Account getAccount() {
-        return account;
-    }
-
-    public void setAccount(Account account) {
-        this.account = account;
-    }
-
     public int getPaymentId() {
         return paymentId;
     }

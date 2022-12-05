@@ -12,5 +12,7 @@ public interface JuridicalPersonStorage {
     int addSum(String personName, int sum);
     int transfer(String leftPerson, String rightPerson, int sum);
 
+    List<JuridicalPerson> getIdByPersonName(String personName);
+
 
 }

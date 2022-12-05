@@ -3,6 +3,7 @@ package com.example.bankingsystem.web.controller;
 import com.example.bankingsystem.domain.JuridicalPerson.JuridicalPersonService;
 import com.example.bankingsystem.domain.model.Client;
 import com.example.bankingsystem.domain.model.JuridicalPerson;
+import com.example.bankingsystem.domain.model.Payment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.Authentication;
@@ -15,6 +16,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 public class JuridicalPersonController {
@@ -82,6 +85,22 @@ public class JuridicalPersonController {
     public String transferInfo(Model model, Authentication authentication) {
         model.addAttribute("personTransferInfo", juridicalPersonService.transferInfo(authentication.getName()));
         return "/person/transferInfo";
+    }
+
+    @GetMapping("/authorized/person/createPayment")
+    public String transferCreate(Model model, Authentication authentication) {
+        List<JuridicalPerson> juridicalPersonList = juridicalPersonService.getIdByPersonName(authentication.getName());
+
+        model.addAttribute("person", juridicalPersonService.getPersonList(authentication.getName()));
+        model.addAttribute("personCreatePayment", new Payment());
+        return "/person/createPayment";
+    }
+
+    @PostMapping("/authorized/person/createPayment")
+    public String transferCreatePost(Model model, Authentication authentication, JuridicalPerson juridicalPerson) {
+
+
+        return "redirect:/authorized";
     }
 
     /*@GetMapping("/person/removal")
