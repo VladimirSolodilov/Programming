@@ -1,5 +1,6 @@
 package com.example.bankingsystem.data.payment;
 
+import com.example.bankingsystem.domain.model.Client;
 import com.example.bankingsystem.domain.model.Payment;
 import com.example.bankingsystem.domain.model.Purpose;
 import org.springframework.jdbc.core.RowMapper;
@@ -12,6 +13,7 @@ public class PaymentRowMapper implements RowMapper<Payment> {
     public Payment mapRow(ResultSet rs, int rowNum) throws SQLException {
         Payment paymentModel = new Payment();
         Purpose purpose = new Purpose();
+        Client client = new Client();
 
         paymentModel.setName(rs.getString("Name"));
         paymentModel.setData(rs.getDate("Date"));
@@ -19,6 +21,9 @@ public class PaymentRowMapper implements RowMapper<Payment> {
 
         paymentModel.setPurpose(purpose);
         purpose.setPurposeName(rs.getString("PurposeName"));
+
+        paymentModel.setClient(client);
+        client.setClientName(rs.getString("ClientName"));
 
         return paymentModel;
     }

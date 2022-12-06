@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -12,7 +12,7 @@
         <div th:if="${viewPayment} != null">
             <label>Выбор платежа: </label>
             <label>
-                <select>
+                <select name="name">
                     <option th:each="viewPayment: ${viewPayment}" th:text="|Имя платежа: ${viewPayment.name} Дата: ${viewPayment.data} Сумма: ${viewPayment.sum} Назначение: ${viewPayment.purpose.purposeName}|"></option>
                 </select>
             </label>

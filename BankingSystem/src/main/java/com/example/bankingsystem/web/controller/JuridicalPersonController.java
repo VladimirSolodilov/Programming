@@ -2,6 +2,7 @@ package com.example.bankingsystem.web.controller;
 
 import com.example.bankingsystem.domain.JuridicalPerson.JuridicalPersonService;
 import com.example.bankingsystem.domain.branch.BranchService;
+import com.example.bankingsystem.domain.client.ClientService;
 import com.example.bankingsystem.domain.model.Branch;
 import com.example.bankingsystem.domain.model.Client;
 import com.example.bankingsystem.domain.model.JuridicalPerson;
@@ -26,6 +27,9 @@ import java.util.List;
 public class JuridicalPersonController {
     @Autowired
     private JuridicalPersonService juridicalPersonService;
+
+    @Autowired
+    private ClientService clientService;
 
     @Autowired
     private BranchService branchService;
@@ -104,22 +108,24 @@ public class JuridicalPersonController {
     @GetMapping("/authorized/person/createPayment")
     public String transferCreate(Model model, Authentication authentication) {
         model.addAttribute("person", juridicalPersonService.getPersonList(authentication.getName()));
+        model.addAttribute("client", clientService.getClientList("admin"));
         model.addAttribute("personCreatePayment", new Payment());
         return "/person/createPayment";
     }
 
     @PostMapping("/authorized/person/createPayment")
-    public String transferCreatePost(Model model, Authentication authentication, Payment payment) {
+    public String transferCreatePost(Model model, Authentication authentication, Payment payment, Client client) {
         List<JuridicalPerson> juridicalPersonList = juridicalPersonService.getPersonList(authentication.getName());
         JuridicalPerson juridicalPerson = juridicalPersonList.get(0);
-        model.addAttribute(paymentService.createPayment(juridicalPerson.getJuridicalPersonId(), payment.getName(), payment.getSum(), payment.getPurpose().getPurposeName()));
+
+        model.addAttribute(paymentService.createPayment(juridicalPerson.getJuridicalPersonId(), client.getClientName(),payment.getName(), payment.getSum(), payment.getPurpose().getPurposeName()));
         return "redirect:/authorized";
     }
 
     @GetMapping("/authorized/person/viewPayment")
     public String viewPayment(Model model, Authentication authentication) {
         model.addAttribute("person", juridicalPersonService.getPersonList(null));
-        model.addAttribute("viewPayment", paymentService.getPaymentList(authentication.getName()));
+        model.addAttribute("viewPayment", paymentService.getPaymentList(authentication.getName(), null));
         return "/person/viewPayment";
     }
 

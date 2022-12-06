@@ -3,18 +3,18 @@ package com.example.bankingsystem.domain.model;
 import java.util.Date;
 
 public class Payment {
+    private Client client;
     private int paymentId;
-
     private int personId;
     private String name;
     private java.sql.Date data;
     private int sum;
-
     private Purpose purpose;
 
     public Payment() {}
 
-    public Payment(int paymentId, int personId, String name, java.sql.Date data, int sum, Purpose purpose) {
+    public Payment(Client client, int paymentId, int personId, String name, java.sql.Date data, int sum, Purpose purpose) {
+        this.client = client;
         this.paymentId = paymentId;
         this.personId = personId;
         this.name = name;
@@ -69,5 +69,13 @@ public class Payment {
 
     public void setSum(int sum) {
         this.sum = sum;
+    }
+
+    public Client getClient() {
+        return client;
+    }
+
+    public void setClient(Client client) {
+        this.client = client;
     }
 }

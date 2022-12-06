@@ -23,6 +23,15 @@
             </label>&nbsp;<span th:errors="*{purpose.purposeName}"></span>
         </div>
 
+        <div th:if="${client} != null">
+            <label>Клиент: </label>
+            <label>
+                <select name="clientName">
+                    <option th:each="client: ${client}" th:text="${client.clientName}"></option>
+                </select>
+            </label>
+        </div>
+
         <div>
             <label>Сумма платежа: </label>
             <label>

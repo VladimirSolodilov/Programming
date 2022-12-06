@@ -20,6 +20,7 @@
             <th>Имя платежа</th>
             <th>Дата создания</th>
             <th>Сумма</th>
+            <th>Клиент</th>
             <th>Назначение</th>
         </tr>
         <th:block th:each="viewPayment: ${viewPayment}">
@@ -27,6 +28,7 @@
                 <td th:text="${viewPayment.name}">ID</td>
                 <td th:text="${viewPayment.data}">ID</td>
                 <td th:text="${viewPayment.sum}">ID</td>
+                <td th:text="${viewPayment.client.clientName}">ID</td>
                 <td th:text="${viewPayment.purpose.purposeName}">ID</td>
             </tr>
         </th:block>

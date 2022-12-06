@@ -5,6 +5,7 @@ import com.example.bankingsystem.domain.branch.BranchService;
 import com.example.bankingsystem.domain.client.ClientService;
 import com.example.bankingsystem.domain.model.Branch;
 import com.example.bankingsystem.domain.model.Client;
+import com.example.bankingsystem.domain.model.Payment;
 import com.example.bankingsystem.domain.model.Transfer;
 import com.example.bankingsystem.domain.payment.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -114,15 +115,15 @@ public class ClientController {
 
     @GetMapping("/authorized/client/doPayment")
     public String doPayment(Model model, Authentication authentication) {
-        model.addAttribute("viewPayment", paymentService.getPaymentList(null));
-        model.addAttribute("clientDoPayment", new Client());
+        model.addAttribute("viewPayment", paymentService.getPaymentList(null, authentication.getName()));
+        model.addAttribute("clientDoPayment", new Payment());
         return "/client/doPayment";
     }
 
     @PostMapping("/authorized/client/doPayment")
-    public String doPaymentPost(Model model, Authentication authentication, Client client) {
-        
-
+    public String doPaymentPost(Model model, Authentication authentication, Payment payment) {
+        System.out.println("Payment = " + payment.getName());
+        //model.addAttribute(paymentService.doPayment(authentication.getName(), "r", payment.getName(), payment.getSum(), payment.getPurpose().getPurposeName()));
         return "redirect:/authorized";
     }
 }
