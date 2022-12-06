@@ -1,6 +1,8 @@
 package com.example.bankingsystem.web.controller;
 
 import com.example.bankingsystem.domain.JuridicalPerson.JuridicalPersonService;
+import com.example.bankingsystem.domain.branch.BranchService;
+import com.example.bankingsystem.domain.model.Branch;
 import com.example.bankingsystem.domain.model.Client;
 import com.example.bankingsystem.domain.model.JuridicalPerson;
 import com.example.bankingsystem.domain.model.Payment;
@@ -26,6 +28,9 @@ public class JuridicalPersonController {
     private JuridicalPersonService juridicalPersonService;
 
     @Autowired
+    private BranchService branchService;
+
+    @Autowired
     private PaymentService paymentService;
 
     @GetMapping("/authorized/person/account")
@@ -38,12 +43,13 @@ public class JuridicalPersonController {
     @GetMapping("/person/signUp")
     public ModelAndView clientRegistration(ModelAndView modelAndView) {
         modelAndView.addObject("personSignUp", new JuridicalPerson());
+        modelAndView.addObject("branchList", branchService.getBranchList());
         modelAndView.setViewName("/person/personSignUp");
         return modelAndView;
     }
 
     @PostMapping("/person/signUp")
-    public String clientRegistrationPost(Model model, JuridicalPerson juridicalPerson) {
+    public String clientRegistrationPost(Model model, JuridicalPerson juridicalPerson, Branch branch) {
         /*if (bindingResult.hasErrors()) {
             return "/person/registration";
         }
@@ -55,7 +61,10 @@ public class JuridicalPersonController {
             model.addAttribute("usernameError", "Пользователь с таким именем уже существует");
             return "/client/registration";
         }*/
-        model.addAttribute(juridicalPersonService.setPersonList(1, 3,
+
+        List<Branch> branchList = branchService.getBranchIdByName(branch.getBranchName());
+
+        model.addAttribute(juridicalPersonService.setPersonList(branchList.get(0).getBranchId(), 3,
                 juridicalPerson.getSurname(), juridicalPerson.getName(), juridicalPerson.getPatronymic(),
                 juridicalPerson.getJuridicalPersonName(), juridicalPerson.getPassword(), juridicalPerson.getSum()));
 

@@ -32,6 +32,15 @@
             </label>&nbsp;<span th:errors="*{patronymic}"></span>
         </div>
 
+        <div th:if="${branchList} != null">
+            <label>Филиал: </label>
+            <label>
+                <select name="branchName">
+                    <option th:each="branchList: ${branchList}" th:text="${branchList.branchName}" required></option>
+                </select>
+            </label>
+        </div>
+
         <div>
             <label>Логин: </label>
             <label>

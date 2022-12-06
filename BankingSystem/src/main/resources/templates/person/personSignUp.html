@@ -4,7 +4,7 @@
       layout:decorate="~{layout}" xmlns:layout="http://www.w3.org/1999/xhtml">
 <head>
   <meta charset="UTF-8">
-  <title>Регистрация физического лица</title>
+  <title>Регистрация юридического лица</title>
   <link href="/css/form.css" rel="stylesheet"/>
 </head>
 <body>
@@ -32,15 +32,11 @@
         </label>&nbsp;<span th:errors="*{patronymic}"></span>
       </div>
 
-      <div>
+      <div th:if="${branchList} != null">
         <label>Филиал: </label>
         <label>
-          <select id="selectvalue">
-            <option>5</option>
-            <option>10</option>
-            <option>15</option>
-            <option>20</option>
-            <option>25</option>
+          <select name="branchName">
+            <option th:each="branchList: ${branchList}" th:text="${branchList.branchName}" required></option>
           </select>
         </label>
       </div>

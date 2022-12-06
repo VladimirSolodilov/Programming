@@ -4,17 +4,17 @@ public class Branch {
     private Bank bank;
     private int branchId;
     private int bankId;
-    private String name;
+    private String branchName;
     private String address;
     private String bankIdentificationCode;
 
     public Branch() {}
 
-    public Branch(Bank bank, int branchId, int bankId, String name, String address, String bankIdentificationCode) {
+    public Branch(Bank bank, int branchId, int bankId, String branchName, String address, String bankIdentificationCode) {
         this.bank = bank;
         this.branchId = branchId;
         this.bankId = bankId;
-        this.name = name;
+        this.branchName = branchName;
         this.address = address;
         this.bankIdentificationCode = bankIdentificationCode;
     }
@@ -43,12 +43,12 @@ public class Branch {
         this.bankId = bankId;
     }
 
-    public String getName() {
-        return name;
+    public String getBranchName() {
+        return branchName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setBranchName(String branchName) {
+        this.branchName = branchName;
     }
 
     public String getAddress() {

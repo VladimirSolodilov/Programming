@@ -1,6 +1,8 @@
 package com.example.bankingsystem.web.controller;
 
+import com.example.bankingsystem.domain.branch.BranchService;
 import com.example.bankingsystem.domain.client.ClientService;
+import com.example.bankingsystem.domain.model.Branch;
 import com.example.bankingsystem.domain.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -12,10 +14,15 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.List;
+
 @Controller
 public class ClientController {
     @Autowired
     private ClientService clientService;
+
+    @Autowired
+    private BranchService branchService;
 
     @GetMapping("/authorized/client/account")
     public String informationClient(Model model, Authentication authentication) {
@@ -27,6 +34,7 @@ public class ClientController {
     @GetMapping("/client/signUp")
     public ModelAndView clientRegistration(ModelAndView modelAndView) {
         modelAndView.addObject("clientSignUp", new Client());
+        modelAndView.addObject("branchList", branchService.getBranchList());
         modelAndView.setViewName("/client/clientSignUp");
         /*if (value == "error") {
             modelAndView.addObject("clientNameError", "Пользователь существует!");
@@ -35,7 +43,7 @@ public class ClientController {
     }
 
     @PostMapping("/client/signUp")
-    public String clientRegistrationPost(Client client, Model model, BindingResult bindingResult) {
+    public String clientRegistrationPost(Client client, Model model, BindingResult bindingResult, Branch branch) {
         /*if (!client.getPassword().equals(client.getPasswordConfirm())){
             model.addAttribute("passwordError", "Пароли не совпадают");
             return "/client/registration";
@@ -46,7 +54,9 @@ public class ClientController {
         }*/
         //client.setRoles(Collections.singleton(roleStorage.getRoleById1(client.getRoleId())));
 
-        model.addAttribute(clientService.setClientList(1, 2, client.getSurname(),
+        List<Branch> branchList = branchService.getBranchIdByName(branch.getBranchName());
+
+        model.addAttribute(clientService.setClientList(branchList.get(0).getBranchId(), 2, client.getSurname(),
                 client.getName(), client.getPatronymic(), client.getClientName(), client.getPassword(), 0));
 
         return "redirect:/";
