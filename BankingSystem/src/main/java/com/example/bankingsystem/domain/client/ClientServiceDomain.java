@@ -104,12 +104,12 @@ public class ClientServiceDomain implements ClientService, UserDetailsService {
 
     @Override
     public int transfer(String leftClientName, String rightClientName, int sum) {
-        return 0;
+        return clientStorage.transfer(leftClientName, rightClientName, sum);
     }
 
     @Override
     public List<Transfer> transferInfo(String userName) {
-        return transferStorage.transferInfo(userName);
+        return transferStorage.viewTransferInfo(userName);
     }
 
     @Override

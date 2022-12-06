@@ -76,7 +76,7 @@ public class JuridicalPersonServiceDomain implements JuridicalPersonService {
 
     @Override
     public List<Transfer> transferInfo(String personName) {
-        return transferStorage.transferInfo(personName);
+        return transferStorage.viewTransferInfo(personName);
     }
 
     @Override

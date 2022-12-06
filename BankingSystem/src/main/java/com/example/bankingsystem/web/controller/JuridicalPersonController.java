@@ -85,13 +85,14 @@ public class JuridicalPersonController {
     public String transfer(Model model, Authentication authentication) {
         model.addAttribute("personLeft", juridicalPersonService.getPersonList(authentication.getName()));
         model.addAttribute("personRight", juridicalPersonService.getPersonList("admin"));
+        model.addAttribute("personSumTransfer", new JuridicalPerson());
         return "/person/transfer";
     }
 
     @PostMapping("/authorized/person/transfer")
     public String transferPost(Model model, Authentication authentication, JuridicalPerson juridicalPerson) {
-        model.addAttribute(juridicalPersonService.transfer(authentication.getName(), juridicalPerson.getName(), juridicalPerson.getSum()));
-        return "redirect:/authorized/person";
+        model.addAttribute(juridicalPersonService.transfer(authentication.getName(), juridicalPerson.getJuridicalPersonName().substring(juridicalPerson.getJuridicalPersonName().lastIndexOf(':') + 2), juridicalPerson.getSum()));
+        return "redirect:/authorized";
     }
 
     @GetMapping("/authorized/person/transferInfo")
@@ -117,6 +118,7 @@ public class JuridicalPersonController {
 
     @GetMapping("/authorized/person/viewPayment")
     public String viewPayment(Model model, Authentication authentication) {
+        model.addAttribute("person", juridicalPersonService.getPersonList(null));
         model.addAttribute("viewPayment", paymentService.getPaymentList(authentication.getName()));
         return "/person/viewPayment";
     }

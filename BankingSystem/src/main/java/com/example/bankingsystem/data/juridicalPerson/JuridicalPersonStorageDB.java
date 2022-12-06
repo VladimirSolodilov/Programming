@@ -1,6 +1,7 @@
 package com.example.bankingsystem.data.juridicalPerson;
 
 import com.example.bankingsystem.data.client.ClientRowMapper;
+import com.example.bankingsystem.data.transfer.TransferStorage;
 import com.example.bankingsystem.domain.model.JuridicalPerson;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -16,6 +17,10 @@ public class JuridicalPersonStorageDB implements JuridicalPersonStorage {
 
     @Autowired
     private JdbcTemplate jdbcTemplate;
+
+    @Autowired
+    private TransferStorage transferStorage;
+
 
     @Override
     public List<JuridicalPerson> getAllPerson(String pattern) {
@@ -47,6 +52,7 @@ public class JuridicalPersonStorageDB implements JuridicalPersonStorage {
     @Override
     public int addSum(String personName, int sum) {
         String sqlQuery = "Update JuridicalPerson Set JuridicalPerson.Sum = JuridicalPerson.Sum + ? where JuridicalPerson.PersonName Like ?";
+        transferStorage.setTransferInfo(personName, personName, sum);
         return jdbcTemplate.update(sqlQuery, sum, personName);
     }
 
@@ -54,8 +60,13 @@ public class JuridicalPersonStorageDB implements JuridicalPersonStorage {
     public int transfer(String leftPerson, String rightPerson, int sum) {
         String sqlQuery1 = "Update JuridicalPerson Set JuridicalPerson.Sum = JuridicalPerson.Sum - ? Where JuridicalPerson.PersonName Like ?";
         String sqlQuery2 = "Update JuridicalPerson Set JuridicalPerson.Sum = JuridicalPerson.Sum + ? Where JuridicalPerson.PersonName Like ?";
-        jdbcTemplate.update(sqlQuery1, new ClientRowMapper(), leftPerson);
-        return jdbcTemplate.update(sqlQuery2, new ClientRowMapper(), rightPerson);
+
+        jdbcTemplate.update(sqlQuery1, sum, leftPerson);
+        jdbcTemplate.update(sqlQuery2, sum, rightPerson);
+
+        transferStorage.setTransferInfo(leftPerson, rightPerson, sum);
+
+        return 1;
     }
 
     @Override

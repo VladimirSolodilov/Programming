@@ -16,8 +16,13 @@ public class TransferStorageDB implements TransferStorage {
     @Autowired
     private JdbcTemplate jdbcTemplate;
     @Override
-    public List<Transfer> transferInfo(String clientName) {
+    public List<Transfer> viewTransferInfo(String clientName) {
         String sqlQuery = "Select * from Transfer Where Transfer.LeftUser Like ?";
         return jdbcTemplate.query(sqlQuery, new TransferRowMapper(), clientName);
+    }
+    @Override
+    public int setTransferInfo(String leftUser, String rightUser, int sum) {
+        String sqlQuery = "INSERT Transfer Values(?, ?, ?)";
+        return jdbcTemplate.update(sqlQuery, leftUser, rightUser, sum);
     }
 }

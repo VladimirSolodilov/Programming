@@ -19,28 +19,27 @@
     </table>
   </div>
 
-  <p>Информация о клиентах:</p>
-  <div th:if="${personRight} != null">
-    <table class="table" id="personRight">
-      <th:block th:each="personRight: ${personRight}">
-        <tr>
-          <th>Фамилия</th><td th:text="${personRight.surname}">Фамилия</td>
-        </tr>
+  <form th:action="@{/authorized/person/transfer}" method="post" th:object="${personSumTransfer}">
+      <div th:if="${personRight} != null">
+        <label>Выбор клиента: </label>
+        <label>
+          <select name="juridicalPersonName">
+            <option th:each="personRight: ${personRight}" th:text="|Фамилия: ${personRight.surname} Имя: ${personRight.name} Отчество: ${personRight.patronymic} Логин: ${personRight.juridicalPersonName}|"></option>
+          </select>
+        </label>
+      </div>
 
-        <tr>
-          <th>Имя</th><td th:text="${personRight.name}">Имя</td>
-        </tr>
+      <div>
+          <label>Сумма перевода: </label>
+          <label>
+              <input type="text" th:field="*{sum}" required>
+          </label>&nbsp;<span th:errors="*{sum}"></span>
+      </div>
 
-        <tr>
-          <th>Отчество</th><td th:text="${personRight.patronymic}">Отчество</td>
-        </tr>
-
-        <tr>
-          <th>Имя клиента</th><td th:text="${personRight.juridicalPersonName}">Сумма</td>
-        </tr>
-      </th:block>
-    </table>
-  </div>
-
+      <div class="form-group">
+        <input type="submit" name="registration-submit" id="registration-submit1"
+               class="stdBtn" value="Отправить">
+      </div>
+  </form>
 </body>
 </html>

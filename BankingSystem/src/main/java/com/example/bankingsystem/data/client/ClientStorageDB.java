@@ -1,5 +1,6 @@
 package com.example.bankingsystem.data.client;
 
+import com.example.bankingsystem.data.transfer.TransferStorage;
 import com.example.bankingsystem.domain.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -17,20 +18,19 @@ public class ClientStorageDB implements ClientStorage {
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    @Autowired
+    private TransferStorage transferStorage;
+
     @Override
     public List<Client> getAllClient (String pattern) {
         List<Client> clientList;
         StringBuilder sqlQuery = new StringBuilder("SELECT * from Client ");
 
-        System.out.println("Pattern = " + pattern);
-
         if (!Objects.equals(pattern, "admin")) {
             sqlQuery.append(" WHERE Client.ClientName LIKE ?");
             clientList = jdbcTemplate.query(sqlQuery.toString(), new ClientRowMapper(), pattern);
-            System.out.println("Operation 1");
         } else {
             clientList = jdbcTemplate.query(sqlQuery.toString(), new ClientRowMapper());
-            System.out.println("Operation 2");
         }
 
         return clientList;
@@ -51,6 +51,7 @@ public class ClientStorageDB implements ClientStorage {
     @Override
     public int addSum(String userName, int sum) {
         String sqlQuery = "Update Client Set Client.Sum = Client.Sum + ? where Client.ClientName Like ?";
+        transferStorage.setTransferInfo(userName, userName, sum);
         return jdbcTemplate.update(sqlQuery, sum, userName);
     }
 
@@ -61,8 +62,12 @@ public class ClientStorageDB implements ClientStorage {
         String sqlQuery1 = "Update Client Set Client.Sum = Client.Sum - ? Where Client.ClientName Like ?";
         String sqlQuery2 = "Update Client Set Client.Sum = Client.Sum + ? Where Client.ClientName Like ?";
 
-        jdbcTemplate.update(sqlQuery1, new ClientRowMapper(), leftClientName);
-        return jdbcTemplate.update(sqlQuery2, new ClientRowMapper(), rightClientName);
+        jdbcTemplate.update(sqlQuery1, sum, leftClientName);
+        jdbcTemplate.update(sqlQuery2, sum, rightClientName);
+
+        transferStorage.setTransferInfo(leftClientName, rightClientName, sum);
+
+        return 1;
 
         /*leftClientList = jdbcTemplate.query(sqlQueryLeft, new ClientRowMapper(), leftClientName);
         rightClientList = jdbcTemplate.query(sqlQueryLeft, new ClientRowMapper(), rightClientName);

@@ -7,5 +7,8 @@ import java.util.Collection;
 import java.util.List;
 
 public interface TransferStorage {
-    List<Transfer> transferInfo(String clientName);
+    List<Transfer> viewTransferInfo(String clientName);
+    int setTransferInfo(String leftUser, String rightUser, int sum);
+
+
 }

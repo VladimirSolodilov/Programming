@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import java.sql.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 public class PaymentStorageDB implements PaymentStorage {
@@ -39,11 +40,17 @@ public class PaymentStorageDB implements PaymentStorage {
     @Override
     public List<Payment> getPaymentList(String personName) {
         String sqlQuery = "SELECT * from JuridicalPerson Where PersonName Like ?";
-        String sqlQuery1 = "select Name, Date, Sum, PurposeName from Payment join Purpose on Payment.PaymentId = Purpose.PaymentId where Payment.PersonId = ?";
+        String sqlQuery1 = "SELECT * from JuridicalPerson";
+        String sqlQuery2 = "select Name, Date, Sum, PurposeName from Payment join Purpose on Payment.PaymentId = Purpose.PaymentId where Payment.PersonId = ?";
+        String sqlQuery3 = "select Name, Date, Sum, PurposeName from Payment join Purpose on Payment.PaymentId = Purpose.PaymentId";
+        List<JuridicalPerson> juridicalPersonList;
 
-        List<JuridicalPerson> juridicalPersonList = jdbcTemplate.query(sqlQuery, new JuridicalPersonRowMapper(), personName);
-
-        return jdbcTemplate.query(sqlQuery1, new PaymentRowMapper(), juridicalPersonList.get(0).getJuridicalPersonId());
-
+        if (Objects.equals(personName, null)) {
+            juridicalPersonList = jdbcTemplate.query(sqlQuery1, new JuridicalPersonRowMapper());
+            return jdbcTemplate.query(sqlQuery3, new PaymentRowMapper());
+        } else {
+            juridicalPersonList = jdbcTemplate.query(sqlQuery, new JuridicalPersonRowMapper(), personName);
+            return jdbcTemplate.query(sqlQuery2, new PaymentRowMapper(), juridicalPersonList.get(0).getJuridicalPersonId());
+        }
     }
 }

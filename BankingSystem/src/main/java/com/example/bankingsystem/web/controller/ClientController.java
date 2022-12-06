@@ -1,9 +1,12 @@
 package com.example.bankingsystem.web.controller;
 
+import com.example.bankingsystem.data.transfer.TransferStorage;
 import com.example.bankingsystem.domain.branch.BranchService;
 import com.example.bankingsystem.domain.client.ClientService;
 import com.example.bankingsystem.domain.model.Branch;
 import com.example.bankingsystem.domain.model.Client;
+import com.example.bankingsystem.domain.model.Transfer;
+import com.example.bankingsystem.domain.payment.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -20,9 +23,11 @@ import java.util.List;
 public class ClientController {
     @Autowired
     private ClientService clientService;
-
     @Autowired
     private BranchService branchService;
+
+    @Autowired
+    private PaymentService paymentService;
 
     @GetMapping("/authorized/client/account")
     public String informationClient(Model model, Authentication authentication) {
@@ -91,18 +96,33 @@ public class ClientController {
     public String transfer(Model model, Authentication authentication) {
         model.addAttribute("clientLeft", clientService.getClientList(authentication.getName()));
         model.addAttribute("clientRight", clientService.getClientList("admin"));
+        model.addAttribute("clientSumTransfer", new Client());
         return "/client/transfer";
     }
 
     @PostMapping("/authorized/client/transfer")
     public String transferPost(Model model, Authentication authentication, Client client) {
-        model.addAttribute(clientService.transfer(authentication.getName(), client.getName(), client.getSum()));
-        return "redirect:/authorized/client";
+        model.addAttribute(clientService.transfer(authentication.getName(), client.getClientName().substring(client.getClientName().lastIndexOf(':') + 2), client.getSum()));
+        return "redirect:/authorized";
     }
 
     @GetMapping("/authorized/client/transferInfo")
     public String transferInfo(Model model, Authentication authentication) {
         model.addAttribute("clientTransferInfo", clientService.transferInfo(authentication.getName()));
         return "/client/transferInfo";
+    }
+
+    @GetMapping("/authorized/client/doPayment")
+    public String doPayment(Model model, Authentication authentication) {
+        model.addAttribute("viewPayment", paymentService.getPaymentList(null));
+        model.addAttribute("clientDoPayment", new Client());
+        return "/client/doPayment";
+    }
+
+    @PostMapping("/authorized/client/doPayment")
+    public String doPaymentPost(Model model, Authentication authentication, Client client) {
+        
+
+        return "redirect:/authorized";
     }
 }
