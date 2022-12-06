@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [BankingSystem]    Script Date: 06.12.2022 15:46:10 ******/
+/****** Object:  Database [BankingSystem]    Script Date: 07.12.2022 0:46:09 ******/
 CREATE DATABASE [BankingSystem]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -80,7 +80,7 @@ ALTER DATABASE [BankingSystem] SET QUERY_STORE = OFF
 GO
 USE [BankingSystem]
 GO
-/****** Object:  User [BSLogin]    Script Date: 06.12.2022 15:46:10 ******/
+/****** Object:  User [BSLogin]    Script Date: 07.12.2022 0:46:09 ******/
 CREATE USER [BSLogin] FOR LOGIN [BSLogin] WITH DEFAULT_SCHEMA=[dbo]
 GO
 ALTER ROLE [db_owner] ADD MEMBER [BSLogin]
@@ -89,7 +89,7 @@ ALTER ROLE [db_datareader] ADD MEMBER [BSLogin]
 GO
 ALTER ROLE [db_datawriter] ADD MEMBER [BSLogin]
 GO
-/****** Object:  Table [dbo].[Account]    Script Date: 06.12.2022 15:46:10 ******/
+/****** Object:  Table [dbo].[Account]    Script Date: 07.12.2022 0:46:09 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -105,7 +105,7 @@ CREATE TABLE [dbo].[Account](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[AccountRequisites]    Script Date: 06.12.2022 15:46:10 ******/
+/****** Object:  Table [dbo].[AccountRequisites]    Script Date: 07.12.2022 0:46:09 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -120,7 +120,7 @@ CREATE TABLE [dbo].[AccountRequisites](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Admin]    Script Date: 06.12.2022 15:46:10 ******/
+/****** Object:  Table [dbo].[Admin]    Script Date: 07.12.2022 0:46:09 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -136,7 +136,7 @@ CREATE TABLE [dbo].[Admin](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Bank]    Script Date: 06.12.2022 15:46:10 ******/
+/****** Object:  Table [dbo].[Bank]    Script Date: 07.12.2022 0:46:09 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -152,7 +152,7 @@ CREATE TABLE [dbo].[Bank](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Branch]    Script Date: 06.12.2022 15:46:10 ******/
+/****** Object:  Table [dbo].[Branch]    Script Date: 07.12.2022 0:46:09 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -169,7 +169,7 @@ CREATE TABLE [dbo].[Branch](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Client]    Script Date: 06.12.2022 15:46:10 ******/
+/****** Object:  Table [dbo].[Client]    Script Date: 07.12.2022 0:46:09 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -190,7 +190,7 @@ CREATE TABLE [dbo].[Client](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[JuridicalPerson]    Script Date: 06.12.2022 15:46:10 ******/
+/****** Object:  Table [dbo].[JuridicalPerson]    Script Date: 07.12.2022 0:46:09 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -211,7 +211,7 @@ CREATE TABLE [dbo].[JuridicalPerson](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Logs]    Script Date: 06.12.2022 15:46:10 ******/
+/****** Object:  Table [dbo].[Logs]    Script Date: 07.12.2022 0:46:09 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -225,7 +225,7 @@ CREATE TABLE [dbo].[Logs](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Payment]    Script Date: 06.12.2022 15:46:10 ******/
+/****** Object:  Table [dbo].[Payment]    Script Date: 07.12.2022 0:46:09 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -233,6 +233,7 @@ GO
 CREATE TABLE [dbo].[Payment](
 	[PaymentId] [int] IDENTITY(1,1) NOT NULL,
 	[PersonId] [int] NULL,
+	[ClientId] [int] NULL,
 	[Name] [nvarchar](50) NULL,
 	[Date] [date] NULL,
 	[Sum] [int] NOT NULL,
@@ -242,7 +243,7 @@ CREATE TABLE [dbo].[Payment](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Purpose]    Script Date: 06.12.2022 15:46:10 ******/
+/****** Object:  Table [dbo].[Purpose]    Script Date: 07.12.2022 0:46:09 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -257,7 +258,7 @@ CREATE TABLE [dbo].[Purpose](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Role]    Script Date: 06.12.2022 15:46:10 ******/
+/****** Object:  Table [dbo].[Role]    Script Date: 07.12.2022 0:46:09 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -271,7 +272,7 @@ CREATE TABLE [dbo].[Role](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Transfer]    Script Date: 06.12.2022 15:46:10 ******/
+/****** Object:  Table [dbo].[Transfer]    Script Date: 07.12.2022 0:46:09 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -299,21 +300,21 @@ INSERT [dbo].[Branch] ([BranchId], [BankId], [Name], [Address], [BankIdentificat
 GO
 SET IDENTITY_INSERT [dbo].[Client] ON 
 GO
-INSERT [dbo].[Client] ([ClientId], [BranchId], [RoleId], [Surname], [Name], [Patronymic], [ClientName], [Password], [Sum]) VALUES (4, 1, 2, N'b', N'b', N'b', N'b', N'$2a$10$Yoe0weCo8BskvnXQxOX5x.LE91MF2boveykoDAvIlOdCRCi4KY1Bi', 100)
+INSERT [dbo].[Client] ([ClientId], [BranchId], [RoleId], [Surname], [Name], [Patronymic], [ClientName], [Password], [Sum]) VALUES (4, 1, 2, N'b', N'b', N'b', N'b', N'$2a$10$Yoe0weCo8BskvnXQxOX5x.LE91MF2boveykoDAvIlOdCRCi4KY1Bi', 1100)
 GO
 INSERT [dbo].[Client] ([ClientId], [BranchId], [RoleId], [Surname], [Name], [Patronymic], [ClientName], [Password], [Sum]) VALUES (5, 1, 2, N'1', N'1', N'1', N'1', N'$2a$10$f28uaWene5qrK8qQ8xSh5uiOSAY9KyojxWMU6dVZ32UG9jtqFk4hy', 0)
 GO
 INSERT [dbo].[Client] ([ClientId], [BranchId], [RoleId], [Surname], [Name], [Patronymic], [ClientName], [Password], [Sum]) VALUES (6, 1, 2, N'1', N'1', N'1', N'1', N'$2a$10$IiIHBlQpz8KB4dYPEbNchOyCsr7P36DMRk5z94VR1jDGj0Kbm.pRe', 0)
 GO
-INSERT [dbo].[Client] ([ClientId], [BranchId], [RoleId], [Surname], [Name], [Patronymic], [ClientName], [Password], [Sum]) VALUES (7, 1, 2, N'c', N'c', N'c', N'c', N'$2a$10$3/kZ2wIOSz8kt4t6507d3OUtxyfurCbeb84WoVT/d5RI2MwdqxJSG', 0)
+INSERT [dbo].[Client] ([ClientId], [BranchId], [RoleId], [Surname], [Name], [Patronymic], [ClientName], [Password], [Sum]) VALUES (7, 1, 2, N'c', N'c', N'c', N'c', N'$2a$10$3/kZ2wIOSz8kt4t6507d3OUtxyfurCbeb84WoVT/d5RI2MwdqxJSG', 222)
 GO
 SET IDENTITY_INSERT [dbo].[Client] OFF
 GO
 SET IDENTITY_INSERT [dbo].[JuridicalPerson] ON 
 GO
-INSERT [dbo].[JuridicalPerson] ([PersonId], [BranchId], [RoleId], [Surname], [Name], [Patronymic], [PersonName], [Password], [Sum]) VALUES (1, 1, 3, N'r', N'r', N'r', N'r', N'$2a$10$WtBJtOONoxwUR0kuiM7HjOfH8yfnND/bZrVI1PPF70HCIgPYj2LnG', 10000)
+INSERT [dbo].[JuridicalPerson] ([PersonId], [BranchId], [RoleId], [Surname], [Name], [Patronymic], [PersonName], [Password], [Sum]) VALUES (1, 1, 3, N'r', N'r', N'r', N'r', N'$2a$10$WtBJtOONoxwUR0kuiM7HjOfH8yfnND/bZrVI1PPF70HCIgPYj2LnG', 19779)
 GO
-INSERT [dbo].[JuridicalPerson] ([PersonId], [BranchId], [RoleId], [Surname], [Name], [Patronymic], [PersonName], [Password], [Sum]) VALUES (2, 1, 3, N'y', N'y', N'y', N'y', N'$2a$10$mG5CL9tLDgQ245cxxCACWujCCpe26Rw7sjqTA6PRVVORrR1Ztz7xG', 0)
+INSERT [dbo].[JuridicalPerson] ([PersonId], [BranchId], [RoleId], [Surname], [Name], [Patronymic], [PersonName], [Password], [Sum]) VALUES (2, 1, 3, N'y', N'y', N'y', N'y', N'$2a$10$mG5CL9tLDgQ245cxxCACWujCCpe26Rw7sjqTA6PRVVORrR1Ztz7xG', 111)
 GO
 INSERT [dbo].[JuridicalPerson] ([PersonId], [BranchId], [RoleId], [Surname], [Name], [Patronymic], [PersonName], [Password], [Sum]) VALUES (3, 1, 3, N'o', N'o', N'o', N'o', N'$2a$10$weP.m7X1.BH8yYa.trkj5.ppNE0atJMJcJqyNduFDD3r8NaBvX3Fq', 0)
 GO
@@ -321,41 +322,55 @@ SET IDENTITY_INSERT [dbo].[JuridicalPerson] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Payment] ON 
 GO
-INSERT [dbo].[Payment] ([PaymentId], [PersonId], [Name], [Date], [Sum]) VALUES (23, 1, N'bbb', CAST(N'1970-01-01' AS Date), 111)
+INSERT [dbo].[Payment] ([PaymentId], [PersonId], [ClientId], [Name], [Date], [Sum]) VALUES (23, 1, NULL, N'bbb', CAST(N'1970-01-01' AS Date), 111)
 GO
-INSERT [dbo].[Payment] ([PaymentId], [PersonId], [Name], [Date], [Sum]) VALUES (24, 1, N'ttt', CAST(N'1970-01-01' AS Date), 222)
+INSERT [dbo].[Payment] ([PaymentId], [PersonId], [ClientId], [Name], [Date], [Sum]) VALUES (24, 1, NULL, N'ttt', CAST(N'1970-01-01' AS Date), 222)
 GO
-INSERT [dbo].[Payment] ([PaymentId], [PersonId], [Name], [Date], [Sum]) VALUES (25, 1, N'ttt', CAST(N'1970-01-01' AS Date), 222)
+INSERT [dbo].[Payment] ([PaymentId], [PersonId], [ClientId], [Name], [Date], [Sum]) VALUES (25, 1, NULL, N'ttt', CAST(N'1970-01-01' AS Date), 222)
 GO
-INSERT [dbo].[Payment] ([PaymentId], [PersonId], [Name], [Date], [Sum]) VALUES (26, 1, N'uuu', CAST(N'1970-01-01' AS Date), 111)
+INSERT [dbo].[Payment] ([PaymentId], [PersonId], [ClientId], [Name], [Date], [Sum]) VALUES (26, 1, NULL, N'uuu', CAST(N'1970-01-01' AS Date), 111)
 GO
-INSERT [dbo].[Payment] ([PaymentId], [PersonId], [Name], [Date], [Sum]) VALUES (27, 1, N'uuu', CAST(N'1970-01-01' AS Date), 111)
+INSERT [dbo].[Payment] ([PaymentId], [PersonId], [ClientId], [Name], [Date], [Sum]) VALUES (27, 1, NULL, N'uuu', CAST(N'1970-01-01' AS Date), 111)
 GO
-INSERT [dbo].[Payment] ([PaymentId], [PersonId], [Name], [Date], [Sum]) VALUES (28, 1, N'uuu', CAST(N'1970-01-01' AS Date), 111)
+INSERT [dbo].[Payment] ([PaymentId], [PersonId], [ClientId], [Name], [Date], [Sum]) VALUES (28, 1, NULL, N'uuu', CAST(N'1970-01-01' AS Date), 111)
 GO
-INSERT [dbo].[Payment] ([PaymentId], [PersonId], [Name], [Date], [Sum]) VALUES (29, 1, N'uuu', CAST(N'1970-01-01' AS Date), 111)
+INSERT [dbo].[Payment] ([PaymentId], [PersonId], [ClientId], [Name], [Date], [Sum]) VALUES (29, 1, NULL, N'uuu', CAST(N'1970-01-01' AS Date), 111)
 GO
-INSERT [dbo].[Payment] ([PaymentId], [PersonId], [Name], [Date], [Sum]) VALUES (30, 1, N'uuu', CAST(N'1970-01-01' AS Date), 111)
+INSERT [dbo].[Payment] ([PaymentId], [PersonId], [ClientId], [Name], [Date], [Sum]) VALUES (30, 1, NULL, N'uuu', CAST(N'1970-01-01' AS Date), 111)
 GO
-INSERT [dbo].[Payment] ([PaymentId], [PersonId], [Name], [Date], [Sum]) VALUES (31, 1, N'uuu', CAST(N'1970-01-01' AS Date), 111)
+INSERT [dbo].[Payment] ([PaymentId], [PersonId], [ClientId], [Name], [Date], [Sum]) VALUES (31, 1, NULL, N'uuu', CAST(N'1970-01-01' AS Date), 111)
 GO
-INSERT [dbo].[Payment] ([PaymentId], [PersonId], [Name], [Date], [Sum]) VALUES (32, 1, N'fff', CAST(N'1970-01-01' AS Date), 333)
+INSERT [dbo].[Payment] ([PaymentId], [PersonId], [ClientId], [Name], [Date], [Sum]) VALUES (32, 1, NULL, N'fff', CAST(N'1970-01-01' AS Date), 333)
 GO
-INSERT [dbo].[Payment] ([PaymentId], [PersonId], [Name], [Date], [Sum]) VALUES (33, 1, N'Платеж1', CAST(N'1970-01-01' AS Date), 100)
+INSERT [dbo].[Payment] ([PaymentId], [PersonId], [ClientId], [Name], [Date], [Sum]) VALUES (33, 1, NULL, N'Платеж1', CAST(N'1970-01-01' AS Date), 100)
 GO
-INSERT [dbo].[Payment] ([PaymentId], [PersonId], [Name], [Date], [Sum]) VALUES (34, 1, N'Платеж1', CAST(N'1970-01-01' AS Date), 100)
+INSERT [dbo].[Payment] ([PaymentId], [PersonId], [ClientId], [Name], [Date], [Sum]) VALUES (34, 1, NULL, N'Платеж1', CAST(N'1970-01-01' AS Date), 100)
 GO
-INSERT [dbo].[Payment] ([PaymentId], [PersonId], [Name], [Date], [Sum]) VALUES (35, 1, N'hhh', CAST(N'1970-01-01' AS Date), 0)
+INSERT [dbo].[Payment] ([PaymentId], [PersonId], [ClientId], [Name], [Date], [Sum]) VALUES (35, 1, NULL, N'hhh', CAST(N'1970-01-01' AS Date), 0)
 GO
-INSERT [dbo].[Payment] ([PaymentId], [PersonId], [Name], [Date], [Sum]) VALUES (36, 1, N'hhh', CAST(N'1970-01-01' AS Date), 0)
+INSERT [dbo].[Payment] ([PaymentId], [PersonId], [ClientId], [Name], [Date], [Sum]) VALUES (36, 1, NULL, N'hhh', CAST(N'1970-01-01' AS Date), 0)
 GO
-INSERT [dbo].[Payment] ([PaymentId], [PersonId], [Name], [Date], [Sum]) VALUES (37, 1, N'hhh', CAST(N'1970-01-01' AS Date), 0)
+INSERT [dbo].[Payment] ([PaymentId], [PersonId], [ClientId], [Name], [Date], [Sum]) VALUES (37, 1, NULL, N'hhh', CAST(N'1970-01-01' AS Date), 0)
+GO
+INSERT [dbo].[Payment] ([PaymentId], [PersonId], [ClientId], [Name], [Date], [Sum]) VALUES (38, 1, NULL, N'bbbb', CAST(N'1970-01-01' AS Date), 111)
+GO
+INSERT [dbo].[Payment] ([PaymentId], [PersonId], [ClientId], [Name], [Date], [Sum]) VALUES (39, 1, 4, N'n', CAST(N'1970-01-01' AS Date), 11)
+GO
+INSERT [dbo].[Payment] ([PaymentId], [PersonId], [ClientId], [Name], [Date], [Sum]) VALUES (40, 1, 4, N'y', CAST(N'1970-01-01' AS Date), 111)
+GO
+INSERT [dbo].[Payment] ([PaymentId], [PersonId], [ClientId], [Name], [Date], [Sum]) VALUES (41, 1, 7, N'i', CAST(N'1970-01-01' AS Date), 111)
+GO
+INSERT [dbo].[Payment] ([PaymentId], [PersonId], [ClientId], [Name], [Date], [Sum]) VALUES (42, 1, 7, N'n', CAST(N'1970-01-01' AS Date), 111)
+GO
+INSERT [dbo].[Payment] ([PaymentId], [PersonId], [ClientId], [Name], [Date], [Sum]) VALUES (43, 1, 7, N'n', CAST(N'1970-01-01' AS Date), 111)
+GO
+INSERT [dbo].[Payment] ([PaymentId], [PersonId], [ClientId], [Name], [Date], [Sum]) VALUES (44, 1, 7, N'nnnn', CAST(N'1970-01-01' AS Date), 4444)
+GO
+INSERT [dbo].[Payment] ([PaymentId], [PersonId], [ClientId], [Name], [Date], [Sum]) VALUES (45, 1, 5, N'111111', CAST(N'1970-01-01' AS Date), 111111)
 GO
 SET IDENTITY_INSERT [dbo].[Payment] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Purpose] ON 
-GO
-INSERT [dbo].[Purpose] ([PurposeId], [PaymentId], [PurposeName]) VALUES (3, 23, N'bbb')
 GO
 INSERT [dbo].[Purpose] ([PurposeId], [PaymentId], [PurposeName]) VALUES (4, 24, N'ttt')
 GO
@@ -367,6 +382,12 @@ INSERT [dbo].[Purpose] ([PurposeId], [PaymentId], [PurposeName]) VALUES (10, 33,
 GO
 INSERT [dbo].[Purpose] ([PurposeId], [PaymentId], [PurposeName]) VALUES (11, 35, N'hhh')
 GO
+INSERT [dbo].[Purpose] ([PurposeId], [PaymentId], [PurposeName]) VALUES (12, 38, N'bbbb')
+GO
+INSERT [dbo].[Purpose] ([PurposeId], [PaymentId], [PurposeName]) VALUES (14, 40, N'y')
+GO
+INSERT [dbo].[Purpose] ([PurposeId], [PaymentId], [PurposeName]) VALUES (15, 41, N'i')
+GO
 SET IDENTITY_INSERT [dbo].[Purpose] OFF
 GO
 INSERT [dbo].[Role] ([Id], [Name]) VALUES (1, N'ADMIN               ')
@@ -376,6 +397,48 @@ GO
 INSERT [dbo].[Role] ([Id], [Name]) VALUES (3, N'JURIDICAL_PERSON    ')
 GO
 INSERT [dbo].[Role] ([Id], [Name]) VALUES (4, N'USER                ')
+GO
+SET IDENTITY_INSERT [dbo].[Transfer] ON 
+GO
+INSERT [dbo].[Transfer] ([Id], [LeftUser], [RightUser], [Sum]) VALUES (1, N'r', N'r', 111)
+GO
+INSERT [dbo].[Transfer] ([Id], [LeftUser], [RightUser], [Sum]) VALUES (2, N'b', N'b', 111)
+GO
+INSERT [dbo].[Transfer] ([Id], [LeftUser], [RightUser], [Sum]) VALUES (12, N'r', N'y', 111)
+GO
+INSERT [dbo].[Transfer] ([Id], [LeftUser], [RightUser], [Sum]) VALUES (13, N'r', N'y', 111)
+GO
+INSERT [dbo].[Transfer] ([Id], [LeftUser], [RightUser], [Sum]) VALUES (14, N'r', N'y', 111)
+GO
+INSERT [dbo].[Transfer] ([Id], [LeftUser], [RightUser], [Sum]) VALUES (15, N'r', N'r', 111)
+GO
+INSERT [dbo].[Transfer] ([Id], [LeftUser], [RightUser], [Sum]) VALUES (16, N'r', N'y', 111)
+GO
+INSERT [dbo].[Transfer] ([Id], [LeftUser], [RightUser], [Sum]) VALUES (17, N'r', N'r', 111)
+GO
+INSERT [dbo].[Transfer] ([Id], [LeftUser], [RightUser], [Sum]) VALUES (18, N'r', N'o', 111)
+GO
+INSERT [dbo].[Transfer] ([Id], [LeftUser], [RightUser], [Sum]) VALUES (19, N'r', N'y', 111)
+GO
+INSERT [dbo].[Transfer] ([Id], [LeftUser], [RightUser], [Sum]) VALUES (20, N'r', N'o', 111)
+GO
+INSERT [dbo].[Transfer] ([Id], [LeftUser], [RightUser], [Sum]) VALUES (21, N'r', N'r', 111)
+GO
+INSERT [dbo].[Transfer] ([Id], [LeftUser], [RightUser], [Sum]) VALUES (22, N'r', N'y', 111)
+GO
+INSERT [dbo].[Transfer] ([Id], [LeftUser], [RightUser], [Sum]) VALUES (23, N'r', N'y', 111)
+GO
+INSERT [dbo].[Transfer] ([Id], [LeftUser], [RightUser], [Sum]) VALUES (24, N'r', N'y', 111)
+GO
+INSERT [dbo].[Transfer] ([Id], [LeftUser], [RightUser], [Sum]) VALUES (25, N'r', N'r', 11111)
+GO
+INSERT [dbo].[Transfer] ([Id], [LeftUser], [RightUser], [Sum]) VALUES (28, N'b', N'c', 111)
+GO
+INSERT [dbo].[Transfer] ([Id], [LeftUser], [RightUser], [Sum]) VALUES (29, N'b', N'b', 1111)
+GO
+INSERT [dbo].[Transfer] ([Id], [LeftUser], [RightUser], [Sum]) VALUES (30, N'b', N'c', 111)
+GO
+SET IDENTITY_INSERT [dbo].[Transfer] OFF
 GO
 ALTER TABLE [dbo].[Account]  WITH CHECK ADD  CONSTRAINT [FK_Account_Client] FOREIGN KEY([UserId])
 REFERENCES [dbo].[Client] ([ClientId])
@@ -411,6 +474,11 @@ ALTER TABLE [dbo].[JuridicalPerson]  WITH CHECK ADD  CONSTRAINT [FK_JuridicalPer
 REFERENCES [dbo].[Branch] ([BranchId])
 GO
 ALTER TABLE [dbo].[JuridicalPerson] CHECK CONSTRAINT [FK_JuridicalPerson_Branch]
+GO
+ALTER TABLE [dbo].[Payment]  WITH CHECK ADD  CONSTRAINT [FK_Payment_Client] FOREIGN KEY([ClientId])
+REFERENCES [dbo].[Client] ([ClientId])
+GO
+ALTER TABLE [dbo].[Payment] CHECK CONSTRAINT [FK_Payment_Client]
 GO
 ALTER TABLE [dbo].[Payment]  WITH CHECK ADD  CONSTRAINT [FK_Payment_JuridicalPerson] FOREIGN KEY([PersonId])
 REFERENCES [dbo].[JuridicalPerson] ([PersonId])
