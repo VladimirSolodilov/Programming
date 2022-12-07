@@ -9,7 +9,6 @@ public interface PaymentStorage {
 
     int createPayment(int personId, String clientName,String paymentName, int paymentSum, String purposeName);
     List<Payment> getPaymentList(String personName, String clientName);
-
     int doPayment(String clientName, String personName, String paymentName, int sum, String purposeName);
 
 }

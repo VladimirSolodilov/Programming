@@ -31,7 +31,8 @@ public class PaymentStorageDB implements PaymentStorage {
 
         List<Client> clientList = jdbcTemplate.query(sqlQuery4, new ClientRowMapper(), clientName);
 
-        //System.out.println(date.toLocalDate() + " - " + personId);
+
+
 
         jdbcTemplate.update(sqlQuery, personId, clientList.get(0).getClientId(), paymentName, date.toString(), paymentSum);
 
@@ -74,19 +75,25 @@ public class PaymentStorageDB implements PaymentStorage {
 
     @Override
     public int doPayment(String clientName, String personName, String paymentName, int sum, String purposeName) {
-        String sqlQuery = "Update JuridicalPerson Set JuridicalPerson.Sum = JuridicalPerson.Sum + ? Where JuridicalPerson.PersonName Like ?";
+        String sqlQuery0 = "Select PersonId from Payment where Payment.Name LIKE ?";
+
+        String sqlQuery = "Update JuridicalPerson Set JuridicalPerson.Sum = JuridicalPerson.Sum + ? Where JuridicalPerson.PersonId = ?";
         String sqlQuery1 = "Update Client set Client.Sum = Client.Sum - ? Where Client.ClientName Like ?";
         String sqlQuery2 = "Delete from Purpose Where PurposeName Like ?";
         String sqlQuery3 = "Select Payment.Name, Payment.Date, Payment.Sum, Purpose.PurposeName from Payment join Purpose on Payment.PaymentId = Purpose.PaymentId where PurposeName Like ?";
         String sqlQuery4 = "Delete from Payment Where Name Like ?";
 
-        jdbcTemplate.update(sqlQuery, personName);
-        jdbcTemplate.update(sqlQuery1, clientName);
+        List<Payment> paymentList = jdbcTemplate.query(sqlQuery0, new PaymentPersonIdRowMapper(), paymentName);
+
+        System.out.println("PersonId = " + paymentList.get(0).getPersonId());
+
+        jdbcTemplate.update(sqlQuery, sum, paymentList.get(0).getPersonId());
+        jdbcTemplate.update(sqlQuery1, sum, clientName);
         jdbcTemplate.update(sqlQuery2, purposeName);
 
-        List<Payment> paymentList = jdbcTemplate.query(sqlQuery3, new PaymentRowMapper(), purposeName);
+        List<Payment> paymentList1 = jdbcTemplate.query(sqlQuery3, new PaymentRowMapper(), purposeName);
 
-        if (paymentList.get(0) == null) {
+        if (paymentList1.size() == 0) {
             jdbcTemplate.update(sqlQuery4, paymentName);
         }
 

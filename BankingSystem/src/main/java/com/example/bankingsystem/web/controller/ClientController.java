@@ -123,6 +123,17 @@ public class ClientController {
     @PostMapping("/authorized/client/doPayment")
     public String doPaymentPost(Model model, Authentication authentication, Payment payment) {
         System.out.println("Payment = " + payment.getName());
+
+        String paymentName = payment.getName().substring(payment.getName().indexOf(":") + 2, payment.getName().indexOf("Д") - 1);
+        String purposeName = payment.getName().substring(payment.getName().indexOf("ие:") + 4, payment.getName().length());
+        int paymentSum = Integer.parseInt(payment.getName().substring(payment.getName().indexOf("ма:") + 4, payment.getName().indexOf("Н") - 1));
+
+        System.out.println("PaymentName = " + paymentName);
+        System.out.println("PaymentSum = " + paymentSum);
+        System.out.println("PurposeName = " + purposeName);
+
+        model.addAttribute(paymentService.doPayment(authentication.getName(), "r", paymentName, paymentSum, purposeName));
+
         //model.addAttribute(paymentService.doPayment(authentication.getName(), "r", payment.getName(), payment.getSum(), payment.getPurpose().getPurposeName()));
         return "redirect:/authorized";
     }
