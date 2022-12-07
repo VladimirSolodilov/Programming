@@ -137,4 +137,10 @@ public class ClientController {
         //model.addAttribute(paymentService.doPayment(authentication.getName(), "r", payment.getName(), payment.getSum(), payment.getPurpose().getPurposeName()));
         return "redirect:/authorized";
     }
+
+    @GetMapping("/authorized/client/viewPayment")
+    public String viewPayment(Model model, Authentication authentication) {
+        model.addAttribute("viewPayment", paymentService.getPaymentList(null, authentication.getName()));
+        return "/client/viewPayment";
+    }
 }

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="/css/table.css" rel="stylesheet"/>
+</head>
+<body>
+<h1 class="h1">Список выставленных платежей</h1>
+<div th:if="${viewPayment} != null">
+    <table class="table" id="table">
+        <tr class="column-header">
+            <th>Имя платежа</th>
+            <th>Дата создания</th>
+            <th>Сумма</th>
+            <th>Назначение</th>
+        </tr>
+        <th:block th:each="viewPayment: ${viewPayment}">
+            <tr>
+                <td th:text="${viewPayment.name}">ID</td>
+                <td th:text="${viewPayment.data}">ID</td>
+                <td th:text="${viewPayment.sum}">ID</td>
+                <td th:text="${viewPayment.purpose.purposeName}">ID</td>
+            </tr>
+        </th:block>
+    </table>
+</div>
+</body>
+</html>
+</body>
+</html>
