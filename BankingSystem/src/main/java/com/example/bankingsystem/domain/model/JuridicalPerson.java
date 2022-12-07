@@ -6,8 +6,9 @@ import java.beans.BeanProperty;
 import java.beans.JavaBean;
 
 public class JuridicalPerson {
-
     private Branch branch;
+
+    private Account account;
     private int juridicalPersonId;
     private int branchId;
     private int roleId;
@@ -15,13 +16,12 @@ public class JuridicalPerson {
     private String name;
     private String patronymic;
     private String juridicalPersonName;
+    private String organizationName;
     private String password;
-    private int sum;
-
     public JuridicalPerson() {}
-
-    public JuridicalPerson(Branch branch, int juridicalPersonId, int branchId, int roleId, String surname, String name, String patronymic, String juridicalPersonName, String password, int sum) {
+    public JuridicalPerson(Branch branch, Account account, int juridicalPersonId, int branchId, int roleId, String surname, String name, String patronymic, String juridicalPersonName, String organizationName, String password) {
         this.branch = branch;
+        this.account = account;
         this.juridicalPersonId = juridicalPersonId;
         this.branchId = branchId;
         this.roleId = roleId;
@@ -29,8 +29,16 @@ public class JuridicalPerson {
         this.name = name;
         this.patronymic = patronymic;
         this.juridicalPersonName = juridicalPersonName;
+        this.organizationName = organizationName;
         this.password = password;
-        this.sum = sum;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public Branch getBranch() {
@@ -105,11 +113,11 @@ public class JuridicalPerson {
         this.password = password;
     }
 
-    public int getSum() {
-        return sum;
+    public String getOrganizationName() {
+        return organizationName;
     }
 
-    public void setSum(int sum) {
-        this.sum = sum;
+    public void setOrganizationName(String organizationName) {
+        this.organizationName = organizationName;
     }
 }

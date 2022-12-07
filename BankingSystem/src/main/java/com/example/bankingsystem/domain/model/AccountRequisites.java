@@ -3,13 +3,13 @@ package com.example.bankingsystem.domain.model;
 public class AccountRequisites {
     private Account account;
     private int requisitesId;
-    private String personalAccount;
-    private String paymentAccount;
+    private int personalAccount;
+    private int paymentAccount;
 
     public AccountRequisites() {
     }
 
-    public AccountRequisites(Account account, int requisitesId, String personalAccount, String paymentAccount) {
+    public AccountRequisites(Account account, int requisitesId, int personalAccount, int paymentAccount) {
         this.account = account;
         this.requisitesId = requisitesId;
         this.personalAccount = personalAccount;
@@ -32,19 +32,19 @@ public class AccountRequisites {
         this.requisitesId = requisitesId;
     }
 
-    public String getPersonalAccount() {
+    public int getPersonalAccount() {
         return personalAccount;
     }
 
-    public void setPersonalAccount(String personalAccount) {
+    public void setPersonalAccount(int personalAccount) {
         this.personalAccount = personalAccount;
     }
 
-    public String getPaymentAccount() {
+    public int getPaymentAccount() {
         return paymentAccount;
     }
 
-    public void setPaymentAccount(String paymentAccount) {
+    public void setPaymentAccount(int paymentAccount) {
         this.paymentAccount = paymentAccount;
     }
 }

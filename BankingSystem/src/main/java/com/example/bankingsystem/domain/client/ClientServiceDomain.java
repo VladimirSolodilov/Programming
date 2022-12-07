@@ -7,7 +7,6 @@ import com.example.bankingsystem.data.role.RoleStorage;
 import com.example.bankingsystem.data.transfer.TransferStorage;
 import com.example.bankingsystem.domain.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.userdetails.User;
@@ -22,12 +21,11 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class ClientServiceDomain implements ClientService, UserDetailsService {
+public class ClientServiceDomain implements ClientService {
     @Autowired
     private ClientStorage clientStorage;
 
@@ -65,95 +63,28 @@ public class ClientServiceDomain implements ClientService, UserDetailsService {
         return clientStorage.getAllClient(clientName);
     }
 
-    public boolean saveClient(Client client) {
-        List<Client> clientFromDB = clientStorage.getAllClient(client.getClientName());
-
-        if (clientFromDB != null) {
-            return false;
-        }
-
-        client.setRoles(Collections.singleton(new Role(2, "CLIENT")));
-        client.setPassword(bCryptPasswordEncoder.encode(client.getPassword()));
-        clientStorage.save(client);
-        return true;
-    }
-
-    /*public boolean deleteClient(int clientId) {
-        if (clientStorage.findById(clientId).isPresent()) {
-            clientStorage.deleteClient(clientId);
-            return true;
-        }
-        return false;
-    }*/
-
-
     @Override
-    public int setClientList(int branchId, int roleId, String surname, String name, String patronymic, String clientName, String password, int sum) {
-        return clientStorage.setClient(branchId, roleId, surname, name, patronymic, clientName, bCryptPasswordEncoder.encode(password), sum);
+    public boolean createClient(int branchId, int roleId, String surname, String name, String patronymic, String clientName, String password, int sum) {
+        return clientStorage.createClient(branchId, roleId, surname, name, patronymic, clientName, bCryptPasswordEncoder.encode(password), sum);
     }
 
     @Override
-    public int deleteClientList(String surname) {
+    public boolean deleteClient(String surname) {
         return clientStorage.deleteClient(surname);
     }
 
     @Override
-    public int addSum(String clientName, int sum) {
+    public boolean addSum(String clientName, int sum) {
         return clientStorage.addSum(clientName, sum);
     }
 
     @Override
-    public int transfer(String leftClientName, String rightClientName, int sum) {
+    public boolean transfer(String leftClientName, String rightClientName, int sum) {
         return clientStorage.transfer(leftClientName, rightClientName, sum);
     }
 
     @Override
     public List<Transfer> transferInfo(String userName) {
         return transferStorage.viewTransferInfo(userName);
-    }
-
-    @Override
-    public UserDetails loadUserByUsername(String s) {
-        List<Client> clientList = clientStorage.getAllClient(s);
-        List<JuridicalPerson> personList = juridicalPersonStorage.getAllPerson(s);
-        List<Admin> adminList = adminStorage.getAllAdmin(s);
-
-        /*if (clientList.isEmpty()) {
-            if (!personList.isEmpty()) {
-                JuridicalPerson juridicalPerson = personList.get(0);
-                System.out.println(juridicalPerson.getJuridicalPersonName() + ":" + juridicalPerson.getPassword() + " - " + juridicalPerson.getRoleId());
-                System.out.println("Role = " + mapRolesToAuthorities(roleStorage.getRoleById(juridicalPerson.getRoleId())));
-                return new User(juridicalPerson.getJuridicalPersonName(), juridicalPerson.getPassword(), mapRolesToAuthorities(roleStorage.getRoleById(juridicalPerson.getRoleId())));
-            }
-        } else {
-            Client client = clientList.get(0);
-            System.out.println(client.getClientName() + ":" + client.getPassword() + " - " + client.getRoleId());
-            System.out.println("Role = " + mapRolesToAuthorities(roleStorage.getRoleById(client.getRoleId())));
-            return new User(client.getClientName(), client.getPassword(), mapRolesToAuthorities(roleStorage.getRoleById(client.getRoleId())));
-        }*/
-
-        if (!clientList.isEmpty()) {
-            Client client = clientList.get(0);
-            System.out.println(client.getClientName() + ":" + client.getPassword() + " - " + client.getRoleId());
-            System.out.println("Role = " + mapRolesToAuthorities(roleStorage.getRoleById(client.getRoleId())));
-            return new User(client.getClientName(), client.getPassword(), mapRolesToAuthorities(roleStorage.getRoleById(client.getRoleId())));
-        } else if (!personList.isEmpty()) {
-            JuridicalPerson juridicalPerson = personList.get(0);
-            System.out.println(juridicalPerson.getJuridicalPersonName() + ":" + juridicalPerson.getPassword() + " - " + juridicalPerson.getRoleId());
-            System.out.println("Role = " + mapRolesToAuthorities(roleStorage.getRoleById(juridicalPerson.getRoleId())));
-            return new User(juridicalPerson.getJuridicalPersonName(), juridicalPerson.getPassword(), mapRolesToAuthorities(roleStorage.getRoleById(juridicalPerson.getRoleId())));
-        } else if (!adminList.isEmpty()) {
-            Admin admin = adminList.get(0);
-            System.out.println(admin.getName() + ":" + admin.getPassword() + " - " + admin.getRoleId());
-            System.out.println("Role = " + mapRolesToAuthorities(roleStorage.getRoleById(admin.getRoleId())));
-            //System.out.println("Password = " + bCryptPasswordEncoder.encode(admin.getPassword()));
-            return new User(admin.getName(), admin.getPassword(), mapRolesToAuthorities(roleStorage.getRoleById(admin.getRoleId())));
-        }
-
-        throw new InternalAuthenticationServiceException("User not found!");
-    }
-
-    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roleById) {
-        return roleById.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
 }

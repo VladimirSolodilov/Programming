@@ -6,19 +6,16 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 import java.util.List;
 
-public interface ClientService extends UserDetailsService {
+public interface ClientService {
 
     List<Client> getClientList(String clientName);
     List<Client> getUserByClientName(String clientName);
 
-    int setClientList(int branchId, int roleId, String surname, String name, String patronymic, String clientName, String password, int sum);
-    int deleteClientList(String surname);
+    boolean createClient(int branchId, int roleId, String surname, String name, String patronymic, String clientName, String password, int sum);
+    boolean deleteClient(String clientName);
 
-    int addSum(String clientName, int sum);
-    int transfer(String leftClientName, String rightClientName, int sum);
+    boolean addSum(String clientName, int sum);
+    boolean transfer(String leftClientName, String rightClientName, int sum);
 
     List<Transfer> transferInfo(String userName);
-
-
-    boolean saveClient(Client client);
 }

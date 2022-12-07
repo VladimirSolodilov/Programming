@@ -13,7 +13,7 @@
     <table  class="table" id="clientLeft">
       <th:block th:each="personLeft: ${personLeft}">
         <tr>
-          <th>Сумма</th><td th:text="${personLeft.sum}">Имя</td>
+          <th>Сумма</th><td th:text="${personLeft.account.sum}">Имя</td>
         </tr>
       </th:block>
     </table>
@@ -32,8 +32,8 @@
       <div>
           <label>Сумма перевода: </label>
           <label>
-              <input type="text" th:field="*{sum}" required>
-          </label>&nbsp;<span th:errors="*{sum}"></span>
+              <input type="text" th:field="*{account.sum}" required>
+          </label>&nbsp;<span th:errors="*{account.sum}"></span>
       </div>
 
       <div class="form-group">

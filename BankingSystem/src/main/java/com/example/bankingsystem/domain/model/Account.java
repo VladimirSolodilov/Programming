@@ -5,22 +5,20 @@ public class Account {
     private Client client;
     private JuridicalPerson juridicalPerson;
     private int accountId;
-    private int userId;
-    private int branchId;
-    private String organisationName;
-    private String paymentNumber;
+    private int personId;
+    private int clientId;
+    private int sum;
 
     public Account() {
     }
 
-    public Account(Client client, JuridicalPerson juridicalPerson, int accountId, int userId, int branchId, String organisationName, String paymentNumber) {
+    public Account(Client client, JuridicalPerson juridicalPerson, int accountId, int personId, int clientId, int sum) {
         this.client = client;
         this.juridicalPerson = juridicalPerson;
         this.accountId = accountId;
-        this.userId = userId;
-        this.branchId = branchId;
-        this.organisationName = organisationName;
-        this.paymentNumber = paymentNumber;
+        this.personId = personId;
+        this.clientId = clientId;
+        this.sum = sum;
     }
 
     public Client getClient() {
@@ -47,35 +45,26 @@ public class Account {
         this.accountId = accountId;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getPersonId() {
+        return personId;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setPersonId(int personId) {
+        this.personId = personId;
     }
 
-    public int getBranchId() {
-        return branchId;
+    public int getClientId() {
+        return clientId;
     }
 
-    public void setBranchId(int branchId) {
-        this.branchId = branchId;
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
+    }
+    public int getSum() {
+        return sum;
     }
 
-    public String getOrganisationName() {
-        return organisationName;
-    }
-
-    public void setOrganisationName(String organisationName) {
-        this.organisationName = organisationName;
-    }
-
-    public String getPaymentNumber() {
-        return paymentNumber;
-    }
-
-    public void setPaymentNumber(String paymentNumber) {
-        this.paymentNumber = paymentNumber;
+    public void setSum(int sum) {
+        this.sum = sum;
     }
 }

@@ -17,13 +17,13 @@ public class BranchStorageDB implements BranchStorage {
 
     @Override
     public List<Branch> getBranchList() {
-        String sqlQuery = "Select * from Branch";
-        return jdbcTemplate.query(sqlQuery, new BranchRowMapper());
+        String getBranchList = "Select * from Branch";
+        return jdbcTemplate.query(getBranchList, new BranchRowMapper());
     }
 
     @Override
     public List<Branch> getBranchIdByName(String branchName) {
-        String sqlQuery = "Select * from Branch where Branch.Name Like ?";
-        return jdbcTemplate.query(sqlQuery, new BranchRowMapper(), branchName);
+        String getBranchIdByName = "Select * from Branch where Branch.Name Like ?";
+        return jdbcTemplate.query(getBranchIdByName, new BranchRowMapper(), branchName);
     }
 }

@@ -3,26 +3,14 @@ package com.example.bankingsystem.domain.JuridicalPerson;
 import com.example.bankingsystem.data.juridicalPerson.JuridicalPersonStorage;
 import com.example.bankingsystem.data.role.RoleStorage;
 import com.example.bankingsystem.data.transfer.TransferStorage;
-import com.example.bankingsystem.domain.model.Client;
 import com.example.bankingsystem.domain.model.JuridicalPerson;
-import com.example.bankingsystem.domain.model.Role;
 import com.example.bankingsystem.domain.model.Transfer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Lazy;
-import org.springframework.security.authentication.InternalAuthenticationServiceException;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -49,14 +37,13 @@ public class JuridicalPersonServiceDomain implements JuridicalPersonService {
         return juridicalPersonStorage.getAllPerson(surname);
     }
 
-    @Override
-    public int setPersonList(int branchId, int roleId, String surname, String name, String patronymic, String personName, String password, int sum) {
-        return juridicalPersonStorage.setJuridicalPerson(branchId, roleId, surname, name, patronymic, personName, bCryptPasswordEncoder.encode(password), sum);
+    public boolean setPersonList(int branchId, int roleId, String surname, String name, String patronymic, String organizationName, String personName, String password, int sum) {
+        return juridicalPersonStorage.createJuridicalPerson(branchId, roleId, surname, name, patronymic, organizationName, personName, bCryptPasswordEncoder.encode(password), sum);
     }
 
     @Override
-    public int deletePersonList(String surname) {
-        return juridicalPersonStorage.deleteJuridicalPerson(surname);
+    public boolean deletePersonList(String personName) {
+        return juridicalPersonStorage.deleteJuridicalPerson(personName);
     }
 
     @Override
@@ -65,12 +52,12 @@ public class JuridicalPersonServiceDomain implements JuridicalPersonService {
     }
 
     @Override
-    public int addSum(String personName, int sum) {
+    public boolean addSum(String personName, int sum) {
         return juridicalPersonStorage.addSum(personName, sum);
     }
 
     @Override
-    public int transfer(String leftPerson, String rightPerson, int sum) {
+    public boolean transfer(String leftPerson, String rightPerson, int sum) {
         return juridicalPersonStorage.transfer(leftPerson, rightPerson, sum);
     }
 

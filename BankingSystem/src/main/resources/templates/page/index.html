@@ -10,10 +10,9 @@
         <h1 class="h1">Банковская система</h1>
 
         <div sec:authorize="isAuthenticated()">
-            This content is only shown to authenticated users.
-            <h1 th:inline="text">Hello, [[${#httpServletRequest.remoteUser}]]!</h1>
+            <h2 th:inline="text">Добро пожаловать, [[${#httpServletRequest.remoteUser}]]!</h2>
 
-            <div th:text="${#authentication.getPrincipal()}"></div>
+             <!-- <div th:text="${#authentication.getPrincipal()}"></div> -->
 
             <div sec:authorize="hasAuthority('ADMIN')">
                 <ul class="rounded">

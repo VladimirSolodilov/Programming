@@ -5,18 +5,14 @@ import com.example.bankingsystem.domain.model.Client;
 import java.util.List;
 
 public interface ClientStorage {
-
     List<Client> getAllClient(String pattern);
-    int setClient (int branchId, int roleId, String surname, String name, String patronymic, String clientName, String password, int sum);
-    int deleteClient (String surname);
+    boolean createClient (int branchId, int roleId, String surname, String name, String patronymic, String clientName, String password, int sum);
+    boolean deleteClient (String surname);
 
-    int addSum(String userName, int sum);
+    boolean addSum(String clientName, int sum);
 
-    int transfer(String leftClientName, String rightClientName, int sum);
+    boolean transfer(String leftClientName, String rightClientName, int sum);
 
     List<Client> transferInfo(String clientName);
-
-    int save(Client client);
-
-    List<Client> findById(int clientId);
+    List<Client> findByClientId(int clientId);
 }

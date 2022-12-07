@@ -1,5 +1,6 @@
 package com.example.bankingsystem.data.juridicalPerson;
 
+import com.example.bankingsystem.domain.model.Account;
 import com.example.bankingsystem.domain.model.JuridicalPerson;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -10,18 +11,22 @@ public class JuridicalPersonRowMapper implements RowMapper<JuridicalPerson> {
 
     @Override
     public JuridicalPerson mapRow(ResultSet resultSet, int rowNum) throws SQLException {
-        JuridicalPerson personModel = new JuridicalPerson();
+        JuridicalPerson juridicalPerson = new JuridicalPerson();
+        Account account = new Account();
 
-        personModel.setJuridicalPersonId(resultSet.getInt("PersonId"));
-        personModel.setBranchId(resultSet.getInt("BranchId"));
-        personModel.setRoleId(resultSet.getInt("RoleId"));
-        personModel.setSurname(resultSet.getString("Surname"));
-        personModel.setName(resultSet.getString("Name"));
-        personModel.setPatronymic(resultSet.getString("Patronymic"));
-        personModel.setJuridicalPersonName(resultSet.getString("PersonName"));
-        personModel.setPassword(resultSet.getString("Password"));
-        personModel.setSum(resultSet.getInt("Sum"));
+        juridicalPerson.setJuridicalPersonId(resultSet.getInt("PersonId"));
+        juridicalPerson.setBranchId(resultSet.getInt("BranchId"));
+        juridicalPerson.setRoleId(resultSet.getInt("RoleId"));
+        juridicalPerson.setSurname(resultSet.getString("Surname"));
+        juridicalPerson.setName(resultSet.getString("Name"));
+        juridicalPerson.setPatronymic(resultSet.getString("Patronymic"));
+        juridicalPerson.setOrganizationName(resultSet.getString("OrganizationName"));
+        juridicalPerson.setJuridicalPersonName(resultSet.getString("PersonName"));
+        juridicalPerson.setPassword(resultSet.getString("Password"));
 
-        return personModel;
+        juridicalPerson.setAccount(account);
+        account.setSum(resultSet.getInt("Sum"));
+
+        return juridicalPerson;
     }
 }

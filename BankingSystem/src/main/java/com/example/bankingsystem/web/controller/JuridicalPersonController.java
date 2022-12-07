@@ -69,8 +69,8 @@ public class JuridicalPersonController {
         List<Branch> branchList = branchService.getBranchIdByName(branch.getBranchName());
 
         model.addAttribute(juridicalPersonService.setPersonList(branchList.get(0).getBranchId(), 3,
-                juridicalPerson.getSurname(), juridicalPerson.getName(), juridicalPerson.getPatronymic(),
-                juridicalPerson.getJuridicalPersonName(), juridicalPerson.getPassword(), juridicalPerson.getSum()));
+                juridicalPerson.getSurname(), juridicalPerson.getName(), juridicalPerson.getPatronymic(), juridicalPerson.getOrganizationName(),
+                juridicalPerson.getJuridicalPersonName(), juridicalPerson.getPassword(), 0));
 
         return "redirect:/";
     }
@@ -82,7 +82,7 @@ public class JuridicalPersonController {
     }
     @PostMapping("/authorized/person/addSum")
     public String addSumPost(Model model, JuridicalPerson juridicalPerson, Authentication authentication) {
-        model.addAttribute(juridicalPersonService.addSum(authentication.getName(), juridicalPerson.getSum()));
+        model.addAttribute(juridicalPersonService.addSum(authentication.getName(), juridicalPerson.getAccount().getSum()));
         return "redirect:/authorized/person/account";
     }
     @GetMapping("/authorized/person/transfer")
@@ -95,7 +95,7 @@ public class JuridicalPersonController {
 
     @PostMapping("/authorized/person/transfer")
     public String transferPost(Model model, Authentication authentication, JuridicalPerson juridicalPerson) {
-        model.addAttribute(juridicalPersonService.transfer(authentication.getName(), juridicalPerson.getJuridicalPersonName().substring(juridicalPerson.getJuridicalPersonName().lastIndexOf(':') + 2), juridicalPerson.getSum()));
+        model.addAttribute(juridicalPersonService.transfer(authentication.getName(), juridicalPerson.getJuridicalPersonName().substring(juridicalPerson.getJuridicalPersonName().lastIndexOf(':') + 2), juridicalPerson.getAccount().getSum()));
         return "redirect:/authorized";
     }
 

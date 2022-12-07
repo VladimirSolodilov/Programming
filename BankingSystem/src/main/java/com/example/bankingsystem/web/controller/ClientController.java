@@ -1,12 +1,10 @@
 package com.example.bankingsystem.web.controller;
 
 import com.example.bankingsystem.data.transfer.TransferStorage;
+import com.example.bankingsystem.domain.JuridicalPerson.JuridicalPersonService;
 import com.example.bankingsystem.domain.branch.BranchService;
 import com.example.bankingsystem.domain.client.ClientService;
-import com.example.bankingsystem.domain.model.Branch;
-import com.example.bankingsystem.domain.model.Client;
-import com.example.bankingsystem.domain.model.Payment;
-import com.example.bankingsystem.domain.model.Transfer;
+import com.example.bankingsystem.domain.model.*;
 import com.example.bankingsystem.domain.payment.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -29,6 +27,9 @@ public class ClientController {
 
     @Autowired
     private PaymentService paymentService;
+
+    @Autowired
+    private JuridicalPersonService juridicalPersonService;
 
     @GetMapping("/authorized/client/account")
     public String informationClient(Model model, Authentication authentication) {
@@ -62,7 +63,7 @@ public class ClientController {
 
         List<Branch> branchList = branchService.getBranchIdByName(branch.getBranchName());
 
-        model.addAttribute(clientService.setClientList(branchList.get(0).getBranchId(), 2, client.getSurname(),
+        model.addAttribute(clientService.createClient(branchList.get(0).getBranchId(), 2, client.getSurname(),
                 client.getName(), client.getPatronymic(), client.getClientName(), client.getPassword(), 0));
 
         return "redirect:/";
@@ -77,7 +78,7 @@ public class ClientController {
 
     @PostMapping("/authorized/client/removal")
     public String deleteMailPost(Model model, Client client) {
-        model.addAttribute(clientService.deleteClientList(client.getSurname()));
+        model.addAttribute(clientService.deleteClient(client.getClientName()));
         return informationClient(model, null);
     }
 
@@ -89,7 +90,7 @@ public class ClientController {
     }
     @PostMapping("/authorized/client/addSum")
     public String addSumPost(Model model, Client client, Authentication authentication) {
-        model.addAttribute(clientService.addSum(authentication.getName(), client.getSum()));
+        model.addAttribute(clientService.addSum(authentication.getName(), client.getAccount().getSum()));
         return "redirect:/authorized/client/account";
     }
 
@@ -103,7 +104,7 @@ public class ClientController {
 
     @PostMapping("/authorized/client/transfer")
     public String transferPost(Model model, Authentication authentication, Client client) {
-        model.addAttribute(clientService.transfer(authentication.getName(), client.getClientName().substring(client.getClientName().lastIndexOf(':') + 2), client.getSum()));
+        model.addAttribute(clientService.transfer(authentication.getName(), client.getClientName().substring(client.getClientName().lastIndexOf(':') + 2), client.getAccount().getSum()));
         return "redirect:/authorized";
     }
 
@@ -132,9 +133,8 @@ public class ClientController {
         System.out.println("PaymentSum = " + paymentSum);
         System.out.println("PurposeName = " + purposeName);
 
-        model.addAttribute(paymentService.doPayment(authentication.getName(), "r", paymentName, paymentSum, purposeName));
+        model.addAttribute(paymentService.doPayment(authentication.getName(), "rrr", paymentName, paymentSum, purposeName)); //Разработать метод для поиска юр. лица
 
-        //model.addAttribute(paymentService.doPayment(authentication.getName(), "r", payment.getName(), payment.getSum(), payment.getPurpose().getPurposeName()));
         return "redirect:/authorized";
     }
 

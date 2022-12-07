@@ -10,13 +10,13 @@ public class BankRowMapper implements RowMapper<Bank> {
 
     @Override
     public Bank mapRow(ResultSet rs, int rowNum) throws SQLException {
-        Bank bankModel = new Bank();
+        Bank bank = new Bank();
 
-        bankModel.setBankId(rs.getInt("BankId"));
-        bankModel.setName(rs.getString("Name"));
-        bankModel.setLicense(rs.getString("License"));
-        bankModel.setAddress(rs.getString("Address"));
+        bank.setBankId(rs.getInt("BankId"));
+        bank.setName(rs.getString("Name"));
+        bank.setLicense(rs.getString("License"));
+        bank.setAddress(rs.getString("Address"));
 
-        return bankModel;
+        return bank;
     }
 }

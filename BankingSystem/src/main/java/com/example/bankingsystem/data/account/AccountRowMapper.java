@@ -10,14 +10,13 @@ public class AccountRowMapper implements RowMapper<Account> {
     @Override
     public Account mapRow(ResultSet rs, int rowNum) throws SQLException {
 
-        Account accountModel = new Account();
+        Account account = new Account();
 
-        accountModel.setAccountId(rs.getInt("AccountId"));
-        accountModel.setUserId(rs.getInt("UserId"));
-        accountModel.setBranchId(rs.getInt("BranchId"));
-        accountModel.setOrganisationName(rs.getString("OrganizationName"));
-        accountModel.setPaymentNumber(rs.getString("PaymentNumber"));
+        account.setAccountId(rs.getInt("AccountId"));
+        account.setPersonId(rs.getInt("PersonId"));
+        account.setClientId(rs.getInt("ClientId"));
+        account.setSum(rs.getInt("Sum"));
 
-        return accountModel;
+        return account;
     }
 }

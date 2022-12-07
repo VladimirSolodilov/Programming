@@ -11,9 +11,11 @@ public class TransferRowMapper implements RowMapper<Transfer> {
     @Override
     public Transfer mapRow(ResultSet resultSet, int i) throws SQLException {
         Transfer transfer = new Transfer();
+
         transfer.setLeftUser(resultSet.getString("LeftUser"));
         transfer.setRightUser(resultSet.getString("RightUser"));
         transfer.setSum(resultSet.getInt("Sum"));
+
         return transfer;
     }
 }

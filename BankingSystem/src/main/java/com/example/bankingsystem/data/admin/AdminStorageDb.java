@@ -15,21 +15,21 @@ public class AdminStorageDb implements AdminStorage{
     private JdbcTemplate jdbcTemplate;
     @Override
     public List<Admin> getAllAdmin(String pattern) {
-        List<Admin> adminList;
-        StringBuilder sqlQuery = new StringBuilder("SELECT * from Admin ");
+        StringBuilder getAllAdmin = new StringBuilder("SELECT * from Admin ");
+        List<Admin> admins;
 
         if (pattern != null) {
-            sqlQuery.append(" WHERE Admin.Name LIKE ?");
-            adminList = jdbcTemplate.query(sqlQuery.toString(), new AdminRowMapper(), pattern);
+            getAllAdmin.append(" WHERE Admin.Name LIKE ?");
+            admins = jdbcTemplate.query(getAllAdmin.toString(), new AdminRowMapper(), pattern);
         } else {
-            adminList = jdbcTemplate.query(sqlQuery.toString(), new AdminRowMapper());
+            admins = jdbcTemplate.query(getAllAdmin.toString(), new AdminRowMapper());
         }
 
-        return adminList;
+        return admins;
     }
     @Override
     public List<Admin> findById(int adminId) {
-        String sqlQuery = "SELECT Name from Role where Role.RoleId = ?";
-        return jdbcTemplate.query(sqlQuery, new AdminRowMapper(), adminId);
+        String findById = "SELECT * from Role where Role.RoleId = ?";
+        return jdbcTemplate.query(findById, new AdminRowMapper(), adminId);
     }
 }

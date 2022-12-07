@@ -11,20 +11,22 @@ import java.sql.SQLException;
 public class PaymentRowMapper implements RowMapper<Payment> {
     @Override
     public Payment mapRow(ResultSet rs, int rowNum) throws SQLException {
-        Payment paymentModel = new Payment();
+        Payment payment = new Payment();
         Purpose purpose = new Purpose();
         Client client = new Client();
 
-        paymentModel.setName(rs.getString("Name"));
-        paymentModel.setData(rs.getDate("Date"));
-        paymentModel.setSum(rs.getInt("Sum"));
+        payment.setPaymentId(rs.getInt("PaymentId"));
+        payment.setPersonId(rs.getInt("PersonId"));
+        payment.setName(rs.getString("Name"));
+        payment.setData(rs.getDate("Date"));
+        payment.setSum(rs.getInt("Sum"));
 
-        paymentModel.setPurpose(purpose);
+        payment.setPurpose(purpose);
         purpose.setPurposeName(rs.getString("PurposeName"));
 
-        paymentModel.setClient(client);
+        payment.setClient(client);
         client.setClientName(rs.getString("ClientName"));
 
-        return paymentModel;
+        return payment;
     }
 }

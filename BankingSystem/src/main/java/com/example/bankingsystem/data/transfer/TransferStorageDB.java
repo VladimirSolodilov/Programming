@@ -17,12 +17,13 @@ public class TransferStorageDB implements TransferStorage {
     private JdbcTemplate jdbcTemplate;
     @Override
     public List<Transfer> viewTransferInfo(String clientName) {
-        String sqlQuery = "Select * from Transfer Where Transfer.LeftUser Like ?";
-        return jdbcTemplate.query(sqlQuery, new TransferRowMapper(), clientName);
+        String getTransfer = "Select * from Transfer Where Transfer.LeftUser Like ?";
+        return jdbcTemplate.query(getTransfer, new TransferRowMapper(), clientName);
     }
     @Override
-    public int setTransferInfo(String leftUser, String rightUser, int sum) {
-        String sqlQuery = "INSERT Transfer Values(?, ?, ?)";
-        return jdbcTemplate.update(sqlQuery, leftUser, rightUser, sum);
+    public boolean setTransferInfo(String leftUser, String rightUser, int sum) {
+        String createTransfer = "INSERT Transfer Values(?, ?, ?)";
+        jdbcTemplate.update(createTransfer, leftUser, rightUser, sum);
+        return true;
     }
 }

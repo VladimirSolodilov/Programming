@@ -10,15 +10,14 @@ public class BranchRowMapper implements RowMapper<Branch> {
 
     @Override
     public Branch mapRow(ResultSet rs, int rowNum) throws SQLException {
-        Branch branchModel = new Branch();
+        Branch branch = new Branch();
 
-        branchModel.setBranchId(rs.getInt("BranchId"));
-        branchModel.setBankId(rs.getInt("BankId"));
-        branchModel.setBranchName(rs.getString("Name"));
-        branchModel.setAddress(rs.getString("Address"));
-        branchModel.setBankIdentificationCode(rs.getString("Bank" +
-                "IdentificationCode"));
+        branch.setBranchId(rs.getInt("BranchId"));
+        branch.setBankId(rs.getInt("BankId"));
+        branch.setBranchName(rs.getString("Name"));
+        branch.setAddress(rs.getString("Address"));
+        branch.setBankIdentificationCode(rs.getString("BankIdentificationCode"));
 
-        return branchModel;
+        return branch;
     }
 }

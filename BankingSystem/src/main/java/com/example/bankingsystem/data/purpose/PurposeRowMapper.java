@@ -12,6 +12,7 @@ public class PurposeRowMapper implements RowMapper<Purpose> {
     public Purpose mapRow(ResultSet rs, int rowNum) throws SQLException {
         Purpose purpose = new Purpose();
 
+        purpose.setPurposeId(rs.getInt("PurposeId"));
         purpose.setPaymentId(rs.getInt("PaymentId"));
         purpose.setPurposeName(rs.getString("PurposeName"));
 

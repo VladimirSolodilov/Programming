@@ -6,6 +6,7 @@ public class Client {
 
     private Branch branch;
 
+    private Account account;
     private int clientId;
     private int branchId;
     private int roleId;
@@ -14,14 +15,14 @@ public class Client {
     private String patronymic;
     private String clientName;
     private String password;
-    private String passwordConfirm;
-    private int sum;
-
     private Set<Role> roles;
 
     public Client() {}
 
-    public Client(int branchId, int roleId, String surname, String name, String patronymic, String clientName, String password, String passwordConfirm, int sum) {
+    public Client(Branch branch, Account account, int clientId, int branchId, int roleId, String surname, String name, String patronymic, String clientName, String password, Set<Role> roles) {
+        this.branch = branch;
+        this.account = account;
+        this.clientId = clientId;
         this.branchId = branchId;
         this.roleId = roleId;
         this.surname = surname;
@@ -29,8 +30,15 @@ public class Client {
         this.patronymic = patronymic;
         this.clientName = clientName;
         this.password = password;
-        this.passwordConfirm = passwordConfirm;
-        this.sum = sum;
+        this.roles = roles;
+    }
+
+    public Account getAccount() {
+        return account;
+    }
+
+    public void setAccount(Account account) {
+        this.account = account;
     }
 
     public Set<Role> getRoles() {
@@ -111,39 +119,5 @@ public class Client {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public int getSum() {
-        return sum;
-    }
-
-    public void setSum(int sum) {
-        this.sum = sum;
-    }
-
-    public String getPasswordConfirm() {
-        return passwordConfirm;
-    }
-
-    public void setPasswordConfirm(String passwordConfirm) {
-        this.passwordConfirm = passwordConfirm;
-    }
-
-    @Override
-    public String toString() {
-        return "Client{" +
-                "branch=" + branch +
-                ", clientId=" + clientId +
-                ", branchId=" + branchId +
-                ", roleId=" + roleId +
-                ", surname='" + surname + '\'' +
-                ", name='" + name + '\'' +
-                ", patronymic='" + patronymic + '\'' +
-                ", clientName='" + clientName + '\'' +
-                ", password='" + password + '\'' +
-                ", passwordConfirm='" + passwordConfirm + '\'' +
-                ", sum=" + sum +
-                ", roles=" + roles +
-                '}';
     }
 }

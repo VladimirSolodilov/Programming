@@ -1,4 +1,8 @@
 package com.example.bankingsystem.domain.bank;
 
-public class BankServiceDomain {
+
+import org.springframework.stereotype.Service;
+
+@Service
+public class BankServiceDomain implements BankService{
 }

@@ -10,13 +10,13 @@ public class AdminRowMapper implements RowMapper<Admin> {
 
     @Override
     public Admin mapRow(ResultSet rs, int rowNum) throws SQLException {
-        Admin adminModel = new Admin();
+        Admin admin = new Admin();
 
-        adminModel.setAdminId(rs.getInt("AdminId"));
-        adminModel.setName(rs.getString("Name"));
-        adminModel.setPassword(rs.getString("Password"));;
-        adminModel.setRoleId(rs.getInt("RoleId"));
+        admin.setAdminId(rs.getInt("AdminId"));
+        admin.setName(rs.getString("Name"));
+        admin.setPassword(rs.getString("Password"));;
+        admin.setRoleId(rs.getInt("RoleId"));
 
-        return adminModel;
+        return admin;
     }
 }

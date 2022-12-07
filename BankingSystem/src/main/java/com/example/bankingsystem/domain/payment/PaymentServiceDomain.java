@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
 
 @Service
 public class PaymentServiceDomain implements PaymentService {
@@ -15,7 +14,7 @@ public class PaymentServiceDomain implements PaymentService {
     private PaymentStorage paymentStorage;
 
     @Override
-    public int createPayment(int personId, String clientName, String paymentName, int paymentSum, String purposeName) {
+    public boolean createPayment(int personId, String clientName, String paymentName, int paymentSum, String purposeName) {
         return paymentStorage.createPayment(personId, clientName, paymentName, paymentSum, purposeName);
     }
 
@@ -25,7 +24,7 @@ public class PaymentServiceDomain implements PaymentService {
     }
 
     @Override
-    public int doPayment(String clientName, String personName, String paymentName, int sum, String purposeName) {
+    public boolean doPayment(String clientName, String personName, String paymentName, int sum, String purposeName) {
         return paymentStorage.doPayment(clientName, personName, paymentName, sum, purposeName);
     }
 }

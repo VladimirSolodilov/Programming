@@ -1,6 +1,10 @@
 package com.example.bankingsystem.data.client;
 
+import com.example.bankingsystem.data.account.AccountRowMapper;
+import com.example.bankingsystem.data.accountRequisites.AccountRequisitesRowMapper;
 import com.example.bankingsystem.data.transfer.TransferStorage;
+import com.example.bankingsystem.domain.model.Account;
+import com.example.bankingsystem.domain.model.AccountRequisites;
 import com.example.bankingsystem.domain.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -14,7 +18,6 @@ import java.util.Objects;
 @Transactional
 @Repository
 public class ClientStorageDB implements ClientStorage {
-
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
@@ -23,74 +26,97 @@ public class ClientStorageDB implements ClientStorage {
 
     @Override
     public List<Client> getAllClient (String pattern) {
-        List<Client> clientList;
-        StringBuilder sqlQuery = new StringBuilder("SELECT * from Client ");
+        StringBuilder getAllClient = new StringBuilder("SELECT * from Client join Account on Client.ClientId = Account.ClientId ");
+        List<Client> clients;
 
         if (!Objects.equals(pattern, "admin")) {
-            sqlQuery.append(" WHERE Client.ClientName LIKE ?");
-            clientList = jdbcTemplate.query(sqlQuery.toString(), new ClientRowMapper(), pattern);
+            getAllClient.append(" WHERE Client.ClientName LIKE ?");
+            clients = jdbcTemplate.query(getAllClient.toString(), new ClientRowMapper(), pattern);
         } else {
-            clientList = jdbcTemplate.query(sqlQuery.toString(), new ClientRowMapper());
+            clients = jdbcTemplate.query(getAllClient.toString(), new ClientRowMapper());
         }
 
-        return clientList;
+        return clients;
     }
 
     @Override
-    public int setClient(int branchId, int roleId, String surname, String name, String patronymic, String clientName, String password, int sum) {
-        String sqlQuery = "INSERT into Client VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        return jdbcTemplate.update(sqlQuery, branchId, roleId, surname, name, patronymic, clientName, password, sum);
+    public boolean createClient(int branchId, int roleId, String surname, String name, String patronymic, String clientName, String password, int sum) {
+        String createClient = "INSERT into Client VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String getClientByClientName = "Select * from Client Where Client.ClientName LIKE ?";
+        String createAccountForClient = "Insert into Account Values (?, ?, ?)";
+        String createAccountRequisitesForClient = "Insert into AccountRequisites Values (?, ?, ?)";
+        String getAccountByAccountId = "Select * From Account Where Account.ClientId = ?";
+
+        jdbcTemplate.update(createClient, branchId, roleId, surname, name, patronymic, clientName, password);
+
+        List<Client> clients = jdbcTemplate.query(getClientByClientName, new ClientRowMapper(), clientName);
+
+        jdbcTemplate.update(createAccountForClient, null, clients.get(0).getClientId(), sum);
+
+        List<Account> accounts = jdbcTemplate.query(getAccountByAccountId, new AccountRowMapper(), clients.get(0).getClientId());
+
+        jdbcTemplate.update(createAccountRequisitesForClient, accounts.get(0).getAccountId(), (int) (Math.random() * 100000), null);
+
+        return true;
     }
 
     @Override
-    public int deleteClient(String surname) {
-        String sqlQuery = "DELETE from Client where Client.Surname LIKE ?";
-        return jdbcTemplate.update(sqlQuery, surname);
+    public boolean deleteClient(String clientName) {
+        String deleteClient = "Delete from Client Where Client.ClientName Like ?";
+        String deleteAccount = "Delete from Account Where Account.ClientId = ?";
+        String deleteAccountRequisites = "Delete from AccountRequisites Where AccountRequisites.AccountId = ?";
+        String getClientByClientName = "Select * from Client Where Client.ClientName LIKE ?";
+        String getAccountByClientId = "Select * from Account Where Account.ClientId = ?";
+
+        List<Client> clients = jdbcTemplate.query(getClientByClientName, new ClientRowMapper(), clientName);
+        List<Account> accounts = jdbcTemplate.query(getAccountByClientId, new AccountRowMapper(), clients.get(0).getClientId());
+
+        jdbcTemplate.update(deleteAccountRequisites, accounts.get(0).getAccountId());
+        jdbcTemplate.update(deleteAccount, clients.get(0).getClientId());
+        jdbcTemplate.update(deleteClient, clientName);
+
+        return true;
     }
 
     @Override
-    public int addSum(String userName, int sum) {
-        String sqlQuery = "Update Client Set Client.Sum = Client.Sum + ? where Client.ClientName Like ?";
-        transferStorage.setTransferInfo(userName, userName, sum);
-        return jdbcTemplate.update(sqlQuery, sum, userName);
+    public boolean addSum(String clientName, int sum) {
+        String addSum = "Update Account Set Account.Sum = Account.Sum + ? Where Account.ClientId = ?";
+        String getClientByClientName = "Select * from Client join Account on Client.ClientId = Account.ClientId Where Client.ClientName Like ?";
+        List<Client> clients = jdbcTemplate.query(getClientByClientName, new ClientRowMapper(), clientName);
+
+        System.out.println("ClientId = " + clients.get(0).getClientId());
+        System.out.println("Sum = " + sum);
+
+        jdbcTemplate.update(addSum, sum, clients.get(0).getClientId());
+        transferStorage.setTransferInfo(clientName, clientName, sum);
+
+        return true;
     }
 
     @Override
-    public int transfer(String leftClientName, String rightClientName, int sum) {
-        //List<Client> leftClientList, rightClientList;
+    public boolean transfer(String leftClientName, String rightClientName, int sum) {
+        String transferClientLeft = "Update Account Set Account.Sum = Account.Sum - ? Where Account.ClientId = ?";
+        String transferClientRight = "Update Account Set Account.Sum = Account.Sum + ? Where Account.ClientId = ?";
+        String getClientByClientName = "Select * from Client Join Account on Client.ClientId = Account.ClientId Where Client.ClientName Like ?";
 
-        String sqlQuery1 = "Update Client Set Client.Sum = Client.Sum - ? Where Client.ClientName Like ?";
-        String sqlQuery2 = "Update Client Set Client.Sum = Client.Sum + ? Where Client.ClientName Like ?";
+        List<Client> clientLeft = jdbcTemplate.query(getClientByClientName, new ClientRowMapper(), leftClientName);
+        List<Client> clientRight = jdbcTemplate.query(getClientByClientName, new ClientRowMapper(), rightClientName);
 
-        jdbcTemplate.update(sqlQuery1, sum, leftClientName);
-        jdbcTemplate.update(sqlQuery2, sum, rightClientName);
-
+        jdbcTemplate.update(transferClientLeft, sum, clientLeft.get(0).getClientId());
+        jdbcTemplate.update(transferClientRight, sum, clientRight.get(0).getClientId());
         transferStorage.setTransferInfo(leftClientName, rightClientName, sum);
 
-        return 1;
+        return true;
+    }
 
-        /*leftClientList = jdbcTemplate.query(sqlQueryLeft, new ClientRowMapper(), leftClientName);
-        rightClientList = jdbcTemplate.query(sqlQueryLeft, new ClientRowMapper(), rightClientName);
-
-        Client leftClient = leftClientList.get(0);
-        Client rightClient = rightClientList.get(0);*/
+    @Override
+    public List<Client> findByClientId(int clientId) {
+        String findByClientId = "SELECT Name from Role where Role.RoleId = ?";
+        return jdbcTemplate.query(findByClientId, new ClientRowMapper(), clientId);
     }
 
     @Override
     public List<Client> transferInfo(String clientName) {
         return null;
-    }
-
-    @Override
-    public int save(Client client) {
-        String sqlQuery = "INSERT into Client VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        return jdbcTemplate.update(sqlQuery, client.getBranch(), client.getRoleId(), client.getSurname(),
-                client.getName(), client.getPatronymic(), client.getClientName(), client.getPassword(), client.getSum());
-    }
-
-    @Override
-    public List<Client> findById(int clientId) {
-        String sqlQuery = "SELECT Name from Role where Role.RoleId = ?";
-        return jdbcTemplate.query(sqlQuery, new ClientRowMapper(), clientId);
     }
 }

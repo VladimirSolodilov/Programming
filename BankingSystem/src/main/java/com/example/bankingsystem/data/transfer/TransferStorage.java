@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface TransferStorage {
     List<Transfer> viewTransferInfo(String clientName);
-    int setTransferInfo(String leftUser, String rightUser, int sum);
+    boolean setTransferInfo(String leftUser, String rightUser, int sum);
 
 
 }
