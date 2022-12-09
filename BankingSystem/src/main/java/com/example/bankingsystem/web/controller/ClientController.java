@@ -15,6 +15,7 @@ import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.View;
 
 import java.util.List;
 
@@ -43,30 +44,20 @@ public class ClientController {
         modelAndView.addObject("clientSignUp", new Client());
         modelAndView.addObject("branchList", branchService.getBranchList());
         modelAndView.setViewName("/client/clientSignUp");
-        /*if (value == "error") {
-            modelAndView.addObject("clientNameError", "Пользователь существует!");
-        }*/
         return modelAndView;
     }
 
     @PostMapping("/client/signUp")
-    public String clientRegistrationPost(Client client, Model model, BindingResult bindingResult, Branch branch) {
-        /*if (!client.getPassword().equals(client.getPasswordConfirm())){
-            model.addAttribute("passwordError", "Пароли не совпадают");
-            return "/client/registration";
+    public ModelAndView clientRegistrationPost(ModelAndView modelAndView, Client client, Branch branch) {
+        if (clientService.getClientList(client.getClientName()).size() != 0) {
+            return clientRegistration(modelAndView.addObject("registrationError", "Error message"));
+        } else {
+            List<Branch> branchList = branchService.getBranchIdByName(branch.getBranchName());
+            modelAndView.addObject(clientService.createClient(branchList.get(0).getBranchId(), 2, client.getSurname(),
+                    client.getName(), client.getPatronymic(), client.getClientName(), client.getPassword(), 0));
+            modelAndView.setViewName("redirect:/");
+            return modelAndView;
         }
-        if (!clientService.saveClient(client)) {
-            model.addAttribute("usernameError", "Пользователь с таким именем уже существует");
-            return "/client/registration";
-        }*/
-        //client.setRoles(Collections.singleton(roleStorage.getRoleById1(client.getRoleId())));
-
-        List<Branch> branchList = branchService.getBranchIdByName(branch.getBranchName());
-
-        model.addAttribute(clientService.createClient(branchList.get(0).getBranchId(), 2, client.getSurname(),
-                client.getName(), client.getPatronymic(), client.getClientName(), client.getPassword(), 0));
-
-        return "redirect:/";
     }
 
     @GetMapping("/authorized/client/removal")

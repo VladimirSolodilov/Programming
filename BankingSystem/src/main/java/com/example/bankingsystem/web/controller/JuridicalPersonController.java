@@ -45,7 +45,7 @@ public class JuridicalPersonController {
     }
 
     @GetMapping("/person/signUp")
-    public ModelAndView clientRegistration(ModelAndView modelAndView) {
+    public ModelAndView personRegistration(ModelAndView modelAndView) {
         modelAndView.addObject("personSignUp", new JuridicalPerson());
         modelAndView.addObject("branchList", branchService.getBranchList());
         modelAndView.setViewName("/person/personSignUp");
@@ -53,26 +53,17 @@ public class JuridicalPersonController {
     }
 
     @PostMapping("/person/signUp")
-    public String clientRegistrationPost(Model model, JuridicalPerson juridicalPerson, Branch branch) {
-        /*if (bindingResult.hasErrors()) {
-            return "/person/registration";
+    public ModelAndView personRegistrationPost(ModelAndView modelAndView, JuridicalPerson juridicalPerson, Branch branch) {
+        if (juridicalPersonService.getPersonList(juridicalPerson.getJuridicalPersonName()).size() != 0) {
+            return personRegistration(modelAndView.addObject("registrationError", "Error message"));
+        } else {
+            List<Branch> branchList = branchService.getBranchIdByName(branch.getBranchName());
+            modelAndView.addObject(juridicalPersonService.setPersonList(branchList.get(0).getBranchId(), 3,
+                    juridicalPerson.getSurname(), juridicalPerson.getName(), juridicalPerson.getPatronymic(), juridicalPerson.getOrganizationName(),
+                    juridicalPerson.getJuridicalPersonName(), juridicalPerson.getPassword(), 0));
+            modelAndView.setViewName("redirect:/");
+            return modelAndView;
         }
-        if (!juridicalPerson.getPassword().equals(juridicalPerson.getPassword())){
-            model.addAttribute("passwordError", "Пароли не совпадают");
-            return "/client/registration";
-        }
-        if (!juridicalPersonService.saveClient(juridicalPerson)) {
-            model.addAttribute("usernameError", "Пользователь с таким именем уже существует");
-            return "/client/registration";
-        }*/
-
-        List<Branch> branchList = branchService.getBranchIdByName(branch.getBranchName());
-
-        model.addAttribute(juridicalPersonService.setPersonList(branchList.get(0).getBranchId(), 3,
-                juridicalPerson.getSurname(), juridicalPerson.getName(), juridicalPerson.getPatronymic(), juridicalPerson.getOrganizationName(),
-                juridicalPerson.getJuridicalPersonName(), juridicalPerson.getPassword(), 0));
-
-        return "redirect:/";
     }
     @GetMapping("/authorized/person/addSum")
     public String addSum(Model model, Authentication authentication) {

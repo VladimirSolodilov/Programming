@@ -3,9 +3,7 @@ package com.example.bankingsystem.domain.model;
 import java.util.Set;
 
 public class Client {
-
     private Branch branch;
-
     private Account account;
     private int clientId;
     private int branchId;
@@ -16,7 +14,6 @@ public class Client {
     private String clientName;
     private String password;
     private Set<Role> roles;
-
     public Client() {}
 
     public Client(Branch branch, Account account, int clientId, int branchId, int roleId, String surname, String name, String patronymic, String clientName, String password, Set<Role> roles) {

@@ -49,7 +49,7 @@ public class ClientStorageDB implements ClientStorage {
 
         jdbcTemplate.update(createClient, branchId, roleId, surname, name, patronymic, clientName, password);
 
-        List<Client> clients = jdbcTemplate.query(getClientByClientName, new ClientRowMapper(), clientName);
+        List<Client> clients = jdbcTemplate.query(getClientByClientName, new ClientCreateRowMapper(), clientName);
 
         jdbcTemplate.update(createAccountForClient, null, clients.get(0).getClientId(), sum);
 

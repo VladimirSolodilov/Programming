@@ -47,7 +47,7 @@ public class JuridicalPersonStorageDB implements JuridicalPersonStorage {
 
         jdbcTemplate.update(createPerson, branchId, roleId, surname, name, patronymic, organizationName, juridicalPersonName, password);
 
-        List<JuridicalPerson> juridicalPeoples = jdbcTemplate.query(getPersonByPersonName, new JuridicalPersonRowMapper(), juridicalPersonName);
+        List<JuridicalPerson> juridicalPeoples = jdbcTemplate.query(getPersonByPersonName, new JuridicalPersonCreateRowMapper(), juridicalPersonName);
 
         jdbcTemplate.update(createAccountForPerson, juridicalPeoples.get(0).getJuridicalPersonId(), null, sum);
 
