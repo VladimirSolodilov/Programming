@@ -17,7 +17,7 @@
                     <th>Номер лицевого счёта</th>
                     <th>Сумма</th>
                     <th>Роль</th>
-                    <TH>Операция</TH>
+                    <TH>Удалить</TH>
                 </tr>
                 <th:block th:each="clientList: ${clientList}">
                     <tr>
@@ -29,7 +29,7 @@
                         <td th:text="${clientList.account.sum}">ID</td>
                         <td>[CLIENT]</td>
                         <td>
-                            <form th:action="@{/authorized/admin/remove}" method="post" th:object="${client}">
+                            <form th:action="@{/authorized/admin/clientRemove}" method="post" th:object="${client}">
                                 <label hidden>
                                     <input type="text" th:value="${clientList.clientName}" id="clientName" name="clientName">
                                 </label>

@@ -10,7 +10,7 @@ public interface JuridicalPersonService {
     List<JuridicalPerson> getPersonBySurnameLike(String surname);
 
     boolean setPersonList(int branchId, int roleId, String surname, String name, String patronymic, String organizationName, String personName, String password, int sum);
-    boolean deletePersonList(String surname);
+    boolean deletePersonList(String personName);
 
     List<JuridicalPerson> getIdByPersonName(String personName);
     boolean addSum(String personName, int sum);

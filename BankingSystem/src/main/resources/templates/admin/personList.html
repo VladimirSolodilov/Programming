@@ -18,7 +18,7 @@
                 <th>Рассчётный счёт</th>
                 <th>Сумма</th>
                 <th>Роль</th>
-                <th>Операция</th>
+                <th>Удалить</th>
             </tr>
             <th:block th:each="personList: ${personList}">
                 <tr>
@@ -30,9 +30,18 @@
                     <td th:text="${personList.account.accountRequisites.paymentAccount}">ID</td>
                     <td th:text="${personList.account.sum}">ID</td>
                     <td>[JURIDICAL_PERSON]</td>
-                    <td><button onclick="window.location.href = '/authorized/admin/change';">Изменить</button>
-                        <p></p>
-                        <button onclick="window.location.href = '/authorized/admin/remove';">Удалить</button></td>
+                    <td>
+                        <form th:action="@{/authorized/admin/personRemove}" method="post" th:object="${person}">
+                            <label hidden>
+                                <input type="text" th:value="${personList.juridicalPersonName}" id="juridicalPersonName" name="juridicalPersonName">
+                            </label>
+
+                            <div class="form-group">
+                                <input type="submit" name="registration-submit" id="registration-submit1"
+                                       class="stdBtn" value="Удалить">
+                            </div>
+                        </form>
+                    </td>
                 </tr>
             </th:block>
         </table>

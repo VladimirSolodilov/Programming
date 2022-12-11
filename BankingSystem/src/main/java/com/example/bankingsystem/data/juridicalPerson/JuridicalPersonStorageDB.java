@@ -62,9 +62,10 @@ public class JuridicalPersonStorageDB implements JuridicalPersonStorage {
     @Override
     public boolean deleteJuridicalPerson(String personName) {
         String deletePerson = "Delete from JuridicalPerson Where JuridicalPerson.PersonName Like ?";
-        String deleteAccount = "Delete from Account Where Account.ClientId = ?";
+        String deleteAccount = "Delete from Account Where Account.PersonId = ?";
         String deleteAccountRequisites = "Delete from AccountRequisites Where AccountRequisites.AccountId = ?";
-        String getPersonByPersonName = "Select * from JuridicalPerson Where JuridicalPerson.PersonName LIKE ?";
+        String getPersonByPersonName = "Select * from JuridicalPerson Join Account on JuridicalPerson.PersonId = Account.PersonId " +
+                "JOIN AccountRequisites on AccountRequisites.AccountId = Account.AccountId Where JuridicalPerson.PersonName LIKE ?";
         String getAccountByPersonId = "Select * from Account Where Account.PersonId = ?";
 
         List<JuridicalPerson> peoples = jdbcTemplate.query(getPersonByPersonName, new JuridicalPersonRowMapper(), personName);
