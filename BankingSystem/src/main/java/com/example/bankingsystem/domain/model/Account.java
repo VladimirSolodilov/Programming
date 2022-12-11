@@ -1,9 +1,9 @@
 package com.example.bankingsystem.domain.model;
 
 public class Account {
-
-    private Client client;
     private JuridicalPerson juridicalPerson;
+    private Client client;
+    private AccountRequisites accountRequisites;
     private int accountId;
     private int personId;
     private int clientId;
@@ -12,9 +12,10 @@ public class Account {
     public Account() {
     }
 
-    public Account(Client client, JuridicalPerson juridicalPerson, int accountId, int personId, int clientId, int sum) {
+    public Account(Client client, JuridicalPerson juridicalPerson, AccountRequisites accountRequisites, int accountId, int personId, int clientId, int sum) {
         this.client = client;
         this.juridicalPerson = juridicalPerson;
+        this.accountRequisites = accountRequisites;
         this.accountId = accountId;
         this.personId = personId;
         this.clientId = clientId;
@@ -66,5 +67,13 @@ public class Account {
 
     public void setSum(int sum) {
         this.sum = sum;
+    }
+
+    public AccountRequisites getAccountRequisites() {
+        return accountRequisites;
+    }
+
+    public void setAccountRequisites(AccountRequisites accountRequisites) {
+        this.accountRequisites = accountRequisites;
     }
 }

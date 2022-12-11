@@ -2,45 +2,42 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="/css/table.css" rel="stylesheet"/>
+    <title>Перевод денежных средств</title>
+    <link href="/css/form.css" rel="stylesheet"/>
 </head>
 <body>
-    <h1 class="h1">Пополнение счёта</h1>
+    <h1 class="h1">Перевод денежных средств</h1>
 
-    <p>Ваш счёт:</p>
-    <div th:if="${clientLeft} != null">
-        <table  class="table" id="clientLeft">
-            <th:block th:each="clientLeft: ${clientLeft}">
-                <tr>
-                    <th>Сумма</th><td th:text="${clientLeft.account.sum}">Имя</td>
-                </tr>
-            </th:block>
-        </table>
+    <div th:each="clientLeft: ${clientLeft}">
+        <div th:if="${clientLeft.account.sum} > 0">
+            <a>Баланс вашего счёта:</a><a th:text="${clientLeft.account.sum}"></a>
+
+            <form th:action="@{/authorized/client/transfer}" method="post" th:object="${clientSumTransfer}">
+                <div th:if="${clientRight} != null">
+                    <label>Выбор клиента: </label>
+                    <label>
+                        <select name="clientName">
+                            <option th:each="clientRight: ${clientRight}" th:text="|Фамилия: ${clientRight.surname} Имя: ${clientRight.name} Отчество: ${clientRight.patronymic} Логин: ${clientRight.clientName}|"></option>
+                        </select>
+                    </label>
+                </div>
+                <div>
+                    <label>Сумма перевода: </label>
+                    <label>
+                        <input type="text" th:field="*{account.sum}" required>
+                    </label>&nbsp;<span th:errors="*{account.sum}"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" name="registration-submit" id="registration-submit1"
+                           class="stdBtn" value="Отправить">
+                </div>
+            </form>
+        </div>
+
+        <div th:if="${clientLeft.account.sum} <= 0">
+            <p>Перевод невозможен! Недостаточно средств на счёте!</p>
+        </div>
     </div>
-
-    <form th:action="@{/authorized/client/transfer}" method="post" th:object="${clientSumTransfer}">
-        <div th:if="${clientRight} != null">
-            <label>Выбор клиента: </label>
-            <label>
-                <select name="clientName">
-                    <option th:each="clientRight: ${clientRight}" th:text="|Фамилия: ${clientRight.surname} Имя: ${clientRight.name} Отчество: ${clientRight.patronymic} Логин: ${clientRight.clientName}|"></option>
-                </select>
-            </label>
-        </div>
-
-        <div>
-            <label>Сумма перевода: </label>
-            <label>
-                <input type="text" th:field="*{account.sum}" required>
-            </label>&nbsp;<span th:errors="*{account.sum}"></span>
-        </div>
-
-        <div class="form-group">
-            <input type="submit" name="registration-submit" id="registration-submit1"
-                   class="stdBtn" value="Отправить">
-        </div>
-    </form>
-
+    <p><a th:href="@{/authorized}" target="_self">Вернуться на главную страницу</a></p>
 </body>
 </html>

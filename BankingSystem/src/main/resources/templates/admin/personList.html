@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Список юридических лиц</title>
     <link href="/css/table.css" rel="stylesheet"/>
 </head>
 <body>
@@ -13,6 +13,9 @@
                 <th>Фамилия</th>
                 <th>Имя</th>
                 <th>Отчество</th>
+                <th>Филиал</th>
+                <th>Имя организации</th>
+                <th>Рассчётный счёт</th>
                 <th>Сумма</th>
                 <th>Роль</th>
                 <th>Операция</th>
@@ -22,12 +25,18 @@
                     <td th:text="${personList.surname}">ID</td>
                     <td th:text="${personList.name}">ID</td>
                     <td th:text="${personList.patronymic}">ID</td>
-                    <td th:text="${personList.sum}">ID</td>
+                    <td th:text="${personList.branch.branchName}">ID</td>
+                    <td th:text="${personList.organizationName}">ID</td>
+                    <td th:text="${personList.account.accountRequisites.paymentAccount}">ID</td>
+                    <td th:text="${personList.account.sum}">ID</td>
                     <td>[JURIDICAL_PERSON]</td>
-                    <td><button onclick="window.location.href = '/authorized/admin/account';">Удалить</button></td>
+                    <td><button onclick="window.location.href = '/authorized/admin/change';">Изменить</button>
+                        <p></p>
+                        <button onclick="window.location.href = '/authorized/admin/remove';">Удалить</button></td>
                 </tr>
             </th:block>
         </table>
     </div>
+    <a th:href="@{/authorized}" target="_self">Вернуться на главную страницу</a>
 </body>
 </html>

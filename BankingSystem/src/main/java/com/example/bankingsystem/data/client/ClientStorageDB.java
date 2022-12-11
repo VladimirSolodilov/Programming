@@ -26,7 +26,8 @@ public class ClientStorageDB implements ClientStorage {
 
     @Override
     public List<Client> getAllClient (String pattern) {
-        StringBuilder getAllClient = new StringBuilder("SELECT * from Client join Account on Client.ClientId = Account.ClientId ");
+        StringBuilder getAllClient = new StringBuilder("SELECT * from Client join Account on Client.ClientId = Account.ClientId " +
+                "join AccountRequisites on Account.AccountId = AccountRequisites.AccountId join Branch on Client.BranchId = Branch.BranchId");
         List<Client> clients;
 
         if (!Objects.equals(pattern, "admin")) {
@@ -65,7 +66,8 @@ public class ClientStorageDB implements ClientStorage {
         String deleteClient = "Delete from Client Where Client.ClientName Like ?";
         String deleteAccount = "Delete from Account Where Account.ClientId = ?";
         String deleteAccountRequisites = "Delete from AccountRequisites Where AccountRequisites.AccountId = ?";
-        String getClientByClientName = "Select * from Client Where Client.ClientName LIKE ?";
+        String getClientByClientName = "Select * from Client Join Account on Client.ClientId = Account.ClientId " +
+                "Join AccountRequisites on AccountRequisites.AccountId = Account.AccountId Where Client.ClientName LIKE ?";
         String getAccountByClientId = "Select * from Account Where Account.ClientId = ?";
 
         List<Client> clients = jdbcTemplate.query(getClientByClientName, new ClientRowMapper(), clientName);
@@ -81,7 +83,7 @@ public class ClientStorageDB implements ClientStorage {
     @Override
     public boolean addSum(String clientName, int sum) {
         String addSum = "Update Account Set Account.Sum = Account.Sum + ? Where Account.ClientId = ?";
-        String getClientByClientName = "Select * from Client join Account on Client.ClientId = Account.ClientId Where Client.ClientName Like ?";
+        String getClientByClientName = "SELECT * from Client join Account on Client.ClientId = Account.ClientId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId Where Client.ClientName Like ?";
         List<Client> clients = jdbcTemplate.query(getClientByClientName, new ClientRowMapper(), clientName);
 
         System.out.println("ClientId = " + clients.get(0).getClientId());
@@ -97,7 +99,7 @@ public class ClientStorageDB implements ClientStorage {
     public boolean transfer(String leftClientName, String rightClientName, int sum) {
         String transferClientLeft = "Update Account Set Account.Sum = Account.Sum - ? Where Account.ClientId = ?";
         String transferClientRight = "Update Account Set Account.Sum = Account.Sum + ? Where Account.ClientId = ?";
-        String getClientByClientName = "Select * from Client Join Account on Client.ClientId = Account.ClientId Where Client.ClientName Like ?";
+        String getClientByClientName = "SELECT * from Client join Account on Client.ClientId = Account.ClientId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId Where Client.ClientName Like ?";
 
         List<Client> clientLeft = jdbcTemplate.query(getClientByClientName, new ClientRowMapper(), leftClientName);
         List<Client> clientRight = jdbcTemplate.query(getClientByClientName, new ClientRowMapper(), rightClientName);

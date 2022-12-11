@@ -7,7 +7,6 @@ import java.beans.JavaBean;
 
 public class JuridicalPerson {
     private Branch branch;
-
     private Account account;
     private int juridicalPersonId;
     private int branchId;

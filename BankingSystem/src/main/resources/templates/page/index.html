@@ -10,19 +10,18 @@
         <h1 class="h1">Банковская система</h1>
 
         <div sec:authorize="isAuthenticated()">
-            <h2 th:inline="text">Добро пожаловать, [[${#httpServletRequest.remoteUser}]]!</h2>
-
-             <!-- <div th:text="${#authentication.getPrincipal()}"></div> -->
+            <h2 class="h2" th:inline="text">Добро пожаловать, [[${#httpServletRequest.remoteUser}]]!</h2>
 
             <div sec:authorize="hasAuthority('ADMIN')">
                 <ul class="rounded">
-                    <li><a th:href="@{/authorized/admin/account}">Личный кабинет администратора</a>
+                    <li><a th:href="@{/authorized/admin/clientList}">Операции с физическими лицами</a>
+                    <li><a th:href="@{/authorized/admin/personList}">Операции с юридическими лицами</a>
                 </ul>
             </div>
 
             <div sec:authorize="hasAuthority('CLIENT')">
                 <ul class="rounded">
-                    <li><a th:href="@{/authorized/client/account}">Личный кабинет клиента</a>
+                    <li><a th:href="@{/authorized/client/account}">Информация о клиенте</a>
 
                     <li><a>Переводы и пополнение</a>
                         <ul>
@@ -43,7 +42,7 @@
 
             <div sec:authorize="hasAuthority('JURIDICAL_PERSON')">
                 <ul class="rounded">
-                    <li><a th:href="@{/authorized/person/account}">Личный кабинет юридического лица</a>
+                    <li><a th:href="@{/authorized/person/account}">Информация об юридическом лице</a>
 
                     <li><a>Операции со счётом</a>
                         <ul>

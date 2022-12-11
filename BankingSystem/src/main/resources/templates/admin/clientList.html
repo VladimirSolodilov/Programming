@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Список пользователей</title>
     <link href="/css/table.css" rel="stylesheet"/>
 </head>
 <body>
@@ -13,6 +13,8 @@
                     <th>Фамилия</th>
                     <th>Имя</th>
                     <th>Отчество</th>
+                    <th>Филиал</th>
+                    <th>Номер лицевого счёта</th>
                     <th>Сумма</th>
                     <th>Роль</th>
                     <TH>Операция</TH>
@@ -22,12 +24,26 @@
                         <td th:text="${clientList.surname}">ID</td>
                         <td th:text="${clientList.name}">ID</td>
                         <td th:text="${clientList.patronymic}">ID</td>
-                        <td th:text="${clientList.sum}">ID</td>
+                        <td th:text="${clientList.branch.branchName}">ID</td>
+                        <td th:text="${clientList.account.accountRequisites.personalAccount}">ID</td>
+                        <td th:text="${clientList.account.sum}">ID</td>
                         <td>[CLIENT]</td>
-                        <td><button onclick="window.location.href = '/authorized/admin/account';">Удалить</button></td>
+                        <td>
+                            <form th:action="@{/authorized/admin/remove}" method="post" th:object="${client}">
+                                <label hidden>
+                                    <input type="text" th:value="${clientList.clientName}" id="clientName" name="clientName">
+                                </label>
+
+                                <div class="form-group">
+                                    <input type="submit" name="registration-submit" id="registration-submit1"
+                                           class="stdBtn" value="Удалить">
+                                </div>
+                            </form>
+                        </td>
                     </tr>
                 </th:block>
             </table>
         </div>
+        <a th:href="@{/authorized}" target="_self">Вернуться на главную страницу</a>
 </body>
 </html>

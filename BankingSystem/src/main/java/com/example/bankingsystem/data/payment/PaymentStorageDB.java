@@ -25,7 +25,7 @@ public class PaymentStorageDB implements PaymentStorage {
         String createPayment = "INSERT Payment VALUES(?, ?, ?, ?, ?)";
         String createPurpose = "INSERT Purpose VALUES(?, ?)";
         String getPaymentByName = "SELECT * from Payment WHERE Name Like ?";
-        String getClientByClientName = "SELECT * from Client Join Account on Client.ClientId = Account.ClientId Where Client.ClientName Like ?";
+        String getClientByClientName = "SELECT * from Client Join Account on Client.ClientId = Account.ClientId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId Where Client.ClientName Like ?";
 
         List<Client> clients = jdbcTemplate.query(getClientByClientName, new ClientRowMapper(), clientName);
 
@@ -40,10 +40,10 @@ public class PaymentStorageDB implements PaymentStorage {
 
     @Override
     public List<Payment> getPaymentList(String personName, String clientName) {
-        String getPersonByName  = "SELECT * from JuridicalPerson Join Account on JuridicalPerson.PersonId = Account.PersonId Where PersonName Like ?";
+        String getPersonByName  = "SELECT * from JuridicalPerson Join Account on JuridicalPerson.PersonId = Account.PersonId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId Where PersonName Like ?";
         String getPaymentByPersonId = "select * from Payment join Purpose on Payment.PaymentId = Purpose.PaymentId join Client on Payment.ClientId = Client.ClientId where Payment.PersonId = ?";
         String getPayment = "select * from Payment join Purpose on Payment.PaymentId = Purpose.PaymentId join Client on Payment.ClientId = Client.ClientId Where Payment.ClientId = ?";
-        String getClientByName = "Select * from Client Join Account on Client.ClientId = Account.ClientId Where ClientName Like ?";
+        String getClientByName = "SELECT * from Client join Account on Client.ClientId = Account.ClientId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId Where ClientName Like ?";
 
         List<JuridicalPerson> juridicalPersons;
         List<Client> clients;
@@ -60,11 +60,11 @@ public class PaymentStorageDB implements PaymentStorage {
     @Override
     public boolean doPayment(String clientName, String personName, String paymentName, int sum, String purposeName) {
         String getPayment = "Select Payment.Name, Payment.Date, Payment.Sum, Purpose.PurposeName from Payment join Purpose on Payment.PaymentId = Purpose.PaymentId where PurposeName Like ?";
-        String getPersonByName = "Select * from JuridicalPerson Join Account on JuridicalPerson.PersonId = Account.PersonId Where JuridicalPerson.PersonName Like ?";
+        String getPersonByName = "Select * from JuridicalPerson Join Account on JuridicalPerson.PersonId = Account.PersonId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId Where JuridicalPerson.PersonName Like ?";
         String getPaymentByName = "Select * from Payment Join Purpose on Payment.PaymentId = Purpose.PaymentId where Payment.Name LIKE ?";
         String updatePersonSum = "Update Account Set Account.Sum = Account.Sum + ? Where Account.PersonId = ?";
         String updateClientSum = "Update Account Set Account.Sum = Account.Sum - ? Where Account.ClientId = ?";
-        String getClientByName = "Select * from Client Join Account on Client.ClientId = Account.ClientId Where Client.ClientName Like ?";
+        String getClientByName = "Select * from Client Join Account on Client.ClientId = Account.ClientId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId Where Client.ClientName Like ?";
         String deletePurpose = "Delete from Purpose Where PurposeName Like ?";
         String deletePayment = "Delete from Payment Where Name Like ?";
 

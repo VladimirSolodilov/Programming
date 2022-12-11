@@ -2,11 +2,11 @@
 <html lang="en" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${title}">Title</title>
+    <title>Информация о пользователе</title>
     <link href="/css/table.css" rel="stylesheet"/>
 </head>
     <body>
-        <h1 class="h1" th:text="${title}">Личный кабинет пользователя</h1>
+        <h1 class="h1" th:text="${title}">Информация о пользователе</h1>
 
         <div th:if="${client} != null">
             <table  class="table" id="client">
@@ -22,6 +22,10 @@
 
                     <tr>
                         <th>Отчество</th><td th:text="${client.patronymic}">Отчество</td>
+                    </tr>
+
+                    <tr>
+                        <th>Номер лицевого счёта</th><td th:text="${client.account.accountRequisites.personalAccount}">Номер счёта</td>
                     </tr>
 
                     <tr>

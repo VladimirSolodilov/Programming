@@ -2,27 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>История переводов пользователя</title>
     <link href="/css/table.css" rel="stylesheet"/>
 </head>
 <body>
-<h1 class="h1">История переводов пользователя</h1>
-<div th:if="${clientTransferInfo} != null">
-    <table class="table" id="table">
-        <tr class="column-header">
-            <th>Начальный пользователь</th>
-            <th>Конечный пользователь</th>
-            <th>Сумма</th>
-        </tr>
-
-        <th:block th:each="clientTransferInfo: ${clientTransferInfo}">
-            <tr>
-                <td th:text="${clientTransferInfo.leftUser}">ID</td>
-                <td th:text="${clientTransferInfo.rightUser}">ID</td>
-                <td th:text="${clientTransferInfo.sum}">ID</td>
+    <h1 class="h1">История переводов пользователя</h1>
+    <div th:if="${!clientTransferInfo.isEmpty()}">
+        <table class="table" id="table">
+            <tr class="column-header">
+                <th>Начальный пользователь</th>
+                <th>Конечный пользователь</th>
+                <th>Сумма перевода</th>
             </tr>
-        </th:block>
-    </table>
-</div>
+
+            <th:block th:each="clientTransferInfo: ${clientTransferInfo}">
+                <tr>
+                    <td th:text="${clientTransferInfo.leftUser}">ID</td>
+                    <td th:text="${clientTransferInfo.rightUser}">ID</td>
+                    <td th:text="${clientTransferInfo.sum}">ID</td>
+                </tr>
+            </th:block>
+        </table>
+    </div>
+
+    <div th:if="${clientTransferInfo.isEmpty()}">
+        <p>Переводы отсутствуют!</p>
+    </div>
+
+    <a th:href="@{/authorized}" target="_self">Вернуться на главную страницу</a>
 </body>
 </html>

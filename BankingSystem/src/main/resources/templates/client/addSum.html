@@ -2,27 +2,21 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link href="/css/table.css" rel="stylesheet"/>
+    <title>Пополнение счёта</title>
+    <link href="/css/form.css" rel="stylesheet"/>
 </head>
 <body>
     <h1 class="h1">Пополнение счёта</h1>
 
-    <div th:if="${client} != null">
-        <table  class="table" id="client">
-            <th:block th:each="client: ${client}">
-                <tr>
-                    <th>Сумма</th><td th:text="${client.account.sum}">Имя</td>
-                </tr>
-            </th:block>
-        </table>
+    <div th:each="client: ${client}">
+        <a>Баланс счёта:</a><a th:text="${client.account.sum}"></a>
     </div>
 
     <form th:action="@{/authorized/client/addSum}" method="post" th:object="${clientAddSum}">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
 
         <div>
-            <label>Новое значение суммы: </label>
+            <label>Сумма пополнения: </label>
             <label>
                 <input type="text" th:field="*{account.sum}" required>
             </label>&nbsp;<span th:errors="*{account.sum}"></span>
@@ -33,5 +27,7 @@
                    class="stdBtn" value="Пополнить">
         </div>
     </form>
+
+    <p><a th:href="@{/authorized}" target="_self">Вернуться на главную страницу</a></p>
 </body>
 </html>

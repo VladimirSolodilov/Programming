@@ -24,7 +24,8 @@ public class JuridicalPersonStorageDB implements JuridicalPersonStorage {
 
     @Override
     public List<JuridicalPerson> getAllPerson(String pattern) {
-        StringBuilder getAllPerson = new StringBuilder("SELECT * from JuridicalPerson Join Account on JuridicalPerson.PersonId = Account.PersonId ");
+        StringBuilder getAllPerson = new StringBuilder("SELECT * from JuridicalPerson Join Account on JuridicalPerson.PersonId = Account.PersonId " +
+                "join AccountRequisites on Account.AccountId = AccountRequisites.AccountId join Branch on JuridicalPerson.BranchId = Branch.BranchId");
         List<JuridicalPerson> juridicalPeoples;
 
         if (!Objects.equals(pattern, "admin")) {
@@ -79,7 +80,7 @@ public class JuridicalPersonStorageDB implements JuridicalPersonStorage {
     @Override
     public boolean addSum(String personName, int sum) {
         String addSum = "Update Account Set Account.Sum = Account.Sum + ? Where Account.PersonId = ?";
-        String getPersonByPersonName = "Select * from JuridicalPerson Join Account on JuridicalPerson.PersonId = Account.PersonId Where JuridicalPerson.PersonName Like ?";
+        String getPersonByPersonName = "Select * from JuridicalPerson Join Account on JuridicalPerson.PersonId = Account.PersonId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId Where JuridicalPerson.PersonName Like ?";
         List<JuridicalPerson> peoples = jdbcTemplate.query(getPersonByPersonName, new JuridicalPersonRowMapper(), personName);
 
         jdbcTemplate.update(addSum, sum, peoples.get(0).getJuridicalPersonId());
@@ -90,9 +91,10 @@ public class JuridicalPersonStorageDB implements JuridicalPersonStorage {
 
     @Override
     public boolean transfer(String leftPerson, String rightPerson, int sum) {
-        String transferPersonLeft = "Update Account Set Account.Sum = Account.Sum - ? Where Account.ClientId = ?";
-        String transferPersonRight = "Update Account Set Account.Sum = Account.Sum + ? Where Account.ClientId = ?";
-        String getPersonByPersonName = "Select * from JuridicalPerson Join Account on JuridicalPerson.PersonId = Account.PersonId Where JuridicalPerson.PersonName Like ?";
+        String transferPersonLeft = "Update Account Set Account.Sum = Account.Sum - ? Where Account.PersonId = ?";
+        String transferPersonRight = "Update Account Set Account.Sum = Account.Sum + ? Where Account.PersonId = ?";
+        String getPersonByPersonName = "Select * from JuridicalPerson Join Account on JuridicalPerson.PersonId = Account.PersonId " +
+                "join AccountRequisites on Account.AccountId = AccountRequisites.AccountId Where JuridicalPerson.PersonName Like ?";
 
         List<JuridicalPerson> peopleLeft = jdbcTemplate.query(getPersonByPersonName, new JuridicalPersonRowMapper(), leftPerson);
         List<JuridicalPerson> peopleRight = jdbcTemplate.query(getPersonByPersonName, new JuridicalPersonRowMapper(), rightPerson);

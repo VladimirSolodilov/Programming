@@ -2,28 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Список созданных платежей</title>
     <link href="/css/table.css" rel="stylesheet"/>
 </head>
 <body>
-<h1 class="h1">Список созданных платежей</h1>
-<div th:if="${viewPayment} != null">
-    <table class="table" id="table">
-        <tr class="column-header">
-            <th>Имя платежа</th>
-            <th>Дата создания</th>
-            <th>Сумма</th>
-            <th>Клиент</th>
-            <th>Назначение</th>
-        </tr>
-        <th:block th:each="viewPayment: ${viewPayment}">
-            <tr>
-                <td th:text="${viewPayment.name}">ID</td>
-                <td th:text="${viewPayment.data}">ID</td>
-                <td th:text="${viewPayment.sum}">ID</td>
-                <td th:text="${viewPayment.client.clientName}">ID</td>
-                <td th:text="${viewPayment.purpose.purposeName}">ID</td>
+    <h1 class="h1">Список созданных платежей</h1>
+    <div th:if="${!viewPayment.isEmpty()}">
+        <table class="table" id="table">
+            <tr class="column-header">
+                <th>Имя платежа</th>
+                <th>Дата создания</th>
+                <th>Сумма</th>
+                <th>Клиент</th>
+                <th>Назначение</th>
             </tr>
-        </th:block>
-    </table>
-</div>
+            <th:block th:each="viewPayment: ${viewPayment}">
+                <tr>
+                    <td th:text="${viewPayment.name}">ID</td>
+                    <td th:text="${viewPayment.data}">ID</td>
+                    <td th:text="${viewPayment.sum}">ID</td>
+                    <td th:text="${viewPayment.client.clientName}">ID</td>
+                    <td th:text="${viewPayment.purpose.purposeName}">ID</td>
+                </tr>
+            </th:block>
+        </table>
+    </div>
+    <div th:if="${viewPayment.isEmpty()}">
+        <p>Выставленные платежи отсутствуют!</p>
+    </div>
+    <p><a th:href="@{/authorized}" target="_self">Вернуться на главную страницу</a></p>
+</body>

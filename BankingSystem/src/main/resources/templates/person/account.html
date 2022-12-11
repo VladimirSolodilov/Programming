@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title th:text="${title}">Title</title>
+    <title>Информация об юридическом лице</title>
     <link href="/css/table.css" rel="stylesheet"/>
 </head>
 <body>
-<h1 class="h1" th:text="${title}">Личный кабинет юридического лица</h1>
+    <h1 class="h1">Информация об юридическом лице</h1>
 
     <div th:if="${person} != null">
         <table  class="table" id="client">
@@ -25,6 +25,14 @@
                 </tr>
 
                 <tr>
+                    <th>Имя организации</th><td th:text="${person.organizationName}">Отчество</td>
+                </tr>
+
+                <tr>
+                    <th>Номер расчётного счёта</th><td th:text="${person.account.accountRequisites.paymentAccount}">Номер счёта</td>
+                </tr>
+
+                <tr>
                     <th>Сумма</th><td th:text="${person.account.sum}">Сумма</td>
                 </tr>
 
@@ -32,26 +40,8 @@
                     <th>Роль</th><td th:text="${#authentication.getAuthorities()}">Роль</td>
                 </tr>
             </th:block>
-
-            <!--<th:block th:each="client: ${client}">
-                <tr>
-                    <td th:text="${client.surname}">Фамилия</td>
-                </tr>
-                    <td th:text="${client.name}">Имя</td>
-                <tr>
-                    <td th:text="${client.patronymic}">Отчество</td>
-                </tr>
-                    <td th:text="${client.sum}">Сумма</td>
-                <tr>
-                    <td th:text="${#authentication.getAuthorities()}">Роль</td>
-                </tr>
-            </th:block> -->
         </table>
     </div>
     <a th:href="@{/authorized}" target="_self">Вернуться на главную страницу</a>
-<!-- <input type="button" value="Вернуться" onclick="window.location.href = '/index'"}>
-<input type="button" value="Добавить рассылку" onclick="window.location.href = '/mail/registration'"}>
-<input type="button" value="Изменить название рассылки" onclick="window.location.href = '/mail/change'"}>
-<input type="button" value="Удалить рассылку" onclick="window.location.href = '/mail/delete'"}> -->
 </body>
 </html>

@@ -1,6 +1,8 @@
 package com.example.bankingsystem.data.juridicalPerson;
 
 import com.example.bankingsystem.domain.model.Account;
+import com.example.bankingsystem.domain.model.AccountRequisites;
+import com.example.bankingsystem.domain.model.Branch;
 import com.example.bankingsystem.domain.model.JuridicalPerson;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -13,6 +15,8 @@ public class JuridicalPersonRowMapper implements RowMapper<JuridicalPerson> {
     public JuridicalPerson mapRow(ResultSet resultSet, int rowNum) throws SQLException {
         JuridicalPerson juridicalPerson = new JuridicalPerson();
         Account account = new Account();
+        AccountRequisites accountRequisites = new AccountRequisites();
+        Branch branch = new Branch();
 
         juridicalPerson.setJuridicalPersonId(resultSet.getInt("PersonId"));
         juridicalPerson.setBranchId(resultSet.getInt("BranchId"));
@@ -25,7 +29,13 @@ public class JuridicalPersonRowMapper implements RowMapper<JuridicalPerson> {
         juridicalPerson.setPassword(resultSet.getString("Password"));
 
         juridicalPerson.setAccount(account);
+        account.setAccountRequisites(accountRequisites);
+        juridicalPerson.setBranch(branch);
+
         account.setSum(resultSet.getInt("Sum"));
+        accountRequisites.setPaymentAccount(resultSet.getInt("PaymentAccount"));
+        branch.setBranchName(resultSet.getString("Name"));
+
 
         return juridicalPerson;
     }
