@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class AdminController {
-
     @Autowired
     private ClientService clientService;
 
@@ -32,14 +31,14 @@ public class AdminController {
     }
 
     @GetMapping("/authorized/admin/personList")
-    public String personList(Model model, Authentication authentication) {
+    public String personList(Model model) {
         model.addAttribute("personList", juridicalPersonService.getPersonList("admin"));
         model.addAttribute("person", new JuridicalPerson());
         return "/admin/personList";
     }
 
     @GetMapping("/authorized/admin/clientList")
-    public String clientList(Model model, Authentication authentication) {
+    public String clientList(Model model) {
         model.addAttribute("clientList", clientService.getClientList("admin"));
         model.addAttribute("client", new Client());
         return "/admin/clientList";
