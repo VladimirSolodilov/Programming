@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 
@@ -17,9 +17,7 @@ import java.util.Objects;
 public class PaymentStorageDB implements PaymentStorage {
     @Autowired
     private JdbcTemplate jdbcTemplate;
-
-    private final Date date = new Date(2022);
-
+    private final Date date = new Date();
     @Override
     public boolean createPayment(int personId, String clientName,String paymentName, int paymentSum, String purposeName) {
         String createPayment = "INSERT Payment VALUES(?, ?, ?, ?, ?)";
@@ -29,7 +27,7 @@ public class PaymentStorageDB implements PaymentStorage {
 
         List<Client> clients = jdbcTemplate.query(getClientByClientName, new ClientRowMapper(), clientName);
 
-        jdbcTemplate.update(createPayment, personId, clients.get(0).getClientId(), paymentName, date.toString(), paymentSum);
+        jdbcTemplate.update(createPayment, personId, clients.get(0).getClientId(), paymentName, date, paymentSum);
 
         List<Payment> payments = jdbcTemplate.query(getPaymentByName, new PaymentIdRowMapper(), paymentName);
 

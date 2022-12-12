@@ -17,7 +17,8 @@
                   <label>Выбор клиента: </label>
                   <label>
                       <select name="juridicalPersonName">
-                          <option th:each="personRight: ${personRight}" th:text="|Фамилия: ${personRight.surname} Имя: ${personRight.name} Отчество: ${personRight.patronymic} Логин: ${personRight.juridicalPersonName}|"></option>
+                          <option th:each="personRight: ${personRight}" th:text="|Фамилия: ${personRight.surname} Имя: ${personRight.name} Отчество: ${personRight.patronymic}
+                          Имя организации: ${personLeft.organizationName} Идентификатор: ${personRight.juridicalPersonName}|"></option>
                       </select>
                   </label>
               </div>
@@ -27,6 +28,10 @@
                   <label>
                       <input type="text" th:field="*{account.sum}" required>
                   </label>&nbsp;<span th:errors="*{account.sum}"></span>
+              </div>
+
+              <div th:if="${transferError} != null">
+                  <p><div class="alert alert-danger">Ошибка! Недостаточно средств для перевода!</div></p>
               </div>
 
               <div class="form-group">

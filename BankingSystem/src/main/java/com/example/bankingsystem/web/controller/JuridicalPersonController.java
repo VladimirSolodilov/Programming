@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 public class JuridicalPersonController {
@@ -77,17 +78,23 @@ public class JuridicalPersonController {
         return "redirect:/authorized/person/account";
     }
     @GetMapping("/authorized/person/transfer")
-    public String transfer(Model model, Authentication authentication) {
-        model.addAttribute("personLeft", juridicalPersonService.getPersonList(authentication.getName()));
-        model.addAttribute("personRight", juridicalPersonService.getPersonList("admin"));
-        model.addAttribute("personSumTransfer", new JuridicalPerson());
-        return "/person/transfer";
+    public ModelAndView transfer(ModelAndView modelAndView, Authentication authentication) {
+        modelAndView.addObject("personLeft", juridicalPersonService.getPersonList(authentication.getName()));
+        modelAndView.addObject("personRight", juridicalPersonService.getPersonList("admin"));
+        modelAndView.addObject("personSumTransfer", new JuridicalPerson());
+        modelAndView.setViewName("/person/transfer");
+        return modelAndView;
     }
 
     @PostMapping("/authorized/person/transfer")
-    public String transferPost(Model model, Authentication authentication, JuridicalPerson juridicalPerson) {
-        model.addAttribute(juridicalPersonService.transfer(authentication.getName(), juridicalPerson.getJuridicalPersonName().substring(juridicalPerson.getJuridicalPersonName().lastIndexOf(':') + 2), juridicalPerson.getAccount().getSum()));
-        return "redirect:/authorized";
+    public ModelAndView transferPost(ModelAndView modelAndView, Authentication authentication, JuridicalPerson juridicalPerson) {
+        if (juridicalPerson.getAccount().getSum() > juridicalPersonService.getPersonList(authentication.getName()).get(0).getAccount().getSum()) {
+            return transfer(modelAndView.addObject("transferError", "Error Message"), authentication);
+        } else {
+            modelAndView.addObject(juridicalPersonService.transfer(authentication.getName(), juridicalPerson.getJuridicalPersonName().substring(juridicalPerson.getJuridicalPersonName().lastIndexOf(':') + 2), juridicalPerson.getAccount().getSum()));
+            modelAndView.setViewName("redirect:/authorized");
+            return modelAndView;
+        }
     }
 
     @GetMapping("/authorized/person/transferInfo")
@@ -97,20 +104,21 @@ public class JuridicalPersonController {
     }
 
     @GetMapping("/authorized/person/createPayment")
-    public String transferCreate(Model model, Authentication authentication) {
-        model.addAttribute("person", juridicalPersonService.getPersonList(authentication.getName()));
-        model.addAttribute("client", clientService.getClientList("admin"));
-        model.addAttribute("personCreatePayment", new Payment());
-        return "/person/createPayment";
+    public ModelAndView createTransfer(ModelAndView modelAndView, Authentication authentication) {
+        modelAndView.addObject("person", juridicalPersonService.getPersonList(authentication.getName()));
+        modelAndView.addObject("client", clientService.getClientList("admin"));
+        modelAndView.addObject("personCreatePayment", new Payment());
+        modelAndView.setViewName("/person/createPayment");
+        return modelAndView;
     }
 
     @PostMapping("/authorized/person/createPayment")
-    public String transferCreatePost(Model model, Authentication authentication, Payment payment, Client client) {
-        List<JuridicalPerson> juridicalPersonList = juridicalPersonService.getPersonList(authentication.getName());
-        JuridicalPerson juridicalPerson = juridicalPersonList.get(0);
-
-        model.addAttribute(paymentService.createPayment(juridicalPerson.getJuridicalPersonId(), client.getClientName(),payment.getName(), payment.getSum(), payment.getPurpose().getPurposeName()));
-        return "redirect:/authorized";
+    public ModelAndView createTransferPost(ModelAndView modelAndView, Authentication authentication, Payment payment, Client client, JuridicalPerson juridicalPerson) {
+            List<JuridicalPerson> juridicalPersonList = juridicalPersonService.getPersonList(authentication.getName());
+            JuridicalPerson juridicalPerson1 = juridicalPersonList.get(0);
+            modelAndView.addObject(paymentService.createPayment(juridicalPerson1.getJuridicalPersonId(), client.getClientName(),payment.getName(), payment.getSum(), payment.getPurpose().getPurposeName()));
+            modelAndView.setViewName("redirect:/authorized");
+            return modelAndView;
     }
 
     @GetMapping("/authorized/person/viewPayment")

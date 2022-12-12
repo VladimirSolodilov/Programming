@@ -24,7 +24,7 @@
         </div>
 
         <div th:if="${client} != null">
-            <label>Клиент: </label>
+            <label>Идентификатор клиента: </label>
             <label>
                 <select name="clientName">
                     <option th:each="client: ${client}" th:text="${client.clientName}"></option>
@@ -37,6 +37,10 @@
             <label>
                 <input type="text" th:field="*{sum}" required>
             </label>&nbsp;<span th:errors="*{sum}"></span>
+        </div>
+
+        <div th:if="${transferError} != null">
+            <p><div class="alert alert-danger">Ошибка! Данный платёж уже существует!</div></p>
         </div>
 
         <div class="form-group">

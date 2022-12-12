@@ -86,17 +86,23 @@ public class ClientController {
     }
 
     @GetMapping("/authorized/client/transfer")
-    public String transfer(Model model, Authentication authentication) {
-        model.addAttribute("clientLeft", clientService.getClientList(authentication.getName()));
-        model.addAttribute("clientRight", clientService.getClientList("admin"));
-        model.addAttribute("clientSumTransfer", new Client());
-        return "/client/transfer";
+    public ModelAndView transfer(ModelAndView modelAndView, Authentication authentication) {
+        modelAndView.addObject("clientLeft", clientService.getClientList(authentication.getName()));
+        modelAndView.addObject("clientRight", clientService.getClientList("admin"));
+        modelAndView.addObject("clientSumTransfer", new Client());
+        modelAndView.setViewName("/client/transfer");
+        return modelAndView;
     }
 
     @PostMapping("/authorized/client/transfer")
-    public String transferPost(Model model, Authentication authentication, Client client) {
-        model.addAttribute(clientService.transfer(authentication.getName(), client.getClientName().substring(client.getClientName().lastIndexOf(':') + 2), client.getAccount().getSum()));
-        return "redirect:/authorized";
+    public ModelAndView transferPost(ModelAndView modelAndView, Authentication authentication, Client client) {
+        if (client.getAccount().getSum() > clientService.getClientList(authentication.getName()).get(0).getAccount().getSum()) {
+            return transfer(modelAndView.addObject("transferError", "Error Message"), authentication);
+        } else {
+            modelAndView.addObject(clientService.transfer(authentication.getName(), client.getClientName().substring(client.getClientName().lastIndexOf(':') + 2), client.getAccount().getSum()));
+            modelAndView.setViewName("redirect:/authorized");
+        }
+        return modelAndView;
     }
 
     @GetMapping("/authorized/client/transferInfo")
@@ -106,27 +112,27 @@ public class ClientController {
     }
 
     @GetMapping("/authorized/client/doPayment")
-    public String doPayment(Model model, Authentication authentication) {
-        model.addAttribute("viewPayment", paymentService.getPaymentList(null, authentication.getName()));
-        model.addAttribute("clientDoPayment", new Payment());
-        return "/client/doPayment";
+    public ModelAndView doPayment(ModelAndView modelAndView, Authentication authentication) {
+        modelAndView.addObject("viewPayment", paymentService.getPaymentList(null, authentication.getName()));
+        modelAndView.addObject("clientDoPayment", new Payment());
+        modelAndView.setViewName("/client/doPayment");
+        return modelAndView;
     }
 
     @PostMapping("/authorized/client/doPayment")
-    public String doPaymentPost(Model model, Authentication authentication, Payment payment) {
-        System.out.println("Payment = " + payment.getName());
-
-        String paymentName = payment.getName().substring(payment.getName().indexOf(":") + 2, payment.getName().indexOf("Д") - 1);
-        String purposeName = payment.getName().substring(payment.getName().indexOf("ие:") + 4, payment.getName().length());
+    public ModelAndView doPaymentPost(ModelAndView modelAndView, Authentication authentication, Payment payment) {
         int paymentSum = Integer.parseInt(payment.getName().substring(payment.getName().indexOf("ма:") + 4, payment.getName().indexOf("Н") - 1));
-
-        System.out.println("PaymentName = " + paymentName);
-        System.out.println("PaymentSum = " + paymentSum);
-        System.out.println("PurposeName = " + purposeName);
-
-        model.addAttribute(paymentService.doPayment(authentication.getName(), "rrr", paymentName, paymentSum, purposeName)); //Разработать метод для поиска юр. лица
-
-        return "redirect:/authorized";
+        if (payment.getSum() != paymentSum) {
+            return doPayment(modelAndView.addObject("paymentError", "Error Message"), authentication);
+        } else if (payment.getSum() > clientService.getClientList(authentication.getName()).get(0).getAccount().getSum()) {
+            return doPayment(modelAndView.addObject("paymentError", "Error Message"), authentication);
+        } else {
+            String paymentName = payment.getName().substring(payment.getName().indexOf(":") + 2, payment.getName().indexOf("Д") - 1);
+            String purposeName = payment.getName().substring(payment.getName().indexOf("ие:") + 4, payment.getName().length());
+            modelAndView.addObject(paymentService.doPayment(authentication.getName(), "rrr", paymentName, paymentSum, purposeName)); //Разработать метод для поиска юр. лица
+            modelAndView.setViewName("redirect:/authorized");
+            return modelAndView;
+        }
     }
 
     @GetMapping("/authorized/client/viewPayment")
