@@ -3,12 +3,10 @@ package com.example.bankingsystem.domain.model;
 public class Purpose {
     private Payment payment;
     private int purposeId;
-
     private int paymentId;
     private String purposeName;
 
-    public Purpose() {
-    }
+    public Purpose() {}
 
     public Purpose(Payment payment, int purposeId, String purposeName, int paymentId) {
         this.payment = payment;

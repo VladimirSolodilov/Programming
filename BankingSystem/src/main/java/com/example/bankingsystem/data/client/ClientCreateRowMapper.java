@@ -1,15 +1,12 @@
 package com.example.bankingsystem.data.client;
 
-import com.example.bankingsystem.domain.model.Account;
 import com.example.bankingsystem.domain.model.Client;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-
 public class ClientCreateRowMapper implements RowMapper<Client> {
-
     @Override
     public Client mapRow(ResultSet resultSet, int i) throws SQLException {
         Client client = new Client();
@@ -25,5 +22,4 @@ public class ClientCreateRowMapper implements RowMapper<Client> {
 
         return client;
     }
-
 }

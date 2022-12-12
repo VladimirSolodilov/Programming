@@ -7,7 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BankRowMapper implements RowMapper<Bank> {
-
     @Override
     public Bank mapRow(ResultSet rs, int rowNum) throws SQLException {
         Bank bank = new Bank();

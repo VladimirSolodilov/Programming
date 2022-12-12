@@ -8,20 +8,7 @@ public class Account {
     private int personId;
     private int clientId;
     private int sum;
-
-    public Account() {
-    }
-
-    public Account(Client client, JuridicalPerson juridicalPerson, AccountRequisites accountRequisites, int accountId, int personId, int clientId, int sum) {
-        this.client = client;
-        this.juridicalPerson = juridicalPerson;
-        this.accountRequisites = accountRequisites;
-        this.accountId = accountId;
-        this.personId = personId;
-        this.clientId = clientId;
-        this.sum = sum;
-    }
-
+    public Account() {}
     public Client getClient() {
         return client;
     }

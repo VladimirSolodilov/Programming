@@ -4,7 +4,6 @@ import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Set;
 
-
 public class Role implements GrantedAuthority {
 
     private int roleId;
@@ -21,11 +20,6 @@ public class Role implements GrantedAuthority {
 
     public int getRoleId() {
         return roleId;
-    }
-
-    public Role(int roleId, String name) {
-        this.roleId = roleId;
-        this.name = name;
     }
 
     public void setRoleId(int roleId) {

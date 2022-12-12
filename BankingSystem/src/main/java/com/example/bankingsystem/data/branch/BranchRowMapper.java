@@ -7,14 +7,13 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class BranchRowMapper implements RowMapper<Branch> {
-
     @Override
     public Branch mapRow(ResultSet rs, int rowNum) throws SQLException {
         Branch branch = new Branch();
 
         branch.setBranchId(rs.getInt("BranchId"));
         branch.setBankId(rs.getInt("BankId"));
-        branch.setBranchName(rs.getString("Name"));
+        branch.setBranchName(rs.getString("BranchName"));
         branch.setAddress(rs.getString("Address"));
         branch.setBankIdentificationCode(rs.getString("BankIdentificationCode"));
 

@@ -117,4 +117,14 @@ public class Client {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        return "Client{" +
+                "surname='" + surname + '\'' +
+                ", name='" + name + '\'' +
+                ", patronymic='" + patronymic + '\'' +
+                ", clientName='" + clientName + '\'' +
+                '}';
+    }
 }

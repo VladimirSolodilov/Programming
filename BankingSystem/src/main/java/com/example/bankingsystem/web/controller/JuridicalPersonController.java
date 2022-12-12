@@ -9,14 +9,9 @@ import com.example.bankingsystem.domain.model.JuridicalPerson;
 import com.example.bankingsystem.domain.model.Payment;
 import com.example.bankingsystem.domain.payment.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -114,11 +109,16 @@ public class JuridicalPersonController {
 
     @PostMapping("/authorized/person/createPayment")
     public ModelAndView createTransferPost(ModelAndView modelAndView, Authentication authentication, Payment payment, Client client, JuridicalPerson juridicalPerson) {
-            List<JuridicalPerson> juridicalPersonList = juridicalPersonService.getPersonList(authentication.getName());
-            JuridicalPerson juridicalPerson1 = juridicalPersonList.get(0);
-            modelAndView.addObject(paymentService.createPayment(juridicalPerson1.getJuridicalPersonId(), client.getClientName(),payment.getName(), payment.getSum(), payment.getPurpose().getPurposeName()));
-            modelAndView.setViewName("redirect:/authorized");
-            return modelAndView;
+        for (int i = 0; i < paymentService.getPaymentList(juridicalPerson.getJuridicalPersonName(), client.getClientName()).size(); i++) {
+            if (Objects.equals(payment.toString(), paymentService.getPaymentList(juridicalPerson.getJuridicalPersonName(), client.getClientName()).get(i).toString())) {
+                return createTransfer(modelAndView.addObject("createTransferError", "Error Message"), authentication);
+            }
+        }
+        List<JuridicalPerson> juridicalPersonList = juridicalPersonService.getPersonList(authentication.getName());
+        JuridicalPerson juridicalPerson1 = juridicalPersonList.get(0);
+        modelAndView.addObject(paymentService.createPayment(juridicalPerson1.getJuridicalPersonId(), client.getClientName(),payment.getName(), payment.getSum(), payment.getPurpose().getPurposeName()));
+        modelAndView.setViewName("redirect:/authorized");
+        return modelAndView;
     }
 
     @GetMapping("/authorized/person/viewPayment")
@@ -127,19 +127,4 @@ public class JuridicalPersonController {
         model.addAttribute("viewPayment", paymentService.getPaymentList(authentication.getName(), null));
         return "/person/viewPayment";
     }
-
-    /*@GetMapping("/person/removal")
-    public ModelAndView clientRemoval(ModelAndView modelAndView) {
-        modelAndView.addObject("removal", new Client());
-        modelAndView.setViewName("/person/removal");
-        return modelAndView;
-    }
-
-    @PostMapping("/person/removal")
-    public String deleteMailPost(Model model) {
-        model.addAttribute(juridicalPersonService.deletePersonList(juridicalPerson.getSurname()));
-        return informationPerson(model);
-    }*/
-
-
 }

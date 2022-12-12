@@ -1,31 +1,21 @@
 package com.example.bankingsystem.spring;
 
-import com.example.bankingsystem.data.client.ClientStorage;
 import com.example.bankingsystem.data.role.RoleStorage;
 import com.example.bankingsystem.domain.JuridicalPerson.JuridicalPersonService;
 import com.example.bankingsystem.domain.client.ClientService;
-import com.example.bankingsystem.domain.model.Client;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 
 import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
-public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+public class WebSecurityConfig {
 
     @Autowired
     RoleStorage roleStorage;
@@ -44,81 +34,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return new BCryptPasswordEncoder();
     }
 
-    /*@Bean
-    public DaoAuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
-        auth.setUserDetailsService(clientService);
-        auth.setPasswordEncoder(bCryptPasswordEncoder());
-        return auth;
-    }*/
-
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-       /* http
-                .authorizeRequests()
-                //Доступ только для не зарегистрированных пользователей
-                /*.antMatchers("/client/registration/**").not().fullyAuthenticated()
-                .antMatchers("/person/registration/**").not().fullyAuthenticated()
-                .antMatchers("/page/indexUnauthorized/**").authenticated()
-
-                //Доступ для пользователей с ролью Администратор, Клиент, Юридическое лицо
-                //.antMatchers("/admin/**").hasRole("ADMIN")
-                //.antMatchers("/client/**").hasRole("CLIENT")
-                //.antMatchers("/person/**").hasRole("JURIDICAL_PERSON")
-
-                //Доступ для всех
-                .antMatchers("/**").permitAll()
-                .antMatchers("/css/**").permitAll()
-                .anyRequest().authenticated()
-
-                .and()
-                    .formLogin()
-                    .loginPage("/page/authorization")
-                    .permitAll()
-                    .defaultSuccessUrl("/page/indexAuthorized")
-                    .failureUrl("/page/login-error")
-                .and()
-                    .logout()
-                    .permitAll()
-                    .logoutSuccessUrl("/");*/
-
-        /*http.authorizeRequests()
-                .antMatchers("/**")
-                .permitAll()
-                .anyRequest().authenticated();
-
-        http
-                .authorizeHttpRequests((requests) -> requests
-                        .antMatchers("/", "/home").permitAll()
-                        .anyRequest().authenticated()
-                )
-                .formLogin((form) -> form
-                        .loginPage("/login")
-                        .permitAll()
-                )
-                .logout((logout) -> logout.permitAll());
-
-        return http.build();*/
-
+    @Bean
+    protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                    .antMatchers("/client/signUp/**").not().fullyAuthenticated()
-                    .antMatchers("/person/signUp/**").not().fullyAuthenticated()
-                    .antMatchers("/css/**").permitAll()
-                    .antMatchers("/").permitAll()
-                    //.antMatchers("/page/indexUnauthorized/**").authenticated()
+                .antMatchers("/css/**", "/").permitAll()
 
-                    //.antMatchers("/admin/**").hasRole("ADMIN")
-                    .antMatchers("/authorized/client/**").hasAuthority("CLIENT")
-                    .antMatchers("/authorized/person/**").hasAuthority("JURIDICAL_PERSON")
-                    .antMatchers("/authorized/admin/**").hasAuthority("ADMIN")
-
-                /*.antMatchers("/").permitAll()
-                    .antMatchers("/client/registration").not().fullyAuthenticated()
-                    .antMatchers("/css/**").permitAll()
-                    .antMatchers("/client/**").hasRole("CLIENT")
-                    .anyRequest().authenticated()*/
-
+                .antMatchers("/authorized/client/**").hasAuthority("CLIENT")
+                .antMatchers("/authorized/person/**").hasAuthority("JURIDICAL_PERSON")
+                .antMatchers("/authorized/admin/**").hasAuthority("ADMIN")
 
                 .and()
                     .formLogin()
@@ -130,32 +54,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .logout()
                     .logoutSuccessUrl("/")
                     .permitAll();
+        return http.build();
     }
-    /*@Bean
-    public UserDetailsService userDetailsService() {
-        UserDetails user =
-                User.withUserDetails()
-                        .username("user")
-                        .password("123")
-                        .roles("USER")
-                        .build();
-        return new InMemoryUserDetailsManager(user);
-    }
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.jdbcAuthentication()
-                .dataSource(dataSource)
-                .passwordEncoder(NoOpPasswordEncoder.getInstance())
-
-    }*/
 }
-
-
-    /*@Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("clientName").password("password").roles("CLIENT")
-             .and()
-                .withUser("personName").password("password").roles("JURIDICAL_PERSON");
-    }*/

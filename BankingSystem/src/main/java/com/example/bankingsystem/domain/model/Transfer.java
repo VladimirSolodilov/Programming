@@ -4,7 +4,6 @@ public class Transfer {
     private String leftUser;
     private String rightUser;
     private int sum;
-
     public Transfer() {}
 
     public Transfer(String leftUser, String rightUser, int sum) {

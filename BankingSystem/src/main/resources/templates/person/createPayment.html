@@ -39,7 +39,7 @@
             </label>&nbsp;<span th:errors="*{sum}"></span>
         </div>
 
-        <div th:if="${transferError} != null">
+        <div th:if="${createTransferError} != null">
             <p><div class="alert alert-danger">Ошибка! Данный платёж уже существует!</div></p>
         </div>
 

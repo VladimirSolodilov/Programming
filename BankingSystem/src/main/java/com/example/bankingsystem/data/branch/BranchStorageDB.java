@@ -11,19 +11,19 @@ import java.util.List;
 @Repository
 @Transactional
 public class BranchStorageDB implements BranchStorage {
-
     @Autowired
     private JdbcTemplate jdbcTemplate;
 
+    String getBranchList = "Select * from Branch";
+    String getBranchIdByName = "Select * from Branch where Branch.BranchName Like ?";
+
     @Override
     public List<Branch> getBranchList() {
-        String getBranchList = "Select * from Branch";
         return jdbcTemplate.query(getBranchList, new BranchRowMapper());
     }
 
     @Override
     public List<Branch> getBranchIdByName(String branchName) {
-        String getBranchIdByName = "Select * from Branch where Branch.Name Like ?";
         return jdbcTemplate.query(getBranchIdByName, new BranchRowMapper(), branchName);
     }
 }

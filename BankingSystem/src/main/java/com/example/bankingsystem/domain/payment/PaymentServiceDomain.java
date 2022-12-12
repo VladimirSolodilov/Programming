@@ -9,7 +9,6 @@ import java.util.List;
 
 @Service
 public class PaymentServiceDomain implements PaymentService {
-
     @Autowired
     private PaymentStorage paymentStorage;
 
