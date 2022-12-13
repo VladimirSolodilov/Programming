@@ -52,7 +52,6 @@ public class JuridicalPersonServiceDomain implements JuridicalPersonService {
     public boolean transfer(String leftPerson, String rightPerson, int sum) {
         return juridicalPersonStorage.transfer(leftPerson, rightPerson, sum);
     }
-
     @Override
     public List<Transfer> transferInfo(String personName) {
         return transferStorage.viewTransferInfo(personName);

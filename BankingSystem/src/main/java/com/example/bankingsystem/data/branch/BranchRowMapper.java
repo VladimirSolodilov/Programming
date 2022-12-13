@@ -15,7 +15,6 @@ public class BranchRowMapper implements RowMapper<Branch> {
         branch.setBankId(rs.getInt("BankId"));
         branch.setBranchName(rs.getString("BranchName"));
         branch.setAddress(rs.getString("Address"));
-        branch.setBankIdentificationCode(rs.getString("BankIdentificationCode"));
 
         return branch;
     }

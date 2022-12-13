@@ -33,7 +33,7 @@ public class JuridicalPersonStorageDB implements JuridicalPersonStorage {
     String changePerson = "Update JuridicalPerson Set Surname = ?, Name = ?, Patronymic = ?, OrganizationName = ?, PersonName = ? " +
             "Where JuridicalPerson.PersonId = ?";
     String addSum = "Update Account Set Account.Sum = Account.Sum + ? Where Account.PersonId = ?";
-    String getPersonByPersonName = "Select * from JuridicalPerson Join Account on JuridicalPerson.PersonId = Account.PersonId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId Where JuridicalPerson.PersonName Like ?";
+    String getPersonByPersonName = "Select * from JuridicalPerson Join Account on JuridicalPerson.PersonId = Account.PersonId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId join Branch on Branch.BranchId = JuridicalPerson.BranchId Where JuridicalPerson.PersonName Like ?";
     String transferPersonLeft = "Update Account Set Account.Sum = Account.Sum - ? Where Account.PersonId = ?";
     String transferPersonRight = "Update Account Set Account.Sum = Account.Sum + ? Where Account.PersonId = ?";
     @Override

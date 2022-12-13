@@ -35,7 +35,7 @@ public class ClientStorageDB implements ClientStorage {
     String deleteAccountRequisites = "Delete from AccountRequisites Where AccountRequisites.AccountId = ?";
     String getAccountByClientId = "Select * from Account Where Account.ClientId = ?";
     String addSum = "Update Account Set Account.Sum = Account.Sum + ? Where Account.ClientId = ?";
-    String getClientByClientName = "SELECT * from Client join Account on Client.ClientId = Account.ClientId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId Where Client.ClientName Like ?";
+    String getClientByClientName = "SELECT * from Client join Account on Client.ClientId = Account.ClientId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId join Branch on Branch.BranchId = Client.BranchId Where Client.ClientName Like ?";
     String transferClientLeft = "Update Account Set Account.Sum = Account.Sum - ? Where Account.ClientId = ?";
     String transferClientRight = "Update Account Set Account.Sum = Account.Sum + ? Where Account.ClientId = ?";
     String getClientIdByClient = "Select * From Client Where Client.ClientName = ?";

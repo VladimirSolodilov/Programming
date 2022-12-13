@@ -21,11 +21,11 @@ public class PaymentStorageDB implements PaymentStorage {
     String createPayment = "INSERT Payment VALUES(?, ?, ?, ?, ?)";
     String createPurpose = "INSERT Purpose VALUES(?, ?)";
     String getPaymentByName = "SELECT * from Payment WHERE Name Like ?";
-    String getClientByClientName = "SELECT * from Client Join Account on Client.ClientId = Account.ClientId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId Where Client.ClientName Like ?";
-    String getPersonByName  = "SELECT * from JuridicalPerson Join Account on JuridicalPerson.PersonId = Account.PersonId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId Where PersonName Like ?";
+    String getClientByClientName = "SELECT * from Client Join Account on Client.ClientId = Account.ClientId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId join Branch on Branch.BranchId = Client.BranchId Where Client.ClientName Like ?";
+    String getPersonByName  = "SELECT * from JuridicalPerson Join Account on JuridicalPerson.PersonId = Account.PersonId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId join Branch on Branch.BranchId = JuridicalPerson.BranchId Where PersonName Like ?";
     String getPaymentByPersonId = "select * from Payment join Purpose on Payment.PaymentId = Purpose.PaymentId join Client on Payment.ClientId = Client.ClientId where Payment.PersonId = ?";
     String getPayment = "select * from Payment join Purpose on Payment.PaymentId = Purpose.PaymentId join Client on Payment.ClientId = Client.ClientId Where Payment.ClientId = ?";
-    String getClientByName = "SELECT * from Client join Account on Client.ClientId = Account.ClientId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId Where ClientName Like ?";
+    String getClientByName = "SELECT * from Client join Account on Client.ClientId = Account.ClientId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId join Branch on Branch.BranchId = Client.BranchId Where ClientName Like ?";
     String updatePersonSum = "Update Account Set Account.Sum = Account.Sum + ? Where Account.PersonId = ?";
     String updateClientSum = "Update Account Set Account.Sum = Account.Sum - ? Where Account.ClientId = ?";
     String deletePurpose = "Delete from Purpose Where PurposeName Like ?";

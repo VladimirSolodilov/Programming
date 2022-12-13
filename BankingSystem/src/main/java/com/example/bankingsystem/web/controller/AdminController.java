@@ -39,7 +39,7 @@ public class AdminController {
     @PostMapping("/authorized/admin/personRemove")
     public String personRemove(Model model, JuridicalPerson juridicalPerson) {
         model.addAttribute(juridicalPersonService.deletePersonList(juridicalPerson.getJuridicalPersonName()));
-        return "redirect:/authorized/admin/PersonList";
+        return "redirect:/authorized/admin/personList";
     }
     @PostMapping("/authorized/admin/getClient")
     public String getClient(Model model, Client client) {
@@ -66,5 +66,10 @@ public class AdminController {
         model.addAttribute(juridicalPersonService.personChange(person.getSurname(), person.getName(), person.getPatronymic(),
                 person.getOrganizationName(), person.getJuridicalPersonName()));
         return "redirect:/authorized/admin/personList";
+    }
+    @GetMapping("/authorized/admin/transferInfo")
+    public String personTransferInfo(Model model) {
+        model.addAttribute("clientTransferInfo", juridicalPersonService.transferInfo(null));
+        return "/client/transferInfo";
     }
 }

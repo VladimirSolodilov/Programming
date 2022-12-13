@@ -1,6 +1,6 @@
 USE [master]
 GO
-/****** Object:  Database [BankingSystem]    Script Date: 13.12.2022 1:34:19 ******/
+/****** Object:  Database [BankingSystem]    Script Date: 13.12.2022 10:40:07 ******/
 CREATE DATABASE [BankingSystem]
  CONTAINMENT = NONE
  ON  PRIMARY 
@@ -80,7 +80,7 @@ ALTER DATABASE [BankingSystem] SET QUERY_STORE = OFF
 GO
 USE [BankingSystem]
 GO
-/****** Object:  User [BSLogin]    Script Date: 13.12.2022 1:34:19 ******/
+/****** Object:  User [BSLogin]    Script Date: 13.12.2022 10:40:07 ******/
 CREATE USER [BSLogin] FOR LOGIN [BSLogin] WITH DEFAULT_SCHEMA=[dbo]
 GO
 ALTER ROLE [db_owner] ADD MEMBER [BSLogin]
@@ -89,7 +89,7 @@ ALTER ROLE [db_datareader] ADD MEMBER [BSLogin]
 GO
 ALTER ROLE [db_datawriter] ADD MEMBER [BSLogin]
 GO
-/****** Object:  Table [dbo].[Account]    Script Date: 13.12.2022 1:34:19 ******/
+/****** Object:  Table [dbo].[Account]    Script Date: 13.12.2022 10:40:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -105,7 +105,7 @@ CREATE TABLE [dbo].[Account](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[AccountRequisites]    Script Date: 13.12.2022 1:34:19 ******/
+/****** Object:  Table [dbo].[AccountRequisites]    Script Date: 13.12.2022 10:40:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -113,10 +113,14 @@ GO
 CREATE TABLE [dbo].[AccountRequisites](
 	[AccountId] [int] NOT NULL,
 	[PersonalAccount] [int] NULL,
-	[PaymentAccount] [int] NULL
+	[PaymentAccount] [int] NULL,
+ CONSTRAINT [PK_AccountRequisites] PRIMARY KEY CLUSTERED 
+(
+	[AccountId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Admin]    Script Date: 13.12.2022 1:34:19 ******/
+/****** Object:  Table [dbo].[Admin]    Script Date: 13.12.2022 10:40:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -132,7 +136,7 @@ CREATE TABLE [dbo].[Admin](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Bank]    Script Date: 13.12.2022 1:34:19 ******/
+/****** Object:  Table [dbo].[Bank]    Script Date: 13.12.2022 10:40:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -148,7 +152,7 @@ CREATE TABLE [dbo].[Bank](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Branch]    Script Date: 13.12.2022 1:34:19 ******/
+/****** Object:  Table [dbo].[Branch]    Script Date: 13.12.2022 10:40:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -158,14 +162,13 @@ CREATE TABLE [dbo].[Branch](
 	[BankId] [int] NOT NULL,
 	[BranchName] [nvarchar](50) NOT NULL,
 	[Address] [nvarchar](50) NOT NULL,
-	[BankIdentificationCode] [nvarchar](50) NOT NULL,
  CONSTRAINT [PK_Branch] PRIMARY KEY CLUSTERED 
 (
 	[BranchId] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Client]    Script Date: 13.12.2022 1:34:19 ******/
+/****** Object:  Table [dbo].[Client]    Script Date: 13.12.2022 10:40:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -185,7 +188,7 @@ CREATE TABLE [dbo].[Client](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[JuridicalPerson]    Script Date: 13.12.2022 1:34:19 ******/
+/****** Object:  Table [dbo].[JuridicalPerson]    Script Date: 13.12.2022 10:40:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -206,7 +209,7 @@ CREATE TABLE [dbo].[JuridicalPerson](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Payment]    Script Date: 13.12.2022 1:34:19 ******/
+/****** Object:  Table [dbo].[Payment]    Script Date: 13.12.2022 10:40:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -224,7 +227,7 @@ CREATE TABLE [dbo].[Payment](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Purpose]    Script Date: 13.12.2022 1:34:19 ******/
+/****** Object:  Table [dbo].[Purpose]    Script Date: 13.12.2022 10:40:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -239,7 +242,7 @@ CREATE TABLE [dbo].[Purpose](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Role]    Script Date: 13.12.2022 1:34:19 ******/
+/****** Object:  Table [dbo].[Role]    Script Date: 13.12.2022 10:40:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -253,7 +256,7 @@ CREATE TABLE [dbo].[Role](
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
-/****** Object:  Table [dbo].[Transfer]    Script Date: 13.12.2022 1:34:19 ******/
+/****** Object:  Table [dbo].[Transfer]    Script Date: 13.12.2022 10:40:07 ******/
 SET ANSI_NULLS ON
 GO
 SET QUOTED_IDENTIFIER ON
@@ -277,13 +280,13 @@ SET IDENTITY_INSERT [dbo].[Admin] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Bank] ON 
 GO
-INSERT [dbo].[Bank] ([BankId], [Name], [Address], [License]) VALUES (1, N'bank', N'address', N'license')
+INSERT [dbo].[Bank] ([BankId], [Name], [Address], [License]) VALUES (1, N'Bank', N'Address', N'License')
 GO
 SET IDENTITY_INSERT [dbo].[Bank] OFF
 GO
 SET IDENTITY_INSERT [dbo].[Branch] ON 
 GO
-INSERT [dbo].[Branch] ([BranchId], [BankId], [BranchName], [Address], [BankIdentificationCode]) VALUES (1, 1, N'bbb', N'bbb', N'111')
+INSERT [dbo].[Branch] ([BranchId], [BankId], [BranchName], [Address]) VALUES (1, 1, N'Name1', N'Address1')
 GO
 SET IDENTITY_INSERT [dbo].[Branch] OFF
 GO

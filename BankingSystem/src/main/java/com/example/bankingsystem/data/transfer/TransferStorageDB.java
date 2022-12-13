@@ -7,16 +7,22 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 public class TransferStorageDB implements TransferStorage {
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    String getTransfer = "Select * from Transfer Where Transfer.LeftUser Like ?";
+    StringBuilder getTransfer = new StringBuilder("Select * from Transfer");
     String createTransfer = "INSERT Transfer Values(?, ?, ?)";
     @Override
     public List<Transfer> viewTransferInfo(String clientName) {
-        return jdbcTemplate.query(getTransfer, new TransferRowMapper(), clientName);
+        if (Objects.equals(clientName, null)) {
+            return jdbcTemplate.query(getTransfer.toString(), new TransferRowMapper());
+        } else {
+            getTransfer.append(" Where Transfer.LeftUser Like ?");
+            return jdbcTemplate.query(getTransfer.toString(), new TransferRowMapper(), clientName);
+        }
     }
     @Override
     public void setTransferInfo(String leftUser, String rightUser, int sum) {

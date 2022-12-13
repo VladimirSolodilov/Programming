@@ -14,8 +14,8 @@
 
             <div sec:authorize="hasAuthority('ADMIN')">
                 <ul class="rounded">
-                    <li><a th:href="@{/authorized/admin/clientList}">Редактировать информацию о банке</a>
-                    <li><a th:href="@{/authorized/admin/clientList}">Зарегистрировать отделение</a>
+                    <!--<li><a th:href="@{/authorized/admin/clientList}">Редактировать информацию о банке</a>
+                    <li><a th:href="@{/authorized/admin/clientList}">Зарегистрировать отделение</a>-->
                     <li><a>Операции с физическими лицами</a>
                     <ul>
                         <li><a th:href="@{/client/signUp}">Зарегистрировать пользователя</a>
@@ -26,6 +26,7 @@
                         <li><a th:href="@{/person/signUp}">Зарегистрировать пользователя</a>
                         <li><a th:href="@{/authorized/admin/personList}">Получить информацию о пользователях</a>
                     </ul>
+                    <li><a th:href="@{/authorized/admin/transferInfo}">Просмотреть информацию о переводах</a>
                 </ul>
             </div>
 

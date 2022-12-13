@@ -33,7 +33,7 @@ public class JuridicalPersonRowMapper implements RowMapper<JuridicalPerson> {
 
         account.setSum(resultSet.getInt("Sum"));
         accountRequisites.setPaymentAccount(resultSet.getInt("PaymentAccount"));
-        branch.setBranchName(resultSet.getString("Name"));
+        branch.setBranchName(resultSet.getString("BranchName"));
 
         return juridicalPerson;
     }
