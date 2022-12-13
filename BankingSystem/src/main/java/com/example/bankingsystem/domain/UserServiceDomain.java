@@ -32,7 +32,7 @@ public class UserServiceDomain implements UserDetailsService {
     @Autowired
     private AdminStorage adminStorage;
     @Override
-    public UserDetails loadUserByUsername(String s) {
+    public UserDetails loadUserByUsername(String s) throws InternalAuthenticationServiceException {
         List<Client> clientList = clientStorage.getAllClient(s);
         List<JuridicalPerson> personList = juridicalPersonStorage.getAllPerson(s);
         List<Admin> adminList = adminStorage.getAllAdmin(s);
