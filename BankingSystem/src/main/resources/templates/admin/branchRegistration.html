@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация отделения</title>
+    <link href="/css/form.css" rel="stylesheet"/>
+</head>
+<body>
+    <h1 class="h1">Регистрация отделения</h1>
+    <form th:action="@{/authorized/admin/branchRegistration}" method="post" th:object="${branchChange}">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+        <div>
+            <label>Название: </label>
+            <label>
+                <input type="text" th:field="*{branchName}" required>
+            </label>&nbsp;<span th:errors="*{branchName}"></span>
+        </div>
+
+        <div>
+            <label>Адрес: </label>
+            <label>
+                <input type="text" th:field="*{address}" required>
+            </label>&nbsp;<span th:errors="*{address}"></span>
+        </div>
+
+        <div th:if="${registrationError} != null">
+            <div class="alert alert-danger">Данное отделение уже существует!</div>
+        </div>
+
+        <div class="form-group">
+            <p><input type="submit" name="registration-submit" id="registration-submit1"
+                      class="stdBtn" value="Добавить"></p>
+        </div>
+    </form>
+
+    <a th:href="@{/authorized}" target="_self">Вернуться на главную страницу</a>
+</body>
+</html>
