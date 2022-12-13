@@ -112,10 +112,11 @@ public class ClientController {
     @PostMapping("/authorized/client/doPayment")
     public ModelAndView doPaymentPost(ModelAndView modelAndView, Authentication authentication, Payment payment) {
         int paymentSum = Integer.parseInt(payment.getName().substring(payment.getName().indexOf("ма:") + 4, payment.getName().indexOf("Н") - 1));
+
         if (payment.getSum() != paymentSum) {
             return doPayment(modelAndView.addObject("paymentError", "Error Message"), authentication);
         } else if (payment.getSum() > clientService.getClientList(authentication.getName()).get(0).getAccount().getSum()) {
-            return doPayment(modelAndView.addObject("paymentError", "Error Message"), authentication);
+            return doPayment(modelAndView.addObject("paymentError1", "Error Message"), authentication);
         } else {
             String paymentName = payment.getName().substring(payment.getName().indexOf(":") + 2, payment.getName().indexOf("Д") - 1);
             String purposeName = payment.getName().substring(payment.getName().indexOf("ие:") + 4);

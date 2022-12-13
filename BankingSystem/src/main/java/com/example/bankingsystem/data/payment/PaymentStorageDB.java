@@ -22,7 +22,7 @@ public class PaymentStorageDB implements PaymentStorage {
     String createPurpose = "INSERT Purpose VALUES(?, ?)";
     String getPaymentByName = "SELECT * from Payment WHERE Name Like ?";
     String getClientByClientName = "SELECT * from Client Join Account on Client.ClientId = Account.ClientId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId join Branch on Branch.BranchId = Client.BranchId Where Client.ClientName Like ?";
-    String getPersonByName  = "SELECT * from JuridicalPerson Join Account on JuridicalPerson.PersonId = Account.PersonId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId join Branch on Branch.BranchId = JuridicalPerson.BranchId Where PersonName Like ?";
+    String getPersonByName = "Select * from JuridicalPerson Join Account on JuridicalPerson.PersonId = Account.PersonId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId join Branch on Branch.BranchId = JuridicalPerson.BranchId Where JuridicalPerson.PersonName Like ?";
     String getPaymentByPersonId = "select * from Payment join Purpose on Payment.PaymentId = Purpose.PaymentId join Client on Payment.ClientId = Client.ClientId where Payment.PersonId = ?";
     String getPayment = "select * from Payment join Purpose on Payment.PaymentId = Purpose.PaymentId join Client on Payment.ClientId = Client.ClientId Where Payment.ClientId = ?";
     String getClientByName = "SELECT * from Client join Account on Client.ClientId = Account.ClientId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId join Branch on Branch.BranchId = Client.BranchId Where ClientName Like ?";
@@ -60,9 +60,7 @@ public class PaymentStorageDB implements PaymentStorage {
 
     @Override
     public boolean doPayment(String clientName, String personName, String paymentName, int sum, String purposeName) {
-        String getPayment = "Select Payment.Name, Payment.Date, Payment.Sum, Purpose.PurposeName from Payment join Purpose on Payment.PaymentId = Purpose.PaymentId where PurposeName Like ?";
-        String getPersonByName = "Select * from JuridicalPerson Join Account on JuridicalPerson.PersonId = Account.PersonId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId Where JuridicalPerson.PersonName Like ?";
-        String getClientByName = "Select * from Client Join Account on Client.ClientId = Account.ClientId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId Where Client.ClientName Like ?";
+        String getPayment = "Select * from Payment join Purpose on Payment.PaymentId = Purpose.PaymentId where PurposeName Like ?";
 
         List<JuridicalPerson> juridicalPeoples = jdbcTemplate.query(getPersonByName, new JuridicalPersonRowMapper(), personName);
         List<Client> clients = jdbcTemplate.query(getClientByName, new ClientRowMapper(), clientName);

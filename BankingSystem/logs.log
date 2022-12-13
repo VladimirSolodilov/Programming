@@ -6638,3 +6638,606 @@ org.springframework.expression.spel.SpelEvaluationException: EL1011E: Method cal
 2022-12-13 10:41:20.454  INFO 5960 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2022-12-13 10:41:20.454  INFO 5960 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2022-12-13 10:41:20.454  INFO 5960 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-12-13 10:45:12.415  INFO 5960 --- [http-nio-8080-exec-2] c.e.b.data.client.ClientStorageDB        : Create Client with Surname: ttt, Name: ttt, Patronymic: ttt, Login: ttt
+2022-12-13 10:46:03.568  INFO 5960 --- [http-nio-8080-exec-10] c.e.b.d.j.JuridicalPersonStorageDB       : Create Person with Surname: rrr, Name: rrr, Patronymic: rrr, OrganizationName: rrr, Login: rrr
+2022-12-13 10:48:00.981  INFO 10448 --- [restartedMain] c.e.b.BankingSystemApplication           : Starting BankingSystemApplication using Java 17 on User-PC with PID 10448 (D:\Github\Programming\BankingSystem\target\classes started by user in D:\Github\Programming\BankingSystem)
+2022-12-13 10:48:00.981  INFO 10448 --- [restartedMain] c.e.b.BankingSystemApplication           : No active profile set, falling back to default profiles: default
+2022-12-13 10:48:01.077  INFO 10448 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-13 10:48:01.077  INFO 10448 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-13 10:48:01.172  WARN 10448 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-12-13 10:48:02.444  INFO 10448 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-12-13 10:48:02.476  INFO 10448 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 31 ms. Found 0 JDBC repository interfaces.
+2022-12-13 10:48:03.605  INFO 10448 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-12-13 10:48:03.621  INFO 10448 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-13 10:48:03.621  INFO 10448 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-12-13 10:48:03.746  INFO 10448 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-13 10:48:03.762  INFO 10448 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2685 ms
+2022-12-13 10:48:04.485  INFO 10448 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@571b8ad5, org.springframework.security.web.context.SecurityContextPersistenceFilter@3f0f84cc, org.springframework.security.web.header.HeaderWriterFilter@6dbf00e4, org.springframework.security.web.csrf.CsrfFilter@4b21ac25, org.springframework.security.web.authentication.logout.LogoutFilter@1320a675, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4bf57f64, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5cbf7703, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@1d6fa03a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@662f2d24, org.springframework.security.web.session.SessionManagementFilter@3b7ae785, org.springframework.security.web.access.ExceptionTranslationFilter@6faf7922, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@49f4675e]
+2022-12-13 10:48:05.338  INFO 10448 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-13 10:48:06.039  INFO 10448 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-13 10:48:06.368  INFO 10448 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-13 10:48:06.568  INFO 10448 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-12-13 10:48:06.599  INFO 10448 --- [restartedMain] c.e.b.BankingSystemApplication           : Started BankingSystemApplication in 6.454 seconds (JVM running for 9.318)
+2022-12-13 10:48:06.615  INFO 10448 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state LivenessState changed to CORRECT
+2022-12-13 10:48:06.615  INFO 10448 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2022-12-13 10:48:09.208  INFO 10448 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-13 10:48:09.208  INFO 10448 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-13 10:48:09.216  INFO 10448 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2022-12-13 10:49:30.196  INFO 10448 --- [SpringContextShutdownHook] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2022-12-13 10:49:48.689  INFO 8376 --- [restartedMain] c.e.b.BankingSystemApplication           : Starting BankingSystemApplication using Java 17 on User-PC with PID 8376 (D:\Github\Programming\BankingSystem\target\classes started by user in D:\Github\Programming\BankingSystem)
+2022-12-13 10:49:48.689  INFO 8376 --- [restartedMain] c.e.b.BankingSystemApplication           : No active profile set, falling back to default profiles: default
+2022-12-13 10:49:48.779  INFO 8376 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-13 10:49:48.779  INFO 8376 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-13 10:49:48.859  WARN 8376 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-12-13 10:49:50.083  INFO 8376 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-12-13 10:49:50.114  INFO 8376 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 0 JDBC repository interfaces.
+2022-12-13 10:49:51.310  INFO 8376 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-12-13 10:49:51.325  INFO 8376 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-13 10:49:51.325  INFO 8376 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-12-13 10:49:51.497  INFO 8376 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-13 10:49:51.497  INFO 8376 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2709 ms
+2022-12-13 10:49:52.537  INFO 8376 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3efb8590, org.springframework.security.web.context.SecurityContextPersistenceFilter@54e172b9, org.springframework.security.web.header.HeaderWriterFilter@24799c01, org.springframework.security.web.csrf.CsrfFilter@bbd1851, org.springframework.security.web.authentication.logout.LogoutFilter@4ded7cbb, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@69d0d03d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5a743d47, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@186f4e66, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@1a818cb3, org.springframework.security.web.session.SessionManagementFilter@7f517fe0, org.springframework.security.web.access.ExceptionTranslationFilter@232ffbbe, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@ebf68bb]
+2022-12-13 10:49:53.310  INFO 8376 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-13 10:49:53.813  INFO 8376 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-13 10:49:54.078  INFO 8376 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-13 10:49:54.219  INFO 8376 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-12-13 10:49:54.251  INFO 8376 --- [restartedMain] c.e.b.BankingSystemApplication           : Started BankingSystemApplication in 6.215 seconds (JVM running for 7.959)
+2022-12-13 10:49:54.267  INFO 8376 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state LivenessState changed to CORRECT
+2022-12-13 10:49:54.267  INFO 8376 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2022-12-13 10:49:57.923  INFO 8376 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-13 10:49:57.923  INFO 8376 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-13 10:49:57.923  INFO 8376 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-12-13 10:50:20.030  INFO 8376 --- [http-nio-8080-exec-3] c.e.b.data.client.ClientStorageDB        : Client ttt add 111 to your account
+2022-12-13 10:50:27.011 ERROR 8376 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.TransientDataAccessResourceException: PreparedStatementCallback; SQL [Select * from JuridicalPerson Join Account on JuridicalPerson.PersonId = Account.PersonId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId Where JuridicalPerson.PersonName Like ?]; Недопустимое имя столбца BranchName.; nested exception is com.microsoft.sqlserver.jdbc.SQLServerException: Недопустимое имя столбца BranchName.] with root cause
+
+com.microsoft.sqlserver.jdbc.SQLServerException: Недопустимое имя столбца BranchName.
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:237) ~[mssql-jdbc-11.2.1.jre17.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerResultSet.findColumn(SQLServerResultSet.java:718) ~[mssql-jdbc-11.2.1.jre17.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerResultSet.getString(SQLServerResultSet.java:2544) ~[mssql-jdbc-11.2.1.jre17.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyResultSet.getString(HikariProxyResultSet.java) ~[HikariCP-4.0.3.jar:na]
+	at com.example.bankingsystem.data.juridicalPerson.JuridicalPersonRowMapper.mapRow(JuridicalPersonRowMapper.java:36) ~[classes/:na]
+	at com.example.bankingsystem.data.juridicalPerson.JuridicalPersonRowMapper.mapRow(JuridicalPersonRowMapper.java:12) ~[classes/:na]
+	at org.springframework.jdbc.core.RowMapperResultSetExtractor.extractData(RowMapperResultSetExtractor.java:94) ~[spring-jdbc-5.3.7.jar:5.3.7]
+	at org.springframework.jdbc.core.RowMapperResultSetExtractor.extractData(RowMapperResultSetExtractor.java:61) ~[spring-jdbc-5.3.7.jar:5.3.7]
+	at org.springframework.jdbc.core.JdbcTemplate$1.doInPreparedStatement(JdbcTemplate.java:723) ~[spring-jdbc-5.3.7.jar:5.3.7]
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:651) ~[spring-jdbc-5.3.7.jar:5.3.7]
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:713) ~[spring-jdbc-5.3.7.jar:5.3.7]
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:744) ~[spring-jdbc-5.3.7.jar:5.3.7]
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:757) ~[spring-jdbc-5.3.7.jar:5.3.7]
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:815) ~[spring-jdbc-5.3.7.jar:5.3.7]
+	at com.example.bankingsystem.data.payment.PaymentStorageDB.doPayment(PaymentStorageDB.java:67) ~[classes/:na]
+	at com.example.bankingsystem.data.payment.PaymentStorageDB$$FastClassBySpringCGLIB$$32ff2cd5.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.7.jar:5.3.7]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779) ~[spring-aop-5.3.7.jar:5.3.7]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.7.jar:5.3.7]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750) ~[spring-aop-5.3.7.jar:5.3.7]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-5.3.7.jar:5.3.7]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.7.jar:5.3.7]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750) ~[spring-aop-5.3.7.jar:5.3.7]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:692) ~[spring-aop-5.3.7.jar:5.3.7]
+	at com.example.bankingsystem.data.payment.PaymentStorageDB$$EnhancerBySpringCGLIB$$705076d9.doPayment(<generated>) ~[classes/:na]
+	at com.example.bankingsystem.domain.payment.PaymentServiceDomain.doPayment(PaymentServiceDomain.java:27) ~[classes/:na]
+	at com.example.bankingsystem.web.controller.ClientController.doPaymentPost(ClientController.java:126) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.3.7.jar:5.3.7]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894) ~[spring-webmvc-5.3.7.jar:5.3.7]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.7.jar:5.3.7]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.7.jar:5.3.7]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1063) ~[spring-webmvc-5.3.7.jar:5.3.7]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.7.jar:5.3.7]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.7.jar:5.3.7]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.7.jar:5.3.7]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652) ~[tomcat-embed-core-9.0.46.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.7.jar:5.3.7]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.46.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.46.jar:9.0.46]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:121) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:115) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:105) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:218) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:212) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:132) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1707) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2022-12-13 10:51:52.910  INFO 3148 --- [restartedMain] c.e.b.BankingSystemApplication           : Starting BankingSystemApplication using Java 17 on User-PC with PID 3148 (D:\Github\Programming\BankingSystem\target\classes started by user in D:\Github\Programming\BankingSystem)
+2022-12-13 10:51:52.926  INFO 3148 --- [restartedMain] c.e.b.BankingSystemApplication           : No active profile set, falling back to default profiles: default
+2022-12-13 10:51:53.176  INFO 3148 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-13 10:51:53.176  INFO 3148 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-13 10:51:53.238  WARN 3148 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-12-13 10:51:54.860  INFO 3148 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-12-13 10:51:54.891  INFO 3148 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 0 JDBC repository interfaces.
+2022-12-13 10:51:56.413  INFO 3148 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-12-13 10:51:56.429  INFO 3148 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-13 10:51:56.429  INFO 3148 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-12-13 10:51:56.807  INFO 3148 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-13 10:51:56.807  INFO 3148 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3631 ms
+2022-12-13 10:51:57.870  INFO 3148 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@128901c0, org.springframework.security.web.context.SecurityContextPersistenceFilter@1bfcb9de, org.springframework.security.web.header.HeaderWriterFilter@4fdbdf1f, org.springframework.security.web.csrf.CsrfFilter@307f475e, org.springframework.security.web.authentication.logout.LogoutFilter@217d57f8, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@6a92ebb1, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@414bcf8f, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@536eeda3, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@29ec7ecd, org.springframework.security.web.session.SessionManagementFilter@75732014, org.springframework.security.web.access.ExceptionTranslationFilter@56cc340e, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@475b4d6]
+2022-12-13 10:51:58.562  INFO 3148 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-13 10:51:59.111  INFO 3148 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-13 10:51:59.534  INFO 3148 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-13 10:51:59.646  INFO 3148 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-12-13 10:51:59.693  INFO 3148 --- [restartedMain] c.e.b.BankingSystemApplication           : Started BankingSystemApplication in 7.96 seconds (JVM running for 10.463)
+2022-12-13 10:51:59.693  INFO 3148 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state LivenessState changed to CORRECT
+2022-12-13 10:51:59.708  INFO 3148 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2022-12-13 10:53:27.141  INFO 6500 --- [restartedMain] c.e.b.BankingSystemApplication           : Starting BankingSystemApplication using Java 17 on User-PC with PID 6500 (D:\Github\Programming\BankingSystem\target\classes started by user in D:\Github\Programming\BankingSystem)
+2022-12-13 10:53:27.156  INFO 6500 --- [restartedMain] c.e.b.BankingSystemApplication           : No active profile set, falling back to default profiles: default
+2022-12-13 10:53:27.234  INFO 6500 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-13 10:53:27.234  INFO 6500 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-13 10:53:27.248  WARN 6500 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-12-13 10:53:28.532  INFO 6500 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-12-13 10:53:28.564  INFO 6500 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 0 JDBC repository interfaces.
+2022-12-13 10:53:29.614  INFO 6500 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-12-13 10:53:29.629  INFO 6500 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-13 10:53:29.629  INFO 6500 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-12-13 10:53:29.786  INFO 6500 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-13 10:53:29.786  INFO 6500 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2552 ms
+2022-12-13 10:53:30.559  INFO 6500 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5510f971, org.springframework.security.web.context.SecurityContextPersistenceFilter@bfdedd0, org.springframework.security.web.header.HeaderWriterFilter@2b3ea2d0, org.springframework.security.web.csrf.CsrfFilter@11eba2ce, org.springframework.security.web.authentication.logout.LogoutFilter@1162e1a, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@369b5571, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@17e54cc7, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2749946f, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@4192b28e, org.springframework.security.web.session.SessionManagementFilter@6467fb9d, org.springframework.security.web.access.ExceptionTranslationFilter@4358d801, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@26a3842]
+2022-12-13 10:53:31.242  INFO 6500 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-13 10:53:31.736  INFO 6500 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-13 10:53:32.003  INFO 6500 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-13 10:53:32.103  INFO 6500 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-12-13 10:53:32.150  INFO 6500 --- [restartedMain] c.e.b.BankingSystemApplication           : Started BankingSystemApplication in 5.653 seconds (JVM running for 8.23)
+2022-12-13 10:53:32.150  INFO 6500 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state LivenessState changed to CORRECT
+2022-12-13 10:53:32.150  INFO 6500 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2022-12-13 10:55:17.181  INFO 10204 --- [restartedMain] c.e.b.BankingSystemApplication           : Starting BankingSystemApplication using Java 17 on User-PC with PID 10204 (D:\Github\Programming\BankingSystem\target\classes started by user in D:\Github\Programming\BankingSystem)
+2022-12-13 10:55:17.181  INFO 10204 --- [restartedMain] c.e.b.BankingSystemApplication           : No active profile set, falling back to default profiles: default
+2022-12-13 10:55:17.266  INFO 10204 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-13 10:55:17.266  INFO 10204 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-13 10:55:17.354  WARN 10204 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-12-13 10:55:18.749  INFO 10204 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-12-13 10:55:18.781  INFO 10204 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 30 ms. Found 0 JDBC repository interfaces.
+2022-12-13 10:55:19.813  INFO 10204 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-12-13 10:55:19.828  INFO 10204 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-13 10:55:19.828  INFO 10204 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-12-13 10:55:19.953  INFO 10204 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-13 10:55:19.953  INFO 10204 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2676 ms
+2022-12-13 10:55:20.639  INFO 10204 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@332f8e4f, org.springframework.security.web.context.SecurityContextPersistenceFilter@5b71d3c6, org.springframework.security.web.header.HeaderWriterFilter@7ede0fe5, org.springframework.security.web.csrf.CsrfFilter@1ce7c73f, org.springframework.security.web.authentication.logout.LogoutFilter@408e271e, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4e02540b, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@72dc34da, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7c46fae9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@74ed222d, org.springframework.security.web.session.SessionManagementFilter@e2ec6c9, org.springframework.security.web.access.ExceptionTranslationFilter@467f45c6, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@242a0dfc]
+2022-12-13 10:55:21.449  INFO 10204 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-13 10:55:22.046  INFO 10204 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-13 10:55:22.337  INFO 10204 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-13 10:55:22.750  INFO 10204 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-12-13 10:55:22.790  INFO 10204 --- [restartedMain] c.e.b.BankingSystemApplication           : Started BankingSystemApplication in 6.299 seconds (JVM running for 7.971)
+2022-12-13 10:55:22.798  INFO 10204 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state LivenessState changed to CORRECT
+2022-12-13 10:55:22.814  INFO 10204 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2022-12-13 10:55:25.044  INFO 10204 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-13 10:55:25.044  INFO 10204 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-13 10:55:25.068  INFO 10204 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 24 ms
+2022-12-13 10:55:25.845 ERROR 10204 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[/].[dispatcherServlet]    : Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.springframework.dao.TransientDataAccessResourceException: PreparedStatementCallback; SQL [Select * from Client Join Account on Client.ClientId = Account.ClientId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId Where Client.ClientName Like ?]; Недопустимое имя столбца BranchName.; nested exception is com.microsoft.sqlserver.jdbc.SQLServerException: Недопустимое имя столбца BranchName.] with root cause
+
+com.microsoft.sqlserver.jdbc.SQLServerException: Недопустимое имя столбца BranchName.
+	at com.microsoft.sqlserver.jdbc.SQLServerException.makeFromDriverError(SQLServerException.java:237) ~[mssql-jdbc-11.2.1.jre17.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerResultSet.findColumn(SQLServerResultSet.java:718) ~[mssql-jdbc-11.2.1.jre17.jar:na]
+	at com.microsoft.sqlserver.jdbc.SQLServerResultSet.getString(SQLServerResultSet.java:2544) ~[mssql-jdbc-11.2.1.jre17.jar:na]
+	at com.zaxxer.hikari.pool.HikariProxyResultSet.getString(HikariProxyResultSet.java) ~[HikariCP-4.0.3.jar:na]
+	at com.example.bankingsystem.data.client.ClientRowMapper.mapRow(ClientRowMapper.java:35) ~[classes/:na]
+	at com.example.bankingsystem.data.client.ClientRowMapper.mapRow(ClientRowMapper.java:12) ~[classes/:na]
+	at org.springframework.jdbc.core.RowMapperResultSetExtractor.extractData(RowMapperResultSetExtractor.java:94) ~[spring-jdbc-5.3.7.jar:5.3.7]
+	at org.springframework.jdbc.core.RowMapperResultSetExtractor.extractData(RowMapperResultSetExtractor.java:61) ~[spring-jdbc-5.3.7.jar:5.3.7]
+	at org.springframework.jdbc.core.JdbcTemplate$1.doInPreparedStatement(JdbcTemplate.java:723) ~[spring-jdbc-5.3.7.jar:5.3.7]
+	at org.springframework.jdbc.core.JdbcTemplate.execute(JdbcTemplate.java:651) ~[spring-jdbc-5.3.7.jar:5.3.7]
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:713) ~[spring-jdbc-5.3.7.jar:5.3.7]
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:744) ~[spring-jdbc-5.3.7.jar:5.3.7]
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:757) ~[spring-jdbc-5.3.7.jar:5.3.7]
+	at org.springframework.jdbc.core.JdbcTemplate.query(JdbcTemplate.java:815) ~[spring-jdbc-5.3.7.jar:5.3.7]
+	at com.example.bankingsystem.data.payment.PaymentStorageDB.doPayment(PaymentStorageDB.java:67) ~[classes/:na]
+	at com.example.bankingsystem.data.payment.PaymentStorageDB$$FastClassBySpringCGLIB$$32ff2cd5.invoke(<generated>) ~[classes/:na]
+	at org.springframework.cglib.proxy.MethodProxy.invoke(MethodProxy.java:218) ~[spring-core-5.3.7.jar:5.3.7]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.invokeJoinpoint(CglibAopProxy.java:779) ~[spring-aop-5.3.7.jar:5.3.7]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:163) ~[spring-aop-5.3.7.jar:5.3.7]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750) ~[spring-aop-5.3.7.jar:5.3.7]
+	at org.springframework.dao.support.PersistenceExceptionTranslationInterceptor.invoke(PersistenceExceptionTranslationInterceptor.java:137) ~[spring-tx-5.3.7.jar:5.3.7]
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:186) ~[spring-aop-5.3.7.jar:5.3.7]
+	at org.springframework.aop.framework.CglibAopProxy$CglibMethodInvocation.proceed(CglibAopProxy.java:750) ~[spring-aop-5.3.7.jar:5.3.7]
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:692) ~[spring-aop-5.3.7.jar:5.3.7]
+	at com.example.bankingsystem.data.payment.PaymentStorageDB$$EnhancerBySpringCGLIB$$b48dab51.doPayment(<generated>) ~[classes/:na]
+	at com.example.bankingsystem.domain.payment.PaymentServiceDomain.doPayment(PaymentServiceDomain.java:27) ~[classes/:na]
+	at com.example.bankingsystem.web.controller.ClientController.doPaymentPost(ClientController.java:126) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:197) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:141) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106) ~[spring-webmvc-5.3.7.jar:5.3.7]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:894) ~[spring-webmvc-5.3.7.jar:5.3.7]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.7.jar:5.3.7]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.7.jar:5.3.7]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1063) ~[spring-webmvc-5.3.7.jar:5.3.7]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.7.jar:5.3.7]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.7.jar:5.3.7]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.7.jar:5.3.7]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:652) ~[tomcat-embed-core-9.0.46.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.7.jar:5.3.7]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:733) ~[tomcat-embed-core-9.0.46.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.46.jar:9.0.46]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:327) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.invoke(FilterSecurityInterceptor.java:115) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.access.intercept.FilterSecurityInterceptor.doFilter(FilterSecurityInterceptor.java:81) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:121) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:115) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:126) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:81) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:105) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:149) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:218) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:212) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:103) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:89) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:132) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:110) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.context.SecurityContextPersistenceFilter.doFilter(SecurityContextPersistenceFilter.java:80) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:55) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.springframework.security.web.FilterChainProxy$VirtualFilterChain.doFilter(FilterChainProxy.java:336) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:211) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:183) ~[spring-security-web-5.5.0.jar:5.5.0]
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:358) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:271) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119) ~[spring-web-5.3.7.jar:5.3.7]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:542) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:143) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:357) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:374) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:893) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1707) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1136) ~[na:na]
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:635) ~[na:na]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.46.jar:9.0.46]
+	at java.base/java.lang.Thread.run(Thread.java:833) ~[na:na]
+
+2022-12-13 10:56:02.176  INFO 7156 --- [restartedMain] c.e.b.BankingSystemApplication           : Starting BankingSystemApplication using Java 17 on User-PC with PID 7156 (D:\Github\Programming\BankingSystem\target\classes started by user in D:\Github\Programming\BankingSystem)
+2022-12-13 10:56:02.176  INFO 7156 --- [restartedMain] c.e.b.BankingSystemApplication           : No active profile set, falling back to default profiles: default
+2022-12-13 10:56:02.264  INFO 7156 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-13 10:56:02.264  INFO 7156 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-13 10:56:02.365  WARN 7156 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-12-13 10:56:03.825  INFO 7156 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-12-13 10:56:03.856  INFO 7156 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 35 ms. Found 0 JDBC repository interfaces.
+2022-12-13 10:56:05.121  INFO 7156 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-12-13 10:56:05.137  INFO 7156 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-13 10:56:05.137  INFO 7156 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-12-13 10:56:05.526  INFO 7156 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-13 10:56:05.526  INFO 7156 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3262 ms
+2022-12-13 10:56:07.441  INFO 7156 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@66ff4f83, org.springframework.security.web.context.SecurityContextPersistenceFilter@27f5c8c2, org.springframework.security.web.header.HeaderWriterFilter@37d7659e, org.springframework.security.web.csrf.CsrfFilter@6063cf20, org.springframework.security.web.authentication.logout.LogoutFilter@55d35474, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@729532cc, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@2de7c961, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@d17b7f0, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@cc1da6c, org.springframework.security.web.session.SessionManagementFilter@4cd38d79, org.springframework.security.web.access.ExceptionTranslationFilter@c77ddcf, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@34f800c3]
+2022-12-13 10:56:08.453  INFO 7156 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-13 10:56:09.022  INFO 7156 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-13 10:56:09.310  INFO 7156 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-13 10:56:09.455  INFO 7156 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-12-13 10:56:09.487  INFO 7156 --- [restartedMain] c.e.b.BankingSystemApplication           : Started BankingSystemApplication in 7.992 seconds (JVM running for 9.513)
+2022-12-13 10:56:09.503  INFO 7156 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state LivenessState changed to CORRECT
+2022-12-13 10:56:09.503  INFO 7156 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2022-12-13 10:56:09.607  INFO 7156 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-13 10:56:09.607  INFO 7156 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-13 10:56:09.615  INFO 7156 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2022-12-13 10:57:18.993  INFO 4296 --- [restartedMain] c.e.b.BankingSystemApplication           : Starting BankingSystemApplication using Java 17 on User-PC with PID 4296 (D:\Github\Programming\BankingSystem\target\classes started by user in D:\Github\Programming\BankingSystem)
+2022-12-13 10:57:18.993  INFO 4296 --- [restartedMain] c.e.b.BankingSystemApplication           : No active profile set, falling back to default profiles: default
+2022-12-13 10:57:19.162  INFO 4296 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-13 10:57:19.162  INFO 4296 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-13 10:57:19.204  WARN 4296 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-12-13 10:57:20.780  INFO 4296 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-12-13 10:57:20.811  INFO 4296 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 0 JDBC repository interfaces.
+2022-12-13 10:57:22.029  INFO 4296 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-12-13 10:57:22.045  INFO 4296 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-13 10:57:22.045  INFO 4296 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-12-13 10:57:22.201  INFO 4296 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-13 10:57:22.201  INFO 4296 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3039 ms
+2022-12-13 10:57:23.272  INFO 4296 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@3c231add, org.springframework.security.web.context.SecurityContextPersistenceFilter@6e30c9ba, org.springframework.security.web.header.HeaderWriterFilter@426226c3, org.springframework.security.web.csrf.CsrfFilter@17e363a7, org.springframework.security.web.authentication.logout.LogoutFilter@73fb08e5, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@222d1ff6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@eedf8d6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@62d7b9c, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@39f6d104, org.springframework.security.web.session.SessionManagementFilter@5d951e58, org.springframework.security.web.access.ExceptionTranslationFilter@55d35474, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@5718d1de]
+2022-12-13 10:57:24.091  INFO 4296 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-13 10:57:24.867  INFO 4296 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-13 10:57:25.135  INFO 4296 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-13 10:57:25.307  INFO 4296 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-12-13 10:57:25.354  INFO 4296 --- [restartedMain] c.e.b.BankingSystemApplication           : Started BankingSystemApplication in 7.064 seconds (JVM running for 10.204)
+2022-12-13 10:57:25.382  INFO 4296 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state LivenessState changed to CORRECT
+2022-12-13 10:57:25.382  INFO 4296 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2022-12-13 10:58:14.479  INFO 7720 --- [restartedMain] c.e.b.BankingSystemApplication           : Starting BankingSystemApplication using Java 17 on User-PC with PID 7720 (D:\Github\Programming\BankingSystem\target\classes started by user in D:\Github\Programming\BankingSystem)
+2022-12-13 10:58:14.479  INFO 7720 --- [restartedMain] c.e.b.BankingSystemApplication           : No active profile set, falling back to default profiles: default
+2022-12-13 10:58:14.630  INFO 7720 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-13 10:58:14.630  INFO 7720 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-13 10:58:14.671  WARN 7720 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-12-13 10:58:16.013  INFO 7720 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-12-13 10:58:16.048  INFO 7720 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28 ms. Found 0 JDBC repository interfaces.
+2022-12-13 10:58:17.131  INFO 7720 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-12-13 10:58:17.146  INFO 7720 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-13 10:58:17.146  INFO 7720 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-12-13 10:58:17.272  INFO 7720 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-13 10:58:17.272  INFO 7720 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2642 ms
+2022-12-13 10:58:17.965  INFO 7720 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@27437e66, org.springframework.security.web.context.SecurityContextPersistenceFilter@391d0f62, org.springframework.security.web.header.HeaderWriterFilter@5746bb8d, org.springframework.security.web.csrf.CsrfFilter@2de7c961, org.springframework.security.web.authentication.logout.LogoutFilter@5f04d91b, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3cb5d4d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@242d82fc, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@d5da3e8, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@6583803d, org.springframework.security.web.session.SessionManagementFilter@72393a93, org.springframework.security.web.access.ExceptionTranslationFilter@6ac7d807, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@340e6a89]
+2022-12-13 10:58:18.610  INFO 7720 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-13 10:58:19.067  INFO 7720 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-13 10:58:19.302  INFO 7720 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-13 10:58:19.537  INFO 7720 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-12-13 10:58:19.568  INFO 7720 --- [restartedMain] c.e.b.BankingSystemApplication           : Started BankingSystemApplication in 6.087 seconds (JVM running for 8.153)
+2022-12-13 10:58:19.584  INFO 7720 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state LivenessState changed to CORRECT
+2022-12-13 10:58:19.592  INFO 7720 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2022-12-13 10:58:48.191  INFO 9876 --- [restartedMain] c.e.b.BankingSystemApplication           : Starting BankingSystemApplication using Java 17 on User-PC with PID 9876 (D:\Github\Programming\BankingSystem\target\classes started by user in D:\Github\Programming\BankingSystem)
+2022-12-13 10:58:48.191  INFO 9876 --- [restartedMain] c.e.b.BankingSystemApplication           : No active profile set, falling back to default profiles: default
+2022-12-13 10:58:48.273  INFO 9876 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-13 10:58:48.273  INFO 9876 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-13 10:58:48.307  WARN 9876 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-12-13 10:58:49.517  INFO 9876 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-12-13 10:58:49.549  INFO 9876 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 0 JDBC repository interfaces.
+2022-12-13 10:58:50.784  INFO 9876 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-12-13 10:58:50.816  INFO 9876 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-13 10:58:50.816  INFO 9876 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-12-13 10:58:51.066  INFO 9876 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-13 10:58:51.066  INFO 9876 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2793 ms
+2022-12-13 10:58:51.776  INFO 9876 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@1cca1df6, org.springframework.security.web.context.SecurityContextPersistenceFilter@560a5add, org.springframework.security.web.header.HeaderWriterFilter@3ddddb8b, org.springframework.security.web.csrf.CsrfFilter@16fb4687, org.springframework.security.web.authentication.logout.LogoutFilter@76c74882, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@3f54de16, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@28ba3930, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@20f41c2, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3181f54c, org.springframework.security.web.session.SessionManagementFilter@6233156e, org.springframework.security.web.access.ExceptionTranslationFilter@1cb6d81, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3159fa4a]
+2022-12-13 10:58:52.596  INFO 9876 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-13 10:58:53.208  INFO 9876 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-13 10:58:53.553  INFO 9876 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-13 10:58:53.710  INFO 9876 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-12-13 10:58:53.772  INFO 9876 --- [restartedMain] c.e.b.BankingSystemApplication           : Started BankingSystemApplication in 6.213 seconds (JVM running for 7.538)
+2022-12-13 10:58:53.788  INFO 9876 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state LivenessState changed to CORRECT
+2022-12-13 10:58:53.788  INFO 9876 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2022-12-13 10:59:36.438  INFO 7232 --- [restartedMain] c.e.b.BankingSystemApplication           : Starting BankingSystemApplication using Java 17 on User-PC with PID 7232 (D:\Github\Programming\BankingSystem\target\classes started by user in D:\Github\Programming\BankingSystem)
+2022-12-13 10:59:36.451  INFO 7232 --- [restartedMain] c.e.b.BankingSystemApplication           : No active profile set, falling back to default profiles: default
+2022-12-13 10:59:36.581  INFO 7232 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-13 10:59:36.581  INFO 7232 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-13 10:59:36.607  WARN 7232 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-12-13 10:59:38.342  INFO 7232 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-12-13 10:59:38.405  INFO 7232 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 43 ms. Found 0 JDBC repository interfaces.
+2022-12-13 10:59:40.190  INFO 7232 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-12-13 10:59:40.206  INFO 7232 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-13 10:59:40.206  INFO 7232 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-12-13 10:59:40.347  INFO 7232 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-13 10:59:40.347  INFO 7232 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3766 ms
+2022-12-13 10:59:41.262  INFO 7232 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2f6b7879, org.springframework.security.web.context.SecurityContextPersistenceFilter@5da3bb9e, org.springframework.security.web.header.HeaderWriterFilter@7d695fe5, org.springframework.security.web.csrf.CsrfFilter@4682ecba, org.springframework.security.web.authentication.logout.LogoutFilter@362a158f, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@4f55c196, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@119e9a5c, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@d9715d5, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@74d95d7, org.springframework.security.web.session.SessionManagementFilter@127b1580, org.springframework.security.web.access.ExceptionTranslationFilter@6be29f71, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@1b56815]
+2022-12-13 10:59:42.015  INFO 7232 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-13 10:59:42.634  INFO 7232 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-13 10:59:43.079  INFO 7232 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-13 10:59:43.335  INFO 7232 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-12-13 10:59:43.386  INFO 7232 --- [restartedMain] c.e.b.BankingSystemApplication           : Started BankingSystemApplication in 7.888 seconds (JVM running for 9.494)
+2022-12-13 10:59:43.394  INFO 7232 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state LivenessState changed to CORRECT
+2022-12-13 10:59:43.402  INFO 7232 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2022-12-13 10:59:44.326  INFO 7232 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-13 10:59:44.326  INFO 7232 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-13 10:59:44.326  INFO 7232 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-12-13 11:01:43.260  INFO 7232 --- [http-nio-8080-exec-9] c.e.b.data.client.ClientStorageDB        : Client ttt add 1000 to your account
+2022-12-13 11:02:59.497  INFO 900 --- [restartedMain] c.e.b.BankingSystemApplication           : Starting BankingSystemApplication using Java 17 on User-PC with PID 900 (D:\Github\Programming\BankingSystem\target\classes started by user in D:\Github\Programming\BankingSystem)
+2022-12-13 11:02:59.512  INFO 900 --- [restartedMain] c.e.b.BankingSystemApplication           : No active profile set, falling back to default profiles: default
+2022-12-13 11:02:59.647  INFO 900 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-13 11:02:59.662  INFO 900 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-13 11:02:59.739  WARN 900 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-12-13 11:03:01.112  INFO 900 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-12-13 11:03:01.159  INFO 900 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 36 ms. Found 0 JDBC repository interfaces.
+2022-12-13 11:03:02.366  INFO 900 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-12-13 11:03:02.381  INFO 900 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-13 11:03:02.381  INFO 900 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-12-13 11:03:02.630  INFO 900 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-13 11:03:02.630  INFO 900 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2968 ms
+2022-12-13 11:03:03.861  INFO 900 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@5939bc9d, org.springframework.security.web.context.SecurityContextPersistenceFilter@71dba3f6, org.springframework.security.web.header.HeaderWriterFilter@53918cfe, org.springframework.security.web.csrf.CsrfFilter@6f72813b, org.springframework.security.web.authentication.logout.LogoutFilter@1e981996, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@38a72e1d, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@5ff81970, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@47d7858, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@3749ad59, org.springframework.security.web.session.SessionManagementFilter@44a22287, org.springframework.security.web.access.ExceptionTranslationFilter@22ed6565, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@2e77d972]
+2022-12-13 11:03:04.706  INFO 900 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-13 11:03:05.244  INFO 900 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-13 11:03:05.560  INFO 900 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-13 11:03:05.696  INFO 900 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-12-13 11:03:05.744  INFO 900 --- [restartedMain] c.e.b.BankingSystemApplication           : Started BankingSystemApplication in 7.018 seconds (JVM running for 12.128)
+2022-12-13 11:03:05.752  INFO 900 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state LivenessState changed to CORRECT
+2022-12-13 11:03:05.760  INFO 900 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2022-12-13 11:03:05.985  INFO 900 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-13 11:03:05.985  INFO 900 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-13 11:03:05.993  INFO 900 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-12-13 11:03:40.427  INFO 900 --- [SpringContextShutdownHook] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed from ACCEPTING_TRAFFIC to REFUSING_TRAFFIC
+2022-12-13 11:03:49.699  INFO 6540 --- [restartedMain] c.e.b.BankingSystemApplication           : Starting BankingSystemApplication using Java 17 on User-PC with PID 6540 (D:\Github\Programming\BankingSystem\target\classes started by user in D:\Github\Programming\BankingSystem)
+2022-12-13 11:03:49.699  INFO 6540 --- [restartedMain] c.e.b.BankingSystemApplication           : No active profile set, falling back to default profiles: default
+2022-12-13 11:03:49.798  INFO 6540 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-13 11:03:49.798  INFO 6540 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-13 11:03:49.885  WARN 6540 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-12-13 11:03:51.109  INFO 6540 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-12-13 11:03:51.141  INFO 6540 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 0 JDBC repository interfaces.
+2022-12-13 11:03:52.166  INFO 6540 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-12-13 11:03:52.181  INFO 6540 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-13 11:03:52.181  INFO 6540 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-12-13 11:03:52.338  INFO 6540 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-13 11:03:52.338  INFO 6540 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2540 ms
+2022-12-13 11:03:53.111  INFO 6540 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@60917a3, org.springframework.security.web.context.SecurityContextPersistenceFilter@65939414, org.springframework.security.web.header.HeaderWriterFilter@4b21ac25, org.springframework.security.web.csrf.CsrfFilter@25d529f0, org.springframework.security.web.authentication.logout.LogoutFilter@4c6cacac, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@11ac23a6, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7ede0fe5, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5b71d3c6, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@408fb04, org.springframework.security.web.session.SessionManagementFilter@467f45c6, org.springframework.security.web.access.ExceptionTranslationFilter@4f817b39, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@6d7d2fb4]
+2022-12-13 11:03:53.911  INFO 6540 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-13 11:03:55.083  INFO 6540 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-13 11:03:55.541  INFO 6540 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-13 11:03:55.867  INFO 6540 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-12-13 11:03:55.941  INFO 6540 --- [restartedMain] c.e.b.BankingSystemApplication           : Started BankingSystemApplication in 6.954 seconds (JVM running for 8.421)
+2022-12-13 11:03:55.957  INFO 6540 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state LivenessState changed to CORRECT
+2022-12-13 11:03:55.965  INFO 6540 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2022-12-13 11:03:57.498  INFO 6540 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-13 11:03:57.498  INFO 6540 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-13 11:03:57.498  INFO 6540 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
+2022-12-13 11:04:50.569  INFO 6540 --- [http-nio-8080-exec-3] c.e.b.data.client.ClientStorageDB        : Delete Client with Surname: ttt, Name: ttt, Patronymic: ttt, Login: ttt
+2022-12-13 11:04:56.072  INFO 6540 --- [http-nio-8080-exec-4] c.e.b.d.j.JuridicalPersonStorageDB       : Delete Person with Surname: rrr, Name: rrr, Patronymic: rrr, OrganizationNamerrr, Login: rrr
+2022-12-13 11:07:44.866  INFO 10904 --- [restartedMain] c.e.b.BankingSystemApplication           : Starting BankingSystemApplication using Java 17 on User-PC with PID 10904 (D:\Github\Programming\BankingSystem\target\classes started by user in D:\Github\Programming\BankingSystem)
+2022-12-13 11:07:44.879  INFO 10904 --- [restartedMain] c.e.b.BankingSystemApplication           : No active profile set, falling back to default profiles: default
+2022-12-13 11:07:44.947  INFO 10904 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-13 11:07:44.947  INFO 10904 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-13 11:07:45.045  WARN 10904 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-12-13 11:07:47.480  INFO 10904 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-12-13 11:07:47.511  INFO 10904 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 0 JDBC repository interfaces.
+2022-12-13 11:07:48.581  INFO 10904 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-12-13 11:07:48.597  INFO 10904 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-13 11:07:48.597  INFO 10904 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-12-13 11:07:48.760  INFO 10904 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-13 11:07:48.760  INFO 10904 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3813 ms
+2022-12-13 11:07:49.436  INFO 10904 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@2e77d972, org.springframework.security.web.context.SecurityContextPersistenceFilter@5316d16c, org.springframework.security.web.header.HeaderWriterFilter@3f59da7e, org.springframework.security.web.csrf.CsrfFilter@1da6e365, org.springframework.security.web.authentication.logout.LogoutFilter@762366c9, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@ffae428, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@1a9e1485, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@2ef23caa, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@69fa4366, org.springframework.security.web.session.SessionManagementFilter@273d2d34, org.springframework.security.web.access.ExceptionTranslationFilter@6647e361, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3b45602f]
+2022-12-13 11:07:50.111  INFO 10904 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-13 11:07:50.640  INFO 10904 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-13 11:07:50.972  INFO 10904 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-13 11:07:51.081  INFO 10904 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-12-13 11:07:51.112  INFO 10904 --- [restartedMain] c.e.b.BankingSystemApplication           : Started BankingSystemApplication in 8.846 seconds (JVM running for 18.887)
+2022-12-13 11:07:51.112  INFO 10904 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state LivenessState changed to CORRECT
+2022-12-13 11:07:51.128  INFO 10904 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2022-12-13 11:08:14.994  INFO 11580 --- [restartedMain] c.e.b.BankingSystemApplication           : Starting BankingSystemApplication using Java 17 on User-PC with PID 11580 (D:\Github\Programming\BankingSystem\target\classes started by user in D:\Github\Programming\BankingSystem)
+2022-12-13 11:08:14.994  INFO 11580 --- [restartedMain] c.e.b.BankingSystemApplication           : No active profile set, falling back to default profiles: default
+2022-12-13 11:08:15.083  INFO 11580 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-13 11:08:15.083  INFO 11580 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-13 11:08:15.163  WARN 11580 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-12-13 11:08:16.534  INFO 11580 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-12-13 11:08:16.565  INFO 11580 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28 ms. Found 0 JDBC repository interfaces.
+2022-12-13 11:08:17.797  INFO 11580 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-12-13 11:08:17.813  INFO 11580 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-13 11:08:17.813  INFO 11580 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-12-13 11:08:17.939  INFO 11580 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-13 11:08:17.939  INFO 11580 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2856 ms
+2022-12-13 11:08:18.617  INFO 11580 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@31a80a6a, org.springframework.security.web.context.SecurityContextPersistenceFilter@7e0e06fa, org.springframework.security.web.header.HeaderWriterFilter@3a54fb05, org.springframework.security.web.csrf.CsrfFilter@30f18161, org.springframework.security.web.authentication.logout.LogoutFilter@2a7058e5, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@488b68e0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@96d1bb1, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@462e81ce, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@fa71afa, org.springframework.security.web.session.SessionManagementFilter@5ffee303, org.springframework.security.web.access.ExceptionTranslationFilter@25b69ac, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@50290d58]
+2022-12-13 11:08:19.279  INFO 11580 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-13 11:08:19.735  INFO 11580 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-13 11:08:20.001  INFO 11580 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-13 11:08:20.111  INFO 11580 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-12-13 11:08:20.158  INFO 11580 --- [restartedMain] c.e.b.BankingSystemApplication           : Started BankingSystemApplication in 5.817 seconds (JVM running for 7.206)
+2022-12-13 11:08:20.158  INFO 11580 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state LivenessState changed to CORRECT
+2022-12-13 11:08:20.173  INFO 11580 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2022-12-13 11:08:24.228  INFO 11580 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-13 11:08:24.228  INFO 11580 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-13 11:08:24.236  INFO 11580 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 8 ms
+2022-12-13 11:09:26.087  INFO 11580 --- [http-nio-8080-exec-2] c.e.b.data.client.ClientStorageDB        : Create Client with Surname: www, Name: www, Patronymic: www, Login: www
+2022-12-13 11:09:37.848  INFO 11580 --- [http-nio-8080-exec-8] c.e.b.data.client.ClientStorageDB        : Create Client with Surname: qqq, Name: qqq, Patronymic: qqq, Login: qqq
+2022-12-13 11:09:59.780  INFO 11580 --- [http-nio-8080-exec-3] c.e.b.d.j.JuridicalPersonStorageDB       : Create Person with Surname: eee, Name: eee, Patronymic: eee, OrganizationName: eee, Login: eee
+2022-12-13 11:11:26.223  INFO 3760 --- [restartedMain] c.e.b.BankingSystemApplication           : Starting BankingSystemApplication using Java 17 on User-PC with PID 3760 (D:\Github\Programming\BankingSystem\target\classes started by user in D:\Github\Programming\BankingSystem)
+2022-12-13 11:11:26.223  INFO 3760 --- [restartedMain] c.e.b.BankingSystemApplication           : No active profile set, falling back to default profiles: default
+2022-12-13 11:11:26.320  INFO 3760 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-13 11:11:26.320  INFO 3760 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-13 11:11:26.348  WARN 3760 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-12-13 11:11:27.646  INFO 3760 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-12-13 11:11:27.680  INFO 3760 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 29 ms. Found 0 JDBC repository interfaces.
+2022-12-13 11:11:28.819  INFO 3760 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-12-13 11:11:28.834  INFO 3760 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-13 11:11:28.834  INFO 3760 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-12-13 11:11:28.960  INFO 3760 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-13 11:11:28.960  INFO 3760 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2640 ms
+2022-12-13 11:11:29.691  INFO 3760 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@6aca8652, org.springframework.security.web.context.SecurityContextPersistenceFilter@6c06386b, org.springframework.security.web.header.HeaderWriterFilter@7e3bf36c, org.springframework.security.web.csrf.CsrfFilter@6bd10339, org.springframework.security.web.authentication.logout.LogoutFilter@6ac7d807, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@616a8313, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@7914667b, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@5fc594b, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@35702c80, org.springframework.security.web.session.SessionManagementFilter@558206b0, org.springframework.security.web.access.ExceptionTranslationFilter@498543b0, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@3af3a7c7]
+2022-12-13 11:11:30.368  INFO 3760 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-13 11:11:30.854  INFO 3760 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-13 11:11:31.135  INFO 3760 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-13 11:11:31.248  INFO 3760 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-12-13 11:11:31.279  INFO 3760 --- [restartedMain] c.e.b.BankingSystemApplication           : Started BankingSystemApplication in 5.805 seconds (JVM running for 7.381)
+2022-12-13 11:11:31.295  INFO 3760 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state LivenessState changed to CORRECT
+2022-12-13 11:11:31.295  INFO 3760 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2022-12-13 11:14:59.779  WARN 3760 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=1m58s740ms601µs900ns).
+2022-12-13 11:34:39.231  INFO 10816 --- [restartedMain] c.e.b.BankingSystemApplication           : Starting BankingSystemApplication using Java 17 on User-PC with PID 10816 (D:\Github\Programming\BankingSystem\target\classes started by user in D:\Github\Programming\BankingSystem)
+2022-12-13 11:34:39.239  INFO 10816 --- [restartedMain] c.e.b.BankingSystemApplication           : No active profile set, falling back to default profiles: default
+2022-12-13 11:34:39.509  INFO 10816 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-13 11:34:39.509  INFO 10816 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-13 11:34:39.763  WARN 10816 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-12-13 11:34:41.231  INFO 10816 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-12-13 11:34:41.270  INFO 10816 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 39 ms. Found 0 JDBC repository interfaces.
+2022-12-13 11:34:42.669  INFO 10816 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-12-13 11:34:42.685  INFO 10816 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-13 11:34:42.685  INFO 10816 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-12-13 11:34:42.904  INFO 10816 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-13 11:34:42.904  INFO 10816 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3387 ms
+2022-12-13 11:34:43.840  INFO 10816 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@4bb51974, org.springframework.security.web.context.SecurityContextPersistenceFilter@2c69c798, org.springframework.security.web.header.HeaderWriterFilter@38608b31, org.springframework.security.web.csrf.CsrfFilter@5d84a41d, org.springframework.security.web.authentication.logout.LogoutFilter@4f695849, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@5d1d85c0, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@79c4aac6, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@7331189a, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@24c31223, org.springframework.security.web.session.SessionManagementFilter@62dd7ed3, org.springframework.security.web.access.ExceptionTranslationFilter@54678365, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@54a7362e]
+2022-12-13 11:34:44.765  INFO 10816 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-13 11:34:45.393  INFO 10816 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-13 11:34:45.762  INFO 10816 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-13 11:34:45.889  INFO 10816 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-12-13 11:34:45.954  INFO 10816 --- [restartedMain] c.e.b.BankingSystemApplication           : Started BankingSystemApplication in 10.589 seconds (JVM running for 13.452)
+2022-12-13 11:34:45.962  INFO 10816 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state LivenessState changed to CORRECT
+2022-12-13 11:34:45.970  INFO 10816 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2022-12-13 11:34:46.848  INFO 10816 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-13 11:34:46.856  INFO 10816 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-13 11:34:46.856  INFO 10816 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 0 ms
