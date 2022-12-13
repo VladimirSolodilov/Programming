@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1 class="h1">Юридические лица</h1>
-    <div th:if="${personList} != null">
+    <div th:if="${!personList.isEmpty()}">
         <table class="table" id="table">
             <tr class="column-header">
                 <th>Фамилия</th>
@@ -75,6 +75,11 @@
             </th:block>
         </table>
     </div>
+
+    <div th:if="${personList.isEmpty()}">
+        <p>Зарегистрированные пользователи отсутствуют!</p>
+    </div>
+
     <a th:href="@{/authorized}" target="_self">Вернуться на главную страницу</a>
 </body>
 </html>

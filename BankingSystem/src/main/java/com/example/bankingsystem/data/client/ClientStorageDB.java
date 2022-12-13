@@ -1,9 +1,11 @@
 package com.example.bankingsystem.data.client;
 
 import com.example.bankingsystem.data.account.AccountRowMapper;
+import com.example.bankingsystem.data.payment.PaymentIdRowMapper;
 import com.example.bankingsystem.data.transfer.TransferStorage;
 import com.example.bankingsystem.domain.model.Account;
 import com.example.bankingsystem.domain.model.Client;
+import com.example.bankingsystem.domain.model.Payment;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -25,8 +27,11 @@ public class ClientStorageDB implements ClientStorage {
     String createAccountForClient = "Insert into Account Values (?, ?, ?)";
     String createAccountRequisitesForClient = "Insert into AccountRequisites Values (?, ?, ?)";
     String getAccountByAccountId = "Select * From Account Where Account.ClientId = ?";
+    String getPaymentByClientId = "Select * from Payment Where Payment.ClientId = ?";
     String deleteClient = "Delete from Client Where Client.ClientName Like ?";
     String deleteAccount = "Delete from Account Where Account.ClientId = ?";
+    String deletePurpose = "Delete from Purpose Where Purpose.PaymentId = ?";
+    String deletePayment = "Delete from Payment Where Payment.PaymentId = ?";
     String deleteAccountRequisites = "Delete from AccountRequisites Where AccountRequisites.AccountId = ?";
     String getAccountByClientId = "Select * from Account Where Account.ClientId = ?";
     String addSum = "Update Account Set Account.Sum = Account.Sum + ? Where Account.ClientId = ?";
@@ -73,9 +78,16 @@ public class ClientStorageDB implements ClientStorage {
     public boolean deleteClient(String clientName) {
         List<Client> clients = jdbcTemplate.query(getClientByClientName, new ClientCreateRowMapper(), clientName);
         List<Account> accounts = jdbcTemplate.query(getAccountByClientId, new AccountRowMapper(), clients.get(0).getClientId());
+        List<Payment> payments = jdbcTemplate.query(getPaymentByClientId, new PaymentIdRowMapper(), clients.get(0).getClientId());
 
         jdbcTemplate.update(deleteAccountRequisites, accounts.get(0).getAccountId());
         jdbcTemplate.update(deleteAccount, clients.get(0).getClientId());
+
+        if (payments.size() != 0) {
+            jdbcTemplate.update(deletePurpose, payments.get(0).getPaymentId());
+            jdbcTemplate.update(deletePayment, payments.get(0).getPaymentId());
+        }
+
         jdbcTemplate.update(deleteClient, clientName);
 
         log.info("Delete Client with Surname: " + clients.get(0).getSurname() + ", " +
