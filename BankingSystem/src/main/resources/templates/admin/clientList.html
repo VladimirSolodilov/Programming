@@ -7,7 +7,7 @@
 </head>
 <body>
         <h1 class="h1">Пользователи</h1>
-        <div th:if="${clientList} != null">
+        <div th:if="${!clientList.isEmpty()}">
             <table class="table" id="table">
                 <tr class="column-header">
                     <th>Фамилия</th>
@@ -18,6 +18,7 @@
                     <th>Сумма</th>
                     <th>Роль</th>
                     <TH>Удалить</TH>
+                    <th>Изменить</th>
                 </tr>
                 <th:block th:each="clientList: ${clientList}">
                     <tr>
@@ -40,10 +41,39 @@
                                 </div>
                             </form>
                         </td>
+                        <td>
+                            <form th:action="@{/authorized/admin/getClient}" method="post" th:object="${client}">
+                                <label hidden>
+                                    <input type="text" th:value="${clientList.surname}" name="surname">
+                                </label>
+
+                                <label hidden>
+                                    <input type="text" th:value="${clientList.name}" name="name">
+                                </label>
+
+                                <label hidden>
+                                    <input type="text" th:value="${clientList.patronymic}" name="patronymic">
+                                </label>
+
+                                <label hidden>
+                                    <input type="text" th:value="${clientList.clientName}" name="clientName">
+                                </label>
+
+                                <div class="form-group">
+                                    <input type="submit" name="registration-submit" id="registration-submit2"
+                                           class="stdBtn" value="Изменить">
+                                </div>
+                            </form>
+                        </td>
                     </tr>
                 </th:block>
             </table>
         </div>
+
+        <div th:if="${clientList.isEmpty()}">
+            <p>Зарегистрированные пользователи отсутствуют!</p>
+        </div>
+
         <a th:href="@{/authorized}" target="_self">Вернуться на главную страницу</a>
 </body>
 </html>

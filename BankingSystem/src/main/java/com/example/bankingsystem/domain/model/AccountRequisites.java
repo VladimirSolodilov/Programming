@@ -6,15 +6,7 @@ public class AccountRequisites {
     private int personalAccount;
     private int paymentAccount;
 
-    public AccountRequisites() {
-    }
-
-    public AccountRequisites(Account account, int requisitesId, int personalAccount, int paymentAccount) {
-        this.account = account;
-        this.requisitesId = requisitesId;
-        this.personalAccount = personalAccount;
-        this.paymentAccount = paymentAccount;
-    }
+    public AccountRequisites() {}
 
     public Account getAccount() {
         return account;

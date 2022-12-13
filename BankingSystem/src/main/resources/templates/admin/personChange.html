@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Изменение юридического лица</title>
+    <link href="/css/form.css" rel="stylesheet"/>
+</head>
+<body>
+    <h1 class="h1">Изменение юридического лица</h1>
+    <form th:action="@{/authorized/admin/personChange}" method="post" th:object="${juridicalPersonChange}">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+            <div>
+                <label>Фамилия: </label>
+                <label>
+                    <input type="text" th:name="surname" th:value="${person.surname}" required>
+                </label>&nbsp;<span th:errors="*{surname}"></span>
+            </div>
+
+            <div>
+                <label>Имя: </label>
+                <label>
+                    <input type="text" th:name="name" th:value="${person.name}" required>
+                </label>&nbsp;<span th:errors="*{name}"></span>
+            </div>
+
+            <div>
+                <label>Отчество: </label>
+                <label>
+                    <input type="text" th:name="patronymic" th:value="${person.patronymic}" required>
+                </label>&nbsp;<span th:errors="*{patronymic}"></span>
+            </div>
+
+            <div>
+                <label>Имя организации: </label>
+                <label>
+                    <input type="text" th:name="organizationName" th:value="${person.organizationName}" required>
+                </label>&nbsp;<span th:errors="*{organizationName}"></span>
+            </div>
+
+            <div>
+                <label>Логин: </label>
+                <label>
+                    <input type="text" th:name="juridicalPersonName" th:value="${person.juridicalPersonName}" required>
+                </label>&nbsp;<span th:errors="*{juridicalPersonName}"></span>
+            </div>
+
+            <div class="form-group">
+                <p><input type="submit" name="registration-submit" id="registration-submit1"
+                          class="stdBtn" value="Изменить пользователя"></p>
+            </div>
+    </form>
+
+    <a th:href="@{/}" target="_self">Вернуться на главную страницу</a>
+</body>
+</html>

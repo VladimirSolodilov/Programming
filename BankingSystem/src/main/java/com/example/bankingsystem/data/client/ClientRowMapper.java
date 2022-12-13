@@ -10,7 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class ClientRowMapper implements RowMapper<Client> {
-
     @Override
     public Client mapRow(ResultSet resultSet, int i) throws SQLException {
         Client client = new Client();
@@ -33,9 +32,8 @@ public class ClientRowMapper implements RowMapper<Client> {
 
         account.setSum(resultSet.getInt("Sum"));
         accountRequisites.setPersonalAccount(resultSet.getInt("PersonalAccount"));
-        branch.setBranchName(resultSet.getString("Name"));
+        branch.setBranchName(resultSet.getString("BranchName"));
 
         return client;
     }
-
 }

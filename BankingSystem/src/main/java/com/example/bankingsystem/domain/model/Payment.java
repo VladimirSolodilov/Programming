@@ -6,6 +6,7 @@ public class Payment {
     private Client client;
     private int paymentId;
     private int personId;
+    private int clientId;
     private String name;
     private java.sql.Date data;
     private int sum;
@@ -77,5 +78,22 @@ public class Payment {
 
     public void setClient(Client client) {
         this.client = client;
+    }
+
+    public int getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
+    }
+
+    @Override
+    public String toString() {
+        return "Payment{" +
+                "name='" + name + '\'' +
+                ", sum=" + sum +
+                ", purpose=" + purpose.getPurposeName() +
+                '}';
     }
 }

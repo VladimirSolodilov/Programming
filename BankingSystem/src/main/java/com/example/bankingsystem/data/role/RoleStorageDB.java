@@ -15,23 +15,22 @@ import java.util.List;
 public class RoleStorageDB implements RoleStorage {
     @Autowired
     private JdbcTemplate jdbcTemplate;
+    String getAllRoles = "SELECT Name FROM Role";
+    String getRoleById = "SELECT RTRIM (Name) FROM ROLE WHERE ROLE.ID = ?";
 
     @Override
     public List<Role> getAllRoles() {
-        String getAllRoles = "SELECT Name FROM Role";
         return jdbcTemplate.query(getAllRoles, new RoleRowMapper());
     }
 
     @Override
     public Collection<Role> getRoleById(int roleId) {
-        String getRoleById = "SELECT RTRIM (Name) FROM ROLE WHERE ROLE.ID = ?";
         Collection<Role> collection = jdbcTemplate.query(getRoleById, new RoleRowMapper(), roleId);
         return collection;
     }
 
     @Override
     public Role getRoleById1(int roleId) {
-        String getRoleById = "SELECT RTRIM(NAME) FROM ROLE WHERE ROLE.ID = ?";
         List<Role> list = jdbcTemplate.query(getRoleById, new RoleRowMapper(), roleId);
         return list.get(0);
     }

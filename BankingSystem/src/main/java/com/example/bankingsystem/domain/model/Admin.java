@@ -14,13 +14,6 @@ public class Admin {
 
     public Admin() {}
 
-    public Admin(Bank bank, int adminId, String name, String password, int roleId) {
-        this.bank = bank;
-        this.adminId = adminId;
-        this.name = name;
-        this.password = password;
-        this.roleId = roleId;
-    }
     public Bank getBank() {
         return bank;
     }

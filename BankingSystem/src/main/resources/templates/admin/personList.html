@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1 class="h1">Юридические лица</h1>
-    <div th:if="${personList} != null">
+    <div th:if="${!personList.isEmpty()}">
         <table class="table" id="table">
             <tr class="column-header">
                 <th>Фамилия</th>
@@ -19,6 +19,7 @@
                 <th>Сумма</th>
                 <th>Роль</th>
                 <th>Удалить</th>
+                <th>Изменить</th>
             </tr>
             <th:block th:each="personList: ${personList}">
                 <tr>
@@ -42,10 +43,43 @@
                             </div>
                         </form>
                     </td>
+                    <td>
+                        <form th:action="@{/authorized/admin/getPerson}" method="post" th:object="${person}">
+                            <label hidden>
+                                <input type="text" th:value="${personList.surname}" name="surname">
+                            </label>
+
+                            <label hidden>
+                                <input type="text" th:value="${personList.name}" name="name">
+                            </label>
+
+                            <label hidden>
+                                <input type="text" th:value="${personList.patronymic}" name="patronymic">
+                            </label>
+
+                            <label hidden>
+                                <input type="text" th:value="${personList.organizationName}" name="organizationName">
+                            </label>
+
+                            <label hidden>
+                                <input type="text" th:value="${personList.juridicalPersonName}" name="juridicalPersonName">
+                            </label>
+
+                            <div class="form-group">
+                                <input type="submit" name="registration-submit" id="registration-submit2"
+                                       class="stdBtn" value="Изменить">
+                            </div>
+                        </form>
+                    </td>
                 </tr>
             </th:block>
         </table>
     </div>
+
+    <div th:if="${personList.isEmpty()}">
+        <p>Зарегистрированные пользователи отсутствуют!</p>
+    </div>
+
     <a th:href="@{/authorized}" target="_self">Вернуться на главную страницу</a>
 </body>
 </html>

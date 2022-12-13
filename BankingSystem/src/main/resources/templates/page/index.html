@@ -10,12 +10,22 @@
         <h1 class="h1">Банковская система</h1>
 
         <div sec:authorize="isAuthenticated()">
-            <h2 class="h2" th:inline="text">Добро пожаловать, [[${#httpServletRequest.remoteUser}]]!</h2>
+            <h2 class="h2" th:inline="text">Приветствуем, [[${#httpServletRequest.remoteUser}]]!</h2>
 
             <div sec:authorize="hasAuthority('ADMIN')">
                 <ul class="rounded">
-                    <li><a th:href="@{/authorized/admin/clientList}">Операции с физическими лицами</a>
-                    <li><a th:href="@{/authorized/admin/personList}">Операции с юридическими лицами</a>
+                    <li><a th:href="@{/authorized/admin/clientList}">Редактировать информацию о банке</a>
+                    <li><a th:href="@{/authorized/admin/clientList}">Зарегистрировать отделение</a>
+                    <li><a>Операции с физическими лицами</a>
+                    <ul>
+                        <li><a th:href="@{/client/signUp}">Зарегистрировать пользователя</a>
+                        <li><a th:href="@{/authorized/admin/clientList}">Получить информацию о пользователях</a>
+                    </ul>
+                    <li><a>Операции с юридическими лицами</a>
+                    <ul>
+                        <li><a th:href="@{/person/signUp}">Зарегистрировать пользователя</a>
+                        <li><a th:href="@{/authorized/admin/personList}">Получить информацию о пользователях</a>
+                    </ul>
                 </ul>
             </div>
 

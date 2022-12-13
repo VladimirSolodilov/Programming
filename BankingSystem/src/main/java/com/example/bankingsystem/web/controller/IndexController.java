@@ -1,7 +1,6 @@
 package com.example.bankingsystem.web.controller;
 
 import com.example.bankingsystem.domain.model.Admin;
-import com.example.bankingsystem.domain.model.Client;
 import com.example.bankingsystem.domain.model.JuridicalPerson;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,12 +22,6 @@ public class IndexController {
         return "/page/index";
     }
 
-    /*@GetMapping("/signIn/error")
-    public String indexErrorPage(Model model) {
-        model.addAttribute("title", "Ошибка");
-        return "/page/error";
-    }*/
-
     @GetMapping("/signIn")
     public ModelAndView clientSignUp(ModelAndView modelAndView) {
         modelAndView.addObject("signIn");
@@ -49,7 +42,4 @@ public class IndexController {
         modelAndView.setViewName("/page/signIn");
         return modelAndView;
     }
-
-
-
 }

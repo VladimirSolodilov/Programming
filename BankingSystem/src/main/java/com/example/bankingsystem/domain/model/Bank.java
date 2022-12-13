@@ -4,18 +4,10 @@ public class Bank {
 
     private int bankId;
     private String name;
-
     private String address;
     private String license;
 
     public Bank() {}
-
-    public Bank(int bankId, String name, String address, String license) {
-        this.bankId = bankId;
-        this.name = name;
-        this.address = address;
-        this.license = license;
-    }
 
     public int getBankId() {
         return bankId;

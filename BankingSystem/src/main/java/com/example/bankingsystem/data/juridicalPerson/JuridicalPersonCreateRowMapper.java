@@ -1,6 +1,5 @@
 package com.example.bankingsystem.data.juridicalPerson;
 
-import com.example.bankingsystem.domain.model.Account;
 import com.example.bankingsystem.domain.model.JuridicalPerson;
 import org.springframework.jdbc.core.RowMapper;
 

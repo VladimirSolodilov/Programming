@@ -1,7 +1,5 @@
 package com.example.bankingsystem.web.controller;
 
-import com.example.bankingsystem.data.transfer.TransferStorage;
-import com.example.bankingsystem.domain.JuridicalPerson.JuridicalPersonService;
 import com.example.bankingsystem.domain.branch.BranchService;
 import com.example.bankingsystem.domain.client.ClientService;
 import com.example.bankingsystem.domain.model.*;
@@ -10,12 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.View;
 
 import java.util.List;
 
@@ -25,13 +20,8 @@ public class ClientController {
     private ClientService clientService;
     @Autowired
     private BranchService branchService;
-
     @Autowired
     private PaymentService paymentService;
-
-    @Autowired
-    private JuridicalPersonService juridicalPersonService;
-
     @GetMapping("/authorized/client/account")
     public String informationClient(Model model, Authentication authentication) {
         model.addAttribute("client", clientService.getClientList(authentication.getName()));
@@ -128,7 +118,7 @@ public class ClientController {
             return doPayment(modelAndView.addObject("paymentError", "Error Message"), authentication);
         } else {
             String paymentName = payment.getName().substring(payment.getName().indexOf(":") + 2, payment.getName().indexOf("Д") - 1);
-            String purposeName = payment.getName().substring(payment.getName().indexOf("ие:") + 4, payment.getName().length());
+            String purposeName = payment.getName().substring(payment.getName().indexOf("ие:") + 4);
             modelAndView.addObject(paymentService.doPayment(authentication.getName(), "rrr", paymentName, paymentSum, purposeName)); //Разработать метод для поиска юр. лица
             modelAndView.setViewName("redirect:/authorized");
             return modelAndView;

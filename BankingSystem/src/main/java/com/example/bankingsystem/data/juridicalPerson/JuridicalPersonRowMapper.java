@@ -10,7 +10,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class JuridicalPersonRowMapper implements RowMapper<JuridicalPerson> {
-
     @Override
     public JuridicalPerson mapRow(ResultSet resultSet, int rowNum) throws SQLException {
         JuridicalPerson juridicalPerson = new JuridicalPerson();
@@ -35,7 +34,6 @@ public class JuridicalPersonRowMapper implements RowMapper<JuridicalPerson> {
         account.setSum(resultSet.getInt("Sum"));
         accountRequisites.setPaymentAccount(resultSet.getInt("PaymentAccount"));
         branch.setBranchName(resultSet.getString("Name"));
-
 
         return juridicalPerson;
     }
