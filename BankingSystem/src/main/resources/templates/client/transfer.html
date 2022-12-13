@@ -13,12 +13,12 @@
             <a>Баланс вашего счёта:</a><a th:text="${clientLeft.account.sum}"></a>
 
             <form th:action="@{/authorized/client/transfer}" method="post" th:object="${clientSumTransfer}">
-                <div th:if="${clientRight} != null">
+                <div th:if="${!clientRight.isEmpty()}">
                     <label>Выбор клиента: </label>
                     <label>
                         <select name="clientName">
                             <option th:each="clientRight: ${clientRight}" th:text="|Фамилия: ${clientRight.surname} Имя: ${clientRight.name} Отчество: ${clientRight.patronymic}
-                            Логин: ${clientRight.clientName}|"></option>
+                            Идентификатор: ${clientRight.clientName}|"></option>
                         </select>
                     </label>
                 </div>

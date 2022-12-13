@@ -13,10 +13,10 @@ import java.util.Objects;
 public class TransferStorageDB implements TransferStorage {
     @Autowired
     private JdbcTemplate jdbcTemplate;
-    StringBuilder getTransfer = new StringBuilder("Select * from Transfer");
     String createTransfer = "INSERT Transfer Values(?, ?, ?)";
     @Override
     public List<Transfer> viewTransferInfo(String clientName) {
+        StringBuilder getTransfer = new StringBuilder("Select * from Transfer");
         if (Objects.equals(clientName, null)) {
             return jdbcTemplate.query(getTransfer.toString(), new TransferRowMapper());
         } else {

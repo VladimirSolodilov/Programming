@@ -72,7 +72,7 @@ public class ClientController {
     @PostMapping("/authorized/client/addSum")
     public String addSumPost(Model model, Client client, Authentication authentication) {
         model.addAttribute(clientService.addSum(authentication.getName(), client.getAccount().getSum()));
-        return "redirect:/authorized/client/account";
+        return "redirect:/authorized/";
     }
 
     @GetMapping("/authorized/client/transfer")

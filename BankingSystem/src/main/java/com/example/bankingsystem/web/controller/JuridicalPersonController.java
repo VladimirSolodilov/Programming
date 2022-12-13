@@ -23,7 +23,6 @@ import java.util.Objects;
 public class JuridicalPersonController {
     @Autowired
     private JuridicalPersonService juridicalPersonService;
-
     @Autowired
     private ClientService clientService;
 
@@ -70,7 +69,7 @@ public class JuridicalPersonController {
     @PostMapping("/authorized/person/addSum")
     public String addSumPost(Model model, JuridicalPerson juridicalPerson, Authentication authentication) {
         model.addAttribute(juridicalPersonService.addSum(authentication.getName(), juridicalPerson.getAccount().getSum()));
-        return "redirect:/authorized/person/account";
+        return "redirect:/authorized/";
     }
     @GetMapping("/authorized/person/transfer")
     public ModelAndView transfer(ModelAndView modelAndView, Authentication authentication) {

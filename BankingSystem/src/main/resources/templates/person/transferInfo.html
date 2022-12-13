@@ -23,7 +23,12 @@
                 </tr>
             </th:block>
         </table>
-        <a th:href="@{/authorized}" target="_self">Вернуться на главную страницу</a>
     </div>
+
+    <div th:if="${personTransferInfo.isEmpty()}">
+        <p>Переводы отсутствуют!</p>
+    </div>
+
+    <a th:href="@{/authorized}" target="_self">Вернуться на главную страницу</a>
 </body>
 </html>
