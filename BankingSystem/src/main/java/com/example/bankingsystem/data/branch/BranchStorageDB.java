@@ -16,6 +16,7 @@ public class BranchStorageDB implements BranchStorage {
 
     String getBranchList = "Select * from Branch";
     String getBranchIdByName = "Select * from Branch where Branch.BranchName Like ?";
+    String branchRegistration = "Insert Branch Values(?, ?, ?)";
 
     @Override
     public List<Branch> getBranchList() {
@@ -25,5 +26,9 @@ public class BranchStorageDB implements BranchStorage {
     @Override
     public List<Branch> getBranchIdByName(String branchName) {
         return jdbcTemplate.query(getBranchIdByName, new BranchRowMapper(), branchName);
+    }
+    @Override
+    public int branchRegistration(String name, String address) {
+        return jdbcTemplate.update(branchRegistration, 1, name, address);
     }
 }

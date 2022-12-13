@@ -38,7 +38,7 @@ public class ClientStorageDB implements ClientStorage {
     String getClientByClientName = "SELECT * from Client join Account on Client.ClientId = Account.ClientId join AccountRequisites on Account.AccountId = AccountRequisites.AccountId join Branch on Branch.BranchId = Client.BranchId Where Client.ClientName Like ?";
     String transferClientLeft = "Update Account Set Account.Sum = Account.Sum - ? Where Account.ClientId = ?";
     String transferClientRight = "Update Account Set Account.Sum = Account.Sum + ? Where Account.ClientId = ?";
-    String getClientIdByClient = "Select * From Client Where Client.ClientName = ?";
+    String getClientIdByClient = "Select * From Client Where Client.ClientName Like ?";
     String changeClient = "Update Client Set Surname = ?, Name = ?, Patronymic = ?, ClientName = ? Where Client.ClientId = ?";
     @Override
     public List<Client> getAllClient (String pattern) {
@@ -123,9 +123,9 @@ public class ClientStorageDB implements ClientStorage {
     }
 
     @Override
-    public boolean changeClient(String surname, String name, String patronumic, String clientName) {
+    public boolean changeClient(String surname, String name, String patronymic, String clientName) {
         int clientId = jdbcTemplate.query(getClientIdByClient, new ClientCreateRowMapper(), clientName).get(0).getClientId();
-        jdbcTemplate.update(changeClient, surname, name, patronumic, clientName, clientId);
+        jdbcTemplate.update(changeClient, surname, name, patronymic, clientName, clientId);
         return true;
     }
 }

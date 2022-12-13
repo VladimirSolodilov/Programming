@@ -21,4 +21,9 @@ public class BranchServiceDomain implements BranchService {
     public List<Branch> getBranchIdByName(String branchName) {
         return branchStorage.getBranchIdByName(branchName);
     }
+
+    @Override
+    public int branchRegistration(String name, String address) {
+        return branchStorage.branchRegistration(name, address);
+    }
 }

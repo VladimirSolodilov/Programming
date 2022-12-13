@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1 class="h1">Изменение юридического лица</h1>
-    <form th:action="@{/authorized/admin/personChange}" method="post" th:object="${juridicalPersonChange}">
+    <form th:action="@{/authorized/admin/personChangeAction}" method="post" th:object="${juridicalPersonChange}">
         <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <div>
                 <label>Фамилия: </label>
@@ -37,7 +37,7 @@
                 </label>&nbsp;<span th:errors="*{organizationName}"></span>
             </div>
 
-            <div>
+            <div hidden>
                 <label>Логин: </label>
                 <label>
                     <input type="text" th:name="juridicalPersonName" th:value="${person.juridicalPersonName}" required>

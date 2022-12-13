@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Редактирование информации о банке</title>
+    <link href="/css/form.css" rel="stylesheet"/>
+</head>
+<body>
+    <h1 class="h1">Редактирование информации о банке</h1>
+    <form th:action="@{/authorized/admin/bankInformationChange}" method="post" th:object="${bankChange}">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+
+        <div th:each="bank: ${bank}">
+            <div>
+                <label>Название: </label>
+                <label>
+                    <input type="text" th:name="name" th:value="${bank.name}" required>
+                </label>&nbsp;<span th:errors="*{name}"></span>
+            </div>
+
+            <div>
+                <label>Адрес: </label>
+                <label>
+                    <input type="text" th:name="address" th:value="${bank.address}" required>
+                </label>&nbsp;<span th:errors="*{address}"></span>
+            </div>
+
+            <div>
+                <label>Лицензия: </label>
+                <label>
+                    <input type="text" th:name="license" th:value="${bank.license}" required>
+                </label>&nbsp;<span th:errors="*{license}"></span>
+            </div>
+
+        </div>
+
+        <div class="form-group">
+            <p><input type="submit" name="registration-submit" id="registration-submit1"
+                      class="stdBtn" value="Редактировать"></p>
+        </div>
+    </form>
+
+    <a th:href="@{/}" target="_self">Вернуться на главную страницу</a>
+</body>
+</html>
