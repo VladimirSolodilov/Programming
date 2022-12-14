@@ -1,9 +1,11 @@
 package com.example.bankingsystem.data.juridicalPerson;
 
 import com.example.bankingsystem.data.account.AccountRowMapper;
+import com.example.bankingsystem.data.payment.PaymentIdRowMapper;
 import com.example.bankingsystem.data.transfer.TransferStorage;
 import com.example.bankingsystem.domain.model.Account;
 import com.example.bankingsystem.domain.model.JuridicalPerson;
+import com.example.bankingsystem.domain.model.Payment;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -125,6 +127,14 @@ public class JuridicalPersonStorageDB implements JuridicalPersonStorage {
     public List<JuridicalPerson> getIdByPersonName(String personName) {
         String getIdByPersonName = "Select * from JuridicalPerson Where PersonName Like ?";
         return jdbcTemplate.query(getIdByPersonName, new JuridicalPersonRowMapper(), personName);
+    }
+
+    @Override
+    public List<JuridicalPerson> getPersonByPaymentName(String paymentName) {
+        String getPayment = "Select * from Payment Where Payment.Name Like ?";
+        String getPersonByClientName = "Select * From JuridicalPerson Where JuridicalPerson.PersonId = ?";
+        List<Payment> payments = jdbcTemplate.query(getPayment, new PaymentIdRowMapper(), paymentName);
+        return jdbcTemplate.query(getPersonByClientName, new JuridicalPersonCreateRowMapper(), payments.get(0).getPersonId());
     }
 
 }

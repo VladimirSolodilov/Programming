@@ -1,5 +1,6 @@
 package com.example.bankingsystem.web.controller;
 
+import com.example.bankingsystem.domain.JuridicalPerson.JuridicalPersonService;
 import com.example.bankingsystem.domain.branch.BranchService;
 import com.example.bankingsystem.domain.client.ClientService;
 import com.example.bankingsystem.domain.model.*;
@@ -18,6 +19,9 @@ import java.util.List;
 public class ClientController {
     @Autowired
     private ClientService clientService;
+
+    @Autowired
+    private JuridicalPersonService juridicalPersonService;
     @Autowired
     private BranchService branchService;
     @Autowired
@@ -120,7 +124,10 @@ public class ClientController {
         } else {
             String paymentName = payment.getName().substring(payment.getName().indexOf(":") + 2, payment.getName().indexOf("Д") - 1);
             String purposeName = payment.getName().substring(payment.getName().indexOf("ие:") + 4);
-            modelAndView.addObject(paymentService.doPayment(authentication.getName(), "rrr", paymentName, paymentSum, purposeName)); //Разработать метод для поиска юр. лица
+            List<JuridicalPerson> person = juridicalPersonService.getPersonByPaymentName(paymentName);
+
+            modelAndView.addObject(paymentService.doPayment(authentication.getName(),
+                    person.get(0).getJuridicalPersonName(), paymentName, paymentSum, purposeName));
             modelAndView.setViewName("redirect:/authorized");
             return modelAndView;
         }

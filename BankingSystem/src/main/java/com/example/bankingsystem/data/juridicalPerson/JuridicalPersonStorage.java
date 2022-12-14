@@ -7,6 +7,7 @@ import java.util.List;
 public interface JuridicalPersonStorage {
     List<JuridicalPerson> getAllPerson(String pattern);
     List<JuridicalPerson> getIdByPersonName(String personName);
+    List<JuridicalPerson> getPersonByPaymentName(String paymentName);
     boolean createJuridicalPerson (int branchId, int roleId, String surname, String name, String patronymic, String organizationName, String juridicalPersonName, String password, int sum);
     boolean deleteJuridicalPerson (String personName);
     boolean personChange(String surname, String name, String patronymic, String organizationName, String juridicalPersonName);

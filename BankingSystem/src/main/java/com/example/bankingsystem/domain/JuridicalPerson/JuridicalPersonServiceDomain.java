@@ -56,4 +56,9 @@ public class JuridicalPersonServiceDomain implements JuridicalPersonService {
     public List<Transfer> transferInfo(String personName) {
         return transferStorage.viewTransferInfo(personName);
     }
+
+    @Override
+    public List<JuridicalPerson> getPersonByPaymentName(String paymentName) {
+        return juridicalPersonStorage.getPersonByPaymentName(paymentName);
+    }
 }

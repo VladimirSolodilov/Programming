@@ -14,4 +14,6 @@ public interface JuridicalPersonService {
     boolean addSum(String personName, int sum);
     boolean transfer(String leftPerson, String rightPerson, int sum);
     List<Transfer> transferInfo(String personName);
+    List<JuridicalPerson> getPersonByPaymentName(String paymentName);
+
 }
