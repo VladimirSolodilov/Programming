@@ -6,7 +6,5 @@ import java.util.Collection;
 import java.util.List;
 
 public interface RoleStorage {
-    List<Role> getAllRoles();
-    Collection<Role> getRoleById(int roleId);
-    Role getRoleById1(int roleId);
+    Collection<Role> getRoleByIdCollection(int roleId);
 }

@@ -42,7 +42,7 @@
                             </form>
                         </td>
                         <td>
-                            <form th:action="@{/authorized/admin/changeClientPage}" method="post" th:object="${client}">
+                            <form th:action="@{/authorized/admin/clientChangePage}" method="post" th:object="${client}">
                                 <label hidden>
                                     <input type="text" th:value="${clientList.surname}" name="surname">
                                 </label>

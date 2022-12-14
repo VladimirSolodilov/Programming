@@ -39,16 +39,14 @@ public class UserServiceDomain implements UserDetailsService {
 
         if (!clientList.isEmpty()) {
             Client client = clientList.get(0);
-            return new User(client.getClientName(), client.getPassword(), mapRolesToAuthorities(roleStorage.getRoleById(client.getRoleId())));
+            return new User(client.getClientName(), client.getPassword(), mapRolesToAuthorities(roleStorage.getRoleByIdCollection(client.getRoleId())));
         } else if (!personList.isEmpty()) {
             JuridicalPerson juridicalPerson = personList.get(0);
-            return new User(juridicalPerson.getJuridicalPersonName(), juridicalPerson.getPassword(), mapRolesToAuthorities(roleStorage.getRoleById(juridicalPerson.getRoleId())));
+            return new User(juridicalPerson.getJuridicalPersonName(), juridicalPerson.getPassword(), mapRolesToAuthorities(roleStorage.getRoleByIdCollection(juridicalPerson.getRoleId())));
         } else if (!adminList.isEmpty()) {
             Admin admin = adminList.get(0);
-            return new User(admin.getName(), admin.getPassword(), mapRolesToAuthorities(roleStorage.getRoleById(admin.getRoleId())));
-        }
-
-        throw new InternalAuthenticationServiceException("User not found!");
+            return new User(admin.getName(), admin.getPassword(), mapRolesToAuthorities(roleStorage.getRoleByIdCollection(admin.getRoleId())));
+        } else throw new InternalAuthenticationServiceException("User not found!");
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<Role> roleById) {
