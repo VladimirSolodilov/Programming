@@ -1255,3 +1255,27 @@ Caused by: com.microsoft.sqlserver.jdbc.SQLServerException: Недопустим
 2022-12-14 11:37:41.217  INFO 3168 --- [restartedMain] c.e.b.BankingSystemApplication           : Started BankingSystemApplication in 7.443 seconds (JVM running for 10.07)
 2022-12-14 11:37:41.221  INFO 3168 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state LivenessState changed to CORRECT
 2022-12-14 11:37:41.228  INFO 3168 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2022-12-14 11:54:26.152  WARN 3168 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=13m45s406ms763µs900ns).
+2022-12-14 12:03:50.244  INFO 6808 --- [restartedMain] c.e.b.BankingSystemApplication           : Starting BankingSystemApplication using Java 17 on User-PC with PID 6808 (D:\Github\Programming\BankingSystem\target\classes started by user in D:\Github\Programming\BankingSystem)
+2022-12-14 12:03:50.251  INFO 6808 --- [restartedMain] c.e.b.BankingSystemApplication           : No active profile set, falling back to default profiles: default
+2022-12-14 12:03:50.469  INFO 6808 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2022-12-14 12:03:50.470  INFO 6808 --- [restartedMain] .e.DevToolsPropertyDefaultsPostProcessor : For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2022-12-14 12:03:50.502  WARN 6808 --- [background-preinit] o.s.h.c.j.Jackson2ObjectMapperBuilder    : For Jackson Kotlin classes support please add "com.fasterxml.jackson.module:jackson-module-kotlin" to the classpath
+2022-12-14 12:03:51.990  INFO 6808 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JDBC repositories in DEFAULT mode.
+2022-12-14 12:03:52.026  INFO 6808 --- [restartedMain] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 28 ms. Found 0 JDBC repository interfaces.
+2022-12-14 12:03:53.248  INFO 6808 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-12-14 12:03:53.269  INFO 6808 --- [restartedMain] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-12-14 12:03:53.271  INFO 6808 --- [restartedMain] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.46]
+2022-12-14 12:03:53.412  INFO 6808 --- [restartedMain] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2022-12-14 12:03:53.413  INFO 6808 --- [restartedMain] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2941 ms
+2022-12-14 12:03:54.225  INFO 6808 --- [restartedMain] o.s.s.web.DefaultSecurityFilterChain     : Will secure any request with [org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter@60917a3, org.springframework.security.web.context.SecurityContextPersistenceFilter@467f45c6, org.springframework.security.web.header.HeaderWriterFilter@4aa60818, org.springframework.security.web.csrf.CsrfFilter@6dc51e35, org.springframework.security.web.authentication.logout.LogoutFilter@106256c3, org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter@7f3bb745, org.springframework.security.web.savedrequest.RequestCacheAwareFilter@65939414, org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter@e2ec6c9, org.springframework.security.web.authentication.AnonymousAuthenticationFilter@408fb04, org.springframework.security.web.session.SessionManagementFilter@4b21ac25, org.springframework.security.web.access.ExceptionTranslationFilter@28566ff2, org.springframework.security.web.access.intercept.FilterSecurityInterceptor@312d7ae5]
+2022-12-14 12:03:55.045  INFO 6808 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-12-14 12:03:55.746  INFO 6808 --- [restartedMain] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-12-14 12:03:55.941  INFO 6808 --- [restartedMain] o.s.b.d.a.OptionalLiveReloadServer       : LiveReload server is running on port 35729
+2022-12-14 12:03:56.351  INFO 6808 --- [restartedMain] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2022-12-14 12:03:56.378  INFO 6808 --- [restartedMain] c.e.b.BankingSystemApplication           : Started BankingSystemApplication in 6.974 seconds (JVM running for 10.044)
+2022-12-14 12:03:56.382  INFO 6808 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state LivenessState changed to CORRECT
+2022-12-14 12:03:56.389  INFO 6808 --- [restartedMain] o.s.b.a.ApplicationAvailabilityBean      : Application availability state ReadinessState changed to ACCEPTING_TRAFFIC
+2022-12-14 12:04:23.125  INFO 6808 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-12-14 12:04:23.125  INFO 6808 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-12-14 12:04:23.127  INFO 6808 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
