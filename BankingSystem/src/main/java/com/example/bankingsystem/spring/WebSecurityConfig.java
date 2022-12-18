@@ -4,6 +4,7 @@ import com.example.bankingsystem.data.role.RoleStorage;
 import com.example.bankingsystem.domain.JuridicalPerson.JuridicalPersonService;
 import com.example.bankingsystem.domain.client.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.server.CookieSameSiteSupplier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -28,14 +29,14 @@ public class WebSecurityConfig {
 
     @Autowired
     DataSource dataSource;
-
     @Bean
-    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+    protected BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
     @Bean
     protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
+        http
+                .headers().xssProtection();
         http
                 .authorizeRequests()
                 .antMatchers("/css/**", "/").permitAll()
