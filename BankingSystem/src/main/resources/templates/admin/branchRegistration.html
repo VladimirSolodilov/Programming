@@ -13,14 +13,14 @@
         <div>
             <label>Название: </label>
             <label>
-                <input type="text" th:field="*{branchName}" required>
+                <input type="text" th:field="*{branchName}" name="branchName" required>
             </label>&nbsp;<span th:errors="*{branchName}"></span>
         </div>
 
         <div>
             <label>Адрес: </label>
             <label>
-                <input type="text" th:field="*{address}" required>
+                <input type="text" th:field="*{address}" name="address" required>
             </label>&nbsp;<span th:errors="*{address}"></span>
         </div>
 
