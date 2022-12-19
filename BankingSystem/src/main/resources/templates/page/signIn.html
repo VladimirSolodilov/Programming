@@ -9,7 +9,6 @@
     <div class="container">
         <h1 class="h1">Авторизация пользователя</h1>
         <form th:action="@{/signIn}" method="post" th:object="${signIn}">
-            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <p>
                 <label for="login">Логин: </label>
                 <input type="text" id="login" name="username">

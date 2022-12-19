@@ -4,7 +4,6 @@ import com.example.bankingsystem.data.role.RoleStorage;
 import com.example.bankingsystem.domain.JuridicalPerson.JuridicalPersonService;
 import com.example.bankingsystem.domain.client.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.web.servlet.server.CookieSameSiteSupplier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -35,11 +34,24 @@ public class WebSecurityConfig {
     }
     @Bean
     protected SecurityFilterChain configure(HttpSecurity http) throws Exception {
+        http.csrf().disable();
+        http.authorizeRequests()
+                .and()
+                    .formLogin()
+                    .loginPage("/signIn")
+                    .permitAll()
+                .and()
+                    .logout()
+                    .logoutSuccessUrl("/")
+                    .permitAll();
+        return http.build();
+        /*
         http
                 .headers().xssProtection();
         http
                 .authorizeRequests()
                 .antMatchers("/css/**", "/").permitAll()
+                .antMatchers("/signIn").permitAll()
 
                 .antMatchers("/authorized/client/**").hasAuthority("CLIENT")
                 .antMatchers("/authorized/person/**").hasAuthority("JURIDICAL_PERSON")
@@ -55,6 +67,6 @@ public class WebSecurityConfig {
                     .logout()
                     .logoutSuccessUrl("/")
                     .permitAll();
-        return http.build();
+        return http.build();*/
     }
 }

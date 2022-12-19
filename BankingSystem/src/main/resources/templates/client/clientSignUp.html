@@ -10,25 +10,24 @@
 <body>
     <h1 class="h1">Регистрация физического лица</h1>
     <form th:action="@{/client/signUp}" method="post" th:object="${clientSignUp}">
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
         <div>
             <label>Фамилия: </label>
             <label>
-                <input type="text" th:field="*{surname}" required>
+                <input type="text" th:field="*{surname}" name="surname" required>
             </label>&nbsp;<span th:errors="*{surname}"></span>
         </div>
 
         <div>
             <label>Имя: </label>
             <label>
-                <input type="text" th:field="*{name}" required>
+                <input type="text" th:field="*{name}" name="name" required>
             </label>&nbsp;<span th:errors="*{name}"></span>
         </div>
 
         <div>
             <label>Отчество: </label>
             <label>
-                <input type="text" th:field="*{patronymic}" required>
+                <input type="text" th:field="*{patronymic}" name="patronymic" required>
             </label>&nbsp;<span th:errors="*{patronymic}"></span>
         </div>
 
@@ -36,7 +35,7 @@
             <label>Филиал: </label>
             <label>
                 <select name="branchName">
-                    <option th:each="branchList: ${branchList}" th:text="${branchList.branchName}" ></option>
+                    <option th:each="branchList: ${branchList}" name="branch" th:text="${branchList.branchName}" ></option>
                 </select>
             </label>
         </div>
@@ -44,14 +43,14 @@
         <div>
             <label>Логин: </label>
             <label>
-                <input type="text" th:field="*{clientName}" required>
+                <input type="text" th:field="*{clientName}" name="login" required>
             </label>&nbsp;<span th:errors="*{clientName}"></span>
         </div>
 
         <div>
             <label>Пароль: </label>
             <label>
-                <input type="password" th:field="*{password}" required>
+                <input type="password" th:field="*{password}" name="password" required>
             </label>&nbsp;<span th:errors="*{password}"></span>
         </div>
 
