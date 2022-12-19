@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Nekogochan</title>
+        <th:block th:replace="fragment/head.html :: head"></th:block>
+    </head>
+    <body>
+        <div class="wrapper">
+            <div id="navDiv" th:insert="fragment/nav.html :: nav"></div>
+            <div id="content">
+                <th:block th:fragment="content">
+                    <meta name="type" th:content="${locationType}">
+                    <meta name="name" th:content="${locationName}">
+                    <main>
+
+                        <!--Если не залогинен-->
+                        <section class="center-content" sec:authorize="!isAuthenticated()">
+                            <h2>Чтобы просматривать фотографии необходимо войти в систему:</h2>
+                            <a class="" href="#1"><button class="fill">Зарегестрироваться</button></a>
+                            <a class="" href="#1"><button class="fill">Войти в систему</button></a>
+                        </section>
+
+                        <!--Если модератор-->
+                        <section id="editLinks" sec:authorize="hasRole('ROLE_MODERATOR')">
+                            <a class="ajaxLink" th:href="@{'/moderator/image/update/' + ${locationType} + '/' + ${locationName}}"><button class="fill">Редактировать</button></a>
+                            <a class="ajaxLink" th:href="@{'/moderator/image/delete/' + ${locationType} + '/' + ${locationName}}"><button class="fill">Удалить</button></a>
+                            <!--еще одна ссылка для добавление подобласти, добавляется через скрипт-->
+                        </section>
+
+                        <!--Если залогинен-->
+                        <section id="location" sec:authorize="isAuthenticated()">
+                            <!--ссылка на родителя + заголовок (описание) + фотография + ссылки на детей-->
+                        </section>
+                    </main>
+                    <script type="module" src="/js/pageScripts/locationTemplate.js"></script>
+                    <script>
+                        window.CurrentPage = {};
+                        window.PageOnLoadLocationTemplate();
+                    </script>
+                </th:block>
+            </div>
+            <div th:insert="fragment/loading.html :: loading" id="pageLoading" class="hide"></div>
+        </div>
+        <th:block th:insert="fragment/footer.html :: footer"></th:block>
+        <th:block th:insert="fragment/scripts.html :: scripts"></th:block>
+    </body>
+</html>
