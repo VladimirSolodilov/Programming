@@ -1,12 +1,14 @@
 package semaphore;
 
+import lock.LockMain;
+
 import java.util.ArrayList;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class SemaphoreMain {
-    static AtomicInteger writingFinish = new AtomicInteger(0);
-    static Integer buffer = null;
+    private static final AtomicInteger endWriting = new AtomicInteger(0);
+    private static Integer buffer = null;
     private static final Semaphore semaphoreRead = new Semaphore(1, true);
     private static final Semaphore semaphoreWrite = new Semaphore(1 , true);
 
@@ -20,18 +22,13 @@ public class SemaphoreMain {
         ArrayList<Thread> threadsReaders = new ArrayList<>();
         for (int i = 0; i < nReaders; i++) {
             threadsReaders.add(new Thread(() -> {
-                while (writingFinish.get() < nWriters-1) {
+                while (endWriting.get() < nWriters-1) {
                     try {
                         semaphoreRead.acquire();
                         if (buffer != null){
                             int current = buffer;
                             buffer = null;
-                            StringBuilder tmp = new StringBuilder();
-                            tmp.append("\t\t\t").append(Thread.currentThread().getName()).append("R");
-                            for (int k = 0; k < nWritings; k++) {
-                                tmp.append(k > current ? "__" : "<>");
-                            }
-                            System.out.println(tmp);
+                            read(nWritings, current);
                         }
                     } catch (InterruptedException e) {
                         //throw new RuntimeException(e);
@@ -50,12 +47,7 @@ public class SemaphoreMain {
                         semaphoreWrite.acquire();
                         if (buffer == null) {
                             buffer = j;
-                            StringBuilder tmp = new StringBuilder();
-                            tmp.append("\t").append(Thread.currentThread().getName()).append("W");
-                            for (int k = 0; k < nWritings; k++) {
-                                tmp.append(k > j ? "__" : "[]");
-                            }
-                            System.out.println(tmp);
+                            write(nWritings, j);
                             j++;
                         }
                     } catch (InterruptedException e) {
@@ -64,7 +56,7 @@ public class SemaphoreMain {
                         semaphoreWrite.release();
                     }
                 }
-                writingFinish.incrementAndGet();
+                endWriting.incrementAndGet();
             }));
             threadsWriters.get(i).start();
         }
@@ -74,5 +66,18 @@ public class SemaphoreMain {
             thread.join();
 
         System.out.println("\n\nProgram continued " + ((System.currentTimeMillis() - millis)) + " milliseconds.");
+    }
+
+    public static void read(int nWritings, int current) {
+        StringBuilder tmp = new StringBuilder();
+        tmp.append("\t\t\t").append(Thread.currentThread().getName()).append("R");
+        for (int k = 0; k < nWritings; k++) {
+            tmp.append(k > current ? "__" : "<>");
+        }
+        System.out.println(tmp);
+    }
+
+    public static void write(int nWritings, int j) {
+        LockMain.write(nWritings, j);
     }
 }

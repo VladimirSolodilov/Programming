@@ -1,5 +1,7 @@
 package lock;
 
+import semaphore.SemaphoreMain;
+
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -20,12 +22,7 @@ public class LockMain {
                 while (writingFinish.get() < nWriters-1) {
                     Integer current = buffer.readFromBuf();
                     if (current != null) {
-                        StringBuilder tmp = new StringBuilder();
-                        tmp.append("\t\t\t").append(Thread.currentThread().getName()).append("R");
-                        for (int k = 0; k < nWritings; k++) {
-                            tmp.append(k > current ? "__" : "<>");
-                        }
-                        System.out.println(tmp);
+                        SemaphoreMain.read(nWritings, current);
                     }
                 }
             }));
@@ -36,12 +33,7 @@ public class LockMain {
             threadsWriters.add(new Thread(() -> {
                 for (int j = 0; j < nWritings;) {
                     if (buffer.writeInBuf(j)) {
-                        StringBuilder tmp = new StringBuilder();
-                        tmp.append("\t").append(Thread.currentThread().getName()).append("W");
-                        for (int k = 0; k < nWritings; k++) {
-                            tmp.append(k > j ? "__" : "[]");
-                        }
-                        System.out.println(tmp);
+                        write(nWritings, j);
                         j++;
                     }
                 }
@@ -55,5 +47,14 @@ public class LockMain {
             thread.join();
 
         System.out.println("\n\nProgram continued " + ((System.currentTimeMillis() - millis)) + " milliseconds.");
+    }
+
+    public static void write(int nWritings, int j) {
+        StringBuilder tmp = new StringBuilder();
+        tmp.append("\t").append(Thread.currentThread().getName()).append("W");
+        for (int k = 0; k < nWritings; k++) {
+            tmp.append(k > j ? "__" : "[]");
+        }
+        System.out.println(tmp);
     }
 }
