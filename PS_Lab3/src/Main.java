@@ -16,7 +16,7 @@ public class Main {
             threadsWriters.add(new Thread(() -> {
                 for (int j = 0; j < writingsCount; j++) {
                     buf.append("W");
-                    stringBuilderWriters.append(Thread.currentThread().getName()).append("W - ").append(buf).append("; \n");
+                    stringBuilderWriters.append(Thread.currentThread().getName()).append("W - ").append(buf).append(";\n");
                 }
             }));
         }
@@ -25,18 +25,14 @@ public class Main {
         for (int i = 0; i < readersCount; i++) {
             threadsReaders.add(new Thread(() -> {
                 for (int j = 0; j < readersCount; j++) {
-                    stringBuilderReaders.append("\t").append(Thread.currentThread().getName()).append("R - ").append(buf).append("; \n");
+                    stringBuilderReaders.append(Thread.currentThread().getName()).append("R - ").append(buf).append(";\n");
                     buf.deleteCharAt(buf.length() - 1);
                 }
             }));
         }
 
-        for (int i = 0; i < threadsWriters.size(); i++) {
-            threadsWriters.get(i).start();
-            threadsReaders.get(i).start();
-            threadsWriters.get(i).join();
-            threadsReaders.get(i).join();
-        }
+        for (Thread thread : threadsWriters) thread.start();
+        for (Thread thread : threadsReaders) thread.start();
 
         System.out.println("\n" + stringBuilderWriters);
         System.out.println("\n" + stringBuilderReaders);

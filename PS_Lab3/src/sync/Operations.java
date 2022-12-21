@@ -1,6 +1,6 @@
 package sync;
 
-public class ReadWrite {
+public class Operations {
     public static void read(int nWritings, int current) {
         StringBuilder tmp = new StringBuilder();
         tmp.append("\t").append(Thread.currentThread().getName()).append("R - ");

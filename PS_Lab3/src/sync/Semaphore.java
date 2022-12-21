@@ -3,7 +3,7 @@ package sync;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Semaphore extends ReadWrite {
+public class Semaphore extends Operations {
     private static final AtomicInteger endWriting = new AtomicInteger(0);
     private static Integer buffer = null;
     private static final java.util.concurrent.Semaphore semaphoreRead = new java.util.concurrent.Semaphore(1, true);
@@ -12,9 +12,9 @@ public class Semaphore extends ReadWrite {
     public static void main(String[] args) {
 
         long millis = System.currentTimeMillis();
-        final int writingCount = 3;
-        final int writersCount = 5;
-        final int readersCount = 5;
+        final int writingCount = 100;
+        final int writersCount = 100;
+        final int readersCount = 100;
 
         ArrayList<Thread> threadsWriters = new ArrayList<>();
         for (int i = 0; i < writersCount; i++) {

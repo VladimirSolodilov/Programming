@@ -3,15 +3,15 @@ package sync;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Lock extends ReadWrite {
+public class Lock extends Operations {
     private static final AtomicInteger finishOfWriting = new AtomicInteger(0);
     public static void main(String[] args) throws InterruptedException {
         long timeMillis = System.currentTimeMillis();
 
         final Buffer<Integer> buffer = new Buffer<>();
-        final int writingCount = 3;
-        final int writersCount = 5;
-        final int readersCount = 5;
+        final int writingCount = 100;
+        final int writersCount = 100;
+        final int readersCount = 100;
 
         ArrayList<Thread> threadsWriters = new ArrayList<>();
 
