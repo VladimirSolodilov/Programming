@@ -1,22 +1,20 @@
 package sync;
 
-import tools.Actions;
-import tools.Buffer;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Lock extends Actions {
+public class Lock extends ReadWrite {
     private static final AtomicInteger finishOfWriting = new AtomicInteger(0);
     public static void main(String[] args) throws InterruptedException {
-
         long timeMillis = System.currentTimeMillis();
 
         final Buffer<Integer> buffer = new Buffer<>();
         final int writingCount = 3;
-        final int writersCount = 3;
-        final int readersCount = 3;
+        final int writersCount = 5;
+        final int readersCount = 5;
 
         ArrayList<Thread> threadsWriters = new ArrayList<>();
+
         for (int i = 0; i < writersCount; i++) {
             threadsWriters.add(new Thread(() -> {
                 for (int j = 0; j < writingCount; ) {

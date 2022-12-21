@@ -1,32 +1,30 @@
 package sync;
 
-import tools.Actions;
 import java.util.ArrayList;
 import java.util.concurrent.atomic.AtomicInteger;
 
-public class Semaphore extends Actions {
+public class Semaphore extends ReadWrite {
     private static final AtomicInteger endWriting = new AtomicInteger(0);
     private static Integer buffer = null;
     private static final java.util.concurrent.Semaphore semaphoreRead = new java.util.concurrent.Semaphore(1, true);
     private static final java.util.concurrent.Semaphore semaphoreWrite = new java.util.concurrent.Semaphore(1 , true);
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
 
         long millis = System.currentTimeMillis();
         final int writingCount = 3;
-        final int writersCount = 3;
-        final int readersCount = 3;
+        final int writersCount = 5;
+        final int readersCount = 5;
 
         ArrayList<Thread> threadsWriters = new ArrayList<>();
         for (int i = 0; i < writersCount; i++) {
             threadsWriters.add(new Thread(() -> {
-                for (int j = 0; j < writingCount;) {
+                for (int j = 0; j < writingCount; j++) {
                     try {
                         semaphoreWrite.acquire();
                         if (buffer == null) {
                             buffer = j;
                             write(writingCount, j);
-                            j++;
                         }
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -36,7 +34,6 @@ public class Semaphore extends Actions {
                 }
                 endWriting.incrementAndGet();
             }));
-            threadsWriters.get(i).join();
         }
 
         ArrayList<Thread> threadsReaders = new ArrayList<>();
@@ -57,7 +54,6 @@ public class Semaphore extends Actions {
                     }
                 }
             }));
-            threadsReaders.get(i).join();
         }
 
         for (Thread thread : threadsWriters) {

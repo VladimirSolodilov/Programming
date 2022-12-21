@@ -1,51 +1,44 @@
 import java.util.ArrayList;
 
 public class Main {
-    static Integer buf = null;
-    static Boolean writingFinish = false;
     public static void main(String[] args) throws InterruptedException {
-        final int nWritings = 3;
-        final int nWriters = 3;
-        final int nReaders = 10;
+        final int writingsCount = 3;
+        final int writersCount = 3;
+        final int readersCount = 3;
 
-        StringBuilder  stringBuilderW = new StringBuilder();
-        StringBuilder  stringBuilderR = new StringBuilder();
+        StringBuffer buf = new StringBuffer();
+
+        StringBuilder stringBuilderWriters = new StringBuilder();
+        StringBuilder stringBuilderReaders = new StringBuilder();
 
         ArrayList<Thread> threadsWriters = new ArrayList<>();
-        for (int i = 0; i < nWriters; i++) {
+        for (int i = 0; i < writersCount; i++) {
             threadsWriters.add(new Thread(() -> {
-                for (int j = 0; j < nWritings; j++) {
-                    while (buf != null) {
-                    }
-                    buf = j;
-                    StringBuilder tmp  = new StringBuilder();
-                    tmp.append(Thread.currentThread().getName()).append("W").append(j).append(" ");
-                    stringBuilderW.append(tmp);
+                for (int j = 0; j < writingsCount; j++) {
+                    buf.append("W");
+                    stringBuilderWriters.append(Thread.currentThread().getName()).append("W - ").append(buf).append("; \n");
                 }
             }));
-            threadsWriters.get(i).start();
         }
 
         ArrayList<Thread> threadsReaders = new ArrayList<>();
-        for (int i = 0; i < nReaders; i++) {
+        for (int i = 0; i < readersCount; i++) {
             threadsReaders.add(new Thread(() -> {
-                while (!writingFinish) {
-                    while (buf == null  && !writingFinish) {}
-                    StringBuilder tmp = new StringBuilder();
-                    tmp.append(Thread.currentThread().getName()).append("R").append(buf).append(" ");
-                    stringBuilderR.append(tmp);
-                    buf = null;
+                for (int j = 0; j < readersCount; j++) {
+                    stringBuilderReaders.append("\t").append(Thread.currentThread().getName()).append("R - ").append(buf).append("; \n");
+                    buf.deleteCharAt(buf.length() - 1);
                 }
             }));
+        }
+
+        for (int i = 0; i < threadsWriters.size(); i++) {
+            threadsWriters.get(i).start();
             threadsReaders.get(i).start();
+            threadsWriters.get(i).join();
+            threadsReaders.get(i).join();
         }
-        for (Thread thread : threadsWriters)
-            thread.join();
-        for (Thread thread: threadsReaders) {
-            writingFinish = true;
-            thread.join();
-        }
-            System.out.println("\n" + stringBuilderW);
-            System.out.println("\n" + stringBuilderR);
+
+        System.out.println("\n" + stringBuilderWriters);
+        System.out.println("\n" + stringBuilderReaders);
     }
 }

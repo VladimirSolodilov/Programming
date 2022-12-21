@@ -1,19 +1,19 @@
-package tools;
+package sync;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class Buffer<T> {
-    private T message = null;
+    private T buffer = null;
     private final Lock RWLock = new ReentrantLock();
     public boolean writeInBuffer(T newObject) {
         boolean writingSuccess = false;
         try {
-            if (RWLock.tryLock(10, TimeUnit.SECONDS)) {
-                if (message != null) throw new Exception("Message is full");
+            if (RWLock.tryLock(10, TimeUnit.MILLISECONDS)) {
+                if (buffer != null) throw new Exception("Buffer is full");
                 else {
-                    message = newObject;
+                    buffer = newObject;
                     writingSuccess = true;
                 }
             }
@@ -25,13 +25,13 @@ public class Buffer<T> {
         return writingSuccess;
     }
     public T readFromBuffer() {
-        T messageObject = null;
+        T bufferObject = null;
         try {
             if (RWLock.tryLock(10, TimeUnit.SECONDS)) {
-                if (message == null) throw new Exception("Message is empty");
+                if (buffer == null) throw new Exception("Buffer is empty");
                 else {
-                    messageObject = message;
-                    message = null;
+                    bufferObject = buffer;
+                    buffer = null;
                 }
             }
         } catch (Exception e) {
@@ -39,6 +39,6 @@ public class Buffer<T> {
         } finally {
             RWLock.unlock();
         }
-        return messageObject;
+        return bufferObject;
     }
 }
