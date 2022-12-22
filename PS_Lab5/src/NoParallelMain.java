@@ -20,7 +20,7 @@ public class NoParallelMain extends Actions {
         long time = System.currentTimeMillis();
 
         createStartMatrices(length, startMatrix, freeMatrix);
-        //printMatrix(startMatrix, freeMatrix);
+        printMatrix(startMatrix, freeMatrix);
 
         MatrixResult matrixResult = matrixTransformation(startMatrix, freeMatrix);
         x = xCalculation(matrixResult.endMatrix(), matrixResult.freeMatrix());
