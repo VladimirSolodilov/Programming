@@ -9,9 +9,9 @@ public class Lock extends Operations {
         long timeMillis = System.currentTimeMillis();
 
         final Buffer<Integer> buffer = new Buffer<>();
-        final int writingCount = 100;
-        final int writersCount = 100;
-        final int readersCount = 100;
+        final int writingCount = 5;
+        final int writersCount = 2;
+        final int readersCount = 2;
 
         ArrayList<Thread> threadsWriters = new ArrayList<>();
 
@@ -25,7 +25,7 @@ public class Lock extends Operations {
                 }
                 finishOfWriting.incrementAndGet();
             }));
-            threadsWriters.get(i).join();
+            //threadsWriters.get(i).join();
         }
 
         ArrayList<Thread> threadsReaders = new ArrayList<>();
@@ -38,12 +38,20 @@ public class Lock extends Operations {
                     }
                 }
             }));
-            threadsReaders.get(i).join();
+           // threadsReaders.get(i).join();
         }
 
-        for (Thread thread : threadsWriters) thread.start();
-        for (Thread thread : threadsReaders) thread.start();
+        for (Thread thread : threadsWriters) {
+            thread.start();
+            //thread.join(1);
+        }
+        for (Thread thread : threadsReaders) {
+            thread.start();
+            //thread.join(3);
+        }
 
         System.out.println("\nProgram completed in " + ((System.currentTimeMillis() - timeMillis)) + " milliseconds.");
+
+        System.exit(0);
     }
 }

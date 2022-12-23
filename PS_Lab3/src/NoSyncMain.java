@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
-public class Main {
-    public static void main(String[] args) throws InterruptedException {
+public class NoSyncMain {
+    public static void main(String[] args) {
         final int writingsCount = 3;
         final int writersCount = 3;
         final int readersCount = 3;

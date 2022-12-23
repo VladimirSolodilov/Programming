@@ -7,7 +7,7 @@ import java.util.concurrent.locks.ReentrantLock;
 public class ParallelMain extends Actions {
     private static final Scanner scanner = new Scanner(System.in);
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
         System.out.println("Решение СЛАУ методом Гаусса с распараллеливанием вычислений...");
         System.out.print("Введите порядок СЛАУ: ");
         int length = scanner.nextInt();
@@ -70,17 +70,20 @@ public class ParallelMain extends Actions {
 
         createStartMatrices(length, startMatrix, freeMatrix);
 
+        printMatrix(startMatrix, freeMatrix);
+
         Thread[] threadsDirectMethod = new Thread[cores];
         for (int i = 0; i < threadsDirectMethod.length; i++) {
             threadsDirectMethod[i] = new Thread(directMethod);
             threadsDirectMethod[i].start();
+            threadsDirectMethod[i].join();
         }
 
         Thread[] threadsReverseMethod = new Thread[cores];
         for (int i = 0; i < threadsDirectMethod.length; i++) {
             threadsReverseMethod[i] = new Thread(reverseMethod);
             threadsReverseMethod[i].start();
-            //threadsReverseMethod[i].join();
+            threadsReverseMethod[i].join();
         }
 
         printX(x);
