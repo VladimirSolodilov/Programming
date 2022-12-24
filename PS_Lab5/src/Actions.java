@@ -32,7 +32,7 @@ public class Actions {
     }
 
     static void printMatrix(double[][] startMatrix, double[] freeMatrix) {
-        System.out.println("Вывод элементов начальной матрицы:");
+        System.out.println("Вывод элементов расширенной матрицы:");
         for (int i = 0; i < startMatrix.length; i++) {
             for (int j = 0; j < startMatrix.length; j++) {
                 System.out.print(startMatrix[i][j] + " ");
@@ -42,7 +42,7 @@ public class Actions {
     }
 
     static void printX(double[] x) {
-        System.out.println("Вывод x:");
+        System.out.println("Вывод значений x:");
         for (int i = 0; i < x.length; i++) {
             System.out.println("x[" + i + "] = " + x[i]);
         }
